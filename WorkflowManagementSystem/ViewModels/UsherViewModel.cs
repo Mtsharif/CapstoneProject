@@ -27,6 +27,8 @@ namespace WorkflowManagementSystem.ViewModels
         }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+     
+        [Key]
         public int Id { get; set; }
 
         [Required]

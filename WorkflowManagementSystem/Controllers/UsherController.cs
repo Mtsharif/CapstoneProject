@@ -120,10 +120,13 @@ namespace WorkflowManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 Usher usher = Mapper.Map<UsherViewModel, Usher>(model);
-                db.Entry(usher).State = EntityState.Modified;
+               // db.Entry(usher).State = EntityState.Modified;
+                db.Entry(usher).State = (usher.UsherId == 0 ? EntityState.Added : EntityState.Modified);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+           
             return View(model);
         }
 

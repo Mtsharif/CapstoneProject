@@ -135,8 +135,19 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                Employee employee = Mapper.Map<Employee>(model);
-                employee.UserName = model.UserName;
+                //Employee employee = Mapper.Map<Employee>(model);
+                Employee employee = new Employee
+                {
+                    UserName = model.UserName,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    JobTitle = model.JobTitle,
+                    Department = model.Department,
+                    EmployeeType = model.EmployeeType,
+                };
+                //employee.UserName = model.UserName;
 
                 var result = UserManager.Create(employee, model.Password);
 
