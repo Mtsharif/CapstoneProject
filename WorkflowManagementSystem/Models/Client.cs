@@ -18,7 +18,6 @@ namespace WorkflowManagementSystem.Models
     [Table("Client")]
     public partial class Client
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
             ClientSatisfactions = new HashSet<ClientSatisfaction>();
@@ -53,10 +52,8 @@ namespace WorkflowManagementSystem.Models
         [StringLength(25)]
         public string City { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientSatisfaction> ClientSatisfactions { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventProject> EventProjects { get; set; }
     }
 }

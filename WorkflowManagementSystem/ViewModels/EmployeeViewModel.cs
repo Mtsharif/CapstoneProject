@@ -52,10 +52,10 @@ namespace WorkflowManagementSystem.ViewModels
         public EmployeeJobTitle JobTitle { get; set; }
 
         [Display(Name = "Department")]
-        public EmployeeDepartment Department { get; set; }
+        public Department Department { get; set; }
 
         [Display(Name = "Employee Type")]
-        public UserType EmployeeType { get; set; }
+        public EmployeeType EmployeeType { get; set; }
 
         // To display the list of roles
         public string Roles { get; set; }

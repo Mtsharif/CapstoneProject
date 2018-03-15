@@ -104,7 +104,7 @@ namespace WorkflowManagementSystem.Controllers
                     // Use Automapper instead of copying properties one by one
                     EmployeeViewModel model = Mapper.Map<EmployeeViewModel>(employee);
 
-                    model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
+                    model.Roles = string.Join(" | ", UserManager.GetRoles(userId).ToArray());
 
                     return View(model);
                 }
@@ -135,7 +135,7 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                Employee employee = Mapper.Map<Employee>(model);
+                Employee employee = Mapper.Map<EmployeeViewModel, Employee>(model);
                 employee.UserName = model.UserName;
 
                 var result = UserManager.Create(employee, model.Password);
@@ -241,6 +241,7 @@ namespace WorkflowManagementSystem.Controllers
                 employee.PhoneNumber = model.PhoneNumber;
                 employee.JobTitle = model.JobTitle;
                 employee.Department = model.Department;
+                employee.EmployeeType = model.EmployeeType;
 
                 var userResult = UserManager.Update(employee);
 
@@ -283,7 +284,7 @@ namespace WorkflowManagementSystem.Controllers
                 }
 
                 EmployeeViewModel model = Mapper.Map<EmployeeViewModel>(employee);
-                model.Roles = string.Join(" ", UserManager.GetRoles(userId).ToArray());
+                model.Roles = string.Join(" | ", UserManager.GetRoles(userId).ToArray());
                 return View(model);
             }
 

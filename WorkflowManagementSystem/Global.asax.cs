@@ -17,6 +17,7 @@ namespace WorkflowManagementSystem
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             // Register AutoMapper when the app starts
             AutoMapperConfig.RegisterMappings();
         }

@@ -18,7 +18,6 @@ namespace WorkflowManagementSystem.Models
     [Table("EmployeeTask")]
     public partial class EmployeeTask
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EmployeeTask()
         {
             TaskAssignments = new HashSet<TaskAssignment>();
@@ -48,7 +47,6 @@ namespace WorkflowManagementSystem.Models
 
         public virtual EventProject EventProject { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaskAssignment> TaskAssignments { get; set; }
     }
 

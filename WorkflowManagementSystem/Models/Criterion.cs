@@ -18,7 +18,6 @@ namespace WorkflowManagementSystem.Models
     [Table("Criterion")]
     public partial class Criterion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Criterion()
         {
             ClientSatisfactions = new HashSet<ClientSatisfaction>();
@@ -35,10 +34,8 @@ namespace WorkflowManagementSystem.Models
         [StringLength(200)]
         public string Description { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientSatisfaction> ClientSatisfactions { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsherEvaluation> UsherEvaluations { get; set; }
     }
 

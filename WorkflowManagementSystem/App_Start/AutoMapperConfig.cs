@@ -13,7 +13,7 @@ namespace WorkflowManagementSystem.App_Start
         {
             AutoMapper.Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Employee, EmployeeViewModel>().ReverseMap();
+                cfg.CreateMap<Employee, EmployeeViewModel>().ReverseMap().ForMember(p=>p.Roles, o=>o.Ignore());
                 cfg.CreateMap<Usher, UsherViewModel>().ReverseMap();
                 cfg.CreateMap<Item, ItemViewModel>().ReverseMap();
             });
