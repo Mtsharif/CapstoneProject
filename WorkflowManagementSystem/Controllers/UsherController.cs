@@ -36,7 +36,7 @@ namespace WorkflowManagementSystem.Controllers
             {
                 model.Add(new UsherViewModel
                 {
-                    Id = item.UsherId,
+                    UsherId = item.UsherId,
                     FirstName = item.FirstName,
                     LastName = item.LastName,
                     MobileNumber = item.MobileNumber,
@@ -120,6 +120,7 @@ namespace WorkflowManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 Usher usher = Mapper.Map<UsherViewModel, Usher>(model);
+                //usher.UsherId = model.Id;
                 db.Entry(usher).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

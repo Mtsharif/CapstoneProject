@@ -25,7 +25,7 @@ namespace WorkflowManagementSystem.Models
             UsherLanguages = new HashSet<UsherLanguage>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsherId { get; set; }
         
 
@@ -53,7 +53,8 @@ namespace WorkflowManagementSystem.Models
         [StringLength(20)]
         public string City { get; set; }
 
-        public bool? CarAvailability { get; set; }
+        //NOTE: To get checkbox, this should not be nullable
+        public bool CarAvailability { get; set; }
 
         [StringLength(200)]
         public string MedicalCard { get; set; }
@@ -71,7 +72,6 @@ namespace WorkflowManagementSystem.Models
     public enum UsherGender
     {
         Male,
-
-        Female,
+        Female
     }
 }

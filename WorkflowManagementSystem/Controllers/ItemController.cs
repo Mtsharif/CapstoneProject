@@ -30,7 +30,7 @@ namespace WorkflowManagementSystem.Controllers
             {
                 model.Add(new ItemViewModel
                 {
-                    Id = item.ItemId,
+                    ItemId = item.ItemId,
                     Name = item.Name,
                     Description = item.Description,
                     UnitCost = item.UnitCost,
@@ -106,6 +106,8 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                //NOTE: to use the automapper, the property names of the model and viewmodel should be the same; otherwise use manual copy of the properties like in the employee controller.
+                
                 Item item = Mapper.Map<ItemViewModel, Item>(model);
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();

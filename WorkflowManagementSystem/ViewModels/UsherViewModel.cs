@@ -27,7 +27,9 @@ namespace WorkflowManagementSystem.ViewModels
         }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        //NOTE: If you want to use automapper, the property names of model and viewmodel should be the same
+        [Key]
+        public int UsherId { get; set; }
 
         [Required]
         [Display(Name = "First Name")]
@@ -38,10 +40,13 @@ namespace WorkflowManagementSystem.ViewModels
         public string LastName { get; set; }
 
         [Required]
+        [Phone]
         [Display(Name = "Mobile Number")]
         public string MobileNumber { get; set; }
 
         [Display(Name = "Date Of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
@@ -55,7 +60,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string City { get; set; }
 
         [Display(Name = "Car Availability")]
-        public bool? CarAvailability { get; set; }
+        public bool CarAvailability { get; set; }
 
         [Display(Name = "Medical Card")]
         public string MedicalCard { get; set; }

@@ -24,7 +24,9 @@ namespace WorkflowManagementSystem.ViewModels
             CostVarianceItems = new List<CostVarianceItem>();
         }
 
-        public int Id { get; set; }
+        //NOTE: If you want to use automapper, the property names of model and viewmodel should be the same
+        [Key]
+        public int ItemId { get; set; }
 
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -33,6 +35,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string Description { get; set; }
 
         [Display(Name = "Unit Cost")]
+        [DataType(DataType.Currency)]
         public decimal UnitCost { get; set; }
 
         // List of cost sheet items
