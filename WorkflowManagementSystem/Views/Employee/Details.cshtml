@@ -1,13 +1,13 @@
 ﻿@model WorkflowManagementSystem.ViewModels.EmployeeViewModel
 
 @{
-    ViewBag.Title = "Employee Details";
+    ViewBag.Title = "Details";
 }
 
-<h2>Employee Details</h2>
+<h2>Details</h2>
 
 <div>
-    <h4>EmployeeViewModel</h4>
+    <h4>Employee</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,22 +16,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConfirmPassword)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ConfirmPassword)
         </dd>
 
         <dt>
@@ -95,20 +79,12 @@
         </dt>
 
         <dd>
-            @if (Model.Roles.IsEmpty())
-        {
-            <text>This employee is not member of any role</text>
-    }
-    else
-    {
-        @Html.DisplayFor(model => model.Roles)
-
-}
+            @Html.DisplayFor(model => model.Roles)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit Employee", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to Employee List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

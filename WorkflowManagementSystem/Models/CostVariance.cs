@@ -19,7 +19,6 @@ namespace WorkflowManagementSystem.Models
     [Table("CostVariance")]
     public partial class CostVariance
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CostVariance()
         {
             CostVarianceItems = new HashSet<CostVarianceItem>();
@@ -42,7 +41,6 @@ namespace WorkflowManagementSystem.Models
 
         public virtual CostSheet CostSheet { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CostVarianceItem> CostVarianceItems { get; set; }
 
         public virtual Employee Employee { get; set; }

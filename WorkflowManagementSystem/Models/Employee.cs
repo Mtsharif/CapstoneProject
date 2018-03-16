@@ -18,7 +18,6 @@ namespace WorkflowManagementSystem.Models
     [Table("Employee")]
     public partial class Employee : ApplicationUser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
             CostSheets = new HashSet<CostSheet>();
@@ -55,53 +54,40 @@ namespace WorkflowManagementSystem.Models
         public EmployeeJobTitle JobTitle { get; set; }
 
         //[StringLength(20)]
-        public EmployeeDepartment Department { get; set; }
+        public Department Department { get; set; }
 
         //[Required]
         //[StringLength(15)]
         //public string Password { get; set; }
 
-        public UserType EmployeeType { get; set; }
+        public EmployeeType EmployeeType { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CostSheet> CostSheets { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CostSheet> ConfirmCostSheets { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CostSheet> SubmitCostSheets { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CostVariance> CostVariances { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventProject> EventProjects { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeTask> EmployeeTasks { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaskAssignment> TaskAssignments { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaskAssignment> AssignedTasks { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsherAppointed> UsherAppointeds { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsherEvaluation> UsherEvaluations { get; set; }
     }
 
     public enum EmployeeJobTitle
     {
         CEO,
-
         Director,
-
         Accountant,
-
         Designer,
 
         [Display(Name = "Event Planner")]
@@ -116,32 +102,27 @@ namespace WorkflowManagementSystem.Models
     /// <summary>
     /// EmployeeDepartment is an enum specifiying the types of departments in the organization. 
     /// </summary>
-    public enum EmployeeDepartment
+    public enum Department
     {
         [Display(Name = "Client Service")]
         ClientService, 
 
         Production,
-
         Finance,
-
         Creative,
     }
 
     /// <summary>
     /// UserType is an enum specifying the types of employees/users of the application.
     /// </summary>
-    public enum UserType
+    public enum EmployeeType
     {
         [Display(Name = "Client Service")]
         ClientService,
 
         Production,
-
         Finance, 
-
         Creative, 
-
         CEO,
 
         [Display(Name = "Event Planner")]

@@ -19,7 +19,6 @@ namespace WorkflowManagementSystem.Models
     [Table("CostSheet")]
     public partial class CostSheet
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CostSheet()
         {
             CostSheetItems = new HashSet<CostSheetItem>();
@@ -51,7 +50,6 @@ namespace WorkflowManagementSystem.Models
 
         public virtual Employee Employee { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CostSheetItem> CostSheetItems { get; set; }
 
         public virtual EventProject EventProject { get; set; }
@@ -60,7 +58,6 @@ namespace WorkflowManagementSystem.Models
 
         public virtual Employee ProductionEmployee { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<CostVariance> CostVariances { get; set; }
         public virtual CostVariance CostVariance { get; set; }
     }
