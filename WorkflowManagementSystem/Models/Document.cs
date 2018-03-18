@@ -45,9 +45,7 @@ namespace WorkflowManagementSystem.Models
     public enum DocumentStatus
     {
         Pending,
-
         Approved,
-
-        Rejected,
+        Rejected
     }
 }

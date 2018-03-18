@@ -20,7 +20,7 @@ namespace WorkflowManagementSystem.Models
     {
         [Key]
         [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UsherId { get; set; }
 
         [Key]

@@ -24,7 +24,7 @@ namespace WorkflowManagementSystem.Models
             UsherEvaluations = new HashSet<UsherEvaluation>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CriterionId { get; set; }
 
         [Required]
@@ -48,10 +48,9 @@ namespace WorkflowManagementSystem.Models
         QualityOfWork,
 
         Communication,
-
         Performance,
 
         [Display(Name = "Overall Satisfactory Level")]
-        OverallSatisfactoryLevel,
+        OverallSatisfactoryLevel
     }
 }

@@ -28,7 +28,7 @@ namespace WorkflowManagementSystem.Models
             UsherAppointeds = new HashSet<UsherAppointed>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EventProjectId { get; set; }
 
         [Required]
@@ -97,39 +97,33 @@ namespace WorkflowManagementSystem.Models
     {
         Conference,
 
-        //[Display(Name = "Product Launch")]
+        [Display(Name = "Product Launch")]
         ProductLaunch,
 
         Seminar,
-
         Forum, 
-
         Exhibition,
-
         Meeting,
 
-        //[Display(Name = "Business Dinner")]
+        [Display(Name = "Business Dinner")]
         BusinessDinner,
 
-        //[Display(Name = "Award Ceremony")]
+        [Display(Name = "Award Ceremony")]
         AwardCeremony,
 
         Wedding, 
-
         Birthday,
 
-        //[Display(Name = "Organization Milestone")]
+        [Display(Name = "Organization Milestone")]
         OrganizationMilestone,
 
-        Festival,   
+        Festival
     }
 
     public enum ProjectStatus
     {
         Pending,
-
         Approved, 
-
-        Rejected,
+        Rejected
     }
 }

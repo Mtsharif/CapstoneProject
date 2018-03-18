@@ -32,6 +32,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string Name { get; set; }
 
         [Display(Name = "Description")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Display(Name = "Unit Cost")]

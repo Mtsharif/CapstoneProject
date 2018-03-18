@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -64,7 +65,22 @@ namespace WorkflowManagementSystem.Controllers
                 return HttpNotFound();
             }
 
-            UsherViewModel model = Mapper.Map<Usher, UsherViewModel>(usher);
+            // UsherViewModel model = Mapper.Map<Usher, UsherViewModel>(usher);
+
+            var model = new UsherViewModel
+            {
+                UsherId = usher.UsherId,
+                FirstName = usher.FirstName,
+                LastName = usher.LastName,
+                MobileNumber = usher.MobileNumber,
+                DateOfBirth = usher.DateOfBirth,
+                Gender = usher.Gender,
+                Nationality = usher.Nationality,
+                City = usher.City,
+                CarAvailability = usher.CarAvailability,
+                MedicalCard = usher.MedicalCard,
+                UsherLanguages = usher.UsherLanguages.ToList(),
+            };  
 
             return View(model);
         }
@@ -82,10 +98,70 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                Usher usher = Mapper.Map<UsherViewModel, Usher>(model);
-                
+                //Usher usher = Mapper.Map<UsherViewModel, Usher>(model);
+
+                var usher = new Usher
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    MobileNumber = model.MobileNumber,
+                    DateOfBirth = model.DateOfBirth,
+                    Gender = model.Gender,
+                    Nationality = model.Nationality,
+                    City = model.City,
+                    CarAvailability = model.CarAvailability,
+                    MedicalCard = model.MedicalCard,
+                    UsherLanguages = model.UsherLanguages,
+                };
+
+                ////TODO Remove invalid characters from the filename such as white spaces
+                //// check if the uplaoded file is empty (do not upload empty files)
+                //if (model.MedicalCardFile != null && model.MedicalCardFile.ContentLength > 0)
+                //{
+                //    // Allowed extensions to be uploaded
+                //    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+
+                //    // using System.IO for Path class
+                //    // Get the file name without the path
+                //    string filename = Path.GetFileName(model.MedicalCardFile.FileName);
+
+                //    // Get the extension of the file
+                //    string ext = Path.GetExtension(filename).Substring(1);
+
+                //    // Check if the extension of the file is in the list of allowed extensions
+                //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                //    {
+                //        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                //        return View();
+                //    }
+
+                //    // Set the application folder where to save the uploaded file
+                //    string appFolder = "~/Content/Uploads/";
+
+                //    // Generate a random string to add to the file name
+                //    // This is to avoid the files with the same names
+                //    var rand = Guid.NewGuid().ToString();
+
+                //    // Combine the application folder location with the file name
+                //    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+
+                //    // Save the file in ~/Content/Uploads/filename.xyz
+                //    model.MedicalCardFile.SaveAs(path);
+
+                //    // Add the path to the course object
+                //    usher.MedicalCard = appFolder + rand + "-" + filename;
+
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                //    return View();
+                //}
+
                 db.Ushers.Add(usher);
+                //db.UsherLanguages.Add();
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

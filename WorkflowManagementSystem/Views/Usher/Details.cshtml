@@ -82,6 +82,34 @@
             @Html.DisplayFor(model => model.MedicalCard)
         </dd>
 
+        <dd>
+            @Html.DisplayFor(model => model.MedicalCardFile)
+            @if (!String.IsNullOrEmpty(Model.MedicalCard))
+        {
+            <a href="@Url.Content(Model.MedicalCard)">Medical Card</a>
+    }
+        </dd>
+
+        @* List the usher languages *@
+        <dt>
+            @Html.DisplayNameFor(model => model.UsherLanguages)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                   @* <th>Language</th>*@
+                </tr>
+                @foreach (var item in Model.UsherLanguages)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Language)
+                    </td>
+                </tr>
+        }
+            </table>
+        </dd>
+
     </dl>
 </div>
 <p>

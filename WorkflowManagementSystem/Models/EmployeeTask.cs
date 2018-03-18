@@ -23,7 +23,7 @@ namespace WorkflowManagementSystem.Models
             TaskAssignments = new HashSet<TaskAssignment>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EmployeeTaskId { get; set; }
 
         [Required]
@@ -57,11 +57,10 @@ namespace WorkflowManagementSystem.Models
     {
         Pending,
 
-        //[Display(Name = "In Progress")]
+        [Display(Name = "In Progress")]
         InProgress,
 
         Completed,
-
         Overdue
     }
 
@@ -71,9 +70,7 @@ namespace WorkflowManagementSystem.Models
     public enum TaskPriority
     {
         High,
-        
         Medium,
-
-        Low,
+        Low
     }
 }

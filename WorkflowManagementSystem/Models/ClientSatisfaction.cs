@@ -48,7 +48,6 @@ namespace WorkflowManagementSystem.Models
     public enum SatisfactionGrade
     {
         Poor,
-
         Satisfactory,
 
         [Display(Name = "Very Good")]

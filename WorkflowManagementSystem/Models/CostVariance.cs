@@ -55,6 +55,6 @@ namespace WorkflowManagementSystem.Models
         WithinBudget,
 
         [Display(Name = "Over Budget")]
-        OverBudget,
+        OverBudget
     }
 }

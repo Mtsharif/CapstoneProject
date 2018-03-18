@@ -96,7 +96,7 @@ namespace WorkflowManagementSystem.Models
         Assistant,
 
         [Display(Name = "Client Account Executive")]
-        ClientAccountExecutive,
+        ClientAccountExecutive
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ namespace WorkflowManagementSystem.Models
 
         Production,
         Finance,
-        Creative,
+        Creative
     }
 
     /// <summary>

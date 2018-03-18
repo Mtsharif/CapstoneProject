@@ -25,7 +25,7 @@ namespace WorkflowManagementSystem.Models
            //CostVariance = new HashSet<CostVariance>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CostSheetId { get; set; }
 
         public CostSheetStatus Status { get; set; }
@@ -68,10 +68,8 @@ namespace WorkflowManagementSystem.Models
     public enum CostSheetStatus
     {
         Pending,
-
         Approved,
-
-        Rejected,
+        Rejected
     }
 
     /// <summary>
@@ -80,10 +78,8 @@ namespace WorkflowManagementSystem.Models
     public enum CostSheetCEODecision
     {
         Pending,
-
         Approved,
-
-        Rejected,
+        Rejected
     }
 
     /// <summary>
@@ -92,10 +88,8 @@ namespace WorkflowManagementSystem.Models
     public enum CostSheetFinanceDecision
     {
         Pending,
-
         Approved,
-
-        Rejected,
+        Rejected
     }
 
 }

@@ -24,8 +24,7 @@ namespace WorkflowManagementSystem.Models
             EventProjects = new HashSet<EventProject>();
         }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ClientId { get; set; }
 
         [Required]

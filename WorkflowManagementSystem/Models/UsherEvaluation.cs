@@ -47,12 +47,11 @@ namespace WorkflowManagementSystem.Models
     public enum EvaluationGrade
     {
         Poor,
-
         Satisfactory,
 
-        //[Display(Name = "Very Good")]
+        [Display(Name = "Very Good")]
         VeryGood,
 
-        Excellent,
+        Excellent
     }
 }
