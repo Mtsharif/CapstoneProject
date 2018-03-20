@@ -27,3 +27,11 @@ This application is developed for the MIS capstone project; it is a web-based wo
 * Generate project reports
 
 * Generate client satisfaction reports
+***
+# Instructions
+***Login as an administrator using this login information***
+### Username: admin
+ 
+### Password: admin123
+
+
