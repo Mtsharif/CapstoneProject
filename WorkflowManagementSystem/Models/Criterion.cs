@@ -24,7 +24,7 @@ namespace WorkflowManagementSystem.Models
             UsherEvaluations = new HashSet<UsherEvaluation>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CriterionId { get; set; }
 
         [Required]

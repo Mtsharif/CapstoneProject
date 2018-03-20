@@ -25,7 +25,7 @@ namespace WorkflowManagementSystem.Models
            //CostVariance = new HashSet<CostVariance>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CostSheetId { get; set; }
 
         public CostSheetStatus Status { get; set; }

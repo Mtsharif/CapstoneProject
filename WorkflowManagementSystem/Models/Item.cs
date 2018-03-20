@@ -24,7 +24,6 @@ namespace WorkflowManagementSystem.Models
             CostVarianceItems = new HashSet<CostVarianceItem>();
         }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ItemId { get; set; }
 

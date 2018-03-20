@@ -90,24 +90,12 @@
     }
         </dd>
 
-        @* List the usher languages *@
         <dt>
-            @Html.DisplayNameFor(model => model.UsherLanguages)
+            @Html.DisplayNameFor(model => model.Language)
         </dt>
+
         <dd>
-            <table class="table">
-                <tr>
-                   @* <th>Language</th>*@
-                </tr>
-                @foreach (var item in Model.UsherLanguages)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Language)
-                    </td>
-                </tr>
-        }
-            </table>
+            @Html.DisplayFor(model => model.Language)
         </dd>
 
     </dl>

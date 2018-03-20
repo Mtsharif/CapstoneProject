@@ -23,7 +23,7 @@ namespace WorkflowManagementSystem.Models
             TaskAssignments = new HashSet<TaskAssignment>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeTaskId { get; set; }
 
         [Required]

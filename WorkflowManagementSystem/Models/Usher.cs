@@ -13,7 +13,7 @@ namespace WorkflowManagementSystem.Models
     using System.Data.Entity.Spatial;
 
     /// <summary>
-    /// This class represents the ushers used in events.
+    /// This class represents the ushers hired in events.
     /// </summary>
     [Table("Usher")]
     public partial class Usher
@@ -22,10 +22,9 @@ namespace WorkflowManagementSystem.Models
         {
             UsherAppointeds = new HashSet<UsherAppointed>();
             UsherEvaluations = new HashSet<UsherEvaluation>();
-            UsherLanguages = new HashSet<UsherLanguage>();
+            Languages = new HashSet<Language>();
         }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsherId { get; set; }
         
 
@@ -53,7 +52,6 @@ namespace WorkflowManagementSystem.Models
         [StringLength(20)]
         public string City { get; set; }
 
-        //NOTE: To get checkbox, this should not be nullable
         public bool CarAvailability { get; set; }
 
         [StringLength(200)]
@@ -63,7 +61,10 @@ namespace WorkflowManagementSystem.Models
 
         public virtual ICollection<UsherEvaluation> UsherEvaluations { get; set; }
 
-        public virtual ICollection<UsherLanguage> UsherLanguages { get; set; }
+        public virtual ICollection<Language> Languages { get; set; }
+
+        public int? LanguageId { get; set; }
+        public virtual Language Language { get; set; }
     }
 
     /// <summary>

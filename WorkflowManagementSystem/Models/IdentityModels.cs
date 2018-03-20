@@ -49,7 +49,8 @@ namespace WorkflowManagementSystem.Models
         public virtual DbSet<Usher> Ushers { get; set; }
         public virtual DbSet<UsherAppointed> UsherAppointeds { get; set; }
         public virtual DbSet<UsherEvaluation> UsherEvaluations { get; set; }
-        public virtual DbSet<UsherLanguage> UsherLanguages { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
+        //public virtual DbSet<UsherLanguage2> UsherLanguages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -219,11 +220,21 @@ namespace WorkflowManagementSystem.Models
                 .WithRequired(e => e.Usher)
                 .WillCascadeOnDelete(false);
 
+            //modelBuilder.Entity<Usher>()
+            //    .HasMany(e => e.UsherLanguages)
+            //    .WithRequired(e => e.Usher)
+            //    .HasForeignKey(e => e.UsherId)
+            //    .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Usher>()
-                .HasMany(e => e.UsherLanguages)
-                .WithRequired(e => e.Usher)
-                .HasForeignKey(e => e.UsherId)
-                .WillCascadeOnDelete(false);
+                .HasMany(l => l.Languages)
+                .WithMany(u => u.Ushers)
+                .Map(m =>
+                {
+                    m.ToTable("UsherLanguage");
+                    m.MapLeftKey("UsherId");
+                    m.MapRightKey("LanguageId");
+                });
         }
 
     }

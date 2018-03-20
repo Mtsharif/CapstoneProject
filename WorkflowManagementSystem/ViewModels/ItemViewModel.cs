@@ -24,7 +24,7 @@ namespace WorkflowManagementSystem.ViewModels
             CostVarianceItems = new List<CostVarianceItem>();
         }
 
-        //NOTE: If you want to use automapper, the property names of model and viewmodel should be the same
+        // To use the AutoMapper, the property names in the domain model and view model is kept the same.
         [Key]
         public int ItemId { get; set; }
 
@@ -32,6 +32,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string Name { get; set; }
 
         [Display(Name = "Description")]
+        [DisplayFormat(NullDisplayText = "Description Not Available")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 

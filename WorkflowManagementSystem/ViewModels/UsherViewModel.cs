@@ -23,10 +23,10 @@ namespace WorkflowManagementSystem.ViewModels
         {
             UsherAppointeds = new List<UsherAppointed>();
             UsherEvaluations = new List<UsherEvaluation>();
-            UsherLanguages = new List<UsherLanguage>();
+            Languages = new List<Language>();
         }
 
-        //NOTE: If you want to use automapper, the property names of model and viewmodel should be the same
+        // To use the AutoMapper, the property names in the domain model and view model is kept the same.
         [Key]
         public int UsherId { get; set; }
 
@@ -66,6 +66,7 @@ namespace WorkflowManagementSystem.ViewModels
         public HttpPostedFileBase MedicalCardFile  { get; set; }
 
         [Display(Name = "Medical Card")]
+        [DisplayFormat(NullDisplayText = "Medical Card Not Available")]
         public string MedicalCard { get; set; }
 
         // List of usher appointed
@@ -74,8 +75,10 @@ namespace WorkflowManagementSystem.ViewModels
         // List of ushers evaluated
         public virtual List<UsherEvaluation> UsherEvaluations { get; set; }
 
-        // List of usher languages
-        [Display(Name = "Language")]
-        public virtual List<UsherLanguage> UsherLanguages { get; set; }
+        public virtual List<Language> Languages { get; set; }
+
+        // Usher language 
+        public int? LanguageId { get; set; }
+        public string Language { get; set; }
     }
 }

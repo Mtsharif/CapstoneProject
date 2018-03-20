@@ -17,19 +17,6 @@ namespace WorkflowManagementSystem.Migrations
 
         protected override void Seed(WorkflowManagementSystem.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-
             //These are the roles included in the application.
             string[] roles = { "Admin", "CEO", "Client Service Employee", "Production Employee", "Finance Employee", "Creative Employee", "Event Planner" };
 
@@ -38,8 +25,6 @@ namespace WorkflowManagementSystem.Migrations
             string adminUserName = "admin";
             string adminPassword = "admin123";
 
-
-            // Create roles
             var roleStore = new CustomRoleStore(context);
             var roleManager = new RoleManager<CustomRole, int>(roleStore);
 
@@ -77,6 +62,32 @@ namespace WorkflowManagementSystem.Migrations
             {
                 userManager.AddToRole(admin.Id, roles[0]);
             }
+
+            // Add item sample
+            AddItems(context);
+
+            // Add language sample
+            AddLanguages(context);
         }
+
+        private void AddItems(ApplicationDbContext context)
+        {
+            context.Items.AddOrUpdate(
+                  p => p.Name, 
+                  new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
+                  new Item { Name = "Table1", Description = "Circular table", UnitCost = 200 },
+                  new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 }
+                  );
+        }
+
+        private void AddLanguages(ApplicationDbContext context)
+        {
+            context.Languages.AddOrUpdate(
+                p => p.Name,
+                new Language { Name = "English" },
+                new Language { Name = "Arabic" }
+                );
+        }
+
     }
 }

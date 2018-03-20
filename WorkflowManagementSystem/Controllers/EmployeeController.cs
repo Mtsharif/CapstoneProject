@@ -62,6 +62,10 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action lists all the employees.
+        /// </summary>
+        /// <returns>Index view</returns>
         // GET: Employee
         public ActionResult Index()
         {
@@ -85,23 +89,25 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves the details of a selected employee. 
+        /// It checks if the employee exists in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Error page or details view</returns>
         // GET: Employee/Details/5   
         public ActionResult Details(int? id)
         {
             if (id != null)
             {
-                // Convert id to int instead of int?
                 int userId = id ?? default(int);
 
-                // find the user in the database
                 var user = UserManager.FindById(userId);
 
-                // Check if the user exists and it is an emplyee not a simple application user
                 if (user != null && user is Employee)
                 {
                     var employee = (Employee)user;
 
-                    // Use Automapper instead of copying properties one by one
                     EmployeeViewModel model = Mapper.Map<EmployeeViewModel>(employee);
 
                     model.Roles = string.Join(" | ", UserManager.GetRoles(userId).ToArray());
@@ -110,7 +116,6 @@ namespace WorkflowManagementSystem.Controllers
                 }
                 else
                 {
-                    // Customize the error view: /Views/Shared/Error.cshtml
                     return View("Error");
                 }
             }
@@ -120,14 +125,24 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action displays the create employee page 
+        /// </summary>
+        /// <returns>Create employee view</returns>
         // GET: Employee/Create
         public ActionResult Create()
         {
-            // Example of usage of a checkbox list. See the /Views/Employee/Create.cshtml view
             ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
             return View();
         }
 
+        /// <summary>
+        /// This action enables the admin to create new employees as users.
+        /// It also add users to specific roles.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="roles"></param>
+        /// <returns>Index view</returns>
         // POST: Employee/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -159,8 +174,6 @@ namespace WorkflowManagementSystem.Controllers
                             // Create a check list object
                             ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
 
-                            // Return a view if you want to see error message saved in ModelState
-                            // Redirect() and RedirectToAction() clear the messages
                             return View();
                         }
                     }
@@ -169,7 +182,6 @@ namespace WorkflowManagementSystem.Controllers
                 }
                 else
                 {
-                    // See above comment for ModelState errors
                     ModelState.AddModelError(string.Empty, result.Errors.First());
                     ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
                     return View();
@@ -180,6 +192,12 @@ namespace WorkflowManagementSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action displays an employee's information to be edited. 
+        /// It verifies if the employee exists. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Employee model view or error page</returns>
         // GET: Employee/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -194,7 +212,6 @@ namespace WorkflowManagementSystem.Controllers
                     return View("Error");
                 }
 
-                // Use automapper instead of copying properties one by one
                 EmployeeViewModel model = Mapper.Map<EmployeeViewModel>(employee);
 
                 var userRoles = UserManager.GetRoles(userId);
@@ -214,6 +231,14 @@ namespace WorkflowManagementSystem.Controllers
             return View("Error");
         }
 
+        /// <summary>
+        /// This action allows the admin to edit an employee's information.
+        /// It checks if the id and employee exists
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <param name="roles"></param>
+        /// <returns>Error page or index view</returns>
         // POST: Employee/Edit/5
         [HttpPost]
         public ActionResult Edit(int? id, EmployeeViewModel model, params string[] roles)
@@ -271,6 +296,12 @@ namespace WorkflowManagementSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action retrieves the employee's information.
+        /// It verifies if the id and employee exist.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Error page or employee view</returns>
         // GET: Employee/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -291,6 +322,12 @@ namespace WorkflowManagementSystem.Controllers
             return HttpNotFound();
         }
 
+        /// <summary>
+        /// This action enables the admin to delete an employee.
+        /// It verifies that the id and the user exists.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Error page or employee index view</returns>
         // POST: Employee/Delete/5
         [HttpPost]
         [ActionName("Delete")]

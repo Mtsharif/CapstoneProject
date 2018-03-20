@@ -32,7 +32,6 @@ namespace WorkflowManagementSystem.Models
             UsherEvaluations = new HashSet<UsherEvaluation>();
         }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         //public int EmployeeId { get; set; }
 
         [Required]
@@ -94,6 +93,9 @@ namespace WorkflowManagementSystem.Models
         EventPlanner,
 
         Assistant,
+
+        [Display(Name = "Executive Assistant")]
+        ExecutiveAssistant,
 
         [Display(Name = "Client Account Executive")]
         ClientAccountExecutive

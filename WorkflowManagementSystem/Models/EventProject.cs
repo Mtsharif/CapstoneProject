@@ -28,7 +28,7 @@ namespace WorkflowManagementSystem.Models
             UsherAppointeds = new HashSet<UsherAppointed>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EventProjectId { get; set; }
 
         [Required]

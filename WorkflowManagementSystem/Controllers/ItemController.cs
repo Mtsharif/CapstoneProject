@@ -17,10 +17,18 @@ using WorkflowManagementSystem.ViewModels;
 
 namespace WorkflowManagementSystem.Controllers
 {
+    /// <summary>
+    /// The Item controller is generated based on the Item domain model and Item View Model classes.
+    /// This controller manages items by allowing the admin to add new items, list them, and edit and delete them.
+    /// </summary>
     public class ItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action demonstrates the list of all items available. 
+        /// </summary>
+        /// <returns>The index(list) view of the items</returns>
         // GET: Item
         public ActionResult Index()
         {
@@ -39,30 +47,44 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
-        // GET: Item/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Item item = db.Items.Find(id);
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
+        ///// <summary>
+        ///// This action shows the details of a chosen item.
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns>The details view</returns>
+        //// GET: Item/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Item item = db.Items.Find(id);
+        //    if (item == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            ItemViewModel model = Mapper.Map<Item, ItemViewModel>(item);
+        //    ItemViewModel model = Mapper.Map<Item, ItemViewModel>(item);
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
+        /// <summary>
+        /// This action retrieves the create new item page
+        /// </summary>
+        /// <returns>Create item view</returns>
         // GET: Item/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// This action allows the admin to create new items and save them.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>The index view is returned when the new item is saved</returns>
         // POST: Item/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -80,6 +102,12 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves an item's information to edit them.
+        /// It checks if the id and item are available in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Error page and edit item view</returns>
         // GET: Item/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -89,6 +117,7 @@ namespace WorkflowManagementSystem.Controllers
             }
 
             Item item = db.Items.Find(id);
+
             if (item == null)
             {
                 return HttpNotFound();
@@ -99,23 +128,33 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action saves the changes made to an item and saves it.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>The index page is returned when the item is saved</returns>
         // POST: Item/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ItemViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                //NOTE: to use the automapper, the property names of the model and viewmodel should be the same; otherwise use manual copy of the properties like in the employee controller.
-                
+            {          
                 Item item = Mapper.Map<ItemViewModel, Item>(model);
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves an item to be deleted by the admin.
+        /// It checks if the id and item are available in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Error page and item view</returns>
         // GET: Item/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -123,24 +162,34 @@ namespace WorkflowManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Item item = db.Items.Find(id);
+
             if (item == null)
             {
                 return HttpNotFound();
             }
+
             ItemViewModel model = Mapper.Map<ItemViewModel>(item);
 
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows the admin to delete an item
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Index view</returns>
         // POST: Item/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             Item item = db.Items.Find(id);
+
             db.Items.Remove(item);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
