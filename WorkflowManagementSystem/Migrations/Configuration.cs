@@ -2,6 +2,7 @@ namespace WorkflowManagementSystem.Migrations
 {
     using Microsoft.AspNet.Identity;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -18,7 +19,7 @@ namespace WorkflowManagementSystem.Migrations
         protected override void Seed(WorkflowManagementSystem.Models.ApplicationDbContext context)
         {
             //These are the roles included in the application.
-            string[] roles = { "Admin", "CEO", "Client Service Employee", "Production Employee", "Finance Employee", "Creative Employee", "Event Planner" };
+            string[] roles = { "Admin", "CEO", "Event Planner", "Client Service Employee", "Production Employee", "Finance Employee", "Creative Employee" };
 
             // Admin user login information
             string adminEmail = "admin@gmail.com";
@@ -63,31 +64,70 @@ namespace WorkflowManagementSystem.Migrations
                 userManager.AddToRole(admin.Id, roles[0]);
             }
 
-            // Add item sample
-            AddItems(context);
+            // Add item examples 
+            var items = new List<Item>
+            {
+                new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
+                new Item { Name = "Table1", Description = "Circular table", UnitCost = 200 },
+                new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 }
+            };
 
-            // Add language sample
-            AddLanguages(context);
+            items.ForEach(s => context.Items.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
+
+            // Add employee examples 
+            var employees = new List<Employee>
+            {
+                new Employee { UserName = "user1" , Email = "user1@gmail.com", FirstName = "Badr",
+                    LastName = "Alsharif", PhoneNumber = "0552323909", JobTitle = EmployeeJobTitle.Director,
+                    Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
+                new Employee { UserName = "user2" , Email = "user2@gmail.com", FirstName = "Hamza",
+                    LastName = "Zamil", PhoneNumber = "0500303000", JobTitle = EmployeeJobTitle.Assistant,
+                    Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
+                new Employee { UserName = "user3" , Email = "user3@gmail.com", FirstName = "Abdullah",
+                    LastName = "Ismail", PhoneNumber = "0505280001", JobTitle = EmployeeJobTitle.EventPlanner,
+                    Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
+            };
+
+            foreach (var employee in employees)
+            {
+                if (userManager.FindByName(employee.UserName) == null)
+                {
+                    userManager.Create(employee, "user123");
+                }
+
+                var usertemp = userManager.FindByName(employee.UserName);
+                if (!userManager.IsInRole(usertemp.Id, roles[3]))
+                {
+                    userManager.AddToRole(usertemp.Id, roles[3]);
+                }
+            }
+
+            // Add language examples
+            var languages = new List<Language>
+            {
+                new Language {Name = "English"},
+                new Language {Name = "Arabic"}
+            };
+
+            languages.ForEach(s => context.Languages.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
+
+            // Add usher examples 
+            var ushers = new List<Usher>
+            {
+                new Usher {FirstName = "Basem", LastName = "Helmi", MobileNumber = "0551212900", DateOfBirth = null,
+                    Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
+                    LanguageId = languages.Single(d=>d.Name=="English").Id,CarAvailability = true, MedicalCard = null },
+
+                new Usher {FirstName = "Layal", LastName = "Attas", MobileNumber = "0501211911", DateOfBirth = null,
+                    Gender = UsherGender.Male, Nationality = "Saudi", City = "Riyadh",
+                    LanguageId = languages.Single(d=>d.Name=="Arabic").Id, CarAvailability = true, MedicalCard = null }
+            };
+
+            ushers.ForEach(s => context.Ushers.AddOrUpdate(p => p.FirstName, s));
+            context.SaveChanges();
         }
-
-        private void AddItems(ApplicationDbContext context)
-        {
-            context.Items.AddOrUpdate(
-                  p => p.Name, 
-                  new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
-                  new Item { Name = "Table1", Description = "Circular table", UnitCost = 200 },
-                  new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 }
-                  );
-        }
-
-        private void AddLanguages(ApplicationDbContext context)
-        {
-            context.Languages.AddOrUpdate(
-                p => p.Name,
-                new Language { Name = "English" },
-                new Language { Name = "Arabic" }
-                );
-        }
-
     }
 }
+

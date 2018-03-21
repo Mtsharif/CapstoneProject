@@ -1,104 +1,114 @@
 ﻿@model WorkflowManagementSystem.ViewModels.EmployeeViewModel
 
-@{
-    ViewBag.Title = "Delete Employee";
-}
-
-<h2>Delete Employee</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Employee</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.JobTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JobTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Department)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Roles)
-        </dt>
-        <dd>
-            @if (Model.Roles.IsEmpty())
-            {
-                <text>This employee is not member of any role</text>
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.Roles)
-
-            }
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm())
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
     {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
-            @Html.ActionLink("Back to Employeee List", "Index")
-        </div>
+        ViewBag.Title = "Delete";
     }
-</div>
+
+    <h2>Delete Employee</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Employee</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JobTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Department)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Department)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmployeeType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmployeeType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Roles)
+            </dt>
+            <dd>
+                @if (Model.Roles.IsEmpty())
+                {
+                    <text>This employee is not member of any role</text>
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.Roles)
+
+                }
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
+                @Html.ActionLink("Back to Employeee List", "Index")
+            </div>
+        }
+    </div>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

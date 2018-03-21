@@ -20,12 +20,10 @@ namespace WorkflowManagementSystem.Models
     {
         [Key]
         [Column(Order = 0)]
-       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CostSheetId { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ItemId { get; set; }
 
         public int Quantity { get; set; }

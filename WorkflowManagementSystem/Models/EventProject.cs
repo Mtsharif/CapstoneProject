@@ -36,7 +36,6 @@ namespace WorkflowManagementSystem.Models
         public string Name { get; set; }
 
         [Required]
-        //[StringLength(30)]
         public EventProjectType EventType { get; set; }
 
         [Required]

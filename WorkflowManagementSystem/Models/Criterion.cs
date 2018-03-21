@@ -28,7 +28,6 @@ namespace WorkflowManagementSystem.Models
         public int CriterionId { get; set; }
 
         [Required]
-        //[StringLength(50)]
         public CriterionName Name { get; set; }
 
         [StringLength(200)]

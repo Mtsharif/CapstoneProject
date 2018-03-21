@@ -18,10 +18,12 @@ using AutoMapper;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// The Employee controller is created based on the Employee and EmployeeViewModel classes.
+    /// The Employee controller is created based on the Employee and EmployeeViewModel classes
     /// This controller manages employees as users (there are no subtypes for the employee) 
     /// This controller creates the views of creating, editing, listing, and deleting employees
+    /// Only the admin is authorized to access this controller
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public class EmployeeController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -65,7 +67,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <summary>
         /// This action lists all the employees.
         /// </summary>
-        /// <returns>Index view</returns>
+        /// <returns>Employee index view</returns>
         // GET: Employee
         public ActionResult Index()
         {
@@ -94,7 +96,7 @@ namespace WorkflowManagementSystem.Controllers
         /// It checks if the employee exists in the database
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Error page or details view</returns>
+        /// <returns>Error page or employee details view</returns>
         // GET: Employee/Details/5   
         public ActionResult Details(int? id)
         {
@@ -126,7 +128,7 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         /// <summary>
-        /// This action displays the create employee page 
+        /// This action displays the create employee page.
         /// </summary>
         /// <returns>Create employee view</returns>
         // GET: Employee/Create
@@ -138,11 +140,11 @@ namespace WorkflowManagementSystem.Controllers
 
         /// <summary>
         /// This action enables the admin to create new employees as users.
-        /// It also add users to specific roles.
+        /// It also assigns users to specific roles.
         /// </summary>
         /// <param name="model"></param>
         /// <param name="roles"></param>
-        /// <returns>Index view</returns>
+        /// <returns>Employee index view or create model view</returns>
         // POST: Employee/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -168,7 +170,6 @@ namespace WorkflowManagementSystem.Controllers
                         }
                         else
                         {
-                            // Display error messages in the view @Html.ValidationSummary()
                             ModelState.AddModelError(string.Empty, roleResult.Errors.First());
 
                             // Create a check list object
@@ -197,7 +198,7 @@ namespace WorkflowManagementSystem.Controllers
         /// It verifies if the employee exists. 
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Employee model view or error page</returns>
+        /// <returns>Employee edit model view or error page</returns>
         // GET: Employee/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -208,7 +209,6 @@ namespace WorkflowManagementSystem.Controllers
                 var employee = (Employee)UserManager.FindById(userId);
                 if (employee == null)
                 {
-                    //Return HttpNotFound();
                     return View("Error");
                 }
 
@@ -227,7 +227,6 @@ namespace WorkflowManagementSystem.Controllers
                 return View(model);
             }
 
-            // Return HttpNotFound();
             return View("Error");
         }
 
@@ -238,7 +237,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <param name="roles"></param>
-        /// <returns>Error page or index view</returns>
+        /// <returns>Error page, employee index view, or edit model view</returns>
         // POST: Employee/Edit/5
         [HttpPost]
         public ActionResult Edit(int? id, EmployeeViewModel model, params string[] roles)
@@ -249,7 +248,6 @@ namespace WorkflowManagementSystem.Controllers
 
             if (ModelState.IsValid && id != null)
             {
-                // Convert id to non-nullable int
                 var userId = id ?? default(int);
 
                 var employee = (Employee)UserManager.FindById(userId);
@@ -258,7 +256,6 @@ namespace WorkflowManagementSystem.Controllers
                     return HttpNotFound();
                 }
 
-                // Update the properties of the employee
                 employee.UserName = model.UserName;
                 employee.FirstName = model.FirstName;
                 employee.LastName = model.LastName;
