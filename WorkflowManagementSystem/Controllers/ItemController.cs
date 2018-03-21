@@ -20,7 +20,9 @@ namespace WorkflowManagementSystem.Controllers
     /// <summary>
     /// The Item controller is generated based on the Item domain model and Item View Model classes.
     /// This controller manages items by allowing the admin to add new items, list them, and edit and delete them.
+    /// Only the admin is allowed to access this controller
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public class ItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -28,7 +30,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <summary>
         /// This action demonstrates the list of all items available. 
         /// </summary>
-        /// <returns>The index(list) view of the items</returns>
+        /// <returns>Item index view</returns>
         // GET: Item
         public ActionResult Index()
         {
@@ -47,29 +49,6 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
-        ///// <summary>
-        ///// This action shows the details of a chosen item.
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns>The details view</returns>
-        //// GET: Item/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Item item = db.Items.Find(id);
-        //    if (item == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    ItemViewModel model = Mapper.Map<Item, ItemViewModel>(item);
-
-        //    return View(model);
-        //}
-
         /// <summary>
         /// This action retrieves the create new item page
         /// </summary>
@@ -84,7 +63,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action allows the admin to create new items and save them.
         /// </summary>
         /// <param name="model"></param>
-        /// <returns>The index view is returned when the new item is saved</returns>
+        /// <returns>Item index view or create model view</returns>
         // POST: Item/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -104,10 +83,10 @@ namespace WorkflowManagementSystem.Controllers
 
         /// <summary>
         /// This action retrieves an item's information to edit them.
-        /// It checks if the id and item are available in the database
+        /// It checks if the id and item are available in the database.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Error page and edit item view</returns>
+        /// <returns>Error page or edit item view</returns>
         // GET: Item/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -129,10 +108,10 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         /// <summary>
-        /// This action saves the changes made to an item and saves it.
+        /// This action allows changes to be made to the item and saves the changes.
         /// </summary>
         /// <param name="model"></param>
-        /// <returns>The index page is returned when the item is saved</returns>
+        /// <returns>Item index view or edit model view</returns>
         // POST: Item/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -151,10 +130,10 @@ namespace WorkflowManagementSystem.Controllers
 
         /// <summary>
         /// This action retrieves an item to be deleted by the admin.
-        /// It checks if the id and item are available in the database
+        /// It checks if the id and item are available in the database.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Error page and item view</returns>
+        /// <returns>Error page or item delete view</returns>
         // GET: Item/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -179,7 +158,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action allows the admin to delete an item
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Index view</returns>
+        /// <returns>Item index view</returns>
         // POST: Item/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]

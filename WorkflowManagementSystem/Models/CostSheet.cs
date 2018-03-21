@@ -22,7 +22,6 @@ namespace WorkflowManagementSystem.Models
         public CostSheet()
         {
             CostSheetItems = new HashSet<CostSheetItem>();
-           //CostVariance = new HashSet<CostVariance>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -58,7 +57,6 @@ namespace WorkflowManagementSystem.Models
 
         public virtual Employee ProductionEmployee { get; set; }
 
-        //public virtual ICollection<CostVariance> CostVariances { get; set; }
         public virtual CostVariance CostVariance { get; set; }
     }
 

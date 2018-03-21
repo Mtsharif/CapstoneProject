@@ -1,105 +1,97 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.UsherViewModel>
 
-@{
-                ViewBag.Title = "Index";
-}
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    {
+        ViewBag.Title = "Index";
+    }
 
-<h2>Usher List</h2>
+    <h2>Usher List</h2>
 
-<p>
-    @Html.ActionLink("Create New Usher", "Create")
-</p>
-<table class="table" id="ushersTable"> 
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.MobileNumber)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.DateOfBirth)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Nationality)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CarAvailability)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.MedicalCard)
-                </th>*@
-            <th></th>
-        </tr>
-    <thead>
-    <tbody>
-
-        @foreach (var item in Model)
-        {
+    <p>
+        @Html.ActionLink("Create New Usher", "Create")
+    </p>
+    <table class="table" id="ushersTable">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.MobileNumber)
-                    </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.DateOfBirth)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gender)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Nationality)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarAvailability)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.MedicalCard)
-                    </td>*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.UsherId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.UsherId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UsherId })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarAvailability)
+                </th>
+
+                <th></th>
             </tr>
-        }
-    <tbody>
-</table>
+        <thead>
+        <tbody>
 
-@section scripts
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarAvailability)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UsherId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UsherId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UsherId })
+                    </td>
+                </tr>
+            }
+        <tbody>
+    </table>
+
+    @section scripts
 {
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#ushersTable').DataTable();
-        });
-    </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#ushersTable').DataTable();
+            });
+        </script>
+    }
+
+    @section styles
+{
+        <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+    }
 }
-
-@section styles
+else
 {
-    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+    <ul class="nav navbar-nav navbar-right">
+        @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
 }

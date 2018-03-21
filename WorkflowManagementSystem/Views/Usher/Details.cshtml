@@ -1,106 +1,116 @@
 ﻿@model WorkflowManagementSystem.ViewModels.UsherViewModel
 
-@{
-    ViewBag.Title = "Usher Details";
-}
-
-<h2>Usher Details</h2>
-
-<div>
-    <h4>UsherViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MobileNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nationality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CarAvailability)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CarAvailability)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MedicalCard)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MedicalCard)
-        </dd>
-
-        <dd>
-            @Html.DisplayFor(model => model.MedicalCardFile)
-            @if (!String.IsNullOrEmpty(Model.MedicalCard))
-        {
-            <a href="@Url.Content(Model.MedicalCard)">Medical Card</a>
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+{
+    {
+        ViewBag.Title = "Usher Details";
     }
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Language)
-        </dt>
+    <h2>Usher Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Language)
-        </dd>
+    <div>
+        <h4>UsherViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UsherId }) |
-    @Html.ActionLink("Back to Usher List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MobileNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nationality)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Language)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Language)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CarAvailability)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CarAvailability)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MedicalCard)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MedicalCard)
+            </dd>
+
+            <dd>
+                @Html.DisplayFor(model => model.MedicalCardFile)
+                @if (!String.IsNullOrEmpty(Model.MedicalCard))
+                {
+                    <a href="@Url.Content(Model.MedicalCard)">Medical Card</a>
+                }
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UsherId }) |
+        @Html.ActionLink("Back to Usher List", "Index")
+    </p>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

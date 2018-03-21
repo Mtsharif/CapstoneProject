@@ -32,8 +32,6 @@ namespace WorkflowManagementSystem.Models
             UsherEvaluations = new HashSet<UsherEvaluation>();
         }
 
-        //public int EmployeeId { get; set; }
-
         [Required]
         [StringLength(30)]
         public string FirstName { get; set; }
@@ -42,22 +40,9 @@ namespace WorkflowManagementSystem.Models
         [StringLength(30)]
         public string LastName { get; set; }
 
-        //[StringLength(20)]
-        //public string MobileNumber { get; set; }
-
-        //[Required]
-        //[StringLength(80)]
-        //public string Email { get; set; }
-
-        //[StringLength(50)]
         public EmployeeJobTitle JobTitle { get; set; }
 
-        //[StringLength(20)]
         public Department Department { get; set; }
-
-        //[Required]
-        //[StringLength(15)]
-        //public string Password { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
 
