@@ -237,6 +237,7 @@ namespace WorkflowManagementSystem.Models
                 });
         }
 
+        public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.EventProjectViewModel> EventProjectViewModels { get; set; }
     }
     public class CustomUserRole : IdentityUserRole<int> { }
     public class CustomUserClaim : IdentityUserClaim<int> { }

@@ -73,9 +73,9 @@ namespace WorkflowManagementSystem.ViewModels
         public virtual List<UsherAppointed> UsherAppointeds { get; set; }
 
         // List of ushers evaluated
-        public virtual List<UsherEvaluation> UsherEvaluations { get; set; }
+        public List<UsherEvaluation> UsherEvaluations { get; set; }
 
-        public virtual List<Language> Languages { get; set; }
+        public List<Language> Languages { get; set; }
 
         // Usher language 
         public int? LanguageId { get; set; }

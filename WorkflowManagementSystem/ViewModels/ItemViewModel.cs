@@ -41,9 +41,9 @@ namespace WorkflowManagementSystem.ViewModels
         public decimal UnitCost { get; set; }
 
         // List of cost sheet items
-        public virtual List<CostSheetItem> CostSheetItems { get; set; }
+        public List<CostSheetItem> CostSheetItems { get; set; }
 
         // List of cost variance items
-        public virtual List<CostVarianceItem> CostVarianceItems { get; set; }
+        public List<CostVarianceItem> CostVarianceItems { get; set; }
     }
 }
