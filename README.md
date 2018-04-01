@@ -28,10 +28,16 @@ This application is developed for the MIS capstone project; it is a web-based wo
 
 * Generate client satisfaction reports
 ***
-# Instructions
+### Development Tools 
+* Visual Studio Community Edition 2017 - Version 15.6.2
+* Microsoft SQL Server Management Studio - Version 14.0
+* ASP.NET MVC Framework - Version 5.2.3
+***
+## Instructions
 ***Login as an administrator using this login information***
-### Username: admin
+
+Username: admin
  
-### Password: admin123
+Password: admin123
 
 
