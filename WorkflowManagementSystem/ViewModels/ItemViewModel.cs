@@ -26,8 +26,10 @@ namespace WorkflowManagementSystem.ViewModels
 
         // To use the AutoMapper, the property names in the domain model and view model are kept the same.
         [Key]
+        [Display(Name = "Item ID")]
         public int ItemId { get; set; }
 
+        [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
 

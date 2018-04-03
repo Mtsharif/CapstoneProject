@@ -95,7 +95,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action retrieves the details of a selected employee. 
         /// It checks if the employee exists in the database
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the selected employee</param>
         /// <returns>Error page or employee details view</returns>
         // GET: Employee/Details/5   
         public ActionResult Details(int? id)
@@ -142,8 +142,8 @@ namespace WorkflowManagementSystem.Controllers
         /// This action enables the admin to create new employees as users.
         /// It also assigns users to specific roles.
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="roles"></param>
+        /// <param name="model">Employee model</param>
+        /// <param name="roles">Employee role</param>
         /// <returns>Employee index view or create model view</returns>
         // POST: Employee/Create
         [HttpPost]
@@ -197,7 +197,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action displays an employee's information to be edited. 
         /// It verifies if the employee exists. 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of a specfic employee</param>
         /// <returns>Employee edit model view or error page</returns>
         // GET: Employee/Edit/5
         public ActionResult Edit(int? id)
@@ -234,9 +234,9 @@ namespace WorkflowManagementSystem.Controllers
         /// This action allows the admin to edit an employee's information.
         /// It checks if the id and employee exists
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="model"></param>
-        /// <param name="roles"></param>
+        /// <param name="id">The id of the selected employee</param>
+        /// <param name="model">Employee model</param>
+        /// <param name="roles">The role of an employee</param>
         /// <returns>Error page, employee index view, or edit model view</returns>
         // POST: Employee/Edit/5
         [HttpPost]
@@ -297,7 +297,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action retrieves the employee's information.
         /// It verifies if the id and employee exist.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the user</param>
         /// <returns>Error page or employee view</returns>
         // GET: Employee/Delete/5
         public ActionResult Delete(int? id)
@@ -323,7 +323,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action enables the admin to delete an employee.
         /// It verifies that the id and the user exists.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the user to be deleted</param>
         /// <returns>Error page or employee index view</returns>
         // POST: Employee/Delete/5
         [HttpPost]

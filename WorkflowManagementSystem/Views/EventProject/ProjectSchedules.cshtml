@@ -1,0 +1,116 @@
+﻿@model WorkflowManagementSystem.ViewModels.EventProjectViewModel
+
+@{
+    ViewBag.Title = "ProjectSchedules";
+}
+
+<h2>Add Schedule</h2>
+
+<div>
+    @*<h4>Project Details</h4>*@
+    <hr />
+
+    @Html.HiddenFor(m => m.EventProjectId)
+</div>
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventProjectId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventProjectId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brief)
+        </dd>
+
+    </dl>
+</div>*@
+<div id="ProjectScheduleCreate">
+    @Html.Partial("AddProjectSchedulePartial", new WorkflowManagementSystem.ViewModels.ProjectScheduleViewModel())
+</div>
+<div id="ProjectScheduleList"></div>
+<p>
+    @Html.ActionLink("Back", "Create")
+    @*@Html.ActionLink("Back", "Index")*@
+</p>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        // Show schedule list of a project
+        function getProjectSchedules() {
+            $.ajax({
+                url: "/EventProject/GetProjectSchedulesPartial",
+                type: "get",
+                data: { id: $("#EventProjectId").val() },
+                dataType: "html",
+                success: function (result, status, jqxhr) {
+                    $("#ProjectScheduleList").html(result);
+                },
+                error: function (jqxhr, status, exception) {
+                    console.log(status);
+                }
+            });
+        }
+
+        // Clear section form fields
+        function clearScheduleForm() {
+            $("#Date").val("");
+            $("#StartTime").val("");
+            $("#EndTime").val("");
+        }
+
+        $(document).ready(function () {
+            clearScheduleForm()
+            getProjectSchedules();
+
+            $("#CreateScheduleButton").click(function (e) {
+                // Prevent the form to be submitted regulary. Use JQuery to submit the form
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/AddProjectSchedulePartial",
+                    type: "post",
+                    data: {
+                        ScheduleId: $("#ScheduleId").val(),
+                        Date: $("#Date").val(),
+                        StartTime: $("#StartTime").val(),
+                        EndTime: $("#EndTime").val(),
+                        EventProjectId: $("#EventProjectId").val(),
+                    },
+                    success: function (result, status, jqxhr) {
+
+                        clearScheduleForm();
+
+                        getProjectSchedules();
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                    }
+                });
+            });
+        });
+    </script>
+}

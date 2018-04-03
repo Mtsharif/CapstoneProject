@@ -50,6 +50,10 @@ namespace WorkflowManagementSystem.Models
         [StringLength(25)]
         public string City { get; set; }
 
+        // To get the fullname (first name and last name) of a client in a dropdown list.
+        [NotMapped]
+        public string FullName { get { return (FirstName + " " + LastName); } }
+
         public virtual ICollection<ClientSatisfaction> ClientSatisfactions { get; set; }
 
         public virtual ICollection<EventProject> EventProjects { get; set; }

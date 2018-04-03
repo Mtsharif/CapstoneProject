@@ -16,7 +16,12 @@ namespace WorkflowManagementSystem.App_Start
                 cfg.CreateMap<Employee, EmployeeViewModel>().ReverseMap().ForMember(p=>p.Roles, o=>o.Ignore());
                 cfg.CreateMap<Usher, UsherViewModel>().ReverseMap();
                 cfg.CreateMap<Item, ItemViewModel>().ReverseMap();
+                cfg.CreateMap<EventProject, EventProjectViewModel>().ReverseMap();
+                cfg.CreateMap<ProjectSchedule, ProjectScheduleViewModel>().ReverseMap();
+                cfg.CreateMap<Client, ClientViewModel>().ReverseMap();
+                // TODO check if needed 
+                cfg.CreateMap<Language, LanguageViewModel>().ReverseMap();
             });
         }
-    }
+    }   
 }

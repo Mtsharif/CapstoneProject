@@ -28,15 +28,22 @@ namespace WorkflowManagementSystem.ViewModels
             UsherAppointeds = new List<UsherAppointed>();
         }
 
-        public int Id { get; set; }
+        [Key]
+        [Display(Name = "Project ID")]
+        public int EventProjectId { get; set; }
+        //public int Id { get; set; }
 
+        [Required]
         [Display(Name = "Project Name")]
         public string Name { get; set; }
 
+        [Required]
         [Display(Name = "Event Type")]
         public EventProjectType EventType { get; set; }
 
+        [Required]
         [Display(Name = "Brief")]
+        [DataType(DataType.MultilineText)]
         public string Brief { get; set; }
 
         [Display(Name = "Street")]
@@ -51,25 +58,16 @@ namespace WorkflowManagementSystem.ViewModels
         [Display(Name = "Status")]
         public ProjectStatus Status { get; set; }
 
-        [Display(Name = "Presentation")]
-        public string Presentation { get; set; }
-
-        [Display(Name = "Event Report Template")]
-        public string EventReportTemplate { get; set; }
-
-        [Display(Name = "Event Report")]
-        public string EventReport { get; set; }
-
-        [Display(Name = "3D Model")]
-        public string ThreeDModel { get; set; }
-
         [Display(Name = "Date Created")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateCreated { get; set; }
 
-        // The employee who created the event project
+       // The employee who created the event project
         public int ClientServiceEmployeeId { get; set; }
+
+        [Display(Name = "Created By")]
+        public string Employee { get; set; }
 
         // Event project client
         public int ClientId { get; set; }
@@ -84,8 +82,6 @@ namespace WorkflowManagementSystem.ViewModels
         // List of documents in an event project
         public List<Document> Documents { get; set; }
 
-        public string Employee { get; set; }
-
         // List of schedules of event project
         public List<ProjectSchedule> ProjectSchedules { get; set; }
 
@@ -94,5 +90,40 @@ namespace WorkflowManagementSystem.ViewModels
 
         // List of ushers appointed to event projects
         public List<UsherAppointed> UsherAppointeds { get; set; }
+
+
+        // Tabs Section
+
+        // The presentation file as object (used to upload a file)
+        //[Display(Name = "Presentation File")]
+        //public HttpPostedFileBase PresentationFile { get; set; }
+
+        //[Display(Name = "Presentation")]
+        //[DisplayFormat(NullDisplayText = "Presentation Not Available")]
+        //public string Presentation { get; set; }
+
+        //// The event report template file as object (used to upload a file)
+        //[Display(Name = "Event Report Template File")]
+        //public HttpPostedFileBase EventReportTemplateFile { get; set; }
+
+        //[Display(Name = "Event Report Template")]
+        //[DisplayFormat(NullDisplayText = "Event Report Template Not Available")]
+        //public string EventReportTemplate { get; set; }
+
+        // The event report file as object (used to upload a file)
+        //[Display(Name = "Event Report File")]
+        //public HttpPostedFileBase EventReportFile { get; set; }
+
+        //[Display(Name = "Event Report")]
+        //[DisplayFormat(NullDisplayText = "Event Report Not Available")]
+        //public string EventReport { get; set; }
+
+        //// The 3D model file as object (used to upload a file)
+        //[Display(Name = "3D Model File")]
+        //public HttpPostedFileBase ThreeDModelFile { get; set; }
+
+        //[Display(Name = "3D Model")]
+        //[DisplayFormat(NullDisplayText = "3D Model Not Available")]
+        //public string ThreeDModel { get; set; }
     }
 }

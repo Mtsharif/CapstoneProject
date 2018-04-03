@@ -62,7 +62,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <summary>
         /// This action allows the admin to create new items and save them.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Item model</param>
         /// <returns>Item index view or create model view</returns>
         // POST: Item/Create
         [HttpPost]
@@ -85,7 +85,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action retrieves an item's information to edit them.
         /// It checks if the id and item are available in the database.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the selected item</param>
         /// <returns>Error page or edit item view</returns>
         // GET: Item/Edit/5
         public ActionResult Edit(int? id)
@@ -110,7 +110,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <summary>
         /// This action allows changes to be made to the item and saves the changes.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Item model</param>
         /// <returns>Item index view or edit model view</returns>
         // POST: Item/Edit/5
         [HttpPost]
@@ -132,7 +132,7 @@ namespace WorkflowManagementSystem.Controllers
         /// This action retrieves an item to be deleted by the admin.
         /// It checks if the id and item are available in the database.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the chosen item</param>
         /// <returns>Error page or item delete view</returns>
         // GET: Item/Delete/5
         public ActionResult Delete(int? id)
@@ -157,10 +157,10 @@ namespace WorkflowManagementSystem.Controllers
         /// <summary>
         /// This action allows the admin to delete an item
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the item to be deleted</param>
         /// <returns>Item index view</returns>
         // POST: Item/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {

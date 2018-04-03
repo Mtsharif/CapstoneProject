@@ -237,7 +237,11 @@ namespace WorkflowManagementSystem.Models
                 });
         }
 
-        public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.EventProjectViewModel> EventProjectViewModels { get; set; }
+        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.EventProjectViewModel> EventProjectViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.ClientViewModel> ClientViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.ProjectScheduleViewModel> ProjectScheduleViewModels { get; set; }
     }
     public class CustomUserRole : IdentityUserRole<int> { }
     public class CustomUserClaim : IdentityUserClaim<int> { }

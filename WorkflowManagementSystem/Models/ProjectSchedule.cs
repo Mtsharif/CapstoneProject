@@ -24,9 +24,13 @@ namespace WorkflowManagementSystem.Models
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
 
-        public TimeSpan StartTime { get; set; }
+        //[Column(TypeName = "time")]
+        //public TimeSpan StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
-        public TimeSpan EndTime { get; set; }
+        //[Column(TypeName = "time")]
+        //public TimeSpan EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         public int EventProjectId { get; set; }
 

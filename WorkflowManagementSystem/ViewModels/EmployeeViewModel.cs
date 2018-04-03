@@ -59,5 +59,6 @@ namespace WorkflowManagementSystem.ViewModels
 
         // To display the list of roles
         public string Roles { get; set; }
+
     }
 }

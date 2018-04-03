@@ -4,11 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Project List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -18,106 +19,30 @@
             @Html.DisplayNameFor(model => model.EventType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Brief)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.District)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Presentation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventReportTemplate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventReport)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThreeDModel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientServiceEmployeeId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Client)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brief)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.District)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Presentation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventReportTemplate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventReport)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThreeDModel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientServiceEmployeeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EventProjectId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId })  |
+                @*@Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = item.EventProjectId })*@
+            </td>
+        </tr>
+    }
 
 </table>

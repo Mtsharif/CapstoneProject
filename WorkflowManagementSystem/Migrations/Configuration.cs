@@ -68,7 +68,7 @@ namespace WorkflowManagementSystem.Migrations
             var items = new List<Item>
             {
                 new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
-                new Item { Name = "Table1", Description = "Circular table", UnitCost = 200 },
+                new Item { Name = "Table 1", Description = "Circular table", UnitCost = 200 },
                 new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 }
             };
 
@@ -127,6 +127,33 @@ namespace WorkflowManagementSystem.Migrations
 
             ushers.ForEach(s => context.Ushers.AddOrUpdate(p => p.FirstName, s));
             context.SaveChanges();
+
+            // Add client examples 
+            var clients = new List<Client>
+            {
+                new Client {FirstName = "STC", LastName = null, Email = "stc@gmail.com", MobileNumber = "0550002000",
+                    Street = "Malik Rd", District = "Shatea", City = "Jeddah"},
+
+                new Client {FirstName = "Abdullah", LastName = "Sharif", Email = "asharif@gmail.com", MobileNumber = "0550001023",
+                    Street = "Malik Rd", District = "Zahraa", City = "Jeddah"},
+            };
+
+            clients.ForEach(s => context.Clients.AddOrUpdate(p => p.FirstName, s));
+            context.SaveChanges();
+
+            //// Add event project examples 
+            //var eventprojects = new List<EventProject>
+            //{
+            //    new EventProject {Name = "Food festival",  EventType = EventProjectType.Festival,
+            //        Brief = "The client wants the event to consist of 12 booths(all providing food), a stage with a screen needs to be in the entrance.There should be high security. It is for families.",
+            //        Street = "Malik Rd", District = "AlShati Dist", City = "Jeddah", Status = ProjectStatus.Approved,
+            //        Presentation = null, EventReportTemplate = null, EventReport = null, ThreeDModel = null,
+            //        DateCreated = null, ClientServiceEmployeeId = employees.Single(e => e.FirstName == "Badr").Id,
+            //        ClientId = clients.Single(c => c.FirstName == "STC").ClientId}
+            //};
+
+            //eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));
+            //context.SaveChanges();
         }
     }
 }

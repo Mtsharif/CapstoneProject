@@ -28,6 +28,7 @@ namespace WorkflowManagementSystem.ViewModels
 
         // To use the AutoMapper, the property names in the domain model and view model are kept the same.
         [Key]
+        [Display(Name = "Usher ID")]
         public int UsherId { get; set; }
 
         [Required]
@@ -75,6 +76,7 @@ namespace WorkflowManagementSystem.ViewModels
         // List of ushers evaluated
         public List<UsherEvaluation> UsherEvaluations { get; set; }
 
+        // List of languages an usher speaks
         public List<Language> Languages { get; set; }
 
         // Usher language 
