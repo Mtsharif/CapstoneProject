@@ -1,48 +1,79 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.EventProjectViewModel>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Project List</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+@if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+{
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.EventProjectId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId })  |
-                @*@Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = item.EventProjectId })*@
-            </td>
-        </tr>
+        ViewBag.Title = "Index";
     }
 
-</table>
+    <h2>Project List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table" id="projectsTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.EventProjectId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId })  |
+                        @Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = item.EventProjectId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts
+{
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#projectsTable').DataTable();
+            });
+        </script>
+    }
+
+    @section styles
+{
+        <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

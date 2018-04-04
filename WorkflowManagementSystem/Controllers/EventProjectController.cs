@@ -20,8 +20,11 @@ using WorkflowManagementSystem.ViewModels;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// 
+    /// This controller is created based on the EventProject and EventProjectViewModel classes
+    /// It allows the creation of projects as well as the listing, editing and deleting of projects 
+    /// It also enables the creation of schedules of each project using partial views
     /// </summary>
+    [Authorize(Roles = "Client Service Employee")]
     public class EventProjectController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -48,10 +51,6 @@ namespace WorkflowManagementSystem.Controllers
                     District = item.District,
                     City = item.City,
                     Status = item.Status,
-                    //Presentation = item.Presentation,
-                    //EventReportTemplate = item.EventReportTemplate,
-                    //EventReport = item.EventReport,
-                    //ThreeDModel = item.ThreeDModel,
                     DateCreated = item.DateCreated,
                     Employee = item.Employee.FullName,
                     Client = item.Client.FullName
@@ -89,17 +88,13 @@ namespace WorkflowManagementSystem.Controllers
                 Street = eventProject.Street,
                 District = eventProject.District,
                 City = eventProject.City,
-                Status = eventProject.Status,
-                //Presentation = eventProject.Presentation,
-                //EventReportTemplate = eventProject.EventReportTemplate,
-                //EventReport = eventProject.EventReport,
-                //ThreeDModel = eventProject.ThreeDModel,
+                Status = eventProject.Status,               
                 DateCreated = eventProject.DateCreated,
                 Employee = eventProject.Employee.FullName,
-                Client = eventProject.Client.FullName
+                Client = eventProject.Client.FullName,
             };
 
-            return View(model);
+            return View(model);         
         }
 
         /// <summary>
@@ -136,52 +131,10 @@ namespace WorkflowManagementSystem.Controllers
                     District = model.District,
                     City = model.City,
                     Status = model.Status,
-                    //Presentation = model.Presentation,
-                    //EventReportTemplate = model.EventReportTemplate,
-                    //EventReport = model.EventReport,
-                    //ThreeDModel = model.ThreeDModel,
-                    DateCreated = model.DateCreated,
+                    DateCreated = DateTime.Now,
                     ClientServiceEmployeeId = model.ClientServiceEmployeeId,
                     ClientId = model.ClientId,
                 };
-
-                //EventProject eventProject = Mapper.Map<EventProjectViewModel, EventProject>(model);
-
-                //TODO Remove invalid characters from the filename such as white spaces
-                //Check if the uploaded file is empty
-                //if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
-                //{
-                //    var extensions = new[] { "pdf", "pptx", "pptm", "ppt" };
-
-                //    string filename = Path.GetFileName(model.PresentationFile.FileName);
-
-                //    string ext = Path.GetExtension(filename).Substring(1);
-
-                //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
-                //    {
-                //        ModelState.AddModelError(string.Empty, "Accepted file are pdf, pptx, pptm, ppt documents");
-                //        return View();
-                //    }
-
-                //    string appFolder = "~/Content/Uploads/";
-
-                //    var rand = Guid.NewGuid().ToString();
-
-                //    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
-
-                //    model.PresentationFile.SaveAs(path);
-
-                //    eventProject.Presentation = appFolder + rand + "-" + filename;
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
-
-                //    ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-                //    ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "FullName");
-
-                //    return View();
-                //}
 
                 db.EventProjects.Add(eventProject);
                 db.SaveChanges();
@@ -219,7 +172,20 @@ namespace WorkflowManagementSystem.Controllers
                 return HttpNotFound();
             }
 
-            EventProjectViewModel model = Mapper.Map<EventProject, EventProjectViewModel>(eventProject);
+            var model = new EventProjectViewModel
+            {
+                EventProjectId = eventProject.EventProjectId,
+                Name = eventProject.Name,
+                EventType = eventProject.EventType,
+                Brief = eventProject.Brief,
+                Street = eventProject.Street,
+                District = eventProject.District,
+                City = eventProject.City,
+                Status = eventProject.Status,
+                DateCreated = DateTime.Now,
+                Employee = eventProject.Employee.FullName,
+                Client = eventProject.Client.FullName,
+            };
 
             ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "FullName");
@@ -272,7 +238,20 @@ namespace WorkflowManagementSystem.Controllers
                 return HttpNotFound();
             }
 
-            EventProjectViewModel model = Mapper.Map<EventProjectViewModel>(eventProject);
+            EventProjectViewModel model = new EventProjectViewModel
+            {
+                EventProjectId = eventProject.EventProjectId,
+                Name = eventProject.Name,
+                EventType = eventProject.EventType,
+                Brief = eventProject.Brief,
+                Street = eventProject.Street,
+                District = eventProject.District,
+                City = eventProject.City,
+                Status = eventProject.Status,
+                DateCreated = eventProject.DateCreated,
+                Employee = eventProject.Employee.FullName,
+                Client = eventProject.Client.FullName
+            };
 
             ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "FullName");
@@ -325,26 +304,7 @@ namespace WorkflowManagementSystem.Controllers
                 return HttpNotFound();
             }
 
-            EventProjectViewModel model = Mapper.Map<EventProject, EventProjectViewModel>(eventProject);
-
-            //var model = new EventProjectViewModel
-            //{
-            //    EventProjectId = eventProject.EventProjectId,
-            //    Name = eventProject.Name,
-            //    EventType = eventProject.EventType,
-            //    Brief = eventProject.Brief,
-            //    Street = eventProject.Street,
-            //    District = eventProject.District,
-            //    City = eventProject.City,
-            //    Status = eventProject.Status,
-            //    Presentation = eventProject.Presentation,
-            //    EventReportTemplate = eventProject.EventReportTemplate,
-            //    EventReport = eventProject.EventReport,
-            //    ThreeDModel = eventProject.ThreeDModel,
-            //    DateCreated = eventProject.DateCreated,
-            //    Employee = eventProject.Employee.FullName,
-            //    Client = eventProject.Client.FullName,
-            //};
+            EventProjectViewModel model = Mapper.Map<EventProject, EventProjectViewModel>(eventProject);          
 
             return View(model);
         }
@@ -404,6 +364,6 @@ namespace WorkflowManagementSystem.Controllers
             }
 
             return PartialView(model);
-        }
+        }     
     }
 }

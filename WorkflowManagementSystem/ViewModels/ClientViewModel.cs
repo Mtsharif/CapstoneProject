@@ -34,6 +34,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
+        [DisplayFormat(NullDisplayText = "Last Name Not Available")]
         public string LastName { get; set; }
 
         [Required]
@@ -46,12 +47,15 @@ namespace WorkflowManagementSystem.ViewModels
         public string MobileNumber { get; set; }
 
         [Display(Name = "Street")]
+        [DisplayFormat(NullDisplayText = "Street Not Specified")]
         public string Street { get; set; }
 
         [Display(Name = "District")]
+        [DisplayFormat(NullDisplayText = "District Not Specified")]
         public string District { get; set; }
 
         [Display(Name = "City")]
+        [DisplayFormat(NullDisplayText = "City Not Specified")]
         public string City { get; set; }
 
         // List of client satisfactions done

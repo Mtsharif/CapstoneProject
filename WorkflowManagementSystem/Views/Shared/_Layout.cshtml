@@ -27,15 +27,19 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-    {
+                     {
 
-                <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
-                <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>           
-                <li>@Html.ActionLink("Items", "Index", "Item")</li>
-}
+                          <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+                          <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>
+                          <li>@Html.ActionLink("Items", "Index", "Item")</li>
+                     }
 
-                    <li>@Html.ActionLink("Projects", "Index", "EventProject")</li>
-                    <li>@Html.ActionLink("Clients", "Index", "Client")</li>
+                    @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+                     {
+                          <li>@Html.ActionLink("Projects", "Index", "EventProject")</li>
+                          <li>@Html.ActionLink("Clients", "Index", "Client")</li>
+                     }
+
 
                 </ul>
                 @Html.Partial("_LoginPartial")

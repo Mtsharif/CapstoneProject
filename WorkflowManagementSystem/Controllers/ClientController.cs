@@ -19,8 +19,9 @@ namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
     /// This client controller is generated based on the Client and ClientViewModel classes 
-    /// This controller enables client service employees to add, edit, list, and delete clients.
+    /// This controller enables client service employees to add, edit, list, view details, and delete clients.
     /// </summary>
+    [Authorize(Roles = "Client Service Employee")]
     public class ClientController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -108,7 +109,6 @@ namespace WorkflowManagementSystem.Controllers
             }
 
             return View(model);
-
         }
 
         /// <summary>

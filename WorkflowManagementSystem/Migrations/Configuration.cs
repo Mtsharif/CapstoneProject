@@ -141,15 +141,14 @@ namespace WorkflowManagementSystem.Migrations
             clients.ForEach(s => context.Clients.AddOrUpdate(p => p.FirstName, s));
             context.SaveChanges();
 
-            //// Add event project examples 
+            // Add event project examples 
             //var eventprojects = new List<EventProject>
             //{
             //    new EventProject {Name = "Food festival",  EventType = EventProjectType.Festival,
             //        Brief = "The client wants the event to consist of 12 booths(all providing food), a stage with a screen needs to be in the entrance.There should be high security. It is for families.",
             //        Street = "Malik Rd", District = "AlShati Dist", City = "Jeddah", Status = ProjectStatus.Approved,
-            //        Presentation = null, EventReportTemplate = null, EventReport = null, ThreeDModel = null,
-            //        DateCreated = null, ClientServiceEmployeeId = employees.Single(e => e.FirstName == "Badr").Id,
-            //        ClientId = clients.Single(c => c.FirstName == "STC").ClientId}
+            //        DateCreated = null, ClientServiceEmployeeId = employees.Single(d => d.FullName == "Hamza" + "Zamil").Id,
+            //        ClientId = clients.Single(d => d.FullName == "STC" + "").ClientId}
             //};
 
             //eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));

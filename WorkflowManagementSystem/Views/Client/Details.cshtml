@@ -1,10 +1,12 @@
 ﻿@model WorkflowManagementSystem.ViewModels.ClientViewModel
 
-@{
-    ViewBag.Title = "Details";
-}
+@if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+{
+    {
+        ViewBag.Title = "Details";
+    }
 
-<h2>Client Details</h2>
+    <h2>Client Details</h2>
 
     <div>
         <h4>Client</h4>
@@ -73,3 +75,10 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

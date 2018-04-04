@@ -31,7 +31,6 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         [Display(Name = "Project ID")]
         public int EventProjectId { get; set; }
-        //public int Id { get; set; }
 
         [Required]
         [Display(Name = "Project Name")]
@@ -47,12 +46,15 @@ namespace WorkflowManagementSystem.ViewModels
         public string Brief { get; set; }
 
         [Display(Name = "Street")]
+        [DisplayFormat(NullDisplayText = "Street Not Specified")]
         public string Street { get; set; }
 
         [Display(Name = "District")]
+        [DisplayFormat(NullDisplayText = "District Not Specified")]
         public string District { get; set; }
 
         [Display(Name = "City")]
+        [DisplayFormat(NullDisplayText = "City Not Specified")]
         public string City { get; set; }
 
         [Display(Name = "Status")]
@@ -60,7 +62,7 @@ namespace WorkflowManagementSystem.ViewModels
 
         [Display(Name = "Date Created")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Creation Date Not Available")]
         public DateTime? DateCreated { get; set; }
 
        // The employee who created the event project

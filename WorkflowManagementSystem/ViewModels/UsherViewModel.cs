@@ -53,6 +53,7 @@ namespace WorkflowManagementSystem.ViewModels
         public UsherGender Gender { get; set; }
 
         [Display(Name = "Nationality")]
+        [DisplayFormat(NullDisplayText = "Nationality Not Specified")]
         public string Nationality { get; set; }
 
         [Required]
