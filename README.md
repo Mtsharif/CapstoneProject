@@ -33,11 +33,21 @@ This application is developed for the MIS capstone project; it is a web-based wo
 * Microsoft SQL Server Management Studio - Version 14.0
 * ASP.NET MVC Framework - Version 5.2.3
 ***
-## Instructions
-***Login as an administrator using this login information***
+### How to use my application 
+* Clone it with HTTPS or download it in your desktop. 
+* The branches in this application is divided into sprints where in each sprint new features are implemented. The description of the sprints are available in the Wiki. 
+* The login instructions for each sprint is mentioned below. 
+
+### Login Instructions
+***Sprint 1 Branch: Login as an administrator using this login information***
 
 Username: admin
  
 Password: admin123
 
+***Sprint 2 Branch: Login as a client service employee using this login information***
+
+Username: user1
+
+Password: user123
 
