@@ -1,0 +1,58 @@
+﻿@model WorkflowManagementSystem.ViewModels.DocumentViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    @*<h4>DocumentViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilePath)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEOFeedback)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEOFeedback)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventProject)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DocumentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

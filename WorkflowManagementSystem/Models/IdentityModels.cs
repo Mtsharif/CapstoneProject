@@ -236,6 +236,12 @@ namespace WorkflowManagementSystem.Models
                     m.MapRightKey("LanguageId");
                 });
         }
+
+        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.CostSheetItemViewModel> CostSheetItemViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.CostSheetViewModel> CostSheetViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.DocumentViewModel> DocumentViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

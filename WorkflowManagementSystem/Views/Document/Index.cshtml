@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.DocumentViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Quotation and Invoices</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddDocument")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FilePath)
+        </th>    
+        <th>
+            @Html.DisplayNameFor(model => model.EventProject)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilePath)
+            </td>      
+            <td>
+                @Html.DisplayFor(modelItem => item.EventProject)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
+            </td>
+        </tr>
+    }
+</table>
+
+@*@Html.Partial("AddApprovalPartial")*@

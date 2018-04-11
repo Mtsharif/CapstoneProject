@@ -96,11 +96,11 @@ namespace WorkflowManagementSystem.Models
     public enum Department
     {
         [Display(Name = "Client Service")]
-        ClientService, 
+        ClientService,
 
-        Production,
+        Creative,
         Finance,
-        Creative
+        Production
     }
 
     /// <summary>
@@ -108,17 +108,17 @@ namespace WorkflowManagementSystem.Models
     /// </summary>
     public enum EmployeeType
     {
+        CEO,
+
         [Display(Name = "Client Service")]
         ClientService,
 
-        Production,
-        Finance, 
-        Creative, 
-        CEO,
+        Creative,
 
         [Display(Name = "Event Planner")]
-        EventPlanner, 
+        EventPlanner,
 
-        Administrator
+        Finance,
+        Production,
     }
 }

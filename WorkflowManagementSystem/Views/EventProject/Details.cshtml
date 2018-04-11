@@ -20,7 +20,7 @@
                 border: 1px solid #ccc;
                 background-color: #f1f1f1;
                 width: 15%;
-                height: 500px;
+                height: 700px;
             }
 
                 /* Style the buttons inside the tab */
@@ -55,7 +55,7 @@
                 border: 1px solid #ccc;
                 width: 70%;
                 border-left: none;
-                height: 500px;
+                height: 700px;
             }
         </style>
     }
@@ -66,6 +66,7 @@
         <button class="tablinks" onclick="openProject(event, 'Details')" id="defaultOpen">Details</button>
         <button class="tablinks" onclick="openProject(event, 'Presentation')">Presentation</button>
         <button class="tablinks" onclick="openProject(event, '3Dmodel')">3D Model</button>
+        <button class="tablinks" onclick="openProject(event, 'Documents')">Quotation and Invoice</button>
     </div>
 
     <div id="Details" class="tabcontent">
@@ -153,46 +154,69 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.Employee)
-                </dd>
+                </dd>                
             </dl>
-
         </div>
+
+        @*To display schedule details*@
+        <h4>Schedule</h4>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProjectSchedules)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
         <p>
             @Html.ActionLink("Edit", "Edit", new { id = Model.EventProjectId }) |
+            @Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = Model.EventProjectId }) |
+            @Ajax.ActionLink("Client Details", "ClientDetailsPartial", new { id = Model.EventProjectId }, new AjaxOptions { UpdateTargetId = "ClientDetails", HttpMethod = "GET", InsertionMode = InsertionMode.Replace }) |
             @Html.ActionLink("Back to List", "Index")
         </p>
     </div>
+    <div id="ClientDetails"></div>
 
     <div id="Presentation" class="tabcontent">
         <h3>Upload Presentation</h3>
-        <br />
-        <br />
-        @*@using (Html.BeginForm("Create", "EventProject", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PresentationFile, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBox("PresentationFile", "", new { type = "file" })
-                    </div>
-                </div>
-            }*@
 
-        @*<div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-default" />
-                </div>
-            </div>*@
+        @*@Html.Action("UploadPresentationPartial")
+        @Html.Action("PresentationDetailsPartial")*@
+        @*@Html.Action("UploadPresentationPartial")*@
+
     </div>
 
     <div id="3Dmodel" class="tabcontent">
         <h3>Upload 3D Model</h3>
-        @*<div class="form-group" >
-                @Html.LabelFor(model => model.ThreeDModel, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ThreeDModel, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ThreeDModel, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+
+    </div>
+
+    <div id="Documents" class="tabcontent">
+        <h3>Upload Quotation and Invoice</h3>
+
+        @Html.Action("AddDocument", "Document")
+        @*@Html.Partial("AddDocumentPartial", "Document")*@
+
     </div>
 
     <script>

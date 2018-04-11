@@ -203,6 +203,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CostSheetController.cs" />
+    <Compile Include="Controllers\CostSheetItemController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EventProjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -237,7 +240,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\CostSheetItemViewModel.cs" />
+    <Compile Include="ViewModels\CostSheetViewModel.cs" />
+    <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\EventProjectUploadsViewModel.cs" />
     <Compile Include="ViewModels\EventProjectViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\LanguageViewModel.cs" />
@@ -565,6 +572,23 @@
     <Content Include="Views\EventProject\ProjectSchedules.cshtml" />
     <Content Include="Views\EventProject\AddProjectSchedulePartial.cshtml" />
     <Content Include="Views\EventProject\GetProjectSchedulesPartial.cshtml" />
+    <Content Include="Views\EventProject\ClientDetailsPartial.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
+    <Content Include="Views\Document\AddApprovalPartial.cshtml" />
+    <Content Include="Views\Document\Details.cshtml" />
+    <Content Include="Views\Document\AddDocument.cshtml" />
+    <Content Include="Views\Document\Edit.cshtml" />
+    <Content Include="Views\Document\Delete.cshtml" />
+    <Content Include="Views\EventProject\PresentationDetailsPartial.cshtml" />
+    <Content Include="Views\CostSheet\Index.cshtml" />
+    <Content Include="Views\CostSheet\Edit.cshtml" />
+    <Content Include="Views\CostSheet\Delete.cshtml" />
+    <Content Include="Views\CostSheet\Details.cshtml" />
+    <Content Include="Views\CostSheet\Create.cshtml" />
+    <Content Include="Views\Document\DocumentListPartial.cshtml" />
+    <Content Include="Views\EventProject\UploadPresentationPartial.cshtml" />
+    <Content Include="Views\CostSheetItem\Create.cshtml" />
+    <Content Include="Views\CostSheetItem\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

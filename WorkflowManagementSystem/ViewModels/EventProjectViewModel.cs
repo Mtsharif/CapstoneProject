@@ -96,7 +96,7 @@ namespace WorkflowManagementSystem.ViewModels
 
         // Tabs Section
 
-        // The presentation file as object (used to upload a file)
+        //The presentation file as object (used to upload a file)
         //[Display(Name = "Presentation File")]
         //public HttpPostedFileBase PresentationFile { get; set; }
 

@@ -56,6 +56,7 @@ namespace WorkflowManagementSystem.Controllers
                     Client = item.Client.FullName
                 });
             }
+          
             return View(model);
         }
 
@@ -88,10 +89,11 @@ namespace WorkflowManagementSystem.Controllers
                 Street = eventProject.Street,
                 District = eventProject.District,
                 City = eventProject.City,
-                Status = eventProject.Status,               
+                Status = eventProject.Status,
                 DateCreated = eventProject.DateCreated,
                 Employee = eventProject.Employee.FullName,
                 Client = eventProject.Client.FullName,
+                ProjectSchedules = eventProject.ProjectSchedules.ToList(),              
             };
 
             return View(model);         
@@ -132,7 +134,7 @@ namespace WorkflowManagementSystem.Controllers
                     City = model.City,
                     Status = model.Status,
                     DateCreated = DateTime.Now,
-                    ClientServiceEmployeeId = model.ClientServiceEmployeeId,
+                    ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
                     ClientId = model.ClientId,
                 };
 
@@ -284,7 +286,6 @@ namespace WorkflowManagementSystem.Controllers
             base.Dispose(disposing);
         }
 
-
         /// <summary>
         /// This action retrieves an event project's information to be able to add its schedules.
         /// </summary>
@@ -364,6 +365,109 @@ namespace WorkflowManagementSystem.Controllers
             }
 
             return PartialView(model);
-        }     
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ClientDetailsPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Client client = db.Clients.Find(id);
+
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+
+            ClientViewModel model = Mapper.Map<Client, ClientViewModel>(client);
+
+            //return View(model);
+            return PartialView(model);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult UploadPresentationPartial(EventProjectUploadsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var eventProject = new EventProject
+                {
+                    Presentation = model.Presentation
+                };
+
+                //if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
+                //{
+                //    // Allowed extensions to be uploaded
+                //    var extensions = new[] { "pdf", "pptx", "pptm", "ppt" };
+
+                //    // Get the file name without the path
+                //  string filename = Path.GetFileName(model.PresentationFile.FileName);
+
+                //    // Get the extension of the file
+                //   string ext = Path.GetExtension(filename).Substring(1);
+
+                //   // Check if the extension of the file is in the list of allowed extensions
+                //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                //    {
+                //         ModelState.AddModelError(string.Empty, "Accepted file are pdf, pptx, pptm, ppt documents");
+                //         return PartialView();
+                //    }
+
+                //     string appFolder = "~/Content/Uploads/";
+                //    var rand = Guid.NewGuid().ToString();
+                //     string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                //     model.PresentationFile.SaveAs(path);
+                //    eventProject.Presentation = appFolder + rand + "-" + filename;
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                //    return PartialView();
+                //}
+
+                db.EventProjects.Add(eventProject);
+                db.SaveChanges();
+
+                return PartialView();
+            }
+
+            //return PartialView("UploadPresentationPartial", model);
+            return PartialView(model);
+        }
+
+
+        public ActionResult PresentationDetailsPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EventProject eventProjectUploads = db.EventProjects.Find(id);
+
+            if (eventProjectUploads == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new EventProjectUploadsViewModel
+            {
+                EventProjectId = eventProjectUploads.EventProjectId,
+                Presentation = eventProjectUploads.Presentation
+            };
+
+            return PartialView(model);
+        }
     }
 }

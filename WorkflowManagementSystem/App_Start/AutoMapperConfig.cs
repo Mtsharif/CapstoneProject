@@ -19,8 +19,10 @@ namespace WorkflowManagementSystem.App_Start
                 cfg.CreateMap<EventProject, EventProjectViewModel>().ReverseMap();
                 cfg.CreateMap<ProjectSchedule, ProjectScheduleViewModel>().ReverseMap();
                 cfg.CreateMap<Client, ClientViewModel>().ReverseMap();
-                // TODO check if needed 
                 cfg.CreateMap<Language, LanguageViewModel>().ReverseMap();
+                cfg.CreateMap<Document, DocumentViewModel>().ReverseMap();
+                cfg.CreateMap<CostSheet, CostSheetViewModel>().ReverseMap();
+                cfg.CreateMap<CostSheetItem, CostSheetItemViewModel>().ReverseMap();
             });
         }
     }   

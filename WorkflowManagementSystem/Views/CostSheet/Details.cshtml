@@ -1,0 +1,57 @@
+﻿@model WorkflowManagementSystem.ViewModels.CostSheetViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    @*<h4>CostSheetViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionEmployee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionEmployee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventProject)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.CostVariance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostVariance)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CostSheetId }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add Items", "Create","CostSheetItem")
+</p>

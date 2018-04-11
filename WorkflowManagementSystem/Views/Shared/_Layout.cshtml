@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - X Event Management</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/modernizr")        
     @RenderSection("styles", required: false)
 </head>
 <body>
@@ -27,18 +27,20 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                     {
+    {
 
-                          <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
-                          <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>
-                          <li>@Html.ActionLink("Items", "Index", "Item")</li>
-                     }
+                <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+                <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>
+                <li>@Html.ActionLink("Items", "Index", "Item")</li>
+}
 
                     @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
-                     {
-                          <li>@Html.ActionLink("Projects", "Index", "EventProject")</li>
-                          <li>@Html.ActionLink("Clients", "Index", "Client")</li>
-                     }
+    {
+                <li>@Html.ActionLink("Projects", "Index", "EventProject")</li>
+                <li>@Html.ActionLink("Clients", "Index", "Client")</li>
+}
+                    <li>@Html.ActionLink("Quotation/Invoice", "Index", "Document")</li>
+                    <li>@Html.ActionLink("Cost Sheet", "Index", "CostSheet")</li>
 
 
                 </ul>

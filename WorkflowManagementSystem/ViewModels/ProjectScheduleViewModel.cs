@@ -13,7 +13,7 @@ using System.Web;
 namespace WorkflowManagementSystem.ViewModels
 {
     /// <summary>
-    /// The project schedule view model is based on the project schedule view model to be used by the project schedule controller.
+    /// The project schedule view model is based on the project schedule view model to be used by the event project controller.
     /// </summary>
     public class ProjectScheduleViewModel
     {

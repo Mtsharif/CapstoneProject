@@ -94,29 +94,28 @@ namespace WorkflowManagementSystem.Models
     /// </summary>
     public enum EventProjectType
     {
+        [Display(Name = "Award Ceremony")]
+        AwardCeremony,
+
+        Birthday,
+
+        [Display(Name = "Business Dinner")]
+        BusinessDinner,
+
         Conference,
+        Exhibition,
+        Festival,
+        Forum,
+        Meeting,
+
+        [Display(Name = "Organization Milestone")]
+        OrganizationMilestone,
 
         [Display(Name = "Product Launch")]
         ProductLaunch,
 
         Seminar,
-        Forum, 
-        Exhibition,
-        Meeting,
-
-        [Display(Name = "Business Dinner")]
-        BusinessDinner,
-
-        [Display(Name = "Award Ceremony")]
-        AwardCeremony,
-
         Wedding, 
-        Birthday,
-
-        [Display(Name = "Organization Milestone")]
-        OrganizationMilestone,
-
-        Festival
     }
 
     public enum ProjectStatus

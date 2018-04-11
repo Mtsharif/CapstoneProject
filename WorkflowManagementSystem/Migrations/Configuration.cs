@@ -142,17 +142,21 @@ namespace WorkflowManagementSystem.Migrations
             context.SaveChanges();
 
             // Add event project examples 
-            //var eventprojects = new List<EventProject>
-            //{
-            //    new EventProject {Name = "Food festival",  EventType = EventProjectType.Festival,
-            //        Brief = "The client wants the event to consist of 12 booths(all providing food), a stage with a screen needs to be in the entrance.There should be high security. It is for families.",
-            //        Street = "Malik Rd", District = "AlShati Dist", City = "Jeddah", Status = ProjectStatus.Approved,
-            //        DateCreated = null, ClientServiceEmployeeId = employees.Single(d => d.FullName == "Hamza" + "Zamil").Id,
-            //        ClientId = clients.Single(d => d.FullName == "STC" + "").ClientId}
-            //};
+            var eventprojects = new List<EventProject>
+            {
+                new EventProject {Name = "Food festival",  EventType = EventProjectType.Festival,
+                    Brief = "The client wants the event to consist of 12 booths(all providing food), a stage with a screen needs to be in the entrance.There should be high security. It is for families.",
+                    Street = "Malik Rd", District = "AlShati Dist", City = "Jeddah", Status = ProjectStatus.Approved,
+                    DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 1},
 
-            //eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));
-            //context.SaveChanges();
+                 new EventProject {Name = "Kids birthday party",  EventType = EventProjectType.Birthday,
+                    Brief = "The client wants a theme of superheroes. Tables with games and seats. Should accommodate 20 children and adults.",
+                    Street = "King Abdullah St.", District = "Khaldya Dist.", City = "Dubai", Status = ProjectStatus.Approved,
+                    DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 2}
+            };
+
+            eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
         }
     }
 }

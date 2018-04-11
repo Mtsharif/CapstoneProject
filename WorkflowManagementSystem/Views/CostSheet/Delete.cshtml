@@ -1,0 +1,64 @@
+﻿@model WorkflowManagementSystem.ViewModels.CostSheetViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    @*<h4>CostSheetViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionEmployee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionEmployee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventProject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventProject)
+        </dd>
+     
+        @*<dt>
+            @Html.DisplayNameFor(model => model.CostVariance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostVariance)
+        </dd>*@
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
