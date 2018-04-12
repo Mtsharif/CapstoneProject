@@ -34,7 +34,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [DisplayFormat(NullDisplayText = "Last Name Not Available")]
+        //[DisplayFormat(NullDisplayText = "Last Name Not Available")]
         public string LastName { get; set; }
 
         [Required]
