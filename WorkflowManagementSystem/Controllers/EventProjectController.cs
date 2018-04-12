@@ -93,7 +93,8 @@ namespace WorkflowManagementSystem.Controllers
                 DateCreated = eventProject.DateCreated,
                 Employee = eventProject.Employee.FullName,
                 Client = eventProject.Client.FullName,
-                ProjectSchedules = eventProject.ProjectSchedules.ToList(),              
+                ProjectSchedules = eventProject.ProjectSchedules.ToList(), 
+                UsherAppointeds = eventProject.UsherAppointeds.ToList()
             };
 
             return View(model);         

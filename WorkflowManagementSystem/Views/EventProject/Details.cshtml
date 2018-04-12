@@ -67,6 +67,7 @@
         <button class="tablinks" onclick="openProject(event, 'Presentation')">Presentation</button>
         <button class="tablinks" onclick="openProject(event, '3Dmodel')">3D Model</button>
         <button class="tablinks" onclick="openProject(event, 'Documents')">Quotation and Invoice</button>
+        <button class="tablinks" onclick="openProject(event, 'UsherAppointed')">Ushers Assigned</button>
     </div>
 
     <div id="Details" class="tabcontent">
@@ -154,13 +155,20 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.Employee)
-                </dd>                
+                </dd>
             </dl>
+            <div class="col-lg-offset-10">
+                @Html.ActionLink("Edit Project", "Edit", new { id = Model.EventProjectId })
+            </div>
         </div>
 
-        @*To display schedule details*@
-        <h4>Schedule</h4>
-
+         <h4>Schedule</h4>
+        @if (Model.ProjectSchedules.Count() == 0)
+        {
+        <p class="text-danger">This project does not have any schedule.</p>
+        }
+        else
+        {
         <table class="table">
             <thead>
                 <tr>
@@ -171,27 +179,33 @@
             </thead>
             <tbody>
                 @foreach (var item in Model.ProjectSchedules)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndTime)
-                        </td>
-
-                    </tr>
-                }
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date.DayOfWeek)
+                        @Html.DisplayFor(modelItem => item.Date.Day)
+                        @Html.Label(",")
+                        @Html.DisplayFor(modelItem => item.Date.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime.Hour)
+                        @Html.Label(":")
+                        @Html.DisplayFor(modelItem => item.StartTime.Minute)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndTime.Hour)
+                        @Html.Label(":")
+                        @Html.DisplayFor(modelItem => item.EndTime.Minute)
+                    </td>
+                </tr>
+        }
             </tbody>
         </table>
-
+        }
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.EventProjectId }) |
             @Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = Model.EventProjectId }) |
-            @Ajax.ActionLink("Client Details", "ClientDetailsPartial", new { id = Model.EventProjectId }, new AjaxOptions { UpdateTargetId = "ClientDetails", HttpMethod = "GET", InsertionMode = InsertionMode.Replace }) |
+            @Ajax.ActionLink("Client Details", "ClientDetailsPartial", new { id = Model.EventProjectId }, new AjaxOptions { UpdateTargetId = "ClientDetails", HttpMethod = "GET", InsertionMode = InsertionMode.Replace })
+            <br />
             @Html.ActionLink("Back to List", "Index")
         </p>
     </div>
@@ -201,7 +215,7 @@
         <h3>Upload Presentation</h3>
 
         @*@Html.Action("UploadPresentationPartial")
-        @Html.Action("PresentationDetailsPartial")*@
+            @Html.Action("PresentationDetailsPartial")*@
         @*@Html.Action("UploadPresentationPartial")*@
 
     </div>
@@ -216,7 +230,58 @@
 
         @Html.Action("AddDocument", "Document")
         @*@Html.Partial("AddDocumentPartial", "Document")*@
+    </div>
 
+    <div id="UsherAppointed" class="tabcontent">
+        <h3>Ushers Assigned</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Usher Name</th>
+                    <th>Mobile Number</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>Car Availability</th>
+                    <th>Language</th>
+                    <th>Assigned By </th>
+                    <th>Date Assigned</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UsherAppointeds)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usher.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usher.MobileNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usher.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usher.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usher.CarAvailability)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usher.Language.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAppointed.DayOfWeek)
+                        @Html.DisplayFor(modelItem => item.DateAppointed.Day)
+                        @Html.Label(",")
+                        @Html.DisplayFor(modelItem => item.DateAppointed.Year)
+                    </td>
+                </tr>
+}
+            </tbody>
+        </table>
     </div>
 
     <script>

@@ -211,6 +211,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectScheduleController.cs" />
+    <Compile Include="Controllers\UsherAppointedController.cs" />
     <Compile Include="Controllers\UsherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -249,6 +251,7 @@
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\LanguageViewModel.cs" />
     <Compile Include="ViewModels\ProjectScheduleViewModel.cs" />
+    <Compile Include="ViewModels\UsherAppointedViewModel.cs" />
     <Compile Include="ViewModels\UsherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -589,6 +592,13 @@
     <Content Include="Views\EventProject\UploadPresentationPartial.cshtml" />
     <Content Include="Views\CostSheetItem\Create.cshtml" />
     <Content Include="Views\CostSheetItem\Details.cshtml" />
+    <Content Include="Views\UsherAppointed\Create.cshtml" />
+    <Content Include="Views\UsherAppointed\Details.cshtml" />
+    <Content Include="Views\UsherAppointed\Edit.cshtml" />
+    <Content Include="Views\UsherAppointed\Delete.cshtml" />
+    <Content Include="Views\UsherAppointed\Index.cshtml" />
+    <Content Include="Views\ProjectSchedule\Edit.cshtml" />
+    <Content Include="Views\ProjectSchedule\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
