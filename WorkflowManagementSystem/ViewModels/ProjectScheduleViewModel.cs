@@ -18,23 +18,24 @@ namespace WorkflowManagementSystem.ViewModels
     public class ProjectScheduleViewModel
     {
         [Key]
-        [Display(Name = "Schedule ID")]
+        //[Display(Name = "Schedule ID")]
         public int ScheduleId { get; set; }
 
-        [Display(Name = "Date")]
-        [DataType(DataType.DateTime )]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Date { get; set; }
+        [Display(Name = "Schedule Date")]
+        [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime ScheduleDate { get; set; }
 
         [Display(Name = "Start Time")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime StartTime { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
+        public TimeSpan StartTime { get; set; }
 
         [Display(Name = "End Time")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime EndTime { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
+        public TimeSpan EndTime { get; set; }
 
         // Event project schedule
         public int EventProjectId { get; set; }

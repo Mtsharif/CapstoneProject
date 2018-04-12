@@ -1,0 +1,97 @@
+﻿@model WorkflowManagementSystem.ViewModels.EventProjectViewModel
+
+@{ 
+    Layout = null;
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brief)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientServiceEmployeeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientServiceEmployeeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client)
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EventProjectId }) |
+    @Html.ActionLink("Back to List", "Index")
+
+    @*@Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = Model.EventProjectId }) |
+    @Ajax.ActionLink("Client Details", "ClientDetailsPartial", new { id = Model.EventProjectId }, new AjaxOptions { UpdateTargetId = "ClientDetails", HttpMethod = "GET", InsertionMode = InsertionMode.Replace }) |*@
+</p>

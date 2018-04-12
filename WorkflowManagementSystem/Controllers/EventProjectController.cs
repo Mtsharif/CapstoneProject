@@ -56,7 +56,7 @@ namespace WorkflowManagementSystem.Controllers
                     Client = item.Client.FullName
                 });
             }
-          
+
             return View(model);
         }
 
@@ -66,7 +66,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">The id of the selected project</param>
         /// <returns>Event project details view</returns>
         // GET: EventProject/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult ProjectDetailsPartial(int? id)
         {
             if (id == null)
             {
@@ -74,7 +74,7 @@ namespace WorkflowManagementSystem.Controllers
             }
 
             EventProject eventProject = db.EventProjects.Find(id);
- 
+
             if (eventProject == null)
             {
                 return HttpNotFound();
@@ -93,10 +93,24 @@ namespace WorkflowManagementSystem.Controllers
                 DateCreated = eventProject.DateCreated,
                 Employee = eventProject.Employee.FullName,
                 Client = eventProject.Client.FullName,
-                ProjectSchedules = eventProject.ProjectSchedules.ToList(),              
+                ProjectSchedules = eventProject.ProjectSchedules.ToList(),
             };
 
-            return View(model);         
+            return PartialView(model);
+        }
+
+        // Returns the master details view
+        public ActionResult DetailsMaster(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            // Pass Project ID to Partial views in the DetailsMaster view
+            ViewBag.ProjectId = id;
+
+            return View();
         }
 
         /// <summary>
@@ -151,7 +165,7 @@ namespace WorkflowManagementSystem.Controllers
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "FullName");
                 return View();
-            }         
+            }
         }
 
         /// <summary>
@@ -287,57 +301,6 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         /// <summary>
-        /// This action retrieves an event project's information to be able to add its schedules.
-        /// </summary>
-        /// <param name="id">The id of the selected event project</param>
-        /// <returns>Error page or model view</returns>
-        public ActionResult ProjectSchedules(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            EventProject eventProject = db.EventProjects.Find(id);
-
-            if (eventProject == null)
-            {
-                return HttpNotFound();
-            }
-
-            EventProjectViewModel model = Mapper.Map<EventProject, EventProjectViewModel>(eventProject);          
-
-            return View(model);
-        }
-
-        /// <summary>
-        /// This action allows the creation of the project schedule in the event project view.
-        /// </summary>
-        /// <param name="model">Project schedule model</param>
-        /// <returns>Add project schedule partial view</returns>
-        [HttpPost]
-        public ActionResult AddProjectSchedulePartial(ProjectScheduleViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var projectSchedule = new ProjectSchedule
-                {
-                    Date = model.Date,
-                    StartTime = model.StartTime,
-                    EndTime = model.EndTime,
-                    EventProjectId = model.EventProjectId,
-                };
-
-                db.ProjectSchedules.Add(projectSchedule);
-                db.SaveChanges();
-
-                return PartialView();
-            }
-
-            return PartialView(model);
-        }
-
-        /// <summary>
         /// This action retrieves the created project schedules' information.
         /// </summary>
         /// <param name="id">The id of the event project</param>
@@ -357,10 +320,10 @@ namespace WorkflowManagementSystem.Controllers
                 model.Add(new ProjectScheduleViewModel
                 {
                     ScheduleId = projectSchedule.ScheduleId,
-                    Date = projectSchedule.Date,
+                    ScheduleDate = projectSchedule.Date,
                     StartTime = projectSchedule.StartTime,
                     EndTime = projectSchedule.EndTime,
-                    EventProjectId = projectSchedule.EventProjectId
+                    //EventProjectId = projectSchedule.EventProjectId
                 });
             }
 
@@ -388,85 +351,114 @@ namespace WorkflowManagementSystem.Controllers
 
             ClientViewModel model = Mapper.Map<Client, ClientViewModel>(client);
 
-            //return View(model);
             return PartialView(model);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public ActionResult UploadPresentationPartial(EventProjectUploadsViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var eventProject = new EventProject
-                {
-                    Presentation = model.Presentation
-                };
-
-                //if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
-                //{
-                //    // Allowed extensions to be uploaded
-                //    var extensions = new[] { "pdf", "pptx", "pptm", "ppt" };
-
-                //    // Get the file name without the path
-                //  string filename = Path.GetFileName(model.PresentationFile.FileName);
-
-                //    // Get the extension of the file
-                //   string ext = Path.GetExtension(filename).Substring(1);
-
-                //   // Check if the extension of the file is in the list of allowed extensions
-                //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
-                //    {
-                //         ModelState.AddModelError(string.Empty, "Accepted file are pdf, pptx, pptm, ppt documents");
-                //         return PartialView();
-                //    }
-
-                //     string appFolder = "~/Content/Uploads/";
-                //    var rand = Guid.NewGuid().ToString();
-                //     string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
-                //     model.PresentationFile.SaveAs(path);
-                //    eventProject.Presentation = appFolder + rand + "-" + filename;
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
-                //    return PartialView();
-                //}
-
-                db.EventProjects.Add(eventProject);
-                db.SaveChanges();
-
-                return PartialView();
-            }
-
-            //return PartialView("UploadPresentationPartial", model);
-            return PartialView(model);
-        }
-
-
-        public ActionResult PresentationDetailsPartial(int? id)
+        [HttpGet]
+        public ActionResult ProjectPresentationPartial(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            EventProject eventProjectUploads = db.EventProjects.Find(id);
+            var project = db.EventProjects.Find(id);
 
-            if (eventProjectUploads == null)
+            if (project == null)
             {
                 return HttpNotFound();
             }
 
-            var model = new EventProjectUploadsViewModel
+            var model = new ProjectPresentationViewModel
             {
-                EventProjectId = eventProjectUploads.EventProjectId,
-                Presentation = eventProjectUploads.Presentation
+                EventProjectId = project.EventProjectId,
+                Presentation = project.Presentation,
+
+                //HACK: ADD the path to presentation file path here
+                //PresentationFile = project.PresentationFilePath,
             };
 
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult ProjectPresentationPartial(ProjectPresentationViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //HACK: Add the presentation file path here
+                project.Presentation = model.Presentation;
+                db.SaveChanges();
+            }
+
+            // Failure: retrun the same model
+            return PartialView(model);
+        }
+
+        // Get the schedules of the project with id
+        public ActionResult ProjectGetSchedulesPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var project = db.EventProjects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            var schedules = project.ProjectSchedules.ToList();
+
+            var model = new List<ProjectScheduleViewModel>();
+
+            foreach (var item in schedules)
+            {
+                model.Add(new ProjectScheduleViewModel
+                {
+                    ScheduleId = item.ScheduleId,
+                    ScheduleDate = item.Date,
+                    StartTime = item.StartTime,
+                    EndTime = item.EndTime
+                });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ProjectSchedulesPartial(ProjectScheduleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var schedule = new ProjectSchedule
+                {
+                    Date = model.ScheduleDate,
+                    StartTime = model.StartTime,
+                    EndTime = model.EndTime,
+                    EventProjectId = model.EventProjectId
+                };
+                db.ProjectSchedules.Add(schedule);
+                db.SaveChanges();
+            }
+
+            // Failure: retrun the same model
             return PartialView(model);
         }
     }

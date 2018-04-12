@@ -244,10 +244,10 @@
     <Compile Include="ViewModels\CostSheetViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
-    <Compile Include="ViewModels\EventProjectUploadsViewModel.cs" />
     <Compile Include="ViewModels\EventProjectViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\LanguageViewModel.cs" />
+    <Compile Include="ViewModels\ProjectPresentationViewModel.cs" />
     <Compile Include="ViewModels\ProjectScheduleViewModel.cs" />
     <Compile Include="ViewModels\UsherViewModel.cs" />
   </ItemGroup>
@@ -560,7 +560,7 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\EventProject\Index.cshtml" />
-    <Content Include="Views\EventProject\Details.cshtml" />
+    <Content Include="Views\EventProject\DetailsMaster.cshtml" />
     <Content Include="Views\EventProject\Create.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
@@ -569,9 +569,6 @@
     <Content Include="Views\Client\Delete.cshtml" />
     <Content Include="Views\EventProject\Edit.cshtml" />
     <Content Include="Views\EventProject\Delete.cshtml" />
-    <Content Include="Views\EventProject\ProjectSchedules.cshtml" />
-    <Content Include="Views\EventProject\AddProjectSchedulePartial.cshtml" />
-    <Content Include="Views\EventProject\GetProjectSchedulesPartial.cshtml" />
     <Content Include="Views\EventProject\ClientDetailsPartial.cshtml" />
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Document\AddApprovalPartial.cshtml" />
@@ -579,16 +576,18 @@
     <Content Include="Views\Document\AddDocument.cshtml" />
     <Content Include="Views\Document\Edit.cshtml" />
     <Content Include="Views\Document\Delete.cshtml" />
-    <Content Include="Views\EventProject\PresentationDetailsPartial.cshtml" />
     <Content Include="Views\CostSheet\Index.cshtml" />
     <Content Include="Views\CostSheet\Edit.cshtml" />
     <Content Include="Views\CostSheet\Delete.cshtml" />
     <Content Include="Views\CostSheet\Details.cshtml" />
     <Content Include="Views\CostSheet\Create.cshtml" />
     <Content Include="Views\Document\DocumentListPartial.cshtml" />
-    <Content Include="Views\EventProject\UploadPresentationPartial.cshtml" />
     <Content Include="Views\CostSheetItem\Create.cshtml" />
     <Content Include="Views\CostSheetItem\Details.cshtml" />
+    <Content Include="Views\EventProject\ProjectDetailsPartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectPresentationPartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectSchedulesPartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectGetSchedulesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
