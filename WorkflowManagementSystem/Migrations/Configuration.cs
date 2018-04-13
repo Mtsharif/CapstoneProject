@@ -220,21 +220,21 @@ namespace WorkflowManagementSystem.Migrations
             //context.SaveChanges();
 
             // Add usher appointed examples 
-            var usherAppointeds = new List<UsherAppointed>
-            {
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 2, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 2, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
-            };
-            usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
-            context.SaveChanges();
+            //var usherAppointeds = new List<UsherAppointed>
+            //{
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 2, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 2, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
+            //};
+            //usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
+            //context.SaveChanges();
         }
     }
 }

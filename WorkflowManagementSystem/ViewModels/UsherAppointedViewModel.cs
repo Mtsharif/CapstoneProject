@@ -22,7 +22,7 @@ namespace WorkflowManagementSystem.ViewModels
 
         [Display(Name = "Date Assigned")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Creation Date Not Available")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Assignment Date Not Available")]
         public DateTime DateAppointed { get; set; }
 
         // Usher who is appointed

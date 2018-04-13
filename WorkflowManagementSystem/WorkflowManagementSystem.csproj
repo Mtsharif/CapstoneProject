@@ -207,11 +207,13 @@
     <Compile Include="Controllers\CostSheetItemController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeTaskController.cs" />
     <Compile Include="Controllers\EventProjectController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectScheduleController.cs" />
+    <Compile Include="Controllers\TaskAssignmentController.cs" />
     <Compile Include="Controllers\UsherAppointedController.cs" />
     <Compile Include="Controllers\UsherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -245,12 +247,14 @@
     <Compile Include="ViewModels\CostSheetItemViewModel.cs" />
     <Compile Include="ViewModels\CostSheetViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeTaskViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\EventProjectUploadsViewModel.cs" />
     <Compile Include="ViewModels\EventProjectViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\LanguageViewModel.cs" />
     <Compile Include="ViewModels\ProjectScheduleViewModel.cs" />
+    <Compile Include="ViewModels\TaskAssignmentViewModel.cs" />
     <Compile Include="ViewModels\UsherAppointedViewModel.cs" />
     <Compile Include="ViewModels\UsherViewModel.cs" />
   </ItemGroup>
@@ -599,6 +603,12 @@
     <Content Include="Views\UsherAppointed\Index.cshtml" />
     <Content Include="Views\ProjectSchedule\Edit.cshtml" />
     <Content Include="Views\ProjectSchedule\Delete.cshtml" />
+    <Content Include="Views\EmployeeTask\Create.cshtml" />
+    <Content Include="Views\EmployeeTask\Index.cshtml" />
+    <Content Include="Views\EmployeeTask\Edit.cshtml" />
+    <Content Include="Views\EmployeeTask\Delete.cshtml" />
+    <Content Include="Views\EmployeeTask\Details.cshtml" />
+    <Content Include="Views\TaskAssignment\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
