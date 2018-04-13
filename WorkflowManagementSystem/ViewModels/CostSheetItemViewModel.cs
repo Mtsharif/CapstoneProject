@@ -14,7 +14,7 @@ using System.Web;
 namespace WorkflowManagementSystem.ViewModels
 {
     /// <summary>
-    /// This cost sheet is generated based on the CostSheetItem model to be used by its controller.
+    /// 
     /// </summary>
     public class CostSheetItemViewModel
     {
@@ -29,10 +29,7 @@ namespace WorkflowManagementSystem.ViewModels
         [Display(Name = "Quantity")]
         public int Quantity { get; set; }
 
-        [Display(Name = "Cost Sheet")]
         public string CostSheet { get; set; }
-
-        [Display(Name = "Item")]
         public string Item { get; set; }
     }
 }

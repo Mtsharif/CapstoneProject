@@ -36,10 +36,6 @@ namespace WorkflowManagementSystem.Models
         [StringLength(30)]
         public string LastName { get; set; }
 
-        // To get the fullname (first name and last name) of an usher in a dropdown list.
-        [NotMapped]
-        public string FullName { get { return (FirstName + " " + LastName); } }
-
         [Required]
         [StringLength(20)]
         public string MobileNumber { get; set; }

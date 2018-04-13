@@ -19,7 +19,7 @@ using WorkflowManagementSystem.ViewModels;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// This controller is generated based on the cost sheet domain and view model classes
+    /// 
     /// </summary>
     [Authorize(Roles = "Client Service Employee")]
     public class CostSheetController : Controller

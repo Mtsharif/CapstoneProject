@@ -82,16 +82,10 @@ namespace WorkflowManagementSystem.Migrations
                     LastName = "Alsharif", PhoneNumber = "0552323909", JobTitle = EmployeeJobTitle.Director,
                     Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
                 new Employee { UserName = "user2" , Email = "user2@gmail.com", FirstName = "Hamza",
-                    LastName = "Zamil", PhoneNumber = "0500303000", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.Production, EmployeeType = EmployeeType.Production},
+                    LastName = "Zamil", PhoneNumber = "0500303000", JobTitle = EmployeeJobTitle.Assistant,
+                    Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
                 new Employee { UserName = "user3" , Email = "user3@gmail.com", FirstName = "Abdullah",
-                    LastName = "Ismail", PhoneNumber = "0505280001", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.Finance, EmployeeType = EmployeeType.Finance},
-                new Employee { UserName = "user4" , Email = "user4@gmail.com", FirstName = "Khalid",
-                    LastName = "Madani", PhoneNumber = "0505282232", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.Creative, EmployeeType = EmployeeType.Creative},
-                new Employee { UserName = "user5" , Email = "user5@gmail.com", FirstName = "Moneer",
-                    LastName = "Ghalib", PhoneNumber = "0504444442", JobTitle = EmployeeJobTitle.Assistant,
+                    LastName = "Ismail", PhoneNumber = "0505280001", JobTitle = EmployeeJobTitle.EventPlanner,
                     Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
             };
 
@@ -122,29 +116,13 @@ namespace WorkflowManagementSystem.Migrations
             // Add usher examples 
             var ushers = new List<Usher>
             {
-                new Usher {FirstName = "Basem", LastName = "Helmi", MobileNumber = "0551212900", DateOfBirth = DateTime.Parse("02/12/1996"),
+                new Usher {FirstName = "Basem", LastName = "Helmi", MobileNumber = "0551212900", DateOfBirth = null,
                     Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
                     LanguageId = languages.Single(d=>d.Name=="English").Id,CarAvailability = true, MedicalCard = null },
 
-                new Usher {FirstName = "Layal", LastName = "Attas", MobileNumber = "0501211911", DateOfBirth = DateTime.Parse("07/20/1997"),
-                    Gender = UsherGender.Female, Nationality = "Saudi", City = "Riyadh",
-                    LanguageId = languages.Single(d=>d.Name=="Arabic").Id, CarAvailability = true, MedicalCard = null },
-
-                new Usher {FirstName = "Omar", LastName = "Gamdi", MobileNumber = "0500088981", DateOfBirth = DateTime.Parse("10/10/1993"),
-                    Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
-                    LanguageId = languages.Single(d=>d.Name=="English").Id, CarAvailability = true, MedicalCard = null },
-
-                new Usher {FirstName = "Yaser", LastName = "Ghalib", MobileNumber = "0599988999", DateOfBirth = DateTime.Parse("12/23/1996"),
-                    Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
-                    LanguageId = languages.Single(d=>d.Name=="English").Id, CarAvailability = true, MedicalCard = null },
-
-                new Usher {FirstName = "Yara", LastName = "Zamil", MobileNumber = "0500088981", DateOfBirth = DateTime.Parse("11/09/1995"),
-                    Gender = UsherGender.Female, Nationality = "Saudi", City = "Jeddah",
-                    LanguageId = languages.Single(d=>d.Name=="English").Id, CarAvailability = true, MedicalCard = null },
-
-                new Usher {FirstName = "Husam", LastName = "Madani", MobileNumber = "0551122281", DateOfBirth = DateTime.Parse("12/12/1996"),
+                new Usher {FirstName = "Layal", LastName = "Attas", MobileNumber = "0501211911", DateOfBirth = null,
                     Gender = UsherGender.Male, Nationality = "Saudi", City = "Riyadh",
-                    LanguageId = languages.Single(d=>d.Name=="Arabic").Id, CarAvailability = false, MedicalCard = null }
+                    LanguageId = languages.Single(d=>d.Name=="Arabic").Id, CarAvailability = true, MedicalCard = null }
             };
 
             ushers.ForEach(s => context.Ushers.AddOrUpdate(p => p.FirstName, s));
@@ -158,15 +136,6 @@ namespace WorkflowManagementSystem.Migrations
 
                 new Client {FirstName = "Abdullah", LastName = "Sharif", Email = "asharif@gmail.com", MobileNumber = "0550001023",
                     Street = "Malik Rd", District = "Zahraa", City = "Jeddah"},
-
-                new Client {FirstName = "Souq Okaz", LastName = null, Email = "okaz@gmail.com", MobileNumber = "0557707055",
-                    Street = "Al Hamra St.", District = "Al Hamra Dist.", City = "Jeddah"},
-
-                new Client {FirstName = "MBC", LastName = null, Email = "mbc@gmail.com", MobileNumber = "0553303035",
-                    Street = "Al Wasl St.", District = "Al Badaa Dist.", City = "Dubai"},
-
-                new Client {FirstName = "Amal", LastName = "khatib", Email = "amal@gmail.com", MobileNumber = "0589589897",
-                    Street = "Malik Rd.", District = "Shatea Dist.", City = "Jeddah"},
             };
 
             clients.ForEach(s => context.Clients.AddOrUpdate(p => p.FirstName, s));
@@ -180,60 +149,13 @@ namespace WorkflowManagementSystem.Migrations
                     Street = "Malik Rd", District = "AlShati Dist", City = "Jeddah", Status = ProjectStatus.Approved,
                     DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 1},
 
-                new EventProject {Name = "Kids birthday party",  EventType = EventProjectType.Birthday,
+                 new EventProject {Name = "Kids birthday party",  EventType = EventProjectType.Birthday,
                     Brief = "The client wants a theme of superheroes. Tables with games and seats. Should accommodate 20 children and adults.",
                     Street = "King Abdullah St.", District = "Khaldya Dist.", City = "Dubai", Status = ProjectStatus.Approved,
-                    DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 2},
-
-                 new EventProject {Name = "Jeddah Youth Ceremony",  EventType = EventProjectType.AwardCeremony,
-                    Brief = "Client requests stage with screen. A table with all awards should be in the center of the stage. Tables and chairs that accommodates 100 people.",
-                    Street = "Prince Naif St.", District = "Murjan Dist.", City = "Jeddah", Status = ProjectStatus.Pending,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 4},
-
-                 new EventProject {Name = "Artsy",  EventType = EventProjectType.Exhibition,
-                    Brief = "The client wants the layout of the event to portray a maze and the design should be colorful. Each section will include an artist who will be displaying his/her artworks. 5 booths serving any kinds of food is required. The entrance should include a table for selling tickets.",
-                    Street = "Madina Rd.", District = "Musaadya Dist.", City = "Jeddah", Status = ProjectStatus.Pending,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 4},
-
-                 new EventProject {Name = "Makkah Youth Forum",  EventType = EventProjectType.AwardCeremony,
-                    Brief = "The client requires a stage in the center with a screen behind the speaker. The hall should accommodate up to 40 people; the front row should have tables in front of the chairs.",
-                    Street = "Om AlQura St.", District = "Muala Dist.", City = "Makkah", Status = ProjectStatus.Pending,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 3},
-
-                 new EventProject {Name = "Wedding",  EventType = EventProjectType.Wedding,
-                    Brief = "The client requests round tables each with 10 chairs. A stage in the center with flowers.",
-                    Street = "Malik Rd.", District = "Shati Dist.", City = "Jeddah", Status = ProjectStatus.Approved,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 5}
+                    DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 2}
             };
 
             eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));
-            context.SaveChanges();
-
-            //// Add project schedule examples 
-            //var projectSchedules = new List<ProjectSchedule>
-            //{
-            //    new ProjectSchedule {Date = DateTime.Parse("10/05/2018"), StartTime = DateTime.Parse("9:00:00"), EndTime = DateTime.Parse("10:30:00"), EventProjectId = 1},
-            //    new ProjectSchedule {Date = DateTime.Parse("11/05/2018"), StartTime = DateTime.Parse("9:00:00"), EndTime = DateTime.Parse("10:30:00"), EventProjectId = 1},
-            //    new ProjectSchedule {Date = DateTime.Parse("20/06/2018"), StartTime = DateTime.Parse("11:00:00"), EndTime = DateTime.Parse("12:30:00"), EventProjectId = 1},
-            //};
-            //projectSchedules.ForEach(s => context.ProjectSchedules.AddOrUpdate(p => p.Date, s));
-            //context.SaveChanges();
-
-            // Add usher appointed examples 
-            var usherAppointeds = new List<UsherAppointed>
-            {
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 2, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 2, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
-                new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
-            };
-            usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
             context.SaveChanges();
         }
     }
