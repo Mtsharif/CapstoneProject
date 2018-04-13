@@ -236,7 +236,6 @@ namespace WorkflowManagementSystem.Models
                     m.MapRightKey("LanguageId");
                 });
         }
-
         //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.CostSheetItemViewModel> CostSheetItemViewModels { get; set; }
 
         //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.CostSheetViewModel> CostSheetViewModels { get; set; }

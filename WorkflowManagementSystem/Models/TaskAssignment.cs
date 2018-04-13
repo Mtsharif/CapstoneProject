@@ -24,7 +24,8 @@ namespace WorkflowManagementSystem.Models
         [Column(TypeName = "date")]
         public DateTime AssignmentDate { get; set; }
 
-        public int TaskId { get; set; }
+        //public int TaskId { get; set; }
+        public int EmployeeTaskId { get; set; }
 
         public int EmployeeId { get; set; }
 

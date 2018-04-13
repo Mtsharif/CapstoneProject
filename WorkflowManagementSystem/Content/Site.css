@@ -1,9 +1,19 @@
-﻿body {
+﻿/*.navbar {
+    /*background-color: #53050d;*/
+    background-color: #75060f;
+    border-color: black;
+    color: white !important;
+}*/
+
+.navbar .navbar-brand { color: white; }
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
+/* Set padding to keep content from hitting the edges 
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
