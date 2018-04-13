@@ -21,14 +21,14 @@ namespace WorkflowManagementSystem.Models
         [Key]
         public int ScheduleId { get; set; }
 
-        [Column(TypeName = "date")]
+        //[Column(TypeName = "date")]
         public DateTime Date { get; set; }
 
         //public TimeSpan StartTime { get; set; }
-        public DateTime StartTime { get; set; }
+        public TimeSpan StartTime { get; set; }
 
         //public TimeSpan EndTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public TimeSpan EndTime { get; set; }
 
         public int EventProjectId { get; set; }
 

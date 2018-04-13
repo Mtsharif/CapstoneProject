@@ -1,12 +1,15 @@
-﻿@model WorkflowManagementSystem.ViewModels.EventProjectUploadsViewModel
+﻿@model WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel
 
-@using (Html.BeginForm())
+@{ 
+    Layout = null;
+}
+
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <hr />
-
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Presentation, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -18,18 +21,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" id="CreatePresentationButton"/>
             </div>
         </div>
     </div>
 }
 
-@*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
-
-<div>id="PresentationDetails"</div>
-
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

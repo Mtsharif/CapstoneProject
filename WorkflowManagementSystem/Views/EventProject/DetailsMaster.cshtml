@@ -1,0 +1,162 @@
+﻿@using WorkflowManagementSystem.ViewModels
+
+@*@model WorkflowManagementSystem.ViewModels.EventProjectViewModel*@
+@{ 
+    ViewBag.Title = "Project Management";
+}
+<style>
+    .nav-stacked > li > a {
+        min-height: 50px;
+        height: 50px;
+        color: black;
+    }
+</style>
+
+<h2>Project Management</h2>
+
+<div class="container col-md-12">
+
+    <div class="tabtable">
+
+        <ul class="nav nav-pills nav-stacked col-md-3">
+            <li class="active"><a href="#DetailsTab" data-toggle="tab">Details</a></li>
+            <li><a href="#PresentationTab" data-toggle="tab">Presentation</a></li>
+            <li><a href="#ThreeDimensionModelTab" data-toggle="tab">Three Dimension Model</a></li>
+            <li><a href="#QuotationAndInvoiceTab" data-toggle="tab">Quotation and Invoice</a></li>
+            <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
+            <li><a href="#ClientTab" data-toggle="tab">Client</a></li>
+        </ul>
+
+        <div class="tab-content col-md-9">
+            <div class="tab-pane active" id="DetailsTab">
+                <h3>Project Details</h3>
+                @Html.Action("ProjectDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
+            </div>
+
+            <div class="tab-pane" id="PresentationTab">
+                <h3>Presentation</h3>
+                @Html.Partial("ProjectPresentationPartial",
+                                  new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+                <div id="PresentationStatusMessage"></div>
+            </div>
+
+            <div class="tab-pane" id="ThreeDimensionModelTab">
+                <h3>Three Dimension Model</h3>
+
+            </div>
+
+            <div class="tab-pane" id="QuotationAndInvoiceTab">
+                <h3>Quotation and Invoice</h3>
+
+            </div>
+
+            <div class="tab-pane" id="SchedulesTab">
+                <h3>Schedules</h3>
+                @Html.Partial("ProjectSchedulesPartial", 
+                    new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
+                <div id="ScheduleStatusMessage"></div>
+                <div id="ProjectScheduleList"></div>
+            </div>
+
+            <div class="tab-pane" id="ClientTab">
+                <h3>Client</h3>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        // Definition of Get project schedules function
+        function getProjectSchedules(projectId) {
+            $.get("/EventProject/ProjectGetSchedulesPartial", { id: projectId })
+                .done(function (result) {
+                    $("#ProjectScheduleList").html(result);
+                });
+        }
+
+        // Clear Schedule form
+        function clearScheduleForm() {
+            $('#ScheduleDate').val(""),
+            $('#StartTime').val(""),
+            $('#EndTime').val("")
+        }
+
+        $(document).ready(function () {
+
+            // Get Project ID from ViewBag
+            var projectId = parseInt(@ViewBag.ProjectId);
+
+            // Clear schedule form
+            clearScheduleForm();
+
+            // Create a presentation
+            $("#CreatePresentationButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/ProjectPresentationPartial",
+                    type: "post",
+                    data: {
+                        EventProjectId: projectId,
+                        Presentation: $('#Presentation').val()
+                    },
+                    success: function (result) {
+
+                        // Clear the text inputs
+                        $('#Presentation').val("");
+
+                        $("#PresentationStatusMessage").html("<p>Presentation added successfully</p>");
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#PresentationStatusMessage").html("<p>Presentation was not added!</p>");
+                    }
+                });
+            });
+
+            // Display Schedules
+            getProjectSchedules(projectId);
+
+            // Create a schedule
+            $("#CreateScheduleButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/ProjectSchedulesPartial",
+                    type: "post",
+                    data: {
+                        ScheduleDate: $('#ScheduleDate').val(),
+                        StartTime: $('#StartTime').val(),
+                        EndTime: $('#EndTime').val(),
+                        EventProjectId: projectId
+                    },
+                    success: function (result) {
+
+                        // Clear fields
+                        clearScheduleForm()
+
+                        // Display the project schedule after the add
+                        getProjectSchedules(projectId);
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#ScheduleStatusMessage").html("<p>Schedule was not added!</p>");
+                    }
+                });
+            });
+
+        });
+        
+    </script>
+}
