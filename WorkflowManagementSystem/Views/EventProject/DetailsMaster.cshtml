@@ -23,6 +23,8 @@
             <li><a href="#PresentationTab" data-toggle="tab">Presentation</a></li>
             <li><a href="#ThreeDimensionModelTab" data-toggle="tab">Three Dimension Model</a></li>
             <li><a href="#QuotationAndInvoiceTab" data-toggle="tab">Quotation and Invoice</a></li>
+            <li><a href="#EventReportTemplateTab" data-toggle="tab">Event Report Template</a></li>
+            <li><a href="#EventReportTab" data-toggle="tab">Event Report</a></li>
             <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
             <li><a href="#ClientTab" data-toggle="tab">Client</a></li>
         </ul>
@@ -36,13 +38,15 @@
             <div class="tab-pane" id="PresentationTab">
                 <h3>Presentation</h3>
                 @Html.Partial("ProjectPresentationPartial",
-                                  new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+                            new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
                 <div id="PresentationStatusMessage"></div>
             </div>
 
             <div class="tab-pane" id="ThreeDimensionModelTab">
                 <h3>Three Dimension Model</h3>
-
+                @Html.Partial("Project3DModelPartial",
+                     new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+                <div id="3DModelStatusMessage"></div>
             </div>
 
             <div class="tab-pane" id="QuotationAndInvoiceTab">
@@ -50,10 +54,24 @@
 
             </div>
 
+            <div class="tab-pane" id="EventReportTemplateTab">
+                <h3>Event Report Template</h3>
+                @Html.Partial("ProjectEventReportTemplatePartial",
+                    new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+                <div id="EventReportTemplateStatusMessage"></div>
+            </div>
+
+            <div class="tab-pane" id="EventReportTab">
+                <h3>Event Report Template</h3>
+                @Html.Partial("ProjectEventReportPartial",
+                    new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+                <div id="EventReportStatusMessage"></div>
+            </div>
+
             <div class="tab-pane" id="SchedulesTab">
                 <h3>Schedules</h3>
-                @Html.Partial("ProjectSchedulesPartial", 
-                    new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
+                @Html.Partial("ProjectSchedulesPartial",
+              new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
                 <div id="ScheduleStatusMessage"></div>
                 <div id="ProjectScheduleList"></div>
             </div>
@@ -119,6 +137,87 @@
                     error: function (jqxhr, status, exception) {
                         console.log(status);
                         $("#PresentationStatusMessage").html("<p>Presentation was not added!</p>");
+                    }
+                });
+            });
+
+            // Create a 3D model
+            $("#Create3DModelButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/Project3DModelPartial",
+                    type: "post",
+                    data: {
+                        EventProjectId: projectId,
+                        ThreeDModel: $('#ThreeDModel').val()
+                    },
+                    success: function (result) {
+
+                        // Clear the text inputs
+                        $('#ThreeDModel').val("");
+
+                        $("#3DModelStatusMessage").html("<p>3D Model added successfully</p>");
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#PresentationStatusMessage").html("<p>3D Model was not added!</p>");
+                    }
+                });
+            });
+
+            // Create an event report template
+            $("#CreateEventReportTemplateButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/ProjectEventReportTemplatePartial",
+                    type: "post",
+                    data: {
+                        EventProjectId: projectId,
+                        EventReportTemplate: $('#EventReportTemplate').val()
+                    },
+                    success: function (result) {
+
+                        // Clear the text inputs
+                        $('#EventReportTemplate').val("");
+
+                        $("#EventReportTemplateStatusMessage").html("<p>Event Report Template added successfully</p>");
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#EventReportTemplateStatusMessage").html("<p>Event Report Template was not added!</p>");
+                    }
+                });
+            });
+
+            // Create an event report 
+            $("#CreateEventReportButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/ProjectEventReportPartial",
+                    type: "post",
+                    data: {
+                        EventProjectId: projectId,
+                        EventReport: $('#EventReport').val()
+                    },
+                    success: function (result) {
+
+                        // Clear the text inputs
+                        $('#EventReport').val("");
+
+                        $("#EventReportStatusMessage").html("<p>Event Report added successfully</p>");
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#EventReportStatusMessage").html("<p>Event Report was not added!</p>");
                     }
                 });
             });

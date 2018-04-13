@@ -47,7 +47,7 @@ namespace WorkflowManagementSystem.Controllers
             var model = new ProjectScheduleViewModel
             {
                 ScheduleId = projectSchedule.ScheduleId,
-                Date = projectSchedule.Date,
+                ScheduleDate = projectSchedule.Date,
                 StartTime = projectSchedule.StartTime,
                 EndTime = projectSchedule.EndTime,
                 EventProjectId = projectSchedule.EventProjectId
@@ -96,7 +96,7 @@ namespace WorkflowManagementSystem.Controllers
             ProjectScheduleViewModel model = new ProjectScheduleViewModel
             {
                 ScheduleId = projectSchedule.ScheduleId,
-                Date = projectSchedule.Date,
+                ScheduleDate = projectSchedule.Date,
                 StartTime = projectSchedule.StartTime,
                 EndTime = projectSchedule.EndTime,
             };

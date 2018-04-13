@@ -394,6 +394,29 @@ namespace WorkflowManagementSystem.Controllers
                 }
 
                 //HACK: Add the presentation file path here
+                if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
+                {
+                    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                    string filename = Path.GetFileName(model.PresentationFile.FileName);
+                    string ext = Path.GetExtension(filename).Substring(1);
+
+                    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                    {
+                        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                        return PartialView();
+                    }
+
+                    string appFolder = "~/Content/Uploads/";
+                    var rand = Guid.NewGuid().ToString();
+                    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                    model.PresentationFile.SaveAs(path);
+                    project.Presentation = appFolder + rand + "-" + filename;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                    return PartialView();
+                }
                 project.Presentation = model.Presentation;
                 db.SaveChanges();
             }
@@ -455,6 +478,211 @@ namespace WorkflowManagementSystem.Controllers
                     EventProjectId = model.EventProjectId
                 };
                 db.ProjectSchedules.Add(schedule);
+                db.SaveChanges();
+            }
+
+            // Failure: retrun the same model
+            return PartialView(model);
+        }
+
+        [HttpGet]
+        public ActionResult Project3DModelPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var project = db.EventProjects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new Project3DModelViewModel
+            {
+                EventProjectId = project.EventProjectId,
+                ThreeDModel = project.ThreeDModel,
+
+                //HACK: ADD the path to 3D model file path here
+            };
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult Project3DModelPartial(Project3DModelViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (model.ThreeDModelFile != null && model.ThreeDModelFile.ContentLength > 0)
+                {
+                    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                    string filename = Path.GetFileName(model.ThreeDModelFile.FileName);
+                    string ext = Path.GetExtension(filename).Substring(1);
+
+                    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                    {
+                        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                        return PartialView();
+                    }
+
+                    string appFolder = "~/Content/Uploads/";
+                    var rand = Guid.NewGuid().ToString();
+                    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                    model.ThreeDModelFile.SaveAs(path);
+                    project.ThreeDModel = appFolder + rand + "-" + filename;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                    return PartialView();
+                }
+                project.ThreeDModel = model.ThreeDModel;
+                db.SaveChanges();
+            }
+
+            // Failure: retrun the same model
+            return PartialView(model);
+        }
+
+        [HttpGet]
+        public ActionResult ProjectEventReportTemplatePartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var project = db.EventProjects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new ProjectEventReportTemplateViewModel
+            {
+                EventProjectId = project.EventProjectId,
+                EventReportTemplate = project.EventReportTemplate,
+                //HACK: ADD the path to event report template file path here
+            };
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult ProjectEventReportTemplatePartial(ProjectEventReportTemplateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (model.EventReportTemplateFile != null && model.EventReportTemplateFile.ContentLength > 0)
+                {
+                    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                    string filename = Path.GetFileName(model.EventReportTemplateFile.FileName);
+                    string ext = Path.GetExtension(filename).Substring(1);
+
+                    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                    {
+                        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                        return PartialView();
+                    }
+
+                    string appFolder = "~/Content/Uploads/";
+                    var rand = Guid.NewGuid().ToString();
+                    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                    model.EventReportTemplateFile.SaveAs(path);
+                    project.EventReportTemplate = appFolder + rand + "-" + filename;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                    return PartialView();
+                }
+                project.EventReportTemplate = model.EventReportTemplate;
+                db.SaveChanges();
+            }
+
+            // Failure: retrun the same model
+            return PartialView(model);
+        }
+
+        [HttpGet]
+        public ActionResult ProjectEventReportPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var project = db.EventProjects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new ProjectEventReportViewModel
+            {
+                EventProjectId = project.EventProjectId,
+                EventReport = project.EventReport,
+                //HACK: ADD the path to event report template file path here
+            };
+
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult ProjectEventReportPartial(ProjectEventReportViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (model.EventReportFile != null && model.EventReportFile.ContentLength > 0)
+                {
+                    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                    string filename = Path.GetFileName(model.EventReportFile.FileName);
+                    string ext = Path.GetExtension(filename).Substring(1);
+
+                    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                    {
+                        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                        return PartialView();
+                    }
+
+                    string appFolder = "~/Content/Uploads/";
+                    var rand = Guid.NewGuid().ToString();
+                    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                    model.EventReportFile.SaveAs(path);
+                    project.EventReport = appFolder + rand + "-" + filename;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                    return PartialView();
+                }
+                project.EventReport = model.EventReport;
                 db.SaveChanges();
             }
 
