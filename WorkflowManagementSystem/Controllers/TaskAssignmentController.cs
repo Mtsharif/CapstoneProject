@@ -40,12 +40,14 @@ namespace WorkflowManagementSystem.Controllers
                 model.Add(new TaskAssignmentViewModel
                 {
                     TaskAssignmentId = item.TaskAssignmentId,
-                   
+                    TaskName = item.TaskName,
+                    Description = item.Description,
                     Deadline = item.Deadline,
                     Status = item.Status,
                     Priority = item.Priority,
                     AssignmentDate = item.AssignmentDate,
-                    //EmployeeTask = item.EmployeeTask.TaskName,
+                    IsCompleted = item.IsCompleted,
+                    EventProject = item.EventProject.Name,
                     AnyEmployee = item.AnyEmployee.FullName,
                     Employee = item.Employee.FullName,
                 });
@@ -72,11 +74,15 @@ namespace WorkflowManagementSystem.Controllers
             var model = new TaskAssignmentViewModel
             {
                 TaskAssignmentId = taskAssignment.TaskAssignmentId,
+                TaskName = taskAssignment.TaskName,
+                Description = taskAssignment.Description,
                 Deadline = taskAssignment.Deadline,
                 Status = taskAssignment.Status,
                 Priority = taskAssignment.Priority,
                 AssignmentDate = taskAssignment.AssignmentDate,
+                IsCompleted = taskAssignment.IsCompleted,
                 //EmployeeTask = taskAssignment.EmployeeTask.TaskName,
+                EventProject = taskAssignment.EventProject.Name,
                 AnyEmployee = taskAssignment.AnyEmployee.FullName,
                 Employee = taskAssignment.Employee.FullName,
             };
@@ -91,7 +97,7 @@ namespace WorkflowManagementSystem.Controllers
         // GET: TaskAssignment/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "TaskName");
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
             ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             return View();
@@ -111,28 +117,31 @@ namespace WorkflowManagementSystem.Controllers
             {
                 var taskAssignment = new TaskAssignment
                 {
+                    TaskName = model.TaskName,
+                    Description = model.Description,
                     Deadline = model.Deadline,
-                    Status = model.Status,
+                    Status = TaskAssignment.TaskStatus.Pending,
                     Priority = model.Priority,
                     AssignmentDate = DateTime.Now,
-                    //EmployeeTaskId = model.EmployeeTaskId,
+                    IsCompleted = model.IsCompleted,
                     EmployeeId = model.EmployeeId,
                     ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
+                    EventProjectId = model.EventProjectId,
                 };
 
                 db.TaskAssignments.Add(taskAssignment);
                 db.SaveChanges();
 
-                //ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "TaskName");
+                ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-                //return RedirectToAction("Index");
-                return RedirectToAction("Details", new { id = taskAssignment.TaskAssignmentId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("Details", new { id = taskAssignment.TaskAssignmentId });
             }
             else
             {
-                ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "TaskName");
+                ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 return View();

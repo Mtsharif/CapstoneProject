@@ -638,6 +638,8 @@
     <Content Include="Views\CostSheetItem\Index.cshtml" />
     <Content Include="Views\EventProject\GetCostSheetsPartial.cshtml" />
     <Content Include="Views\EventProject\CostSheetPartial.cshtml" />
+    <Content Include="Views\EventProject\GetTaskAssignmentsPartial.cshtml" />
+    <Content Include="Views\EventProject\TaskAssignmentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

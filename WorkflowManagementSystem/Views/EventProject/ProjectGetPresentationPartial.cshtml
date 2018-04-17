@@ -17,7 +17,11 @@
             @if (!String.IsNullOrEmpty(Model.Presentation))
             {
                 <a href="@Url.Content(Model.Presentation)">Presentation File</a>
-        }
+            }
+            else
+            {
+                <p>File not found</p>
+            }
         </dd>
     </dl>
 </div>

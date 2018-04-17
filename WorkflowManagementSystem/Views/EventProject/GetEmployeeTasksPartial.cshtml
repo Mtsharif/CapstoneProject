@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.EmployeeTaskViewModel>
+﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel>
 
     @{
         Layout = null;
@@ -12,8 +12,26 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnyEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCompleted)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Employee)
-            </th>          
+            </th>
             <th></th>
         </tr>
 
@@ -27,12 +45,30 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnyEmployee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsCompleted)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Employee)
                 </td>              
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeTaskId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeTaskId })
-                    @Html.ActionLink("assign","Create", "TaskAssignment", new { id = item.EmployeeTaskId }, null)
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })
+                    @*@Html.ActionLink("assign","Create", "TaskAssignment", new { id = item.TaskAssignmentId }, null)*@
                 </td>
             </tr>
         }

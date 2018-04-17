@@ -22,7 +22,7 @@
         <div class="form-group">
                 @Html.LabelFor(model => model.PresentationFile, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBox("PresentationFile", "", new { type = "file" })
+                    @Html.TextBox("PresentationFile", "", new { type = "file", id ="presentationFile"})
                 </div>
             </div>
 

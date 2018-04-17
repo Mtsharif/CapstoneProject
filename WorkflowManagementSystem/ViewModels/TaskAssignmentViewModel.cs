@@ -22,16 +22,24 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         public int TaskAssignmentId { get; set; }
 
+        [Required]
+        [Display(Name = "Task Name")]
+        public string TaskName { get; set; }
+
+        [Display(Name = "Description")]
+        [DisplayFormat(NullDisplayText = "Description Not Available")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
+
         [Display(Name = "Assignment Date")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime AssignmentDate { get; set; }
 
-        // Task to be assigned 
-        public int EmployeeTaskId { get; set; }
+        public int EventProjectId { get; set; }
 
-        [Display(Name = "Task")]
-        public string EmployeeTask { get; set; }
+        [Display(Name = "Project")]
+        public string EventProject { get; set; }
 
         [Display(Name = "Deadline")]
         [DataType(DataType.Date)]
@@ -43,6 +51,9 @@ namespace WorkflowManagementSystem.ViewModels
 
         [Display(Name = "Priority")]
         public TaskPriority Priority { get; set; }
+
+        [Display(Name = "Task Completed?")]
+        public bool IsCompleted { get; set; }
 
         // Employee assigned to
         public int EmployeeId { get; set; }

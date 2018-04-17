@@ -399,13 +399,34 @@ namespace WorkflowManagementSystem.Controllers
             {
                 EventProjectId = project.EventProjectId,
                 Presentation = project.Presentation,
-
-                //HACK: ADD the path to presentation file path here
-               // PresentationFile = project.prese
-
             };
 
-            
+                //HACK: ADD the path to presentation file path here
+                // PresentationFile = project.prese
+            if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
+            {
+                var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                string filename = Path.GetFileName(model.PresentationFile.FileName);
+                string ext = Path.GetExtension(filename).Substring(1);
+
+                if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                    return PartialView();
+                }
+
+                string appFolder = "~/Content/Uploads/";
+                var rand = Guid.NewGuid().ToString();
+                string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                model.PresentationFile.SaveAs(path);
+                project.Presentation = appFolder + rand + "-" + filename;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                return PartialView();
+            }
+                 
          return PartialView(model);
         }
 
@@ -427,8 +448,8 @@ namespace WorkflowManagementSystem.Controllers
                 }
 
                 //HACK: Add the presentation file path here
-               if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
-               {
+                if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
+                {
                     var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
                     string filename = Path.GetFileName(model.PresentationFile.FileName);
                     string ext = Path.GetExtension(filename).Substring(1);
@@ -450,9 +471,24 @@ namespace WorkflowManagementSystem.Controllers
                     ModelState.AddModelError(string.Empty, "Empty files are not accepted");
                     return PartialView();
                 }
+
+                //if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+                //{
+                //    var presentation = System.Web.HttpContext.Current.Request.Files["HelpPresentations"];
+                //    HttpPostedFileBase fileBase = new HttpPostedFileWrapper(presentation);
+                //    var fileName = Path.GetFileName(fileBase.FileName);
+                //     var path = Path.Combine(Server.MapPath("~/Content/Uploads/"), fileName);
+                //    fileBase.SaveAs(path);
+                //    return Json("File saved successfully.");
+                //}
+                //else
+                //{
+                //    return Json("No file saved.");
+                //}
+
                 project.Presentation = model.Presentation;
                 db.SaveChanges();
-           }
+            }
 
             // Failure: retrun the same model
             return PartialView(model);
@@ -844,7 +880,6 @@ namespace WorkflowManagementSystem.Controllers
                 db.SaveChanges();
             }
 
-            // Failure: retrun the same model
             return PartialView(model);
         }
 
@@ -978,76 +1013,98 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="id">project id</param>
         /// <returns>Get Employee Tasks partial view</returns>
-        public ActionResult GetEmployeeTasksPartial(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //public ActionResult GetEmployeeTasksPartial(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    var project = db.EventProjects.Find(id);
+        //    if (project == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    //var employeeTasks = project.EmployeeTasks.ToList();
+        //    var taskAssignments = project.TaskAssignments.ToList();
+        //    var model = new List<TaskAssignmentViewModel>();
+        //    foreach (var item in taskAssignments)
+        //    {
+        //        model.Add(new TaskAssignmentViewModel
+        //        {
+        //            TaskAssignmentId = item.TaskAssignmentId,
+        //            TaskName = item.TaskName,
+        //            Description = item.Description,
+        //            Deadline = item.Deadline,
+        //            Status = item.Status,
+        //            Priority = item.Priority,
+        //            AssignmentDate = item.AssignmentDate,
+        //            IsCompleted = item.IsCompleted,
+        //            //EventProject = item.EventProject.Name,
+        //            AnyEmployee = item.AnyEmployee.FullName,
+        //            Employee = item.Employee.FullName,
+        //        });
+        //    }
+        //    ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
 
-            var project = db.EventProjects.Find(id);
+        //    var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
+        //    ViewBag.EmployeeId = new SelectList(list, "Id", "FullName");
+        //    //ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+        //    ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+        //    return View(model);
+        //}
 
-            if (project == null)
-            {
-                return HttpNotFound();
-            }
+        ///// <summary>
+        ///// This action enables the addition of tasks in the project details page
+        ///// </summary>
+        ///// <param name="model">Employee Task view model</param>
+        ///// <returns>Employee Task partial view</returns>
+        //[Authorize(Roles = "Client Service Employee")]
+        //[HttpPost]
+        //public ActionResult EmployeeTaskPartial(TaskAssignment model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var project = db.EventProjects.Find(model.EventProjectId);
 
-            //var employeeTasks = project.EmployeeTasks.ToList();
-            var taskAssignments = project.TaskAssignments.ToList();
+        //        if (project == null)
+        //        {
+        //            return HttpNotFound();
+        //        }
 
-            var model = new List<TaskAssignmentViewModel>();
+        //        var taskAssignment = new TaskAssignment
+        //        {
+        //            TaskName = model.TaskName,
+        //            Description = model.Description,
+        //            Deadline = model.Deadline,
+        //            Status = TaskAssignment.TaskStatus.Pending,
+        //            Priority = model.Priority,
+        //            AssignmentDate = DateTime.Now,
+        //            IsCompleted = model.IsCompleted,                  
+        //            EmployeeId = model.EmployeeId, 
+        //            ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
+        //            EventProjectId = model.EventProjectId,
+        //        };
+        //        ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
 
-            foreach (var item in taskAssignments)
-            {
-                model.Add(new TaskAssignmentViewModel
-                {
-                    TaskAssignmentId = item.TaskAssignmentId,
-                    //EmployeeTaskId = item.EmployeeTaskId,
-                    //TaskName = item.TaskName,
-                    //Description = item.Description,
-                    //Employee = item.Employee.FullName,
-                    //EventProject = item.EventProject.Name
-                });
-            }
-            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+        //        //var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
+        //        //ViewBag.EmployeeId = new SelectList(list, "Id", "FullName");
 
-            return View(model);
-        }
+        //        //ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+        //        ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-        /// <summary>
-        /// This action enables the addition of tasks in the project details page
-        /// </summary>
-        /// <param name="model">Employee Task view model</param>
-        /// <returns>Employee Task partial view</returns>
-        [Authorize(Roles = "Client Service Employee")]
-        [HttpPost]
-        public ActionResult EmployeeTaskPartial(TaskAssignment model)
-        {
-            if (ModelState.IsValid)
-            {
-                var project = db.EventProjects.Find(model.EventProjectId);
+        //        db.TaskAssignments.Add(taskAssignment);
+        //        db.SaveChanges();
+        //    }
+        //    ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
 
-                if (project == null)
-                {
-                    return HttpNotFound();
-                }
+        //    var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
+        //    ViewBag.EmployeeId = new SelectList(list, "Id", "FullName");
 
-                var taskAssignment = new TaskAssignment
-                {
-                    TaskName = model.TaskName,
-                    Description = model.Description,
-                    ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
-                    EventProjectId = model.EventProjectId,
-                };
-                ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+        //    //ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+        //    ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-                db.TaskAssignments.Add(taskAssignment);
-                db.SaveChanges();
-            }
-            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-
-            return PartialView(model);
-        }
+        //    return PartialView(model);
+        //}
 
         // USHER APPOINTED 
 
@@ -1187,6 +1244,93 @@ namespace WorkflowManagementSystem.Controllers
             //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            return PartialView(model);
+        }
+
+
+        public ActionResult GetTaskAssignmentsPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var project = db.EventProjects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            var taskAssignments = project.TaskAssignments.ToList();
+
+            var model = new List<TaskAssignmentViewModel>();
+
+            foreach (var item in taskAssignments)
+            {
+                model.Add(new TaskAssignmentViewModel
+                {
+                    TaskAssignmentId = item.TaskAssignmentId,
+                    TaskName = item.TaskName,
+                    Description = item.Description,
+                    Deadline = item.Deadline,
+                    Status = item.Status,
+                    Priority = item.Priority,
+                    AssignmentDate = item.AssignmentDate,
+                    IsCompleted = item.IsCompleted,
+                    //EventProject = item.EventProject.Name,
+                    AnyEmployee = item.AnyEmployee.FullName,
+                    Employee = item.Employee.FullName,                    
+                });
+            }
+
+            return View(model);
+        }
+        
+        [HttpPost]
+        public ActionResult TaskAssignmentPartial(TaskAssignmentViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var taskAssignment = new TaskAssignment
+                {
+                    TaskName = model.TaskName,
+                    Description = model.Description,
+                    Deadline = model.Deadline,
+                    Status = TaskAssignment.TaskStatus.Pending,
+                    Priority = model.Priority,
+                    AssignmentDate = DateTime.Now,
+                    IsCompleted = model.IsCompleted,
+                    EmployeeId = model.EmployeeId,
+                    ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
+                    EventProjectId = model.EventProjectId,                    
+                };
+
+                ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+                //var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
+                ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+                ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+                db.TaskAssignments.Add(taskAssignment);
+                db.SaveChanges();
+
+                ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+                ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+                ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            }
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            //var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
             return PartialView(model);
         }
     }

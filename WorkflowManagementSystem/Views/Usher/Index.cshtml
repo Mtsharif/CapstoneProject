@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.UsherViewModel>
 
-@if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
     {
         ViewBag.Title = "Usher List";
@@ -87,9 +87,9 @@
             $(document).ready(function () {
                 $('#ushersTable').DataTable({
 
-                    "scrollY": "300px",
-                    "scrollCollapse": true,
-                    "paging": false,
+                    //"scrollY": "300px",
+                    //"scrollCollapse": true,
+                    //"paging": false,
 
                     "columnDefs": [
                         { "orderable": false, "targets": -1 }

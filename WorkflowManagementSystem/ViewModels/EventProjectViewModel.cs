@@ -96,8 +96,8 @@ namespace WorkflowManagementSystem.ViewModels
 
         // Tabs Section
 
-        [Display(Name = "Presentation File")]
-        public HttpPostedFileBase PresentationFile { get; set; }
+        //[Display(Name = "Presentation File")]
+        //public HttpPostedFileBase PresentationFile { get; set; }
 
         //[Display(Name = "Presentation")]
         //[DisplayFormat(NullDisplayText = "Presentation Not Available")]
