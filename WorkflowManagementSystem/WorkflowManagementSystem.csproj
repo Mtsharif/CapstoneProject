@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CostSheetController.cs" />
     <Compile Include="Controllers\CostSheetItemController.cs" />
+    <Compile Include="Controllers\CriterionController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeTaskController.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Controllers\TaskAssignmentController.cs" />
     <Compile Include="Controllers\UsherAppointedController.cs" />
     <Compile Include="Controllers\UsherController.cs" />
+    <Compile Include="Controllers\UsherEvaluationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +248,7 @@
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\CostSheetItemViewModel.cs" />
     <Compile Include="ViewModels\CostSheetViewModel.cs" />
+    <Compile Include="ViewModels\CriterionViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\EmployeeTaskViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -259,6 +262,7 @@
     <Compile Include="ViewModels\ProjectScheduleViewModel.cs" />
     <Compile Include="ViewModels\TaskAssignmentViewModel.cs" />
     <Compile Include="ViewModels\UsherAppointedViewModel.cs" />
+    <Compile Include="ViewModels\UsherEvaluationViewModel.cs" />
     <Compile Include="ViewModels\UsherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -581,17 +585,14 @@
     <Content Include="Views\EventProject\Delete.cshtml" />
     <Content Include="Views\EventProject\ClientDetailsPartial.cshtml" />
     <Content Include="Views\Document\Index.cshtml" />
-    <Content Include="Views\Document\AddApprovalPartial.cshtml" />
     <Content Include="Views\Document\Details.cshtml" />
     <Content Include="Views\Document\AddDocument.cshtml" />
     <Content Include="Views\Document\Edit.cshtml" />
-    <Content Include="Views\Document\Delete.cshtml" />
     <Content Include="Views\CostSheet\Index.cshtml" />
     <Content Include="Views\CostSheet\Edit.cshtml" />
     <Content Include="Views\CostSheet\Delete.cshtml" />
     <Content Include="Views\CostSheet\Details.cshtml" />
     <Content Include="Views\CostSheet\Create.cshtml" />
-    <Content Include="Views\Document\DocumentListPartial.cshtml" />
     <Content Include="Views\CostSheetItem\Create.cshtml" />
     <Content Include="Views\CostSheetItem\Details.cshtml" />
     <Content Include="Views\EventProject\ProjectDetailsPartial.cshtml" />
@@ -614,6 +615,29 @@
     <Content Include="Views\EventProject\Project3DModelPartial.cshtml" />
     <Content Include="Views\EventProject\ProjectEventReportTemplatePartial.cshtml" />
     <Content Include="Views\EventProject\ProjectEventReportPartial.cshtml" />
+    <Content Include="Views\EventProject\GetDocumentPartial.cshtml" />
+    <Content Include="Views\EventProject\DocumentPartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectGetPresentationPartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectGet3DModelPartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectGetEventReportTemplatePartial.cshtml" />
+    <Content Include="Views\EventProject\ProjectGetEventReportPartial.cshtml" />
+    <Content Include="Views\TaskAssignment\Index.cshtml" />
+    <Content Include="Views\EventProject\GetEmployeeTasksPartial.cshtml" />
+    <Content Include="Views\EventProject\EmployeeTaskPartial.cshtml" />
+    <Content Include="Views\Document\Delete.cshtml" />
+    <Content Include="Views\Document\AddApproval.cshtml" />
+    <Content Include="Views\Document\ApprovalDetails.cshtml" />
+    <Content Include="Views\TaskAssignment\Details.cshtml" />
+    <Content Include="Views\Criterion\Create.cshtml" />
+    <Content Include="Views\Criterion\Index.cshtml" />
+    <Content Include="Views\Criterion\Edit.cshtml" />
+    <Content Include="Views\Criterion\Delete.cshtml" />
+    <Content Include="Views\UsherEvaluation\Evaluate.cshtml" />
+    <Content Include="Views\UsherEvaluation\Details.cshtml" />
+    <Content Include="Views\UsherEvaluation\Index.cshtml" />
+    <Content Include="Views\CostSheetItem\Index.cshtml" />
+    <Content Include="Views\EventProject\GetCostSheetsPartial.cshtml" />
+    <Content Include="Views\EventProject\CostSheetPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

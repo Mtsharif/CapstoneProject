@@ -24,6 +24,7 @@ namespace WorkflowManagementSystem.Models
             CostSheets = new HashSet<CostSheet>();
             Documents = new HashSet<Document>();
             ProjectSchedules = new HashSet<ProjectSchedule>();
+            TaskAssignments = new HashSet<TaskAssignment>();
             EmployeeTasks = new HashSet<EmployeeTask>();
             UsherAppointeds = new HashSet<UsherAppointed>();
         }
@@ -85,6 +86,7 @@ namespace WorkflowManagementSystem.Models
         public virtual ICollection<ProjectSchedule> ProjectSchedules { get; set; }
 
         public virtual ICollection<EmployeeTask> EmployeeTasks { get; set; }
+        public virtual ICollection<TaskAssignment> TaskAssignments { get; set; }
 
         public virtual ICollection<UsherAppointed> UsherAppointeds { get; set; }
     }

@@ -1,0 +1,26 @@
+﻿@model WorkflowManagementSystem.ViewModels.Project3DModelViewModel
+
+@{
+    Layout = null;
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ThreeDModel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ThreeDModel)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ThreeDModelFile)
+            @if (!String.IsNullOrEmpty(Model.ThreeDModel))
+            {
+                <a href="@Url.Content(Model.ThreeDModel)">3D Model File</a>
+            }
+        </dd>
+    </dl>
+</div>
+
+
+

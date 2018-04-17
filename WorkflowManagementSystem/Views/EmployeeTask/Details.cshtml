@@ -10,11 +10,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.TaskName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.TaskName)
         </dd>
 
         <dt>
@@ -25,7 +25,7 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Deadline)
         </dt>
 
@@ -47,7 +47,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Priority)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.EventProject)
@@ -69,5 +69,7 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeTaskId }) |
+    @*@Html.ActionLink("Assign", "Create", new { id = Model.EmployeeTaskId }) |*@
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Assign Task", "Create", "TaskAssignment", new { id = Model.EmployeeTaskId }, null)
 </p>

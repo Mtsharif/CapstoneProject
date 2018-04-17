@@ -28,16 +28,16 @@ namespace WorkflowManagementSystem.Models
 
         [Required]
         [StringLength(60)]
-        public string Name { get; set; }
+        public string TaskName { get; set; }
 
         [StringLength(500)]
         public string Description { get; set; }
 
-        public DateTime Deadline { get; set; }
+        //public DateTime Deadline { get; set; }
 
-        public TaskStatus Status { get; set; }
+        //public TaskStatus Status { get; set; }
 
-        public TaskPriority Priority { get; set; }
+        //public TaskPriority Priority { get; set; }
 
         public int EventProjectId { get; set; }
 
@@ -50,27 +50,27 @@ namespace WorkflowManagementSystem.Models
         public virtual ICollection<TaskAssignment> TaskAssignments { get; set; }
     }
 
-    /// <summary>
-    /// The TaskStatus enum indicates the possible status of a task.
-    /// </summary>
-    public enum TaskStatus
-    {
-        Pending,
+    ///// <summary>
+    ///// The TaskStatus enum indicates the possible status of a task.
+    ///// </summary>
+    //public enum TaskStatus
+    //{
+    //    Pending,
 
-        [Display(Name = "In Progress")]
-        InProgress,
+    //    [Display(Name = "In Progress")]
+    //    InProgress,
 
-        Completed,
-        Overdue
-    }
+    //    Completed,
+    //    Overdue
+    //}
 
-    /// <summary>
-    /// This enum specifies the possible priorities of a task.
-    /// </summary>
-    public enum TaskPriority
-    {
-        High,
-        Medium,
-        Low
-    }
+    ///// <summary>
+    ///// This enum specifies the possible priorities of a task.
+    ///// </summary>
+    //public enum TaskPriority
+    //{
+    //    High,
+    //    Medium,
+    //    Low
+    //}
 }

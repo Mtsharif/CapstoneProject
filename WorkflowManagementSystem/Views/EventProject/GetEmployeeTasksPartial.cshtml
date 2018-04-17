@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.EmployeeTaskViewModel>
+
+    @{
+        Layout = null;
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>          
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee)
+                </td>              
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeTaskId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeTaskId })
+                    @Html.ActionLink("assign","Create", "TaskAssignment", new { id = item.EmployeeTaskId }, null)
+                </td>
+            </tr>
+        }
+    </table>
+

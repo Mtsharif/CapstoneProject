@@ -1,0 +1,28 @@
+﻿@model WorkflowManagementSystem.ViewModels.ProjectEventReportViewModel
+
+@{
+    Layout = null;
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventReport)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EventReport)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.EventReportFile)
+            @if (!String.IsNullOrEmpty(Model.EventReport))
+            {
+                <a href="@Url.Content(Model.EventReport)">Event Report Template File</a>
+            }
+        </dd>
+    </dl>
+</div>
+
+
+
+
+

@@ -3,7 +3,7 @@
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
     {
-        ViewBag.Title = "Edit";
+        ViewBag.Title = "Edit Employee";
     }
 
     <h2>Edit Employee</h2>
@@ -13,25 +13,18 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Employee</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
 
+        <fieldset class="fieldset-border">
+            <legend class="legend-border">Personal Information</legend>
             <div class="form-group">
                 @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -52,13 +45,24 @@
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                 </div>
             </div>
+        </fieldset>
 
+        <fieldset class="fieldset-border">
+            <legend class="legend-border">Professional Information</legend>
             <div class="form-group">
                 @Html.LabelFor(model => model.JobTitle, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -87,19 +91,19 @@
                 @Html.Label("Roles", new { @class = "control-label col-md-2" })
                 <span class=" col-md-10">
                     @foreach (var item in (IEnumerable<SelectListItem>)ViewBag.RolesSelectList)
-                    {
-                        <input type="checkbox" name="roles" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
-                        @Html.Label(item.Value, new { @class = "control-label" })
-                    }
+                {
+                    <input type="checkbox" name="roles" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                    @Html.Label(item.Value, new { @class = "control-label" })
+            }
                 </span>
             </div>
-
+            </fieldset>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
-        </div>
+    </div>
     }
 
     <div>

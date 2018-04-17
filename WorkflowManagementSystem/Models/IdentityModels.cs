@@ -129,11 +129,11 @@ namespace WorkflowManagementSystem.Models
                 .HasForeignKey(e => e.ClientServiceEmployeeId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.EmployeeTasks)
-                .WithRequired(e => e.Employee)
-                .HasForeignKey(e => e.ClientServiceEmployeeId)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Employee>()
+            //    .HasMany(e => e.EmployeeTasks)
+            //    .WithRequired(e => e.Employee)
+            //    .HasForeignKey(e => e.ClientServiceEmployeeId)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.TaskAssignments)
@@ -180,7 +180,8 @@ namespace WorkflowManagementSystem.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<EventProject>()
-                .HasMany(e => e.EmployeeTasks)
+                //.HasMany(e => e.EmployeeTasks)
+                .HasMany(e => e.TaskAssignments)
                 .WithRequired(e => e.EventProject)
                 .WillCascadeOnDelete(false);
 
@@ -205,10 +206,10 @@ namespace WorkflowManagementSystem.Models
                 .HasForeignKey(e => e.ItemId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<EmployeeTask>()
-                .HasMany(e => e.TaskAssignments)
-                .WithRequired(e => e.EmployeeTask)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<EmployeeTask>()
+            //    .HasMany(e => e.TaskAssignments)
+            //    .WithRequired(e => e.EmployeeTask)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Usher>()
                 .HasMany(e => e.UsherAppointeds)
@@ -236,11 +237,6 @@ namespace WorkflowManagementSystem.Models
                     m.MapRightKey("LanguageId");
                 });
         }
-        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.CostSheetItemViewModel> CostSheetItemViewModels { get; set; }
-
-        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.CostSheetViewModel> CostSheetViewModels { get; set; }
-
-        //public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.DocumentViewModel> DocumentViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

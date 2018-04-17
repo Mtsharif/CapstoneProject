@@ -1,47 +1,93 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.DocumentViewModel>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>List of Quotation and Invoices</h2>
-
-<p>
-    @Html.ActionLink("Create New", "AddDocument")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FilePath)
-        </th>    
-        <th>
-            @Html.DisplayNameFor(model => model.EventProject)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+@if (Request.IsAuthenticated && User.IsInRole("Finance Employee"))
+{
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilePath)
-            </td>      
-            <td>
-                @Html.DisplayFor(modelItem => item.EventProject)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
-            </td>
-        </tr>
+        ViewBag.Title = "Document List";
     }
-</table>
 
-@*@Html.Partial("AddApprovalPartial")*@
+    <h2>List of Quotation and Invoices</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddDocument")
+    </p>
+    <table class="table id="documentsTable"">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventProject)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilePath)
+                </td>
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DocumentFile)
+                        @if (!String.IsNullOrEmpty(item.FilePath))
+                         {
+                        <a href="@Url.Content(item.FilePath)">File</a>
+                         }
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventProject)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
+                    @Html.ActionLink("Add Approval", "AddApproval", new { id = item.DocumentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
+                </td>
+            </tr>
+        }
+    </table>
+
+
+    @section scripts
+{
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#documentsTable').DataTable({
+
+                    "scrollY": "80px",
+                    "scrollCollapse": true,
+                    "paging": false,
+
+                    "columnDefs": [
+                        { "orderable": false, "targets": -1 }
+                    ]
+                });
+            });
+        </script>
+    }
+
+    @section styles
+{
+        <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

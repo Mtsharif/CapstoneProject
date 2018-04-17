@@ -25,7 +25,7 @@ namespace WorkflowManagementSystem.Models
             SubmitCostSheets = new HashSet<CostSheet>();
             CostVariances = new HashSet<CostVariance>();
             EventProjects = new HashSet<EventProject>();
-            EmployeeTasks = new HashSet<EmployeeTask>();
+            //EmployeeTasks = new HashSet<EmployeeTask>();
             TaskAssignments = new HashSet<TaskAssignment>();
             AssignedTasks = new HashSet<TaskAssignment>();
             UsherAppointeds = new HashSet<UsherAppointed>();
@@ -42,7 +42,7 @@ namespace WorkflowManagementSystem.Models
 
         public EmployeeJobTitle JobTitle { get; set; }
 
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
 
@@ -60,7 +60,7 @@ namespace WorkflowManagementSystem.Models
 
         public virtual ICollection<EventProject> EventProjects { get; set; }
 
-        public virtual ICollection<EmployeeTask> EmployeeTasks { get; set; }
+        //public virtual ICollection<EmployeeTask> EmployeeTasks { get; set; }
 
         public virtual ICollection<TaskAssignment> TaskAssignments { get; set; }
 

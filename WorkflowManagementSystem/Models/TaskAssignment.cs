@@ -21,11 +21,25 @@ namespace WorkflowManagementSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskAssignmentId { get; set; }
 
+        [Required]
+        [StringLength(60)]
+        public string TaskName { get; set; }
+
+        [StringLength(500)]
+        public string Description { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime AssignmentDate { get; set; }
 
-        //public int TaskId { get; set; }
-        public int EmployeeTaskId { get; set; }
+        public DateTime Deadline { get; set; }
+
+        public TaskStatus Status { get; set; }
+
+        public TaskPriority Priority { get; set; }
+
+        public bool IsCompleted { get; set; }
+
+        public int EventProjectId { get; set; }
 
         public int EmployeeId { get; set; }
 
@@ -35,6 +49,30 @@ namespace WorkflowManagementSystem.Models
 
         public virtual Employee AnyEmployee { get; set; }
 
-        public virtual EmployeeTask EmployeeTask { get; set; }
+        public virtual EventProject EventProject { get; set; }
+
+        /// <summary>
+        /// The TaskStatus enum indicates the possible status of a task.
+        /// </summary>
+        public enum TaskStatus
+        {
+            Pending,
+
+            [Display(Name = "In Progress")]
+            InProgress,
+
+            Completed,
+            Overdue
+        }
+
+        /// <summary>
+        /// This enum specifies the possible priorities of a task.
+        /// </summary>
+        public enum TaskPriority
+        {
+            High,
+            Medium,
+            Low
+        }
     }
 }

@@ -28,7 +28,9 @@ namespace WorkflowManagementSystem.Models
         public int CriterionId { get; set; }
 
         [Required]
-        public CriterionName Name { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
+        //public CriterionName Name { get; set; }
 
         [StringLength(200)]
         public string Description { get; set; }
@@ -38,18 +40,18 @@ namespace WorkflowManagementSystem.Models
         public virtual ICollection<UsherEvaluation> UsherEvaluations { get; set; }
     }
 
-    /// <summary>
-    /// This enum defines the criteria used for evaluation.
-    /// </summary>
-    public enum CriterionName
-    {
-        [Display(Name = "Quality of Work")]
-        QualityOfWork,
+    ///// <summary>
+    ///// This enum defines the criteria used for evaluation.
+    ///// </summary>
+    //public enum CriterionName
+    //{
+    //    [Display(Name = "Quality of Work")]
+    //    QualityOfWork,
 
-        Communication,
-        Performance,
+    //    Communication,
+    //    Performance,
 
-        [Display(Name = "Overall Satisfactory Level")]
-        OverallSatisfactoryLevel
-    }
+    //    [Display(Name = "Overall Satisfactory Level")]
+    //    OverallSatisfactoryLevel
+    //}
 }

@@ -10,6 +10,7 @@
         height: 50px;
         color: black;
     }
+    
 </style>
 
 <h2>Project Management</h2>
@@ -26,64 +27,95 @@
             <li><a href="#EventReportTemplateTab" data-toggle="tab">Event Report Template</a></li>
             <li><a href="#EventReportTab" data-toggle="tab">Event Report</a></li>
             <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
-            <li><a href="#ClientTab" data-toggle="tab">Client</a></li>
+            <li><a href="#ClientTab" data-toggle="tab">Client Details</a></li>
+            <li><a href="#TasksTab" data-toggle="tab">Tasks</a></li>
+            <li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>
+            @*<li><a href="#UshersTab" data-toggle="tab">Ushers</a></li>*@
         </ul>
 
         <div class="tab-content col-md-9">
-            <div class="tab-pane active" id="DetailsTab">
+            <div class="tab-pane active  " id="DetailsTab">
                 <h3>Project Details</h3>
                 @Html.Action("ProjectDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
             </div>
 
             <div class="tab-pane" id="PresentationTab">
                 <h3>Presentation</h3>
+                @*@Html.Partial("ProjectPresentationPartial",
+                        new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+            <div id="PresentationStatusMessage"></div>*@
+
                 @Html.Partial("ProjectPresentationPartial",
-                            new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
-                <div id="PresentationStatusMessage"></div>
+        new ProjectPresentationViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="PresentationDetails"></div>
             </div>
 
             <div class="tab-pane" id="ThreeDimensionModelTab">
                 <h3>Three Dimension Model</h3>
                 @Html.Partial("Project3DModelPartial",
-                     new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
-                <div id="3DModelStatusMessage"></div>
+        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="3DModelDetails"></div>
             </div>
 
             <div class="tab-pane" id="QuotationAndInvoiceTab">
                 <h3>Quotation and Invoice</h3>
-
+                @Html.Partial("DocumentPartial",
+        new DocumentViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="DocumentStatusMessage"></div>
+                <div id="DocumentList"></div>
             </div>
 
             <div class="tab-pane" id="EventReportTemplateTab">
                 <h3>Event Report Template</h3>
                 @Html.Partial("ProjectEventReportTemplatePartial",
-                    new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
-                <div id="EventReportTemplateStatusMessage"></div>
+        new ProjectEventReportTemplateViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="EventReportTemplateDetails"></div>
             </div>
 
             <div class="tab-pane" id="EventReportTab">
-                <h3>Event Report Template</h3>
+                <h3>Event Report</h3>
                 @Html.Partial("ProjectEventReportPartial",
-                    new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
-                <div id="EventReportStatusMessage"></div>
+        new ProjectEventReportViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="EventReportDetails"></div>
             </div>
 
             <div class="tab-pane" id="SchedulesTab">
                 <h3>Schedules</h3>
                 @Html.Partial("ProjectSchedulesPartial",
-              new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
+        new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
                 <div id="ScheduleStatusMessage"></div>
                 <div id="ProjectScheduleList"></div>
             </div>
 
             <div class="tab-pane" id="ClientTab">
-                <h3>Client</h3>
-
+                <h3>Client Details</h3>
+                @Html.Action("ClientDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
             </div>
+
+            <div class="tab-pane" id="TasksTab">
+                <h3>Tasks</h3>
+                @Html.Partial("EmployeeTaskPartial",
+        new EmployeeTaskViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="TaskStatusMessage"></div>
+                <div id="TaskList"></div>
+            </div>
+
+            @*<div class="tab-pane" id="UshersTab">
+            <h3>Ushers</h3>
+
+
+        </div>*@
+
+            <div class="tab-pane" id="CostSheetTab">
+                <h3>Cost Sheet</h3>
+                @Html.Partial("CostSheetPartial",
+        new CostSheetViewModel { EventProjectId = (int)ViewBag.ProjectId})
+                <div id="CostSheetStatusMessage"></div>
+                <div id="CostSheetList"></div>
+            </div>
+
         </div>
-
     </div>
-
 </div>
 
 @section Scripts {
@@ -96,6 +128,71 @@
             $.get("/EventProject/ProjectGetSchedulesPartial", { id: projectId })
                 .done(function (result) {
                     $("#ProjectScheduleList").html(result);
+                });
+        }
+
+        // Definition of Get project schedules function
+        function getCostSheets(projectId) {
+            $.get("/EventProject/GetCostSheetsPartial", { id: projectId })
+                .done(function (result) {
+                    $("#CostSheetList").html(result);
+                });
+        }
+
+
+        //// Definition of Get usher appointed function
+        //function getUsherAppointed(projectId) {
+        //    $.get("/EventProject/GetUsherAppointedPartial", { id: projectId })
+        //        .done(function (result) {
+        //            $("#UsherAppointedList").html(result);
+        //        });
+        //}
+
+        // Definition to Get presentation function
+        function getProjectPresentation(projectId) {
+            $.get("/EventProject/ProjectGetPresentationPartial", { id: projectId })
+                .done(function (result) {
+                    $("#PresentationDetails").html(result);
+                });
+        }
+
+        // Definition to Get 3D model function
+        function getProject3DModel(projectId) {
+            $.get("/EventProject/ProjectGet3DModelPartial", { id: projectId })
+                .done(function (result) {
+                    $("#3DModelDetails").html(result);
+                });
+        }
+
+        // Definition to Get event report template function
+        function getProjectEventReportTemplate(projectId) {
+            $.get("/EventProject/ProjectGetEventReportTemplatePartial", { id: projectId })
+                .done(function (result) {
+                    $("#EventReportTemplateDetails").html(result);
+                });
+        }
+
+        // Definition to Get event report template function
+        function getProjectEventReport(projectId) {
+            $.get("/EventProject/ProjectGetEventReportPartial", { id: projectId })
+                .done(function (result) {
+                    $("#EventReportDetails").html(result);
+                });
+        }
+
+        // Definition of Get document function
+        function getDocuments(projectId) {
+            $.get("/EventProject/GetDocumentPartial", { id: projectId })
+                .done(function (result) {
+                    $("#DocumentList").html(result);
+                });
+        }
+
+        // Definition of Get task function
+        function getTasks(projectId) {
+            $.get("/EventProject/GetEmployeeTasksPartial", { id: projectId })
+                .done(function (result) {
+                    $("#TaskList").html(result);
                 });
         }
 
@@ -132,7 +229,9 @@
                         // Clear the text inputs
                         $('#Presentation').val("");
 
-                        $("#PresentationStatusMessage").html("<p>Presentation added successfully</p>");
+                        getProjectPresentation(projectId);
+
+                        //$("#PresentationStatusMessage").html("<p>Presentation added successfully</p>");
                     },
                     error: function (jqxhr, status, exception) {
                         console.log(status);
@@ -159,7 +258,7 @@
                         // Clear the text inputs
                         $('#ThreeDModel').val("");
 
-                        $("#3DModelStatusMessage").html("<p>3D Model added successfully</p>");
+                        getProject3DModel(projectId);
                     },
                     error: function (jqxhr, status, exception) {
                         console.log(status);
@@ -186,7 +285,8 @@
                         // Clear the text inputs
                         $('#EventReportTemplate').val("");
 
-                        $("#EventReportTemplateStatusMessage").html("<p>Event Report Template added successfully</p>");
+                        getProjectEventReportTemplate(projectId);
+
                     },
                     error: function (jqxhr, status, exception) {
                         console.log(status);
@@ -213,7 +313,8 @@
                         // Clear the text inputs
                         $('#EventReport').val("");
 
-                        $("#EventReportStatusMessage").html("<p>Event Report added successfully</p>");
+                        getProjectEventReport(projectId);
+
                     },
                     error: function (jqxhr, status, exception) {
                         console.log(status);
@@ -254,6 +355,140 @@
                     }
                 });
             });
+
+            // Display Schedules
+            getCostSheets(projectId);
+
+            // Create a schedule
+            $("#CreateCostSheetButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/CostSheetPartial",
+                    type: "post",
+                    data: {
+                        
+                        Name: $('#Name').val(),
+                        Status: $('#Status').val(),
+                        CostSheet: $('#CostSheet').val(),
+                        Item: $('#Item').val(),
+                        EventProjectId: Item
+                    },
+                    success: function (result) {
+
+                        // Clear fields
+                        clearScheduleForm()
+
+                        // Display the project schedule after the add
+                        getCostSheets(projectId);
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#CostSheetStatusMessage").html("<p>CostSheet was not added!</p>");
+                    }
+                });
+            });
+
+            // Display documents
+            getDocuments(projectId);
+
+            // Create a document
+            $("#CreateDocumentButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/DocumentPartial",
+                    type: "post",
+                    data: {
+                        Name: $('#Name').val(),
+                        FilePath: $('#DocumentFile').val(),
+                        DocumentFile: $('#DocumentFile').val(),
+                        Status: $('#Status').val(),
+                        EventProjectId: projectId
+                    },
+                    success: function (result) {
+
+                        // Clear fields
+                        clearScheduleForm()
+
+                        getDocuments(projectId);
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#DocumentStatusMessage").html("<p>Quotation and Invoice were not added!</p>");
+                    }
+                });
+            });
+
+             // Display Tasks
+            getTasks(projectId);
+
+            // Create a schedule
+            $("#CreateTaskButton").click(function (event) {
+
+                // Disable the click event on the create button
+                event.preventDefault();
+
+                $.ajax({
+                    url: "/EventProject/EmployeeTaskPartial",
+                    type: "post",
+                    data: {
+                        TaskName: $('#TaskName').val(),
+                        Description: $('#Description').val(),
+                        //Employee: $('#Employee').val(),
+                        EventProjectId: projectId
+                    },
+                    success: function (result) {
+
+                        // Clear fields
+                        clearScheduleForm()
+
+                        // Display the project schedule after the add
+                        getTasks(projectId);
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#TaskStatusMessage").html("<p>Task was not added!</p>");
+                    }
+                });
+            });
+
+            //// Display usher appointed
+            //getUsherAppointed(projectId);
+
+            //// Create a schedule
+            //$("#CreateUsherAppointedButton").click(function (event) {
+
+            //    // Disable the click event on the create button
+            //    event.preventDefault();
+
+            //    $.ajax({
+            //        url: "/EventProject/UsherAppointedPartial",
+            //        type: "post",
+            //        data: {
+            //            DateAppointed: $('#DateAppointed').val(),
+            //            Usher: $('#Usher').val(),
+            //            Employee: $('#Employee').val(),
+            //            EventProjectId: projectId
+            //        },
+            //        success: function (result) {
+
+            //            //// Clear fields
+            //            //clearScheduleForm()
+
+            //            // Display the project schedule after the add
+            //            getUsherAppointed(projectId);
+            //        },
+            //        error: function (jqxhr, status, exception) {
+            //            console.log(status);
+            //            $("#UsherAppointedStatusMessage").html("<p>Usher was not assigned!</p>");
+            //        }
+            //    });
+            //});
 
         });
         

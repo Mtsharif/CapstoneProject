@@ -135,7 +135,7 @@ namespace WorkflowManagementSystem.Controllers
         public ActionResult Create()
         {
             ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
-            return View();
+            return View();           
         }
 
         /// <summary>
@@ -153,10 +153,11 @@ namespace WorkflowManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 Employee employee = Mapper.Map<EmployeeViewModel, Employee>(model);
+
                 employee.UserName = model.UserName;
 
                 var result = UserManager.Create(employee, model.Password);
-
+              
                 if (result.Succeeded)
                 {
                     if (roles != null)
@@ -178,7 +179,7 @@ namespace WorkflowManagementSystem.Controllers
                             return View();
                         }
                     }
-
+                   
                     return RedirectToAction("Index");
                 }
                 else

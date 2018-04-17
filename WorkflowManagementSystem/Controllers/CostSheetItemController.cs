@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Description: This file represents the Cost Sheet Controller class
+ * Author: Mtsharif 
+ * Date: 18/4/2018
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,10 +15,15 @@ using WorkflowManagementSystem.ViewModels;
 
 namespace WorkflowManagementSystem.Controllers
 {
+    /// <summary>
+    /// This controller is generated based on th cost sheet item view model and domain model classes.
+    /// It is used to add items to a cost sheet
+    /// </summary>
     public class CostSheetItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        
         // GET: CostSheetItem
         public ActionResult Index()
         {
@@ -31,6 +42,7 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        
         // GET: CostSheetItem/Details/5
         public ActionResult Details(int? id)
         {
@@ -58,6 +70,10 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrives the create page to add items in a cost sheet
+        /// </summary>
+        /// <returns>Create view</returns>
         // GET: CostSheetItem/Create
         public ActionResult Create()
         {
@@ -67,28 +83,36 @@ namespace WorkflowManagementSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action allows the addition of items to a cost sheet 
+        /// </summary>
+        /// <param name="model">Cost sheet item model</param>
+        /// <returns>Index view</returns>
         // POST: CostSheetItem/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CostSheetItemViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                var costSheetItem = new CostSheetItem
-                {
-                    Quantity = model.Quantity,
-                    ItemId = model.ItemId,
-                    CostSheetId = model.CostSheetId
-                };
+            {                
+                    var costSheetItem = new CostSheetItem
+                    {
+                        Quantity = model.Quantity,
+                        ItemId = model.ItemId,
+                        CostSheetId = model.CostSheetId
+                    };
 
-                db.CostSheetItems.Add(costSheetItem);
-                db.SaveChanges();
+                //var cost = db.CostSheetItems.Where(m => m.CostSheetId == model.CostSheetId && m.ItemId == model.ItemId);
 
-                ViewBag.ItemId = new SelectList(db.Items, "ItemId", "Name", "UnitCost");
-                //ViewBag.ItemId = new SelectList(db.Items, "ItemId", "UnitCost");
+                    db.CostSheetItems.Add(costSheetItem);
+                    db.SaveChanges();                
+
+                ViewBag.ItemId = new SelectList(db.Items, "ItemId", "Name");
+                
                 ViewBag.CostSheetId = new SelectList(db.CostSheets, "CostSheetId", "Name");
 
                 return RedirectToAction("Index");
+                //return RedirectToAction("Details", new { id = costSheetItem.CostSheetId, costSheetItem.ItemId });
             }
             else
             {
@@ -100,11 +124,17 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action retrieves the edit page
+        /// </summary>
+        /// <param name="id">Cost sheet item id</param>
+        /// <returns>Edit view</returns>
         // GET: CostSheetItem/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
+
 
         // POST: CostSheetItem/Edit/5
         [HttpPost]

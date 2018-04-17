@@ -19,13 +19,18 @@ using WorkflowManagementSystem.ViewModels;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// This controller is created based on the UsherAppointedViewModel and UsherAppointed classes 
+    /// This controller is created based on the UsherAppointedViewModel and UsherAppointed classes.
+    /// It allows the user to assign ushers to projects as well as edit and delete the assignment.
     /// </summary>
     [Authorize(Roles = "Client Service Employee")]
     public class UsherAppointedController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action retrieves a list of appointed ushers.
+        /// </summary>
+        /// <returns>Index view</returns>
         // GET: UsherAppointed
         public ActionResult Index()
         {
@@ -47,6 +52,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+       /// <summary>
+       /// This action retrieves the details of an usher assignment
+       /// </summary>
+       /// <param name="id">Usher appointed id</param>
+       /// <returns>Details view</returns>
         // GET: UsherAppointed/Details/5
         public ActionResult Details(int? id)
         {
@@ -74,6 +84,10 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action obtains the usher assignment page 
+        /// </summary>
+        /// <returns>Usher appointed create view</returns>
         // GET: UsherAppointed/Create
         public ActionResult Create()
         {
@@ -84,6 +98,11 @@ namespace WorkflowManagementSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action enables the user to assign ushers to projects
+        /// </summary>
+        /// <param name="model">Usher appointed model</param>
+        /// <returns>Index view or create assignment view</returns>
         // POST: UsherAppointed/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -117,6 +136,11 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action gets the usher appointed edit page
+        /// </summary>
+        /// <param name="id">Usher appointed id</param>
+        /// <returns>Edit usher assignment view</returns>
         // GET: UsherAppointed/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -148,6 +172,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables an usher appointment to be edited
+        /// </summary>
+        /// <param name="model">Usher appointed model</param>
+        /// <returns>Index view or edit view</returns>
         // POST: UsherAppointed/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -169,6 +198,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves the deletion page
+        /// </summary>
+        /// <param name="id">Usher appointed id</param>
+        /// <returns>Delete view or error view</returns>
         // GET: UsherAppointed/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -200,6 +234,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows the deletion of an usher assignment
+        /// </summary>
+        /// <param name="id">Usher appointed id</param>
+        /// <returns>Index view</returns>
         // POST: UsherAppointed/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

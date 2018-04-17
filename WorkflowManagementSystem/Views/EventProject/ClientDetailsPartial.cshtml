@@ -1,25 +1,20 @@
 ﻿@model WorkflowManagementSystem.ViewModels.ClientViewModel
+@{
+    Layout = null;
+}
 
 @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
 
 {
     <div>
-        <h4>Client Details</h4>
         <hr />
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal container-fluid color-grey body-content">
             <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.Label("Name")
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.FirstName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-
-            <dd>
                 @Html.DisplayFor(model => model.LastName)
             </dd>
 
@@ -64,18 +59,11 @@
             </dd>
         </dl>
     </div>
-    <p>
+    @*<p>
         @Html.ActionLink("Back to List", "Index")
-    </p>
+    </p>*@
 
     @*@section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }*@
-}
-
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+            @Scripts.Render("~/bundles/jqueryval")
+        }*@
 }

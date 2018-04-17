@@ -27,7 +27,6 @@ namespace WorkflowManagementSystem.Models
 
         public int UsherId { get; set; }
         
-
         [Required]
         [StringLength(30)]
         public string FirstName { get; set; }

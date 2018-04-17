@@ -3,7 +3,7 @@
 @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
 {
     {
-        ViewBag.Title = "Index";
+        ViewBag.Title = "Client List";
     }
 
     <h2>Client List</h2>
@@ -61,7 +61,16 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#clientsTable').DataTable();
+                $('#clientsTable').DataTable({
+
+                    "scrollY": "300px",
+                    "scrollCollapse": true,
+                    "paging": false,
+
+                    "columnDefs": [
+                        { "orderable": false, "targets": -1 }
+                    ]
+                });
             });
         </script>
     }

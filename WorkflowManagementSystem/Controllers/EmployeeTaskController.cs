@@ -19,13 +19,18 @@ using WorkflowManagementSystem.ViewModels;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// 
+    /// This controller is created based on the employee task domain and view models. 
+    /// It enables the user to manage tasks 
     /// </summary>
     [Authorize(Roles = "Client Service Employee")]
     public class EmployeeTaskController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         // GET: EmployeeTask
         public ActionResult Index()
         {
@@ -37,11 +42,11 @@ namespace WorkflowManagementSystem.Controllers
                 model.Add(new EmployeeTaskViewModel
                 {
                     EmployeeTaskId = item.EmployeeTaskId,
-                    Name = item.Name,
+                    TaskName = item.TaskName,
                     Description = item.Description,
-                    Deadline = item.Deadline,
-                    Status = item.Status,
-                    Priority = item.Priority,
+                    //Deadline = item.Deadline,
+                    //Status = item.Status,
+                    //Priority = item.Priority,
                     EventProject = item.EventProject.Name,
                     Employee = item.Employee.FullName,
                 });
@@ -58,6 +63,10 @@ namespace WorkflowManagementSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            //// ADDED
+            //// Pass Project ID to Partial views in the DetailsMaster view
+            //ViewBag.EmployeeTaskId = id;
+
             EmployeeTask employeeTask = db.EmployeeTasks.Find(id);
 
             if (employeeTask == null)
@@ -68,11 +77,11 @@ namespace WorkflowManagementSystem.Controllers
             var model = new EmployeeTaskViewModel
             {
                 EmployeeTaskId = employeeTask.EmployeeTaskId,
-                Name = employeeTask.Name,
+                TaskName = employeeTask.TaskName,
                 Description = employeeTask.Description,
-                Deadline = employeeTask.Deadline,
-                Status = employeeTask.Status,
-                Priority = employeeTask.Priority,
+                //Deadline = employeeTask.Deadline,
+                //Status = employeeTask.Status,
+                //Priority = employeeTask.Priority,
                 EventProject = employeeTask.EventProject.Name,
                 Employee = employeeTask.Employee.FullName,
             };
@@ -80,6 +89,10 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action gets the task creation page
+        /// </summary>
+        /// <returns>Create view</returns>
         // GET: EmployeeTask/Create
         public ActionResult Create()
         {
@@ -88,6 +101,11 @@ namespace WorkflowManagementSystem.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This action allows the creation of tasks
+        /// </summary>
+        /// <param name="model">Employee task model</param>
+        /// <returns>Index view</returns>
         // POST: EmployeeTask/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -97,11 +115,11 @@ namespace WorkflowManagementSystem.Controllers
             {
                 var employeeTask = new EmployeeTask
                 {
-                    Name = model.Name,
+                    TaskName = model.TaskName,
                     Description = model.Description,
-                    Deadline = model.Deadline,
-                    Status = model.Status,
-                    Priority = model.Priority,
+                    //Deadline = model.Deadline,
+                    //Status = model.Status,
+                    //Priority = model.Priority,
                     EventProjectId = model.EventProjectId,
                     ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
                 };
@@ -112,7 +130,7 @@ namespace WorkflowManagementSystem.Controllers
                 ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = employeeTask.EmployeeTaskId });
             }
             else
             {
@@ -122,6 +140,11 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action retrieves the edit task page
+        /// </summary>
+        /// <param name="id">Employee task id</param>
+        /// <returns>Edit view</returns>
         // GET: EmployeeTask/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -140,11 +163,11 @@ namespace WorkflowManagementSystem.Controllers
             var model = new EmployeeTaskViewModel
             {
                 EmployeeTaskId = employeeTask.EmployeeTaskId,
-                Name = employeeTask.Name,
+                TaskName = employeeTask.TaskName,
                 Description = employeeTask.Description,
-                Deadline = employeeTask.Deadline,
-                Status = employeeTask.Status,
-                Priority = employeeTask.Priority,
+                //Deadline = employeeTask.Deadline,
+                //Status = employeeTask.Status,
+                //Priority = employeeTask.Priority,
                 EventProject = employeeTask.EventProject.Name,
                 Employee = employeeTask.Employee.FullName,
             };
@@ -155,6 +178,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows the user to edit a created task
+        /// </summary>
+        /// <param name="model">Employee task model</param>
+        /// <returns>Index view</returns>
         // POST: EmployeeTask/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -175,6 +203,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action gets the task delete page
+        /// </summary>
+        /// <param name="id">Employee task id</param>
+        /// <returns>Delete view</returns>
         // GET: EmployeeTask/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -193,11 +226,11 @@ namespace WorkflowManagementSystem.Controllers
             EmployeeTaskViewModel model = new EmployeeTaskViewModel
             {
                 EmployeeTaskId = employeeTask.EmployeeTaskId,
-                Name = employeeTask.Name,
+                TaskName = employeeTask.TaskName,
                 Description = employeeTask.Description,
-                Deadline = employeeTask.Deadline,
-                Status = employeeTask.Status,
-                Priority = employeeTask.Priority,
+                //Deadline = employeeTask.Deadline,
+                //Status = employeeTask.Status,
+                //Priority = employeeTask.Priority,
                 EventProject = employeeTask.EventProject.Name,
                 Employee = employeeTask.Employee.FullName,
             };
@@ -208,6 +241,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables the deletion of a task
+        /// </summary>
+        /// <param name="id">Employee task id</param>
+        /// <returns>Index view</returns>
         // POST: EmployeeTask/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -227,5 +265,71 @@ namespace WorkflowManagementSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //public ActionResult ProjectGetSchedulesPartial(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+
+        //    var project = db.EventProjects.Find(id);
+
+        //    if (project == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    var schedules = project.ProjectSchedules.ToList();
+
+        //    var model = new List<ProjectScheduleViewModel>();
+
+        //    foreach (var item in schedules)
+        //    {
+        //        model.Add(new ProjectScheduleViewModel
+        //        {
+        //            ScheduleId = item.ScheduleId,
+        //            ScheduleDate = item.Date,
+        //            StartTime = item.StartTime,
+        //            EndTime = item.EndTime
+        //        });
+        //    }
+
+        //    return View(model);
+        //}
+
+        ///// <summary>
+        ///// This action enables the creation of the schedules
+        ///// </summary>
+        ///// <param name="model">Project schedule model</param>
+        ///// <returns>Schedule partial view </returns>
+        //[HttpPost]
+        //public ActionResult TaskAssignmentPartial(TaskAssignmentViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var task = db.EmployeeTasks.Find(model.EmployeeTaskId);
+
+        //        if (task == null)
+        //        {
+        //            return HttpNotFound();
+        //        }
+
+        //        var taskAssignment = new TaskAssignment
+        //        {
+        //            Deadline = model.Deadline,
+        //            Status = model.Status,
+        //            Priority = model.Priority,
+        //            AssignmentDate = DateTime.Now,
+        //            EmployeeTaskId = model.EmployeeTaskId,
+        //            EmployeeId = model.EmployeeId,
+        //            ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
+        //        };
+        //        db.TaskAssignments.Add(taskAssignment);
+        //        db.SaveChanges();
+        //    }
+
+        //    return PartialView(model);
+        //}
     }
 }

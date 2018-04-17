@@ -52,7 +52,7 @@ namespace WorkflowManagementSystem.ViewModels
         public EmployeeJobTitle JobTitle { get; set; }
 
         [Display(Name = "Department")]
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
 
         [Display(Name = "Employee Type")]
         public EmployeeType EmployeeType { get; set; }

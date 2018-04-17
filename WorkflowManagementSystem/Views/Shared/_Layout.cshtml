@@ -23,25 +23,33 @@
                 <ul class="nav navbar-nav">
 
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@*@Html.ActionLink("About", "About", "Home")*@</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                    {
+    {
 
-                        <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
-                        <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>
-                        <li>@Html.ActionLink("Items", "Index", "Item")</li>
-                    }
+                <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+                <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>
+                <li>@Html.ActionLink("Items", "Index", "Item")</li>
+}
 
                     @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
-                    {
-                        <li>@Html.ActionLink("Projects", "Index", "EventProject")</li>
-                        <li>@Html.ActionLink("Clients", "Index", "Client")</li>
-                    }
-                    <li>@Html.ActionLink("Quotation/Invoice", "Index", "Document")</li>
+    {
+                <li>@Html.ActionLink("Projects", "Index", "EventProject")</li>
+                <li>@Html.ActionLink("Clients", "Index", "Client")</li>
+}
+                    <li>@*@Html.ActionLink("Quotation/Invoice", "Index", "Document")*@</li>
                     <li>@Html.ActionLink("Cost Sheet", "Index", "CostSheet")</li>
                     <li>@Html.ActionLink("Assign Ushers", "Index", "UsherAppointed")</li>
+                    <li>@Html.ActionLink("Tasks", "Index", "EmployeeTask")</li>
+                    <li>@Html.ActionLink("Assign Tasks", "Index", "TaskAssignment")</li>
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
+                    {
+                                        <li>@Html.ActionLink("Ushers", "Index", "Usher")</li>
+
+                    }
 
 
                 </ul>

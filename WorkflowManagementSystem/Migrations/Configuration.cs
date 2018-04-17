@@ -69,33 +69,28 @@ namespace WorkflowManagementSystem.Migrations
             {
                 new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
                 new Item { Name = "Table 1", Description = "Circular table", UnitCost = 200 },
-                new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 }
+                new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 },
+                new Item { Name = "Stage", Description = "4 by 4 white stage", UnitCost = 1000 },
+                new Item { Name = "Monitor", Description = "6-inch monitor", UnitCost = 1500 },
+                new Item { Name = "Spotlight", Description = null, UnitCost = 250 }
             };
 
             items.ForEach(s => context.Items.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
-            // Add employee examples 
-            var employees = new List<Employee>
+            // Add client service employee examples
+            var clientServiceEmployees = new List<Employee>
             {
-                new Employee { UserName = "user1" , Email = "user1@gmail.com", FirstName = "Badr",
+                new Employee { UserName = "CS1" , Email = "cs1@gmail.com", FirstName = "Badr",
                     LastName = "Alsharif", PhoneNumber = "0552323909", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
-                new Employee { UserName = "user2" , Email = "user2@gmail.com", FirstName = "Hamza",
-                    LastName = "Zamil", PhoneNumber = "0500303000", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.Production, EmployeeType = EmployeeType.Production},
-                new Employee { UserName = "user3" , Email = "user3@gmail.com", FirstName = "Abdullah",
-                    LastName = "Ismail", PhoneNumber = "0505280001", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.Finance, EmployeeType = EmployeeType.Finance},
-                new Employee { UserName = "user4" , Email = "user4@gmail.com", FirstName = "Khalid",
-                    LastName = "Madani", PhoneNumber = "0505282232", JobTitle = EmployeeJobTitle.Director,
-                    Department = Department.Creative, EmployeeType = EmployeeType.Creative},
-                new Employee { UserName = "user5" , Email = "user5@gmail.com", FirstName = "Moneer",
+                    Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},                
+                
+                new Employee { UserName = "CS2" , Email = "cs2@gmail.com", FirstName = "Moneer",
                     LastName = "Ghalib", PhoneNumber = "0504444442", JobTitle = EmployeeJobTitle.Assistant,
                     Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
             };
 
-            foreach (var employee in employees)
+            foreach (var employee in clientServiceEmployees)
             {
                 if (userManager.FindByName(employee.UserName) == null)
                 {
@@ -106,6 +101,105 @@ namespace WorkflowManagementSystem.Migrations
                 if (!userManager.IsInRole(usertemp.Id, roles[3]))
                 {
                     userManager.AddToRole(usertemp.Id, roles[3]);
+                }
+            }
+            // Add production employee examples
+            var productionEmployees = new List<Employee>
+            {               
+                new Employee { UserName = "prod1" , Email = "prod1@gmail.com", FirstName = "Hamza",
+                    LastName = "Zamil", PhoneNumber = "0500303000", JobTitle = EmployeeJobTitle.Director,
+                    Department = Department.Production, EmployeeType = EmployeeType.Production},
+
+                new Employee { UserName = "prod2" , Email = "prod2@gmail.com", FirstName = "Hashim",
+                    LastName = "Bakr", PhoneNumber = "0500303234", JobTitle = EmployeeJobTitle.Assistant,
+                    Department = Department.Production, EmployeeType = EmployeeType.Production},
+            };
+
+            foreach (var employee in productionEmployees)
+            {
+                if (userManager.FindByName(employee.UserName) == null)
+                {
+                    userManager.Create(employee, "user123");
+                }
+
+                var usertemp = userManager.FindByName(employee.UserName);
+                if (!userManager.IsInRole(usertemp.Id, roles[4]))
+                {
+                    userManager.AddToRole(usertemp.Id, roles[4]);
+                }
+            }
+
+            // Add finance employee examples
+            var financeEmployees = new List<Employee>
+            {
+                new Employee { UserName = "fin1" , Email = "fin1@gmail.com", FirstName = "Abdullah",
+                    LastName = "Ismail", PhoneNumber = "0505280001", JobTitle = EmployeeJobTitle.Director,
+                    Department = Department.Finance, EmployeeType = EmployeeType.Finance},
+
+                new Employee { UserName = "fin2" , Email = "fin2@gmail.com", FirstName = "Abdulrahman",
+                    LastName = "Qurashi", PhoneNumber = "0505288888", JobTitle = EmployeeJobTitle.Accountant,
+                    Department = Department.Finance, EmployeeType = EmployeeType.Finance},
+            };
+
+            foreach (var employee in financeEmployees)
+            {
+                if (userManager.FindByName(employee.UserName) == null)
+                {
+                    userManager.Create(employee, "user123");
+                }
+
+                var usertemp = userManager.FindByName(employee.UserName);
+                if (!userManager.IsInRole(usertemp.Id, roles[5]))
+                {
+                    userManager.AddToRole(usertemp.Id, roles[5]);
+                }
+            }
+
+            // Add creative employee examples
+            var creativeEmployees = new List<Employee>
+            {
+                 new Employee { UserName = "CR1" , Email = "cr1@gmail.com", FirstName = "Khalid",
+                    LastName = "Madani", PhoneNumber = "0505282232", JobTitle = EmployeeJobTitle.Director,
+                    Department = Department.Creative, EmployeeType = EmployeeType.Creative},
+
+                 new Employee { UserName = "CR2" , Email = "cr2@gmail.com", FirstName = "Ali",
+                    LastName = "Amoudi", PhoneNumber = "0555444342", JobTitle = EmployeeJobTitle.Designer,
+                    Department = Department.Creative, EmployeeType = EmployeeType.Creative},
+            };
+
+            foreach (var employee in creativeEmployees)
+            {
+                if (userManager.FindByName(employee.UserName) == null)
+                {
+                    userManager.Create(employee, "user123");
+                }
+
+                var usertemp = userManager.FindByName(employee.UserName);
+                if (!userManager.IsInRole(usertemp.Id, roles[6]))
+                {
+                    userManager.AddToRole(usertemp.Id, roles[6]);
+                }
+            }
+
+            // Add CEO example
+            var CEOEmployees = new List<Employee>
+            {
+                 new Employee { UserName = "CEO" , Email = "ceo@gmail.com", FirstName = "Omar",
+                    LastName = "Mohamed", PhoneNumber = "0505282232", JobTitle = EmployeeJobTitle.Director,
+                    Department = null, EmployeeType = EmployeeType.CEO},
+            };
+
+            foreach (var employee in CEOEmployees)
+            {
+                if (userManager.FindByName(employee.UserName) == null)
+                {
+                    userManager.Create(employee, "user123");
+                }
+
+                var usertemp = userManager.FindByName(employee.UserName);
+                if (!userManager.IsInRole(usertemp.Id, roles[1]))
+                {
+                    userManager.AddToRole(usertemp.Id, roles[1]);
                 }
             }
 
@@ -235,6 +329,19 @@ namespace WorkflowManagementSystem.Migrations
             //};
             //usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
             //context.SaveChanges();
+
+
+            // Add criterion examples 
+            var criteria = new List<Criterion>
+            {
+                new Criterion {Name = "Quality of Work", Description = "The quality of the work or service is up to high standards." },
+                new Criterion {Name = "Communication", Description = "The level of communication and interaction." },
+                new Criterion {Name = "Performance", Description = null },
+                new Criterion {Name = "Overall satisfactory level", Description = "The satisfactory level of the overall result and service." },
+            };
+
+            criteria.ForEach(s => context.Criteria.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
         }
     }
 }

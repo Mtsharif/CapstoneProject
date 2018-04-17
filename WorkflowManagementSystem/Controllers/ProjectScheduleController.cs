@@ -25,10 +25,10 @@ namespace WorkflowManagementSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         /// <summary>
-        /// 
+        /// This action retrieves the schedule edit page
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Schedule id</param>
+        /// <returns>Edit view</returns>
         // GET: ProjectSchedule/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -57,10 +57,10 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         /// <summary>
-        /// 
+        /// This action enables a schedule to be edited
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">Project schedule model</param>
+        /// <returns>Index view</returns>
         // POST: ProjectSchedule/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -78,6 +78,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves the delete page of a schedule
+        /// </summary>
+        /// <param name="id">Schedule id</param>
+        /// <returns>Delete view</returns>
         // GET: ProjectSchedule/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -104,6 +109,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows the deletion of a schedule
+        /// </summary>
+        /// <param name="id">Schedule id</param>
+        /// <returns>Index view</returns>
         // POST: ProjectSchedule/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -113,6 +123,15 @@ namespace WorkflowManagementSystem.Controllers
             db.ProjectSchedules.Remove(projectSchedule);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

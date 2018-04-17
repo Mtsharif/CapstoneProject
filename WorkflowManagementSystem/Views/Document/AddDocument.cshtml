@@ -1,97 +1,107 @@
 ﻿@model WorkflowManagementSystem.ViewModels.DocumentViewModel
 
-@{
-    ViewBag.Title = "AddDocument";
-}
-
-<h3>Add Document</h3>
-
-@using (Html.BeginForm(@*"AddDocument", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }*@))
+@if (Request.IsAuthenticated && User.IsInRole("Finance Employee"))
 {
-    @Html.AntiForgeryToken()
+    {
+        ViewBag.Title = "AddDocument";
+    }
 
-    <div class="form-horizontal">
-        @*<h4>DocumentViewModel</h4>*@
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <h3>Add Document</h3>
 
+    @using (Html.BeginForm(@*"AddDocument", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }*@))
+{
+@Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventProject, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("EventProjectId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EventProject, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.DocumentFile, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBox("DocumentFile", "", new { type = "file" })
-            </div>
-            </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FilePath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FilePath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.CEOFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CEOFeedback, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CEOFeedback, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" id="AddDocumentButton" class="btn btn-default" />
-            </div>
+<div class="form-horizontal">
+    @*<h4>DocumentViewModel</h4>*@
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Document Name" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EventProject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("EventProjectId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EventProject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.DocumentFile, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBox("DocumentFile", "", new { type = "file" })
+        </div>
+        </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FilePath, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FilePath, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CEOFeedback, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CEOFeedback, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CEOFeedback, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" id="AddDocumentButton" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
 
-<div id="DocumentList"></div>
+    <div id="DocumentList"></div>
 
-@section Scripts{
-    @Scripts.Render("~/bundles/jqueryval")
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
-        $(document).ready(function () {
+            $(document).ready(function () {
 
-            $("#AddDocumentButton").click(function (e) {
+                $("#AddDocumentButton").click(function (e) {
 
-                $("#DocumentList").empty();
+                    $("#DocumentList").empty();
 
-                var data = { id: $("#DocumentId").val() };
+                    var data = { id: $("#DocumentId").val() };
 
-                $.get("/Document/DocumentListPartial", data)
-                    .done(function (result) { $("#DocumentList").html(result); });
+                    $.get("/Document/DocumentListPartial", data)
+                        .done(function (result) { $("#DocumentList").html(result); });
+                });
             });
-        });
-    </script>
+        </script>
+    }
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
 }

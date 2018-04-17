@@ -1,0 +1,104 @@
+﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.UsherEvaluationViewModel>
+
+@*@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {*@
+@{
+    ViewBag.Title = "Usher Evaluations";
+}
+
+<h2>Usher Evaluations</h2>
+
+<p>
+    @Html.ActionLink("Evaluate", "Create")
+</p>
+<table class="table" id="usherEvaluationsTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Criterion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GradeAttained)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateGraded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Criterion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeAttained)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateGraded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UsherEvaluationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UsherEvaluationId })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#usheEvaluationsTable').DataTable({
+
+                    "scrollY": "80px",
+                    "scrollCollapse": true,
+                    "paging": false,
+
+                    "columnDefs": [
+                        { "orderable": false, "targets": -1 }
+                    ]
+                });
+            });
+    </script>
+}
+
+@section styles
+{
+    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+}
+@*}
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }*@
+

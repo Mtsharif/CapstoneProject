@@ -1,0 +1,77 @@
+﻿@model WorkflowManagementSystem.ViewModels.DocumentViewModel
+
+@if (Request.IsAuthenticated && User.IsInRole("Finance Employee, CEO"))
+{
+    {
+        ViewBag.Title = "ApprovalDetails";
+    }
+
+    <h2>Approval Details</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EventProject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EventProject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FilePath)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FilePath)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CEOFeedback)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CEOFeedback)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.DocumentId }) |*@
+        @*@Html.ActionLink("Back", "DetailsMaster", new { id = Model.EventProjectId }, "EventProject")*@
+        @Html.ActionLink("Back", "DetailsMaster", "EventProject", new { id = Model.EventProjectId }, null)
+        @*@Html.ActionLink(
+                linkText: "Back",
+                actionName: "DetailsMaster",
+                controllerName: "EventProject",
+                routeValues: new
+                {
+                    id = Model.EventProjectId
+                },
+                htmlAttributes: Model.
+            )*@
+    </p>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

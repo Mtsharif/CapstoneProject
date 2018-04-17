@@ -17,13 +17,18 @@ using WorkflowManagementSystem.ViewModels;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// 
+    /// This controller is generated based on the task assignemnt domain and view models.
+    /// It allows tasks to be assigned to employees in a project.
     /// </summary>
     [Authorize(Roles = "Client Service Employee")]
     public class TaskAssignmentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// This action retrieves a list of all tasks assigned
+        /// </summary>
+        /// <returns>Index view</returns>
         // GET: TaskAssignment
         public ActionResult Index()
         {
@@ -35,8 +40,12 @@ namespace WorkflowManagementSystem.Controllers
                 model.Add(new TaskAssignmentViewModel
                 {
                     TaskAssignmentId = item.TaskAssignmentId,
+                   
+                    Deadline = item.Deadline,
+                    Status = item.Status,
+                    Priority = item.Priority,
                     AssignmentDate = item.AssignmentDate,
-                    EmployeeTask = item.EmployeeTask.Name,
+                    //EmployeeTask = item.EmployeeTask.TaskName,
                     AnyEmployee = item.AnyEmployee.FullName,
                     Employee = item.Employee.FullName,
                 });
@@ -63,8 +72,11 @@ namespace WorkflowManagementSystem.Controllers
             var model = new TaskAssignmentViewModel
             {
                 TaskAssignmentId = taskAssignment.TaskAssignmentId,
+                Deadline = taskAssignment.Deadline,
+                Status = taskAssignment.Status,
+                Priority = taskAssignment.Priority,
                 AssignmentDate = taskAssignment.AssignmentDate,
-                EmployeeTask = taskAssignment.EmployeeTask.Name,
+                //EmployeeTask = taskAssignment.EmployeeTask.TaskName,
                 AnyEmployee = taskAssignment.AnyEmployee.FullName,
                 Employee = taskAssignment.Employee.FullName,
             };
@@ -72,15 +84,24 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action gets the task assignment create page
+        /// </summary>
+        /// <returns>Create view</returns>
         // GET: TaskAssignment/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "Name");
+            ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "TaskName");
             ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             return View();
         }
 
+        /// <summary>
+        /// This action enables the assignment of tasks to employees
+        /// </summary>
+        /// <param name="model">Task assignment model</param>
+        /// <returns>Index view</returns>
         // POST: TaskAssignment/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -90,8 +111,11 @@ namespace WorkflowManagementSystem.Controllers
             {
                 var taskAssignment = new TaskAssignment
                 {
+                    Deadline = model.Deadline,
+                    Status = model.Status,
+                    Priority = model.Priority,
                     AssignmentDate = DateTime.Now,
-                    EmployeeTaskId = model.EmployeeTaskId,
+                    //EmployeeTaskId = model.EmployeeTaskId,
                     EmployeeId = model.EmployeeId,
                     ClientServiceEmployeeId = User.Identity.GetUserId<int>(),
                 };
@@ -99,15 +123,16 @@ namespace WorkflowManagementSystem.Controllers
                 db.TaskAssignments.Add(taskAssignment);
                 db.SaveChanges();
 
-                ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "Name");
+                //ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "TaskName");
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = taskAssignment.TaskAssignmentId });
             }
             else
             {
-                ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "Name");
+                ViewBag.EmployeeTaskId = new SelectList(db.EmployeeTasks, "EmployeeTaskId", "TaskName");
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 return View();
@@ -136,6 +161,7 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        
         // GET: TaskAssignment/Delete/5
         public ActionResult Delete(int id)
         {

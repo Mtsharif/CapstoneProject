@@ -23,13 +23,11 @@ namespace WorkflowManagementSystem.ViewModels
 
         [Display(Name = "Schedule Date")]
         [DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ScheduleDate { get; set; }
 
         [Display(Name = "Start Time")]
         [DataType(DataType.Time)]
-        //[DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
         public TimeSpan StartTime { get; set; }
 
         [Display(Name = "End Time")]

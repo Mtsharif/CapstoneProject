@@ -19,7 +19,8 @@ using WorkflowManagementSystem.ViewModels;
 namespace WorkflowManagementSystem.Controllers
 {
     /// <summary>
-    /// This controller is generated based on the cost sheet domain and view model classes
+    /// This controller is created based on the cost sheet view model and domain model classes 
+    /// It allows the creation of a cost sheet as well as its editing, listing, and deletion. 
     /// </summary>
     [Authorize(Roles = "Client Service Employee")]
     public class CostSheetController : Controller
@@ -27,9 +28,9 @@ namespace WorkflowManagementSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         /// <summary>
-        /// 
+        /// This action shows a list of all cost sheets created
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Index view</returns>
         // GET: CostSheet
         public ActionResult Index()
         {
@@ -50,6 +51,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves the details page of a cost sheet
+        /// </summary>
+        /// <param name="id">Cost sheet id</param>
+        /// <returns>Details view</returns>
         // GET: CostSheet/Details/5
         public ActionResult Details(int? id)
         {
@@ -78,9 +84,9 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         /// <summary>
-        /// 
+        /// This action retrieves the create cost sheet page
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Create view</returns>
         // GET: CostSheet/Create
         public ActionResult Create()
         {
@@ -93,10 +99,10 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         /// <summary>
-        /// 
+        /// This action enables the creation of a cost sheet
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">Cost Sheet model</param>
+        /// <returns>Index view</returns>
         // POST: CostSheet/Create
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -135,6 +141,11 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action retrieves the cost sheet edit page
+        /// </summary>
+        /// <param name="id">Cost sheet id</param>
+        /// <returns>Edit view</returns>
         // GET: CostSheet/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -166,6 +177,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action allows the user to edit the cost sheet
+        /// </summary>
+        /// <param name="model">Cost sheet model</param>
+        /// <returns>Index view</returns>
         // POST: CostSheet/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -188,6 +204,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action retrieves the cost sheet delete page
+        /// </summary>
+        /// <param name="id">Cost sheet id</param>
+        /// <returns>Delete view</returns>
         // GET: CostSheet/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -220,6 +241,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action enables the deletion of a cost sheet
+        /// </summary>
+        /// <param name="id">Cost sheet id</param>
+        /// <returns>Index view</returns>
         // POST: CostSheet/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

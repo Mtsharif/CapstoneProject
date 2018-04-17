@@ -24,6 +24,10 @@ namespace WorkflowManagementSystem.App_Start
                 cfg.CreateMap<CostSheet, CostSheetViewModel>().ReverseMap();
                 cfg.CreateMap<CostSheetItem, CostSheetItemViewModel>().ReverseMap();
                 cfg.CreateMap<EmployeeTask, EmployeeTaskViewModel>().ReverseMap();
+                cfg.CreateMap<TaskAssignment, TaskAssignmentViewModel>().ReverseMap();
+                cfg.CreateMap<UsherAppointed, UsherAppointedViewModel>().ReverseMap();
+                cfg.CreateMap<Criterion, CriterionViewModel>().ReverseMap();
+                cfg.CreateMap<UsherEvaluation, UsherEvaluationViewModel>().ReverseMap();
             });
         }
     }   

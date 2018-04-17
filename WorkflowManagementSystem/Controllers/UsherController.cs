@@ -25,7 +25,6 @@ namespace WorkflowManagementSystem.Controllers
     /// This controller manages ushers by creating new ushers as well as listing , editing and deleting them.
     /// Only the admin is authorized to access this controller.
     /// </summary>
-    [Authorize(Roles = "Admin")]
     public class UsherController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -35,6 +34,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <returns>Usher index view</returns>
         // GET: Usher
+        [Authorize(Roles = "Admin, Production Employee")]
         public ActionResult Index()
         {
             var ushers = db.Ushers.ToList();
@@ -64,6 +64,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">The id of the selected usher</param>
         /// <returns>Usher details view</returns>
         // GET: Usher/Details/5
+        [Authorize(Roles = "Admin, Production Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -99,6 +100,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <returns>Create usher view</returns>
         // GET: Usher/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.languageId = new SelectList(db.Languages, "Id", "Name");
@@ -111,13 +113,13 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="model">The usher model</param>
         /// <returns>Usher index view or create model view</returns>
         // POST: Usher/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(UsherViewModel model)
         {
             if (ModelState.IsValid)
             {
-                //Usher usher = Mapper.Map<UsherViewModel, Usher>(model);
                 var usher = new Usher
                 {
                     FirstName = model.FirstName,
@@ -185,7 +187,7 @@ namespace WorkflowManagementSystem.Controllers
             ViewBag.languageId = new SelectList(db.Languages, "Id", "Name");
             return View(model);
         }
-        
+
         /// <summary>
         /// This action shows the information of a selected usher for editing.
         /// It checks if the id and usher are found in the database.
@@ -193,6 +195,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">The id of the selected usher</param>
         /// <returns>Error page or edit usher view</returns>
         // GET: Usher/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -218,6 +221,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="model">Usher model</param>
         /// <returns>Usher index view or edit model view</returns>
         // POST: Usher/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UsherViewModel model)
@@ -242,6 +246,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">The id of the selected usher</param>
         /// <returns>Error page or usher delete view</returns>
         // GET: Usher/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -255,7 +260,6 @@ namespace WorkflowManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            // UsherViewModel model = Mapper.Map<UsherViewModel>(usher);
 
             UsherViewModel model = new UsherViewModel
             {
@@ -281,6 +285,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">The id of the usher to be deleted</param>
         /// <returns>Usher index view</returns>
         // POST: Usher/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
