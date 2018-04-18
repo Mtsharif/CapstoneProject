@@ -237,8 +237,6 @@ namespace WorkflowManagementSystem.Models
                     m.MapRightKey("LanguageId");
                 });
         }
-
-        public System.Data.Entity.DbSet<WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel> TaskAssignmentViewModels { get; set; }
     }
 
     public class CustomUserRole : IdentityUserRole<int> { }

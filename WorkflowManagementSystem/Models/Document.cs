@@ -27,7 +27,7 @@ namespace WorkflowManagementSystem.Models
 
         public DocumentStatus Status { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(200)]
         public string FilePath { get; set; }
 

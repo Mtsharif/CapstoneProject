@@ -640,6 +640,8 @@
     <Content Include="Views\EventProject\CostSheetPartial.cshtml" />
     <Content Include="Views\EventProject\GetTaskAssignmentsPartial.cshtml" />
     <Content Include="Views\EventProject\TaskAssignmentPartial.cshtml" />
+    <Content Include="Views\TaskAssignment\Edit.cshtml" />
+    <Content Include="Views\TaskAssignment\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

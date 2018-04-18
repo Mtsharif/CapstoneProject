@@ -7,6 +7,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -56,6 +57,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// This action gets the a task assignment's details
+        /// </summary>
+        /// <param name="id">task assignment id</param>
+        /// <returns>details view</returns>
         // GET: TaskAssignment/Details/5
         public ActionResult Details(int? id)
         {
@@ -115,6 +121,12 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                //var project = db.EventProjects.Find(model.EventProjectId);
+
+                //if (project == null)
+                //{
+                //    return HttpNotFound();
+                //}
                 var taskAssignment = new TaskAssignment
                 {
                     TaskName = model.TaskName,
@@ -148,49 +160,155 @@ namespace WorkflowManagementSystem.Controllers
             }
         }
 
+        /// <summary>
+        /// This action retrieves the task assignment edit page
+        /// </summary>
+        /// <param name="id">task aassignment id</param>
+        /// <returns>edit view</returns>
         // GET: TaskAssignment/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            TaskAssignment taskAssignment = db.TaskAssignments.Find(id);
+
+            if (taskAssignment == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new TaskAssignmentViewModel
+            {
+                TaskAssignmentId = taskAssignment.TaskAssignmentId,
+                TaskName = taskAssignment.TaskName,
+                Description = taskAssignment.Description,
+                Deadline = taskAssignment.Deadline,
+                Status = taskAssignment.Status,
+                Priority = taskAssignment.Priority,
+                AssignmentDate = taskAssignment.AssignmentDate,
+                IsCompleted = taskAssignment.IsCompleted,
+                EventProject = taskAssignment.EventProject.Name,
+                AnyEmployee = taskAssignment.AnyEmployee.FullName,
+                Employee = taskAssignment.Employee.FullName,
+            };
+
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View(model);
         }
 
+        /// <summary>
+        /// This action allows the user to edit an assigned task
+        /// </summary>
+        /// <param name="id">task assingment id</param>
+        /// <param name="model">task assignment view model</param>
+        /// <returns>Index view</returns>
         // POST: TaskAssignment/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, TaskAssignmentViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var taskAssignment = db.TaskAssignments.Find(id);
+                if (taskAssignment == null)
+                {
+                    return HttpNotFound();
+                }
+
+                taskAssignment.TaskName = model.TaskName;
+                taskAssignment.Description = model.Description;
+                taskAssignment.Deadline = model.Deadline;
+                taskAssignment.Status = TaskAssignment.TaskStatus.Pending;
+                taskAssignment.Priority = model.Priority;
+                taskAssignment.AssignmentDate = DateTime.Now;
+                taskAssignment.IsCompleted = model.IsCompleted;
+                taskAssignment.EmployeeId = model.EmployeeId;
+                taskAssignment.ClientServiceEmployeeId = User.Identity.GetUserId<int>();
+                taskAssignment.EventProjectId = model.EventProjectId;
+                
+                db.Entry(taskAssignment).State = EntityState.Modified;
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-        
-        // GET: TaskAssignment/Delete/5
-        public ActionResult Delete(int id)
-        {
             return View();
         }
 
-        // POST: TaskAssignment/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        /// <summary>
+        /// This action retrieves the deletion page of an assignment 
+        /// </summary>
+        /// <param name="id">Task assignment id</param>
+        /// <returns>Delte view</returns>
+        // GET: TaskAssignment/Delete/5
+        public ActionResult Delete(int? id)
         {
-            try
+            if (id == null)
             {
-                // TODO: Add delete logic here
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            TaskAssignment taskAssignment = db.TaskAssignments.Find(id);
+
+            if (taskAssignment == null)
             {
-                return View();
+                return HttpNotFound();
             }
+
+            TaskAssignmentViewModel model = new TaskAssignmentViewModel
+            {
+                TaskAssignmentId = taskAssignment.TaskAssignmentId,
+                TaskName = taskAssignment.TaskName,
+                Description = taskAssignment.Description,
+                Deadline = taskAssignment.Deadline,
+                Status = taskAssignment.Status,
+                Priority = taskAssignment.Priority,
+                AssignmentDate = taskAssignment.AssignmentDate,
+                IsCompleted = taskAssignment.IsCompleted,
+                EventProject = taskAssignment.EventProject.Name,
+                AnyEmployee = taskAssignment.AnyEmployee.FullName,
+                Employee = taskAssignment.Employee.FullName,
+            };
+
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action allows the deletion of a task assignment 
+        /// </summary>
+        /// <param name="id">task assignment id</param>
+        /// <returns>Index view</returns>
+        // POST: TaskAssignment/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            TaskAssignment taskAssignment = db.TaskAssignments.Find(id);
+            db.TaskAssignments.Remove(taskAssignment);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

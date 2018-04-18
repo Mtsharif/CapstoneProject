@@ -1,8 +1,16 @@
-﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.DocumentViewModel>
+﻿
+@model IEnumerable<WorkflowManagementSystem.ViewModels.DocumentViewModel>
 
 @{
     Layout = null;
 }
+
+@*@if (Model.Count() <= 0)
+{
+    <p>Quotation and Invoices Not Available</p>
+}
+else
+{*@
 
 <table class="table">
     <tr>
@@ -16,8 +24,8 @@
             @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
-                @Html.DisplayNameFor(model => model.CEOFeedback)
-            </th>
+            @Html.DisplayNameFor(model => model.CEOFeedback)
+        </th>
         <th></th>
     </tr>
 
@@ -41,8 +49,8 @@
                     }
                 </td>*@
             <td>
-                    @Html.DisplayFor(modelItem => item.CEOFeedback)
-                </td>
+                @Html.DisplayFor(modelItem => item.CEOFeedback)
+            </td>
 
             <td>
                 @Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |
@@ -51,7 +59,8 @@
                 @Html.ActionLink("Approval Details", "ApprovalDetails", "Document", new { id = item.DocumentId }, null)
             </td>
 
-       
+
         </tr>
     }
 </table>
+@*}*@

@@ -114,6 +114,7 @@ namespace WorkflowManagementSystem.Controllers
 
             // Pass Project ID to Partial views in the DetailsMaster view
             ViewBag.ProjectId = id;
+            //ViewBag.EmployeeId = id;
 
             return View();
         }
@@ -447,30 +448,37 @@ namespace WorkflowManagementSystem.Controllers
                     return HttpNotFound();
                 }
 
-                //HACK: Add the presentation file path here
                 if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
                 {
-                    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
-                    string filename = Path.GetFileName(model.PresentationFile.FileName);
-                    string ext = Path.GetExtension(filename).Substring(1);
-
-                    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
-                    {
-                        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
-                        return PartialView();
-                    }
-
-                    string appFolder = "~/Content/Uploads/";
-                    var rand = Guid.NewGuid().ToString();
-                    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                    var fileName = Path.GetFileName(model.PresentationFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Uploads/"), fileName);
                     model.PresentationFile.SaveAs(path);
-                    project.Presentation = appFolder + rand + "-" + filename;
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
-                    return PartialView();
-                }
+
+                ////HACK: Add the presentation file path here
+                //if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
+                //{
+                //    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                //    string filename = Path.GetFileName(model.PresentationFile.FileName);
+                //    string ext = Path.GetExtension(filename).Substring(1);
+
+                //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                //    {
+                //        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                //        return PartialView();
+                //    }
+
+                //    string appFolder = "~/Content/Uploads/";
+                //    var rand = Guid.NewGuid().ToString();
+                //    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                //    model.PresentationFile.SaveAs(path);
+                //    project.Presentation = appFolder + rand + "-" + filename;
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                //    return PartialView();
+                //}
 
                 //if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
                 //{
@@ -620,7 +628,29 @@ namespace WorkflowManagementSystem.Controllers
 
                 //HACK: ADD the path to 3D model file path here
             };
+            if (model.ThreeDModelFile != null && model.ThreeDModelFile.ContentLength > 0)
+            {
+                var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                string filename = Path.GetFileName(model.ThreeDModelFile.FileName);
+                string ext = Path.GetExtension(filename).Substring(1);
 
+                if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                    return PartialView();
+                }
+
+                string appFolder = "~/Content/Uploads/";
+                var rand = Guid.NewGuid().ToString();
+                string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                model.ThreeDModelFile.SaveAs(path);
+                project.ThreeDModel = appFolder + rand + "-" + filename;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                return PartialView();
+            }
             return PartialView(model);
         }
 
@@ -696,6 +726,30 @@ namespace WorkflowManagementSystem.Controllers
                 EventProjectId = project.EventProjectId,
                 ThreeDModel = project.ThreeDModel,
             };
+
+            //if (model.ThreeDModelFile != null && model.ThreeDModelFile.ContentLength > 0)
+            //{
+            //    var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+            //    string filename = Path.GetFileName(model.ThreeDModelFile.FileName);
+            //    string ext = Path.GetExtension(filename).Substring(1);
+
+            //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+            //    {
+            //        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+            //        return PartialView();
+            //    }
+
+            //    string appFolder = "~/Content/Uploads/";
+            //    var rand = Guid.NewGuid().ToString();
+            //    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+            //    model.ThreeDModelFile.SaveAs(path);
+            //    project.ThreeDModel = appFolder + rand + "-" + filename;
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+            //    return PartialView();
+            //}
 
             return View(model);
         }
@@ -1260,11 +1314,14 @@ namespace WorkflowManagementSystem.Controllers
             if (project == null)
             {
                 return HttpNotFound();
-            }
+            }           
 
             var taskAssignments = project.TaskAssignments.ToList();
 
             var model = new List<TaskAssignmentViewModel>();
+
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
             foreach (var item in taskAssignments)
             {
@@ -1282,11 +1339,16 @@ namespace WorkflowManagementSystem.Controllers
                     AnyEmployee = item.AnyEmployee.FullName,
                     Employee = item.Employee.FullName,                    
                 });
+                ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+                ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
             }
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
             return View(model);
         }
-        
+
+      
         [HttpPost]
         public ActionResult TaskAssignmentPartial(TaskAssignmentViewModel model)
         {
@@ -1316,20 +1378,17 @@ namespace WorkflowManagementSystem.Controllers
                 ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
                 //var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
-                ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
                 db.TaskAssignments.Add(taskAssignment);
                 db.SaveChanges();
 
                 ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
-                ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
             }
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
             //var list = db.Employees.ToList().Select(e => new { e.Id, e.FullName });
             ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
-            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
             return PartialView(model);
         }

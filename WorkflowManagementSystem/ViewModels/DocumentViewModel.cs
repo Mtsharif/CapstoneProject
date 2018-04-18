@@ -26,7 +26,7 @@ namespace WorkflowManagementSystem.ViewModels
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "File Path")]
         public string FilePath { get; set; }
 

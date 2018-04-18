@@ -28,8 +28,8 @@
             <li><a href="#EventReportTab" data-toggle="tab">Event Report</a></li>
             <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
             <li><a href="#ClientTab" data-toggle="tab">Client Details</a></li>
-            <li><a href="#TasksTab" data-toggle="tab">Tasks</a></li>
-            <li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>
+            @*<li><a href="#TasksTab" data-toggle="tab">Tasks</a></li>*@
+            @*<li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>*@
             @*<li><a href="#UshersTab" data-toggle="tab">Ushers</a></li>*@
         </ul>
 
@@ -54,15 +54,15 @@
 
             <div class="tab-pane" id="ThreeDimensionModelTab">
                 <h3>Three Dimension Model</h3>
-                @*@Html.Partial("Project3DModelPartial",
-        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                <div id="3DModelDetails"></div>*@
-
                 @Html.Partial("Project3DModelPartial",
+        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                <div id="3DModelDetails"></div>
+
+                @*@Html.Partial("Project3DModelPartial",
  new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
 
                 @Html.Partial("ProjectGet3DModelPartial",
-        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
+        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })*@
             </div>
 
             <div class="tab-pane" id="QuotationAndInvoiceTab">
@@ -100,27 +100,25 @@
                 @Html.Action("ClientDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
             </div>
 
-            <div class="tab-pane" id="TasksTab">
+            @*<div class="tab-pane" id="TasksTab">
                 <h3>Tasks</h3>
                 @Html.Partial("TaskAssignmentPartial",
-        new TaskAssignmentViewModel { EventProjectId = (int)ViewBag.ProjectId, Deadline = DateTime.Today })
+        new TaskAssignmentViewModel { EventProjectId = (int)ViewBag.ProjectId})
                 <div id="TaskStatusMessage"></div>
-                <div id="TasksList"></div>
-            </div>
+                <div id="TaskList"></div>
+            </div>*@
 
             @*<div class="tab-pane" id="UshersTab">
             <h3>Ushers</h3>
-
-
         </div>*@
 
-                <div class="tab-pane" id="CostSheetTab">
+                @*<div class="tab-pane" id="CostSheetTab">
                     <h3>Cost Sheet</h3>
                     @Html.Partial("CostSheetPartial",
                 new CostSheetViewModel { EventProjectId = (int)ViewBag.ProjectId })
                     <div id="CostSheetStatusMessage"></div>
                     <div id="CostSheetList"></div>
-                </div>
+                </div>*@
 
             </div>
     </div>
@@ -139,13 +137,12 @@
                 });
         }
 
-        // Definition of Get project schedules function
-        function getTaskAssignments(projectId) {
-            $.get("/EventProject/GetTaskAssignmentsPartial", { id: projectId })
-                .done(function (result) {
-                    $("#TasksList").html(result);
-                });
-        }
+        //function getTaskAssignments(projectId) {
+        //    $.get("/EventProject/GetTaskAssignmentsPartial", { id: projectId })
+        //        .done(function (result) {
+        //            $("#TaskList").html(result);
+        //        });
+        //}
 
         // Definition of Get cost sheet function
         function getCostSheets(projectId) {
@@ -154,7 +151,6 @@
                     $("#CostSheetList").html(result);
                 });
         }
-
 
         //// Definition of Get usher appointed function
         //function getUsherAppointed(projectId) {
@@ -204,14 +200,6 @@
                 });
         }
 
-        // Definition of Get task function
-        function getTasks(projectId) {
-            $.get("/EventProject/GetEmployeeTasksPartial", { id: projectId })
-                .done(function (result) {
-                    $("#TaskList").html(result);
-                });
-        }
-
         // Clear Schedule form
         function clearScheduleForm() {
             $('#ScheduleDate').val(""),
@@ -227,45 +215,45 @@
             // Clear schedule form
             clearScheduleForm();
 
-            //// Create a presentation
-            //$("#CreatePresentationButton").click(function (event) {
+            // Create a presentation
+            $("#CreatePresentationButton").click(function (event) {
 
 
-            //    //Disable the click event on the create button
-            //    event.preventDefault();
+                //Disable the click event on the create button
+                event.preventDefault();
 
-            //    var data = new FormData();
-            //    var files = $("#presentationFile").get(0).files;
+                var data = new FormData();
+                var files = $("#presentationFile").get(0).files;
 
-            //    if (files.length > 0) { data.append("HelpPresentations", files[0]); }
+                if (files.length > 0) { data.append("HelpPresentations", files[0]); }
 
-            //    else {
-            //        common.showNotification('Warning', 'Please select file to upload.', 'top', 'right');
-            //        return false;
-            //    }
+                else {
+                    common.showNotification('Warning', 'Please select file to upload.', 'top', 'right');
+                    return false;
+                }
 
-            //    var extension = $("#presentationFile").val().split('.').pop().toUpperCase();
-            //    if (extension != "PNG" && extension != "JPG" && extension != "JPEG") {
-            //        common.showNotification('Warning', 'Invalid file format.', 'top', 'right');
-            //        return false;
-            //    }
+                var extension = $("#presentationFile").val().split('.').pop().toUpperCase();
+                if (extension != "PNG" && extension != "JPG" && extension != "JPEG") {
+                    common.showNotification('Warning', 'Invalid file format.', 'top', 'right');
+                    return false;
+                }
 
-            //    $.ajax({
-            //        url: "/EventProject/ProjectPresentationPartial",
-            //        type: "post",
-            //        processData: false,
-            //        data: data, dataType: 'json',
-            //        contentType: false,
-            //        success: function (response) {
-            //            if (respo != nulll || response != '')
-            //                alert(response);
-            //            $("#presentationFile").val('');
+                $.ajax({
+                    url: "/EventProject/ProjectPresentationPartial",
+                    type: "post",
+                    processData: false,
+                    data: data, dataType: 'json',
+                    contentType: false,
+                    success: function (response) {
+                        if (respo != nulll || response != '')
+                            alert(response);
+                        $("#presentationFile").val('');
 
-            //        },
-            //        error: function (er) { }
-            //    });
-            //    return false
-            //    });
+                    },
+                    error: function (er) { }
+                });
+                return false
+                });
 
                 //$.ajax({
                 //    url: "/EventProject/ProjectPresentationPartial",
@@ -293,31 +281,31 @@
             //});
 
             // Create a 3D model
-            //$("#Create3DModelButton").click(function (event) {
+            $("#Create3DModelButton").click(function (event) {
 
-            //    // Disable the click event on the create button
-            //    event.preventDefault();
+                // Disable the click event on the create button
+                event.preventDefault();
 
-            //    $.ajax({
-            //        url: "/EventProject/Project3DModelPartial",
-            //        type: "post",
-            //        data: {
-            //            EventProjectId: projectId,
-            //            ThreeDModel: $('#ThreeDModel').val()
-            //        },
-            //        success: function (result) {
+                $.ajax({
+                    url: "/EventProject/Project3DModelPartial",
+                    type: "post",
+                    data: {
+                        EventProjectId: projectId,
+                        ThreeDModel: $('#ThreeDModel').val()
+                    },
+                    success: function (result) {
 
-            //            // Clear the text inputs
-            //            $('#ThreeDModel').val("");
+                        // Clear the text inputs
+                        $('#ThreeDModel').val("");
 
-            //            getProject3DModel(projectId);
-            //        },
-            //        error: function (jqxhr, status, exception) {
-            //            console.log(status);
-            //            $("#PresentationStatusMessage").html("<p>3D Model was not added!</p>");
-            //        }
-            //    });
-            //});
+                        getProject3DModel(projectId);
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#PresentationStatusMessage").html("<p>3D Model was not added!</p>");
+                    }
+                });
+            });
 
             // Create an event report template
             $("#CreateEventReportTemplateButton").click(function (event) {
@@ -408,7 +396,7 @@
                 });
             });
 
-            // Display Schedules
+            // Display cost sheets
             getCostSheets(projectId);
 
             // Create a cost sheet
@@ -457,9 +445,9 @@
                     type: "post",
                     data: {
                         Name: $('#Name').val(),
-                        FilePath: $('#DocumentFile').val(),
-                        DocumentFile: $('#DocumentFile').val(),
-                        Status: $('#Status').val(),
+                        FilePath: $('#FilePath').val(),
+                        //DocumentFile: $('#DocumentFile').val(),
+                        //Status: $('#Status').val(),
                         EventProjectId: projectId
                     },
                     success: function (result) {
@@ -475,6 +463,44 @@
                     }
                 });
             });
+
+            // Display Schedules
+            //getTaskAssignments(projectId);
+
+            //// Create a task
+            //$("#AssignTasksButton").click(function (event) {
+
+            //    // Disable the click event on the create button
+            //    event.preventDefault();
+
+            //    $.ajax({
+            //        url: "/EventProject/TaskAssignmentPartial",
+            //        type: "post",
+            //        data: {
+            //            TaskName: $('#TaskName').val(),
+            //            Description: $('#Description').val(),
+            //            Deadline: $('#Deadline').val(),
+            //            Status: $('#Status').val(),
+            //            Priority: $('#Priority').val(),
+            //            IsCompleted: $('#IsCompleted').val(),
+            //            AnyEmployee: $('#AnyEmployee').val(),
+            //            EventProjectId: projectId                     
+            //        },
+            //        success: function (result) {
+
+            //            // Clear fields
+            //            clearScheduleForm()
+
+            //            // Display the project schedule after the add
+            //            getTaskAssignments(projectId);
+
+            //        },
+            //        error: function (jqxhr, status, exception) {
+            //            console.log(status);
+            //            $("#TaskStatusMessage").html("<p>Task was not added!</p>");
+            //        }
+            //    });
+            //});
 
             // // Display Tasks
             //getTasks(projectId);
@@ -547,42 +573,39 @@
             //});
 
             // Display Schedules
-            getTaskAssignments(projectId);
+            //getTaskAssignments(projectId);
+            //// Create a schedule
+            //$("#AssignTasksButton").click(function (event) {
+            //    event.preventDefault();
 
-            // Create a schedule
-            $("#AssignTasksButton").click(function (event) {
+            //    $.ajax({
+            //        url: "/EventProject/TaskAssignmentPartial",
+            //        type: "post",
+            //        data: {
+            //            TaskName: $('#TaskName').val(),
+            //            Description: $('#Description').val(),
+            //            Deadline: $('#Deadline').val(),
+            //            Priority: $('#Priority').val(),
+            //            IsCompleted: $('#IsCompleted').val(),
+            //            AnyEmployee: $('#AnyEmployee').val(),
+            //            //EmployeeId: EmployeeId,
+            //            //EmployeeId: employeeId,
+            //            EventProjectId: projectId
+            //        },
+            //        success: function (result) {
 
-                // Disable the click event on the create button
-                event.preventDefault();
+            //            // Clear fields
+            //            //clearScheduleForm()
 
-                $.ajax({
-                    url: "/EventProject/TaskAssignmentPartial",
-                    type: "post",
-                    data: {
-                        TaskName: $('#TaskName').val(),
-                        Description: $('#Description').val(),
-                        Deadline: $('#Deadline').val(),
-                        Priority: $('#Priority').val(),
-                        IsCompleted: $('#IsCompleted').val(),
-                        //AnyEmployee: $('#AnyEmployee').val(),
-                        EmployeeId: EmployeeId,
-                        EventProjectId: projectId
-                    },
-                    success: function (result) {
-
-                        // Clear fields
-                        //clearScheduleForm()
-
-                        // Display the project schedule after the add
-                        getTaskAssignments(projectId);
-
-                    },
-                    error: function (jqxhr, status, exception) {
-                        console.log(status);
-                        $("#TaskStatusMessage").html("<p>Task was not assigned!</p>");
-                    }
-                });
-            });
+            //            // Display the project schedule after the add
+            //            getTaskAssignments(projectId);
+            //        },
+            //        error: function (jqxhr, status, exception) {
+            //            console.log(status);
+            //            $("#TaskStatusMessage").html("<p>Task was not assigned!</p>");
+            //        }
+            //    });
+            //});
 
         });
         
