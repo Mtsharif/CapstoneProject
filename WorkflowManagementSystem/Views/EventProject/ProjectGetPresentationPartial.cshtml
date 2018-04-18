@@ -1,29 +1,27 @@
 ﻿@model WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel
 
-@{
-    Layout = null;
+@if (Request.IsAuthenticated)
+{
+    {
+        Layout = null;
+    }
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Presentation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Presentation)
+            </dd>
+            @*<dd>
+                    @Html.DisplayFor(model => model.PresentationFile)
+                    @if (!String.IsNullOrEmpty(Model.Presentation))
+                    {
+                        <a href="@Url.Content(Model.Presentation)">Presentation File</a>
+                    }
+                </dd>*@
+        </dl>
+    </div>
 }
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Presentation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Presentation)
-        </dd>
-        <dd>
-            @Html.DisplayFor(model => model.PresentationFile)
-            @if (!String.IsNullOrEmpty(Model.Presentation))
-            {
-                <a href="@Url.Content(Model.Presentation)">Presentation File</a>
-            }
-            else
-            {
-                <p>File not found</p>
-            }
-        </dd>
-    </dl>
-</div>
-
 

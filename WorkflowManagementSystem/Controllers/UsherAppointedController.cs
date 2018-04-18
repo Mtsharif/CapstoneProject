@@ -22,7 +22,7 @@ namespace WorkflowManagementSystem.Controllers
     /// This controller is created based on the UsherAppointedViewModel and UsherAppointed classes.
     /// It allows the user to assign ushers to projects as well as edit and delete the assignment.
     /// </summary>
-    [Authorize(Roles = "Client Service Employee")]
+    [Authorize(Roles = "Production Employee")]
     public class UsherAppointedController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

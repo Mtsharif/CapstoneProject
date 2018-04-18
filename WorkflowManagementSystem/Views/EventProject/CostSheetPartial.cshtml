@@ -1,6 +1,6 @@
 ﻿@model WorkflowManagementSystem.ViewModels.CostSheetViewModel
 
-@if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+@if (Request.IsAuthenticated @*&& User.IsInRole("Client Service Employee")*@)
 {
     {
         Layout = null;

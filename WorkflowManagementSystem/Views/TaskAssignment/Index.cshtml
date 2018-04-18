@@ -1,69 +1,71 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel>
 
-@{
-    ViewBag.Title = "Task Assignments";
-}
-
-<h2>Task Assignments</h2>
-
-<p>
-    @Html.ActionLink("Assign Task", "Create")
-</p>
-<table class="table" id="taskAssignmentsTable ">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AssignmentDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Deadline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnyEmployee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+@if (Request.IsAuthenticated @*&& User.IsInRole("Client Service Employee")*@)
+{
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssignmentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnyEmployee)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })
-            </td>
-        </tr>
+        ViewBag.Title = "Task Assignments";
     }
 
-</table>
+    <h2>Task Assignments</h2>
 
-@section scripts
+    <p>
+        @Html.ActionLink("Assign Task", "Create")
+    </p>
+    <table class="table" id="taskAssignmentsTable ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnyEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnyEmployee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @section scripts
 {
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
             $(document).ready(function () {
                 $('#taskAssignmentsTable').DataTable({
 
@@ -76,12 +78,13 @@
                     ]
                 });
             });
-    </script>
-}
+        </script>
+    }
 
-@section styles
+    @section styles
 {
-    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+    }
 }

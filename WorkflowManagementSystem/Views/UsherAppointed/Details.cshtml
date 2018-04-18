@@ -1,48 +1,51 @@
 ﻿@model WorkflowManagementSystem.ViewModels.UsherAppointedViewModel
 
-@{
-    ViewBag.Title = "Usher Assignment Details";
+@if (Request.IsAuthenticated)
+{
+    {
+        ViewBag.Title = "Usher Assignment Details";
+    }
+
+    <h2>Details</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Usher)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Usher)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EventProject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EventProject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Employee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Employee)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateAppointed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateAppointed)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UsherAppointedId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 }
-
-<h2>Details</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Usher)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Usher)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EventProject)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EventProject)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Employee)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Employee)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DateAppointed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateAppointed)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UsherAppointedId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

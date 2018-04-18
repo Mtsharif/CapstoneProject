@@ -21,9 +21,9 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         public int EventProjectId { get; set; }
 
-        // The 3D model file as object (used to upload a file)
-        [Display(Name = "3D Model File")]
-        public HttpPostedFileBase ThreeDModelFile { get; set; }
+        //// The 3D model file as object (used to upload a file)
+        //[Display(Name = "3D Model File")]
+        //public HttpPostedFileBase ThreeDModelFile { get; set; }
 
         [Display(Name = "3D Model")]
         [DisplayFormat(NullDisplayText = "3D Model Not Available")]

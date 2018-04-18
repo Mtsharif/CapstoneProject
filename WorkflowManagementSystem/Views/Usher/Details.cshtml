@@ -1,6 +1,6 @@
 ﻿@model WorkflowManagementSystem.ViewModels.UsherViewModel
 
-@if (Request.IsAuthenticated && User.IsInRole("Admin, Production Employee"))
+@if (Request.IsAuthenticated)
 {
     {
         ViewBag.Title = "Usher Details";

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.UsherViewModel>
 
-@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+@if (Request.IsAuthenticated @*&& User.IsInRole("Admin && Production Employee")*@)
 {
     {
         ViewBag.Title = "Usher List";
@@ -8,9 +8,13 @@
 
     <h2>Usher List</h2>
 
+    if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
     <p>
         @Html.ActionLink("Create New Usher", "Create")
     </p>
+    }
+
     <table class="table" id="ushersTable">
         <thead>
             <tr>
@@ -44,10 +48,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
                     @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                @*<td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>*@
+                </td>               
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Gender)
@@ -60,17 +61,25 @@
                     @Html.DisplayFor(modelItem => item.CarAvailability)
                 </td>
 
-                @if (Request.IsAuthenticated && User.IsInRole("Admin")) { 
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.UsherId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.UsherId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.UsherId })
                 </td>
-                
-            }
+
+                }
+                 @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
+                 {
                 <td>
-                    @Html.ActionLink("Evaluate", "Evaluate", "UsherEvaluation", new { id = item.UsherId }, null)
+                    @Html.ActionLink("Details", "Details", new { id = item.UsherId })
                 </td>
+                 }
+
+                @*<td>
+                    @Html.ActionLink("Evaluate", "Evaluate", "UsherEvaluation", new { id = item.UsherId }, null)
+                </td>*@
 
             </tr>
             }
@@ -105,10 +114,5 @@
         <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
         <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
     }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+
+            }

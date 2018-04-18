@@ -56,9 +56,23 @@ h2 {
     padding-bottom: 20px;
 }
 
+h1.center {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 300;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
 
 .color-grey {
     background-color: #f6f6f6;
     line-height: 20px;
 }
 
+.color-login {
+    background-color: #f6f6f6;
+    padding: 100px;
+    padding-right:20px;
+}

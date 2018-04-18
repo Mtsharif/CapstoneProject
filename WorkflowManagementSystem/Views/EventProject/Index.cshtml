@@ -41,14 +41,18 @@
                         @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td>
-                        @Html.ActionLink("Details", "DetailsMaster", new { id = item.EventProjectId }) 
+                        @Html.ActionLink("Details", "DetailsMaster", new { id = item.EventProjectId }) <br />
 
                         @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+                         {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId })<br />
+                    @Html.ActionLink("Assign Tasks", "Create", controllerName: "TaskAssignment") <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId })
+
+                            }
+                        @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId })
-                             @Html.ActionLink("Assign Tasks", "Create", controllerName: "TaskAssignment") 
-                             @Html.ActionLink("Assign Ushers", "Create", controllerName: "UsherAppointed") 
-                             @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId }) 
+                         @Html.ActionLink("Assign Ushers", "Create", controllerName: "UsherAppointed") <br />
 
                         }
                     </td>
@@ -75,7 +79,7 @@ else
         $(document).ready(function () {
             $('#projectsTable').DataTable({
 
-                "scrollY": "300px",
+                "scrollY": "700px",
                 "scrollCollapse": true,
                 "paging": false,
 

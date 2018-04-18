@@ -18,9 +18,9 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         public int EventProjectId { get; set; }
 
-        //The presentation file as object (used to upload a file)
-        [Display(Name = "Presentation File")]
-        public HttpPostedFileBase PresentationFile { get; set; }
+        ////The presentation file as object (used to upload a file)
+        //[Display(Name = "Presentation File")]
+        //public HttpPostedFileBase PresentationFile { get; set; }
 
         [Display(Name = "Presentation")]
         //[DisplayFormat(NullDisplayText = "Presentation Not Available")]

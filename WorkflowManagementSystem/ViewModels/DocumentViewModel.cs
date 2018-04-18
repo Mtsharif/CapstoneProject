@@ -30,10 +30,10 @@ namespace WorkflowManagementSystem.ViewModels
         [Display(Name = "File Path")]
         public string FilePath { get; set; }
 
-        // The file as object (used to upload a file)
-        //[Required]
-        [Display(Name = "Document File")]
-        public HttpPostedFileBase DocumentFile { get; set; }
+        //// The file as object (used to upload a file)
+        ////[Required]
+        //[Display(Name = "Document File")]
+        //public HttpPostedFileBase DocumentFile { get; set; }
 
         [Display(Name = "Status")]
         public DocumentStatus Status { get; set; }

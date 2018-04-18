@@ -1,133 +1,139 @@
 ﻿@using WorkflowManagementSystem.ViewModels
 
-@*@model WorkflowManagementSystem.ViewModels.EventProjectViewModel*@
-@{ 
+@if (Request.IsAuthenticated)
+{
+    @*@model WorkflowManagementSystem.ViewModels.EventProjectViewModel*@
+{
     ViewBag.Title = "Project Management";
 }
-<style>
-    .nav-stacked > li > a {
-        min-height: 50px;
-        height: 50px;
-        color: black;
-    }
-    
-</style>
+    <style>
+        .nav-stacked > li > a {
+            min-height: 50px;
+            height: 50px;
+            color: black;
+        }
+    </style>
 
-<h2>Project Management</h2>
+    <h2>Project Management</h2>
 
-<div class="container col-md-12">
+    <div class="container col-md-12">
 
-    <div class="tabtable">
+        <div class="tabtable">
 
-        <ul class="nav nav-pills nav-stacked col-md-3">
-            <li class="active"><a href="#DetailsTab" data-toggle="tab">Details</a></li>
-            <li><a href="#PresentationTab" data-toggle="tab">Presentation</a></li>
-            <li><a href="#ThreeDimensionModelTab" data-toggle="tab">Three Dimension Model</a></li>
-            <li><a href="#QuotationAndInvoiceTab" data-toggle="tab">Quotation and Invoice</a></li>
-            <li><a href="#EventReportTemplateTab" data-toggle="tab">Event Report Template</a></li>
-            <li><a href="#EventReportTab" data-toggle="tab">Event Report</a></li>
-            <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
-            <li><a href="#ClientTab" data-toggle="tab">Client Details</a></li>
-            @*<li><a href="#TasksTab" data-toggle="tab">Tasks</a></li>*@
-            @*<li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>*@
-            @*<li><a href="#UshersTab" data-toggle="tab">Ushers</a></li>*@
-        </ul>
+            <ul class="nav nav-pills nav-stacked col-md-3">
+                <li class="active"><a href="#DetailsTab" data-toggle="tab">Details</a></li>
+                <li><a href="#PresentationTab" data-toggle="tab">Presentation</a></li>
+                <li><a href="#ThreeDimensionModelTab" data-toggle="tab">Three Dimension Model</a></li>
+                <li><a href="#QuotationAndInvoiceTab" data-toggle="tab">Quotation and Invoice</a></li>
+                <li><a href="#EventReportTemplateTab" data-toggle="tab">Event Report Template</a></li>
+                <li><a href="#EventReportTab" data-toggle="tab">Event Report</a></li>
+                <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
+                <li><a href="#ClientTab" data-toggle="tab">Client Details</a></li>
+                @*<li><a href="#TasksTab" data-toggle="tab">Tasks</a></li>*@
+                @*<li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>*@
+                @*<li><a href="#UshersTab" data-toggle="tab">Ushers</a></li>*@
+            </ul>
 
-        <div class="tab-content col-md-9">
-            <div class="tab-pane active  " id="DetailsTab">
-                <h3>Project Details</h3>
-                @Html.Action("ProjectDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
-            </div>
+            <div class="tab-content col-md-9">
+                <div class="tab-pane active  " id="DetailsTab">
+                    <h3>Project Details</h3>
+                    @Html.Action("ProjectDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
+                </div>
 
-            <div class="tab-pane" id="PresentationTab">
-                <h3>Presentation</h3>
-                @*@Html.Partial("ProjectPresentationPartial",
-                        new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
-            <div id="PresentationStatusMessage"></div>*@
+                <div class="tab-pane" id="PresentationTab">
+                    <h3>Presentation</h3>
+                    @*@Html.Partial("ProjectPresentationPartial",
+                                    new ViewDataDictionary { { "id", (int)ViewBag.ProjectId } })
+                        <div id="PresentationStatusMessage"></div>*@
 
-                @Html.Partial("ProjectPresentationPartial",
-        new ProjectPresentationViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                @Html.Partial("ProjectGetPresentationPartial",
-        new ProjectPresentationViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                @*<div id="PresentationDetails"></div>*@
-            </div>
+                    @Html.Partial("ProjectPresentationPartial",
+           new ProjectPresentationViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                    @*@Html.Partial("ProjectGetPresentationPartial",
+                        new ProjectPresentationViewModel { EventProjectId = (int)ViewBag.ProjectId })*@
+                    <div id="PresentationDetails"></div>
+                </div>
 
-            <div class="tab-pane" id="ThreeDimensionModelTab">
-                <h3>Three Dimension Model</h3>
-                @Html.Partial("Project3DModelPartial",
-        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                <div id="3DModelDetails"></div>
+                <div class="tab-pane" id="ThreeDimensionModelTab">
+                    <h3>Three Dimension Model</h3>
+                    @Html.Partial("Project3DModelPartial",
+    new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                    <div id="3DModelDetails"></div>
+                    <div id="3DModelStatusMessage"></div>
 
-                @*@Html.Partial("Project3DModelPartial",
- new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                    @*@Html.Partial("Project3DModelPartial",
+                        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
 
-                @Html.Partial("ProjectGet3DModelPartial",
-        new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })*@
-            </div>
+                                       @Html.Partial("ProjectGet3DModelPartial",
+                               new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })*@
+                </div>
 
-            <div class="tab-pane" id="QuotationAndInvoiceTab">
-                <h3>Quotation and Invoice</h3>
-                @Html.Partial("DocumentPartial",
-        new DocumentViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                <div id="DocumentStatusMessage"></div>
-                <div id="DocumentList"></div>
-            </div>
+                <div class="tab-pane" id="QuotationAndInvoiceTab">
+                    <h3>Quotation and Invoice</h3>
+                    @Html.Partial("DocumentPartial",
+           new DocumentViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                    <div id="DocumentStatusMessage"></div>
+                    <div id="DocumentList"></div>
+                </div>
 
-            <div class="tab-pane" id="EventReportTemplateTab">
-                <h3>Event Report Template</h3>
-                @Html.Partial("ProjectEventReportTemplatePartial",
-        new ProjectEventReportTemplateViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                <div id="EventReportTemplateDetails"></div>
-            </div>
+                <div class="tab-pane" id="EventReportTemplateTab">
+                    <h3>Event Report Template</h3>
+                    @Html.Partial("ProjectEventReportTemplatePartial",
+    new ProjectEventReportTemplateViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                    <div id="EventReportTemplateDetails"></div>
+                    <div id="EventReportTemplateStatusMessage"></div>
+                </div>
 
-            <div class="tab-pane" id="EventReportTab">
-                <h3>Event Report</h3>
-                @Html.Partial("ProjectEventReportPartial",
-        new ProjectEventReportViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                <div id="EventReportDetails"></div>
-            </div>
+                <div class="tab-pane" id="EventReportTab">
+                    <h3>Event Report</h3>
+                    @Html.Partial("ProjectEventReportPartial",
+    new ProjectEventReportViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                    <div id="EventReportDetails"></div>
+                    <div id="EventReportStatusMessage"></div>
 
-            <div class="tab-pane" id="SchedulesTab">
-                <h3>Schedules</h3>
-                @Html.Partial("ProjectSchedulesPartial",
-        new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
-                <div id="ScheduleStatusMessage"></div>
-                <div id="ProjectScheduleList"></div>
-            </div>
+                </div>
 
-            <div class="tab-pane" id="ClientTab">
-                <h3>Client Details</h3>
-                @Html.Action("ClientDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
-            </div>
+                <div class="tab-pane" id="SchedulesTab">
+                    <h3>Schedules</h3>
+                    @Html.Partial("ProjectSchedulesPartial",
+           new ProjectScheduleViewModel { EventProjectId = (int)ViewBag.ProjectId, ScheduleDate = DateTime.Today })
+                    <div id="ScheduleStatusMessage"></div>
+                    <div id="ProjectScheduleList"></div>
+                </div>
 
-            @*<div class="tab-pane" id="TasksTab">
-                <h3>Tasks</h3>
-                @Html.Partial("TaskAssignmentPartial",
-        new TaskAssignmentViewModel { EventProjectId = (int)ViewBag.ProjectId})
-                <div id="TaskStatusMessage"></div>
-                <div id="TaskList"></div>
-            </div>*@
+                <div class="tab-pane" id="ClientTab">
+                    <h3>Client Details</h3>
+                    @Html.Action("ClientDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
+                </div>
 
-            @*<div class="tab-pane" id="UshersTab">
-            <h3>Ushers</h3>
-        </div>*@
+                @*<div class="tab-pane" id="TasksTab">
+                            <h3>Tasks</h3>
+                            @Html.Partial("TaskAssignmentPartial",
+                    new TaskAssignmentViewModel { EventProjectId = (int)ViewBag.ProjectId})
+                            <div id="TaskStatusMessage"></div>
+                            <div id="TaskList"></div>
+                        </div>*@
+
+                @*<div class="tab-pane" id="UshersTab">
+                        <h3>Ushers</h3>
+                    </div>*@
 
                 @*<div class="tab-pane" id="CostSheetTab">
-                    <h3>Cost Sheet</h3>
-                    @Html.Partial("CostSheetPartial",
-                new CostSheetViewModel { EventProjectId = (int)ViewBag.ProjectId })
-                    <div id="CostSheetStatusMessage"></div>
-                    <div id="CostSheetList"></div>
-                </div>*@
+                        <h3>Cost Sheet</h3>
+                        @Html.Partial("CostSheetPartial",
+                    new CostSheetViewModel { EventProjectId = (int)ViewBag.ProjectId })
+                        <div id="CostSheetStatusMessage"></div>
+                        <div id="CostSheetList"></div>
+                    </div>*@
 
             </div>
+        </div>
     </div>
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
 
-    <script type="text/javascript">
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script type="text/javascript">
 
         // Definition of Get project schedules function
         function getProjectSchedules(projectId) {
@@ -184,7 +190,7 @@
                 });
         }
 
-        // Definition to Get event report template function
+        // Definition to Get event report function
         function getProjectEventReport(projectId) {
             $.get("/EventProject/ProjectGetEventReportPartial", { id: projectId })
                 .done(function (result) {
@@ -218,67 +224,33 @@
             // Create a presentation
             $("#CreatePresentationButton").click(function (event) {
 
-
                 //Disable the click event on the create button
                 event.preventDefault();
 
-                var data = new FormData();
-                var files = $("#presentationFile").get(0).files;
-
-                if (files.length > 0) { data.append("HelpPresentations", files[0]); }
-
-                else {
-                    common.showNotification('Warning', 'Please select file to upload.', 'top', 'right');
-                    return false;
-                }
-
-                var extension = $("#presentationFile").val().split('.').pop().toUpperCase();
-                if (extension != "PNG" && extension != "JPG" && extension != "JPEG") {
-                    common.showNotification('Warning', 'Invalid file format.', 'top', 'right');
-                    return false;
-                }
-
-                $.ajax({
+                 $.ajax({
                     url: "/EventProject/ProjectPresentationPartial",
                     type: "post",
-                    processData: false,
-                    data: data, dataType: 'json',
-                    contentType: false,
-                    success: function (response) {
-                        if (respo != nulll || response != '')
-                            alert(response);
-                        $("#presentationFile").val('');
-
+                    data: {
+                        EventProjectId: projectId,
+                        //PresentationFile: $('#Presentation').val(),
+                        Presentation: $('#Presentation').val()
                     },
-                    error: function (er) { }
+
+                    success: function (result) {
+
+                        // Clear the text inputs
+                        $('#Presentation').val("");
+
+                        getProjectPresentation(projectId);
+
+                        //$("#PresentationStatusMessage").html("<p>Presentation added successfully</p>");
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#PresentationStatusMessage").html("<p>Presentation was not added!</p>");
+                    }
                 });
-                return false
-                });
-
-                //$.ajax({
-                //    url: "/EventProject/ProjectPresentationPartial",
-                //    type: "post",
-                //    data: {
-                //        EventProjectId: projectId,
-                //        PresentationFile: $('#Presentation').val(),
-                //        Presentation: $('#PresentationFile').val()
-                //    },
-               
-                //    success: function (result) {
-
-                //        // Clear the text inputs
-                //        $('#Presentation').val("");
-
-                //        getProjectPresentation(projectId);
-
-                //        //$("#PresentationStatusMessage").html("<p>Presentation added successfully</p>");
-                //    },
-                //    error: function (jqxhr, status, exception) {
-                //        console.log(status);
-                //        $("#PresentationStatusMessage").html("<p>Presentation was not added!</p>");
-                //    }
-                //});
-            //});
+            });
 
             // Create a 3D model
             $("#Create3DModelButton").click(function (event) {
@@ -302,7 +274,7 @@
                     },
                     error: function (jqxhr, status, exception) {
                         console.log(status);
-                        $("#PresentationStatusMessage").html("<p>3D Model was not added!</p>");
+                        $("#3DModelStatusMessage").html("<p>3D Model was not added!</p>");
                     }
                 });
             });
@@ -335,7 +307,7 @@
                 });
             });
 
-            // Create an event report 
+            // Create an event report
             $("#CreateEventReportButton").click(function (event) {
 
                 // Disable the click event on the create button
@@ -396,41 +368,6 @@
                 });
             });
 
-            // Display cost sheets
-            getCostSheets(projectId);
-
-            // Create a cost sheet
-            $("#CreateCostSheetButton").click(function (event) {
-
-                // Disable the click event on the create button
-                event.preventDefault();
-
-                $.ajax({
-                    url: "/EventProject/CostSheetPartial",
-                    type: "post",
-                    data: {
-                        
-                        Name: $('#Name').val(),
-                        Status: $('#Status').val(),
-                        CostSheet: $('#CostSheet').val(),
-                        Item: $('#Item').val(),
-                        EventProjectId: Item
-                    },
-                    success: function (result) {
-
-                        // Clear fields
-                        clearScheduleForm()
-
-                        // Display the project schedule after the add
-                        getCostSheets(projectId);
-                    },
-                    error: function (jqxhr, status, exception) {
-                        console.log(status);
-                        $("#CostSheetStatusMessage").html("<p>CostSheet was not added!</p>");
-                    }
-                });
-            });
-
             // Display documents
             getDocuments(projectId);
 
@@ -452,8 +389,9 @@
                     },
                     success: function (result) {
 
-                        // Clear fields
-                        clearScheduleForm()
+                        // Clear the text inputs
+                        $('#Name').val("");
+                        $('#FilePath').val("");
 
                         getDocuments(projectId);
                     },
@@ -484,7 +422,7 @@
             //            Priority: $('#Priority').val(),
             //            IsCompleted: $('#IsCompleted').val(),
             //            AnyEmployee: $('#AnyEmployee').val(),
-            //            EventProjectId: projectId                     
+            //            EventProjectId: projectId
             //        },
             //        success: function (result) {
 
@@ -572,9 +510,8 @@
             //    });
             //});
 
-            // Display Schedules
             //getTaskAssignments(projectId);
-            //// Create a schedule
+
             //$("#AssignTasksButton").click(function (event) {
             //    event.preventDefault();
 
@@ -607,7 +544,42 @@
             //    });
             //});
 
+                        //// Display cost sheets
+            //getCostSheets(projectId);
+
+            //// Create a cost sheet
+            //$("#CreateCostSheetButton").click(function (event) {
+
+            //    // Disable the click event on the create button
+            //    event.preventDefault();
+
+            //    $.ajax({
+            //        url: "/EventProject/CostSheetPartial",
+            //        type: "post",
+            //        data: {
+
+            //            Name: $('#Name').val(),
+            //            Status: $('#Status').val(),
+            //            CostSheet: $('#CostSheet').val(),
+            //            Item: $('#Item').val(),
+            //            EventProjectId: Item
+            //        },
+            //        success: function (result) {
+
+            //            // Clear fields
+            //            clearScheduleForm()
+
+            //            // Display the project schedule after the add
+            //            getCostSheets(projectId);
+            //        },
+            //        error: function (jqxhr, status, exception) {
+            //            console.log(status);
+            //            $("#CostSheetStatusMessage").html("<p>CostSheet was not added!</p>");
+            //        }
+            //    });
+            //});
         });
-        
-    </script>
+
+        </script>
+    }
 }

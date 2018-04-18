@@ -57,10 +57,6 @@ namespace WorkflowManagementSystem.Models
         public enum TaskStatus
         {
             Pending,
-
-            [Display(Name = "In Progress")]
-            InProgress,
-
             Completed,
             Overdue
         }

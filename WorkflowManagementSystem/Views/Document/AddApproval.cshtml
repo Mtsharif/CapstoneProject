@@ -2,13 +2,13 @@
 
 @if (Request.IsAuthenticated && User.IsInRole("CEO"))
 {
-    @{
+    {
         ViewBag.Title = "AddApproval";
     }
 
     <h2>Add Approval</h2>
 
-    @using (Html.BeginForm())
+    using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 

@@ -1,63 +1,65 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.UsherAppointedViewModel>
 
-@{
-    ViewBag.Title = "Ushers Assigned List ";
-}
-
-<h2>Ushers Assigned</h2>
-
-<p>
-    @Html.ActionLink("Assign Usher", "Create")
-</p>
-<table class="table" id=" usherAppointedTable">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Usher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventProject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateAppointed)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+@if (Request.IsAuthenticated @*&& User.IsInRole("Production Employee")*@)
+{
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usher)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventProject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAppointed)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.UsherAppointedId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.UsherAppointedId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.UsherAppointedId })
-            </td>
-        </tr>
+        ViewBag.Title = "Ushers Assigned List ";
     }
 
-</table>
+    <h2>Ushers Assigned</h2>
 
-@section scripts
+    <p>
+        @Html.ActionLink("Assign Usher", "Create")
+    </p>
+    <table class="table" id=" usherAppointedTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventProject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAppointed)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventProject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAppointed)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UsherAppointedId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.UsherAppointedId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UsherAppointedId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @section scripts
 {
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/jquery.dataTables.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.scroller.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("/Scripts/DataTables/dataTables.bootstrap.min.js")"></script>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
             $(document).ready(function () {
                 $('#usherAppointedTable').DataTable({
 
@@ -70,12 +72,13 @@
                     ]
                 });
             });
-    </script>
-}
+        </script>
+    }
 
-@section styles
+    @section styles
 {
-    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
+    }
 }

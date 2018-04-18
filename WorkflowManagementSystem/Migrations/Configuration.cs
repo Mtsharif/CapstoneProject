@@ -303,35 +303,67 @@ namespace WorkflowManagementSystem.Migrations
             eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
-            //// Add project schedule examples 
-            //var projectSchedules = new List<ProjectSchedule>
-            //{
-            //    new ProjectSchedule {Date = DateTime.Parse("10/05/2018"), StartTime = DateTime.Parse("9:00:00"), EndTime = DateTime.Parse("10:30:00"), EventProjectId = 1},
-            //    new ProjectSchedule {Date = DateTime.Parse("11/05/2018"), StartTime = DateTime.Parse("9:00:00"), EndTime = DateTime.Parse("10:30:00"), EventProjectId = 1},
-            //    new ProjectSchedule {Date = DateTime.Parse("20/06/2018"), StartTime = DateTime.Parse("11:00:00"), EndTime = DateTime.Parse("12:30:00"), EventProjectId = 1},
-            //};
-            //projectSchedules.ForEach(s => context.ProjectSchedules.AddOrUpdate(p => p.Date, s));
-            //context.SaveChanges();
+            // Add project schedule examples 
+            var projectSchedules = new List<ProjectSchedule>
+            {
+                new ProjectSchedule {Date = DateTime.Now.AddDays(40), StartTime = TimeSpan.Parse("9:30:00"), EndTime = TimeSpan.Parse("10:30:00"), EventProjectId = 1},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(41), StartTime = TimeSpan.Parse("9:00:00"), EndTime = TimeSpan.Parse("10:30:00"), EventProjectId = 1},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(42), StartTime = TimeSpan.Parse("11:00:00"), EndTime = TimeSpan.Parse("12:30:00"), EventProjectId = 1},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(55), StartTime = TimeSpan.Parse("11:00:00"), EndTime = TimeSpan.Parse("17:30:00"), EventProjectId = 2},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(80), StartTime = TimeSpan.Parse("17:00:00"), EndTime = TimeSpan.Parse("20:30:00"), EventProjectId = 4},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(81), StartTime = TimeSpan.Parse("18:00:00"), EndTime = TimeSpan.Parse("20:30:00"), EventProjectId = 4},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(100), StartTime = TimeSpan.Parse("18:00:00"), EndTime = TimeSpan.Parse("23:30:00"), EventProjectId = 1},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(101), StartTime = TimeSpan.Parse("18:30:00"), EndTime = TimeSpan.Parse("22:30:00"), EventProjectId = 1},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(102), StartTime = TimeSpan.Parse("18:30:00"), EndTime = TimeSpan.Parse("22:30:00"), EventProjectId = 1},
+            };
+            projectSchedules.ForEach(s => context.ProjectSchedules.AddOrUpdate(p => p.Date, s));
+            context.SaveChanges();
 
-            // Add usher appointed examples 
+            //Add usher appointed examples
             //var usherAppointeds = new List<UsherAppointed>
             //{
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 2, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 2, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Parse("12/04/2018"), UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 2, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 7, EventProjectId = 2, ProductionEmployeeId = 3},
+            //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
+            //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
+            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
             //};
             //usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
             //context.SaveChanges();
 
 
-            // Add criterion examples 
+            // Add task assignments examples 
+            var taskAssignments = new List<TaskAssignment>
+            {
+                new TaskAssignment {EventProjectId = 4, TaskName = "Add presentation",Description = null, EmployeeId = 2,
+                    Deadline = DateTime.Now.AddDays(20), Priority = TaskAssignment.TaskPriority.Medium,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                new TaskAssignment {EventProjectId = 4, TaskName = "Add Quotation", Description = null, EmployeeId = 6,
+                    Deadline = DateTime.Now.AddDays(30), Priority = TaskAssignment.TaskPriority.High,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                new TaskAssignment {EventProjectId = 4, TaskName = "Add Invoice", Description = null, EmployeeId = 6,
+                    Deadline = DateTime.Now.AddDays(40), Priority = TaskAssignment.TaskPriority.High,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                new TaskAssignment {EventProjectId = 1, TaskName = "Meet with client", Description = null, EmployeeId = 3,
+                    Deadline = DateTime.Now.AddDays(28), Priority = TaskAssignment.TaskPriority.High,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                new TaskAssignment {EventProjectId = 5, TaskName = "Add Event Report Template", Description = null, EmployeeId = 8,
+                    Deadline = DateTime.Now.AddDays(30), Priority = TaskAssignment.TaskPriority.Medium,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                new TaskAssignment {EventProjectId = 5, TaskName = "Add Event Report", Description = null, EmployeeId = 3,
+                    Deadline = DateTime.Now.AddDays(40), Priority = TaskAssignment.TaskPriority.Low,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+            };
+
+            taskAssignments.ForEach(s => context.TaskAssignments.AddOrUpdate(p => p.TaskName, s));
+            context.SaveChanges();
+
+            // criterion examples
             var criteria = new List<Criterion>
             {
                 new Criterion {Name = "Quality of Work", Description = "The quality of the work or service is up to high standards." },
@@ -341,6 +373,17 @@ namespace WorkflowManagementSystem.Migrations
             };
 
             criteria.ForEach(s => context.Criteria.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
+
+            // criterion examples
+            var documents = new List<Document>
+            {
+                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 4, },
+                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 1, },
+                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 2, },                
+            };
+
+            documents.ForEach(s => context.Documents.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
         }
     }

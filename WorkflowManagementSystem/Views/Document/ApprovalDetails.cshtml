@@ -1,6 +1,6 @@
 ﻿@model WorkflowManagementSystem.ViewModels.DocumentViewModel
 
-@if (Request.IsAuthenticated && User.IsInRole("Finance Employee, CEO"))
+@if (Request.IsAuthenticated)
 {
     {
         ViewBag.Title = "ApprovalDetails";
@@ -55,23 +55,8 @@
     <p>
         @*@Html.ActionLink("Edit", "Edit", new { id = Model.DocumentId }) |*@
         @*@Html.ActionLink("Back", "DetailsMaster", new { id = Model.EventProjectId }, "EventProject")*@
+        @*@Html.ActionLink("Back", "DetailsMaster", "EventProject", new { id = Model.EventProjectId }, null)*@
         @Html.ActionLink("Back", "DetailsMaster", "EventProject", new { id = Model.EventProjectId }, null)
-        @*@Html.ActionLink(
-                linkText: "Back",
-                actionName: "DetailsMaster",
-                controllerName: "EventProject",
-                routeValues: new
-                {
-                    id = Model.EventProjectId
-                },
-                htmlAttributes: Model.
-            )*@
     </p>
 
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
 }
