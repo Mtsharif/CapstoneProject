@@ -353,7 +353,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">project id</param>
         /// <returns>project presentation partial view</returns>
         [HttpGet]
-        public ActionResult ProjectPresentationPartial(int? id)
+        public ActionResult ProjectPresentationPartial(int? id/*, HttpPostedFileBase file*/)
         {
             if (id == null)
             {
@@ -372,6 +372,16 @@ namespace WorkflowManagementSystem.Controllers
                 EventProjectId = project.EventProjectId,
                 Presentation = project.Presentation,
             };
+
+            //if (file.ContentLength > 0)
+            //{
+            //    var fileName = Path.GetFileName(file.FileName);
+            //    var rand = Guid.NewGuid().ToString();
+            //    var path = Path.Combine(Server.MapPath("~/Content/Uploads/"), fileName);
+            //    file.SaveAs(path);
+            //    project.Presentation = "~/Content/Uploads/" + rand + "-" + fileName;
+            //}
+            //return PartialView(model);
 
             ////HACK: ADD the path to presentation file path here
             //// PresentationFile = project.prese
@@ -419,32 +429,57 @@ namespace WorkflowManagementSystem.Controllers
                     return HttpNotFound();
                 }
 
-            //    //HACK: Add the presentation file path here
-            //    if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
-            //    {
-            //        var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
-            //        string filename = Path.GetFileName(model.PresentationFile.FileName);
-            //        string ext = Path.GetExtension(filename).Substring(1);
+                //    //HACK: Add the presentation file path here
+                //    if (model.PresentationFile != null && model.PresentationFile.ContentLength > 0)
+                //    {
+                //        var extensions = new[] { "pdf", "docx", "doc", "jpg", "jpeg", "png" };
+                //        string filename = Path.GetFileName(model.PresentationFile.FileName);
+                //        string ext = Path.GetExtension(filename).Substring(1);
 
-            //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
-            //    {
-            //        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
-            //        return PartialView();
-            //    }
+                //    if (!extensions.Contains(ext, StringComparer.OrdinalIgnoreCase))
+                //    {
+                //        ModelState.AddModelError(string.Empty, "Accepted file are pdf, docx, doc, jpg, jpeg, and png documents");
+                //        return PartialView();
+                //    }
 
-            //    string appFolder = "~/Content/Uploads/";
-            //    var rand = Guid.NewGuid().ToString();
-            //    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
-            //    model.PresentationFile.SaveAs(path);
-            //    project.Presentation = appFolder + rand + "-" + filename;
-            //}
-            //else
-            //{
-            //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
-            //    return PartialView();
-            //}
+                //    string appFolder = "~/Content/Uploads/";
+                //    var rand = Guid.NewGuid().ToString();
+                //    string path = Path.Combine(Server.MapPath(appFolder), rand + "-" + filename);
+                //    model.PresentationFile.SaveAs(path);
+                //    project.Presentation = appFolder + rand + "-" + filename;
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError(string.Empty, "Empty files are not accepted");
+                //    return PartialView();
+                //}
 
-            project.Presentation = model.Presentation;
+
+                //try
+                //{
+                //if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+                //{
+                //    var presentation = System.Web.HttpContext.Current.Request.Files["HelpPresentation"];
+                //    HttpPostedFileBase fileBase = new HttpPostedFileWrapper(presentation);
+                //    var fileName = Path.GetFileName(fileBase.FileName);
+                //    var rand = Guid.NewGuid().ToString();
+                //    var path = Path.Combine(Server.MapPath("~/Content/Uploads/"), fileName);
+                //    fileBase.SaveAs(path);
+                //    project.Presentation = "~/Content/Uploads/" + rand + "-" + fileName;
+                //    return Json("Presentation uploaded successfully");
+                //}
+                //else
+                //{
+                //    return Json("Presentatino was not uploaded");
+                //}
+
+                //catch (Exception)
+                //{
+
+                //    return Json("Error occured while uploading.");
+                //}
+
+                project.Presentation = model.Presentation;
                 db.SaveChanges();
             }
 
@@ -477,6 +512,7 @@ namespace WorkflowManagementSystem.Controllers
             };
 
             return View(model);
+
         }
 
         /// <summary>

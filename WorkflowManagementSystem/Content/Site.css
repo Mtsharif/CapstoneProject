@@ -11,12 +11,14 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
 
 /*Set padding to keep content from hitting the edges*/
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    font: 400 15px sans-serif;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -44,16 +46,36 @@ legend.fieldset-border {
     width: inherit;
     padding: 5px 10px;
     border-bottom: none;
+    font-weight: 300;
 }
 
+legend {
+     color: black;
+    /*background-color: #e9e9e9;*/
+    padding: 1px 10px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:23px;
+    text-align:center;
+}
+
+fieldset {
+    background-color: #f2f2f2;
+}
+
+div.form-group {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:17px;  
+}
 
 h2 {
-    font-size: 24px;
+    font-size: 27px;
+    font-weight:900;
     text-transform: uppercase;
     color: black;
-    font-weight: 300;
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align:center;
 }
 
 h1.center {
@@ -64,15 +86,23 @@ h1.center {
     font-weight: 300;
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .color-grey {
     background-color: #f6f6f6;
     line-height: 20px;
+    padding: 100px;
 }
 
 .color-login {
     background-color: #f6f6f6;
     padding: 100px;
     padding-right:20px;
+}
+
+.btn-default:hover, .btn-default:focus {
+    border: 1px solid #a82323;
+    background-color: #fff;
+    color: #000;
 }

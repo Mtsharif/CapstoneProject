@@ -252,6 +252,38 @@
                 });
             });
 
+            //$(function () {
+            //    $('#CreatePresentationButton').click(function () {
+            //        var data = new FormData();
+            //        var files = $('#file').get(0).files;
+
+            //        if (files.length > 0) {
+            //            data.append("HelpPresentation", files[0]);
+            //        }
+            //        else {
+            //            common.showNotification('Warning', 'Please select file to upload.', 'top', 'right');
+            //            return false;
+            //        }
+
+            //        $ajax({
+            //            url: "/EventProject/ProjectPresentationPartial", type: "POST", processData: false,
+            //            data: data, dataType: 'json',
+            //            contentType: false,
+            //            success: function (response) {
+            //                if (response != null || respones != '')
+            //                    alert(response);
+            //                $('#file').val('');
+            //                getProjectPresentation(projectId);
+            //            },
+            //            error: function (er) { }
+            //        });
+            //        return false;
+            //    });
+            //});
+
+
+
+
             // Create a 3D model
             $("#Create3DModelButton").click(function (event) {
 
