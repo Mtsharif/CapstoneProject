@@ -30,7 +30,7 @@ This application is developed for the MIS capstone project; it is a web-based wo
 ***
 ### Development Tools 
 * Visual Studio Community Edition 2017 - Version 15.6.2
-* Microsoft SQL Server Management Studio - Version 14.0
+* SQl Server LocalDb - Version 13
 * ASP.NET MVC Framework - Version 5.2.3
 ***
 ### How to use my application 
