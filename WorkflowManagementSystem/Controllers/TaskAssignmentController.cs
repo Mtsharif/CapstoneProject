@@ -127,6 +127,16 @@ namespace WorkflowManagementSystem.Controllers
                 //{
                 //    return HttpNotFound();
                 //}
+
+                if (model.Deadline < DateTime.Now.AddHours(2) && model.Deadline < DateTime.Today)
+                {
+                    ModelState.AddModelError("Deadline", "The deadline should not be older day and less than 2 hours from now.");
+
+                    ModelState.AddModelError(String.Empty, "Issue with the deadline");
+
+                    return View(model);
+                }
+
                 var taskAssignment = new TaskAssignment
                 {
                     TaskName = model.TaskName,
@@ -235,6 +245,19 @@ namespace WorkflowManagementSystem.Controllers
                 db.Entry(taskAssignment).State = EntityState.Modified;
                 db.SaveChanges();
 
+                if (taskAssignment.IsCompleted == true && taskAssignment.Deadline < DateTime.Today)
+                {
+                    taskAssignment.Status = TaskAssignment.TaskStatus.Completed;
+                }
+                else if (taskAssignment.Deadline > DateTime.Today)
+                {
+                    taskAssignment.Status = TaskAssignment.TaskStatus.Overdue;
+                }
+                else if (taskAssignment.IsCompleted == false && taskAssignment.Deadline < DateTime.Today)
+                {
+                    taskAssignment.Status = TaskAssignment.TaskStatus.Pending;
+                }
+                
                 return RedirectToAction("Index");
             }
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");

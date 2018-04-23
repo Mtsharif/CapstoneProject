@@ -1,0 +1,41 @@
+﻿@*@model WorkflowManagementSystem.ViewModels.EventProjectViewModel
+
+@{
+    Layout = null;
+}
+
+@if (Model.UsherAppointeds.Count() == 0)
+{
+           <p class="text-danger">This project does not have any schedule.</p>
+}
+
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ProjectSchedules)
+        {
+                             <tr>
+                                 <td>
+                                     @Html.DisplayFor(modelItem => item.Date)
+                                 </td>
+                                 <td>
+                                     @Html.DisplayFor(modelItem => item.StartTime)
+                                 </td>
+                                 <td>
+                                     @Html.DisplayFor(modelItem => item.EndTime)
+                                 </td>
+         
+                             </tr>
+        }
+        </tbody>
+</table>
+}*@
+

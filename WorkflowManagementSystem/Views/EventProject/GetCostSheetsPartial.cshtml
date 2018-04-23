@@ -9,7 +9,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.CostSheetName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -25,7 +25,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.CostSheetName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
@@ -33,23 +33,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductionEmployee)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.DocumentFile)
-                        @if (!String.IsNullOrEmpty(item.FilePath))
-                        {
-                            <a href="@Url.Content(item.FilePath)">File</a>
-                        }
-                    </td>*@
 
-
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |
-                        @Html.ActionLink("Delete", "Delete", "Document", new { id = item.DocumentId }, null) |
-                        @Html.ActionLink("Add Approval", "AddApproval", "Document", new { id = item.DocumentId }, null) |
-                        @Html.ActionLink("Approval Details", "ApprovalDetails", "Document", new { id = item.DocumentId }, null)
-                    </td>*@
-
-
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@                   
+                    @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)                  
+                </td>
             </tr>
         }
     </table>

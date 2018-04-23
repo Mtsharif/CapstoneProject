@@ -27,8 +27,9 @@ namespace WorkflowManagementSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CostSheetId { get; set; }
 
+        //[Required]
         [StringLength(30)]
-        public string Name { get; set; }
+        public string CostSheetName { get; set; }
 
         public CostSheetStatus Status { get; set; }
 

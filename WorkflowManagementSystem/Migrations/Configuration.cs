@@ -68,8 +68,8 @@ namespace WorkflowManagementSystem.Migrations
             var items = new List<Item>
             {
                 new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
-                new Item { Name = "Table 1", Description = "Circular table", UnitCost = 200 },
-                new Item { Name = "Table 2", Description = "Rectangular table", UnitCost = 250 },
+                new Item { Name = "Table-C", Description = "Circular table", UnitCost = 200 },
+                new Item { Name = "Table-R", Description = "Rectangular table", UnitCost = 250 },
                 new Item { Name = "Stage", Description = "4 by 4 white stage", UnitCost = 1000 },
                 new Item { Name = "Monitor", Description = "6-inch monitor", UnitCost = 1500 },
                 new Item { Name = "Spotlight", Description = null, UnitCost = 250 }
@@ -319,7 +319,7 @@ namespace WorkflowManagementSystem.Migrations
             projectSchedules.ForEach(s => context.ProjectSchedules.AddOrUpdate(p => p.Date, s));
             context.SaveChanges();
 
-            //Add usher appointed examples
+            ////Add usher appointed examples
             //var usherAppointeds = new List<UsherAppointed>
             //{
             //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
@@ -331,7 +331,7 @@ namespace WorkflowManagementSystem.Migrations
             //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 7, EventProjectId = 2, ProductionEmployeeId = 3},
             //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
             //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
+            //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
             //};
             //usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
             //context.SaveChanges();
@@ -376,15 +376,15 @@ namespace WorkflowManagementSystem.Migrations
             context.SaveChanges();
 
             // criterion examples
-            var documents = new List<Document>
-            {
-                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 4, },
-                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 1, },
-                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 2, },                
-            };
+            //var documents = new List<Document>
+            //{
+            //    new Document {Name = "Quotation", FilePath="File path", EventProjectId = 4, },
+            //    new Document {Name = "Quotation", FilePath="File path", EventProjectId = 1, },
+            //    new Document {Name = "Quotation", FilePath="File path", EventProjectId = 2, },                
+            //};
 
-            documents.ForEach(s => context.Documents.AddOrUpdate(p => p.Name, s));
-            context.SaveChanges();
+            //documents.ForEach(s => context.Documents.AddOrUpdate(p => p.Name, s));
+            //context.SaveChanges();
         }
     }
 }

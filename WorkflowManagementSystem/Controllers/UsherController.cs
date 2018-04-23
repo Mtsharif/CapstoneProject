@@ -120,7 +120,19 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usher = new Usher
+                // Validating the date of birth
+                if (model.DateOfBirth > DateTime.Today.AddYears(-15))
+                    {
+                        // The message will be displayed in @Html.ValidationMessageFor(m => m.CreationDate)
+                        ModelState.AddModelError("DateOfBirth", "The usher should be 16 years old or above. ");
+
+                        // The message will be displayed in @Html.ValidationSummary()
+                        ModelState.AddModelError(String.Empty, "Issue with the date of birth");
+
+                        return View(model);
+                    }
+
+                    var usher = new Usher
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -228,6 +240,18 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Validating the date of birth
+                if (model.DateOfBirth > DateTime.Today.AddYears(-15))
+                {
+                    // The message will be displayed in @Html.ValidationMessageFor(m => m.CreationDate)
+                    ModelState.AddModelError("DateOfBirth", "The usher should be 16 years old or above. ");
+
+                    // The message will be displayed in @Html.ValidationSummary()
+                    ModelState.AddModelError(String.Empty, "Issue with the date of birth");
+
+                    return View(model);
+                }
+
                 Usher usher = Mapper.Map<UsherViewModel, Usher>(model);
                 db.Entry(usher).State = EntityState.Modified;
                 db.SaveChanges();

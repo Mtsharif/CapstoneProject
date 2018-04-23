@@ -115,7 +115,6 @@ namespace WorkflowManagementSystem.Controllers
 
             // Pass Project ID to Partial views in the DetailsMaster view
             ViewBag.ProjectId = id;
-            //ViewBag.EmployeeId = id;
 
             return View();
         }
@@ -228,15 +227,31 @@ namespace WorkflowManagementSystem.Controllers
         [Authorize(Roles = "Client Service Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EventProjectViewModel model)
+        public ActionResult Edit(int id, EventProjectViewModel model)
         {
             if (ModelState.IsValid)
             {
-                EventProject eventProject = Mapper.Map<EventProjectViewModel, EventProject>(model);
+                var eventProject = db.EventProjects.Find(id);
+                if (eventProject == null)
+                {
+                    return HttpNotFound();
+                }
+
+                eventProject.Name = model.Name;
+                eventProject.EventType = model.EventType;
+                eventProject.Brief = model.Brief;
+                eventProject.Street = model.Street;
+                eventProject.District = model.District;
+                eventProject.City = model.City;
+                eventProject.Status = model.Status;
+                eventProject.DateCreated = model.DateCreated;
+                eventProject.ClientServiceEmployeeId = User.Identity.GetUserId<int>();
+                eventProject.ClientId = model.ClientId;
+                
                 db.Entry(eventProject).State = EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("DetailsMaster", new { id = eventProject.EventProjectId });
             }
 
             ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
@@ -244,6 +259,84 @@ namespace WorkflowManagementSystem.Controllers
 
             return View(model);
         }
+
+
+        [Authorize(Roles = "Client Service Employee")]
+        public ActionResult EditStatus(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EventProject eventProject = db.EventProjects.Find(id);
+
+            if (eventProject == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new EventProjectViewModel
+            {
+                EventProjectId = eventProject.EventProjectId,
+                Name = eventProject.Name,
+                EventType = eventProject.EventType,
+                Brief = eventProject.Brief,
+                Street = eventProject.Street,
+                District = eventProject.District,
+                City = eventProject.City,
+                Status = eventProject.Status,
+                DateCreated = DateTime.Now,
+                Employee = eventProject.Employee.FullName,
+                Client = eventProject.Client.FullName,
+            };
+
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "FullName");
+
+            return View(model);
+        }
+
+
+        [Authorize(Roles = "Client Service Employee")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditStatus(int id, EventProjectViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var eventProject = db.EventProjects.Find(id);
+                if (eventProject == null)
+                {
+                    return HttpNotFound();
+                }
+
+                eventProject.Name = model.Name;
+                eventProject.EventType = model.EventType;
+                eventProject.Brief = model.Brief;
+                eventProject.Street = model.Street;
+                eventProject.District = model.District;
+                eventProject.City = model.City;
+                eventProject.Status = model.Status;
+                eventProject.DateCreated = model.DateCreated;
+                eventProject.ClientServiceEmployeeId = User.Identity.GetUserId<int>();
+                eventProject.ClientId = model.ClientId;
+
+                db.Entry(eventProject).State = EntityState.Modified;
+                db.SaveChanges();
+
+
+
+                return RedirectToAction("DetailsMaster", new { id = eventProject.EventProjectId });
+            }
+
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "FullName");
+
+            return View(model);
+        }
+
+
 
         /// <summary>
         /// This action retrieves a project's information to be deleted.
@@ -564,6 +657,22 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Validating the date of birth
+                if (model.EndTime < model.StartTime)
+                {
+                    ModelState.AddModelError("EndTime", "The ending time of an event cannot be before the starting time.");
+                    ModelState.AddModelError(String.Empty, "Issue with the ending time");
+
+                    return View(model);
+                }
+                else if (model.StartTime < DateTime.Now.TimeOfDay)
+                {
+                    ModelState.AddModelError("StartTime", "The starting time of an event cannot be before this time.");
+                    ModelState.AddModelError(String.Empty, "Issue with the starting time");
+
+                    return View(model);
+                }
+
                 var project = db.EventProjects.Find(model.EventProjectId);
 
                 if (project == null)
@@ -1168,6 +1277,25 @@ namespace WorkflowManagementSystem.Controllers
         //    return PartialView(model);
         //}
 
+
+        public ActionResult UsherAppointedPartial()
+        {        
+
+            var eventprojects = db.EventProjects.ToList();
+            var model = new List<EventProjectViewModel>();
+
+            foreach (var item in eventprojects)
+            {
+                model.Add(new EventProjectViewModel
+                {
+                    EventProjectId = item.EventProjectId,
+                    UsherAppointeds = item.UsherAppointeds.ToList()
+                });
+            }
+
+            return PartialView(model);
+        }
+
         // USHER APPOINTED 
 
         //public ActionResult GetUsherAppointedPartial(int? id)
@@ -1187,7 +1315,6 @@ namespace WorkflowManagementSystem.Controllers
         //    var usherAppointeds = project.UsherAppointeds.ToList();
 
         //    var model = new List<UsherAppointedViewModel>();
-        //    ViewBag.UsherId = new SelectList(db.Ushers, "UsherId", "FullName");
 
         //    foreach (var item in usherAppointeds)
         //    {
@@ -1233,81 +1360,89 @@ namespace WorkflowManagementSystem.Controllers
         //    return PartialView(model);
         //}
 
-        //public ActionResult GetCostSheetsPartial(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+        public ActionResult GetCostSheetsPartial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //    var project = db.EventProjects.Find(id);
+            var project = db.EventProjects.Find(id);
 
-        //    if (project == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
 
-        //    var costSheets = project.CostSheets.ToList();
+            var costSheets = project.CostSheets.ToList();
 
-        //    var model = new List<CostSheetViewModel>();
+            var model = new List<CostSheetViewModel>();
 
-        //    foreach (var item in costSheets)
-        //    {
-        //        model.Add(new CostSheetViewModel
-        //        {
-        //            CostSheetId = item.CostSheetId,
-        //            Name = item.Name,
-        //            Status = item.Status,               
-        //            Employee = item.Employee.FullName,
-        //            //EventProject = item.EventProject.Name
-        //        });
-        //    }
-        //    ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "ProductionEmployeeId", "FullName");
-        //    //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-        //    //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-        //    ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
-        //    return View(model);
-        //}
+            foreach (var item in costSheets)
+            {
+                model.Add(new CostSheetViewModel
+                {
+                    CostSheetId = item.CostSheetId,
+                    CostSheetName = item.CostSheetName,
+                    Status = item.Status,
+                    ProductionEmployee = item.Employee.FullName,
+                    //Employee = item.Employee.FullName,
+                    //EventProject = item.EventProject.Name
+                });
+            }
+            ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "ProductionEmployeeId", "FullName");
+            //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            //ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            return View(model);
+        }
 
-        ///// <summary>
-        ///// This action enables the addition of tasks in the project details page
-        ///// </summary>
-        ///// <param name="model">Employee Task view model</param>
-        ///// <returns>Employee Task partial view</returns>
+        /// <summary>
+        /// This action enables the addition of tasks in the project details page
+        /// </summary>
+        /// <param name="model">Employee Task view model</param>
+        /// <returns>Employee Task partial view</returns>
         //[Authorize(Roles = "Client Service Employee")]
-        //[HttpPost]
-        //public ActionResult CostSheetPartial(CostSheetViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var project = db.EventProjects.Find(model.EventProjectId);
+        [HttpPost]
+        public ActionResult CostSheetPartial(CostSheetViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var project = db.EventProjects.Find(model.EventProjectId);
 
-        //        if (project == null)
-        //        {
-        //            return HttpNotFound();
-        //        }
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
 
-        //        var costSheet = new CostSheet
-        //        {
-        //            Name = model.Name,
-        //            Status = model.Status,
-        //            ProductionEmployeeId = User.Identity.GetUserId<int>(),                    
-        //            EventProjectId = model.EventProjectId,
-        //        };
+                var costSheet = new CostSheet
+                {
+                    CostSheetName = model.CostSheetName,
+                    Status = CostSheetStatus.Pending,
+                    ProductionEmployeeId = User.Identity.GetUserId<int>(),
+                    FinanceEmployeeId = User.Identity.GetUserId<int>(),
+                    CEOEmployeeId = User.Identity.GetUserId<int>(),
+                    EventProjectId = model.EventProjectId,
+                };
 
-        //        ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "ProductionEmployeeId", "FullName");
-        //        //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-        //        //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-        //        ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
-        //        db.CostSheets.Add(costSheet);
-        //        db.SaveChanges();
-        //    }
-        //    ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "ProductionEmployeeId", "FullName");
-        //    //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-        //    //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-        //    ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
-        //    return PartialView(model);
-        //}
+                ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "ProductionEmployeeId", "FullName");
+                //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+                //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+                //ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+
+                db.CostSheets.Add(costSheet);
+                db.SaveChanges();
+            }
+            ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "ProductionEmployeeId", "FullName");
+            //ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            //ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            //ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            return PartialView(model);
+        }
+
+
+
+
 
 
         //public ActionResult GetTaskAssignmentsPartial(int? id)
@@ -1356,7 +1491,7 @@ namespace WorkflowManagementSystem.Controllers
         //    return View(model);
         //}
 
-      
+
         //[HttpPost]
         //public ActionResult TaskAssignmentPartial(TaskAssignmentViewModel model)
         //{

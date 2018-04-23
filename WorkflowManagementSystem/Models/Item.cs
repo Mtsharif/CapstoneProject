@@ -36,6 +36,10 @@ namespace WorkflowManagementSystem.Models
 
         public decimal UnitCost { get; set; }
 
+        // To show an item and its price
+        [NotMapped]
+        public string ItemPrice { get { return (Name + " " + UnitCost); } }
+
         public virtual ICollection<CostSheetItem> CostSheetItems { get; set; }
 
         public virtual ICollection<CostVarianceItem> CostVarianceItems { get; set; }

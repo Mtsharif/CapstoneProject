@@ -12,6 +12,20 @@
             height: 50px;
             color: black;
         }
+
+        .nav-pills > li > a:hover {
+            background-color: #be4545 !important;
+        }
+
+        /*.nav-pills > li > a:active {
+            background-color: #be4545 !important;
+            background-color: #e9e9e9 !important;
+        }*/
+
+        .nav-pills > li > a:focus {
+            background-color: #be4545 !important;
+        }
+        
     </style>
 
     <h2>Project Management</h2>
@@ -30,8 +44,8 @@
                 <li><a href="#SchedulesTab" data-toggle="tab">Schedules</a></li>
                 <li><a href="#ClientTab" data-toggle="tab">Client Details</a></li>
                 @*<li><a href="#TasksTab" data-toggle="tab">Tasks</a></li>*@
-                @*<li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>*@
-                @*<li><a href="#UshersTab" data-toggle="tab">Ushers</a></li>*@
+                <li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>
+                <li><a href="#UshersTab" data-toggle="tab">Ushers</a></li>
             </ul>
 
             <div class="tab-content col-md-9">
@@ -89,7 +103,6 @@
     new ProjectEventReportViewModel { EventProjectId = (int)ViewBag.ProjectId })
                     <div id="EventReportDetails"></div>
                     <div id="EventReportStatusMessage"></div>
-
                 </div>
 
                 <div class="tab-pane" id="SchedulesTab">
@@ -105,6 +118,11 @@
                     @Html.Action("ClientDetailsPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
                 </div>
 
+                <div class="tab-pane" id="UshersTab">
+                    <h3>Ushers Assigned</h3>
+                    @Html.Action("UsherAppointedPartial", "EventProject", new { id = (int)ViewBag.ProjectId })
+                </div>
+
                 @*<div class="tab-pane" id="TasksTab">
                             <h3>Tasks</h3>
                             @Html.Partial("TaskAssignmentPartial",
@@ -117,14 +135,14 @@
                         <h3>Ushers</h3>
                     </div>*@
 
-                @*<div class="tab-pane" id="CostSheetTab">
+                <div class="tab-pane" id="CostSheetTab">
                         <h3>Cost Sheet</h3>
                         @Html.Partial("CostSheetPartial",
                     new CostSheetViewModel { EventProjectId = (int)ViewBag.ProjectId })
                         <div id="CostSheetStatusMessage"></div>
                         <div id="CostSheetList"></div>
-                    </div>*@
 
+                    </div>
             </div>
         </div>
     </div>
@@ -132,7 +150,6 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
 
-        <script src="~/Scripts/jquery-1.10.2.js"></script>
         <script type="text/javascript">
 
         // Definition of Get project schedules function
@@ -280,8 +297,6 @@
             //        return false;
             //    });
             //});
-
-
 
 
             // Create a 3D model
@@ -577,39 +592,39 @@
             //});
 
                         //// Display cost sheets
-            //getCostSheets(projectId);
+            getCostSheets(projectId);
 
-            //// Create a cost sheet
-            //$("#CreateCostSheetButton").click(function (event) {
+            // Create a cost sheet
+            $("#CreateCostSheetButton").click(function (event) {
 
-            //    // Disable the click event on the create button
-            //    event.preventDefault();
+                // Disable the click event on the create button
+                event.preventDefault();
 
-            //    $.ajax({
-            //        url: "/EventProject/CostSheetPartial",
-            //        type: "post",
-            //        data: {
+                $.ajax({
+                    url: "/EventProject/CostSheetPartial",
+                    type: "post",
+                    data: {
 
-            //            Name: $('#Name').val(),
-            //            Status: $('#Status').val(),
-            //            CostSheet: $('#CostSheet').val(),
-            //            Item: $('#Item').val(),
-            //            EventProjectId: Item
-            //        },
-            //        success: function (result) {
+                        CostSheetName: $('#CostSheetName').val(),
+                        Status: $('#Status').val(),
+                        ProductionEmployee: $('#ProductionEmployeeId').val(),
+                        EventProjectId: projectId
+                    },
+                    success: function (result) {
 
-            //            // Clear fields
-            //            clearScheduleForm()
+                        //// Clear fields
+                        //clearScheduleForm()
 
-            //            // Display the project schedule after the add
-            //            getCostSheets(projectId);
-            //        },
-            //        error: function (jqxhr, status, exception) {
-            //            console.log(status);
-            //            $("#CostSheetStatusMessage").html("<p>CostSheet was not added!</p>");
-            //        }
-            //    });
-            //});
+                        // Display the project schedule after the add
+                        getCostSheets(projectId);
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                        $("#CostSheetStatusMessage").html("<p>Cost Sheet was not added! Please Try Again.</p>");
+                    }
+                });
+            });
+
         });
 
         </script>

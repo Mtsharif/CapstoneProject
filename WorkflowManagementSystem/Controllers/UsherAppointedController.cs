@@ -110,6 +110,13 @@ namespace WorkflowManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+
                 var usherAppointed = new UsherAppointed
                 {                    
                     DateAppointed = DateTime.Now,

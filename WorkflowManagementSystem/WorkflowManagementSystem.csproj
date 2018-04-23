@@ -642,6 +642,11 @@
     <Content Include="Views\EventProject\TaskAssignmentPartial.cshtml" />
     <Content Include="Views\TaskAssignment\Edit.cshtml" />
     <Content Include="Views\TaskAssignment\Delete.cshtml" />
+    <Content Include="Views\EventProject\EditStatus.cshtml" />
+    <Content Include="Views\EventProject\UsherAppointedPartial.cshtml" />
+    <Content Include="Views\CostSheet\CostSheetItems.cshtml" />
+    <Content Include="Views\CostSheet\GetCostSheetItemsPartial.cshtml" />
+    <Content Include="Views\CostSheet\AddCostSheetItemPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

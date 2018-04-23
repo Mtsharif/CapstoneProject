@@ -1,0 +1,103 @@
+﻿@model WorkflowManagementSystem.ViewModels.CostSheetViewModel
+
+@{
+    ViewBag.Title = "Cost Sheet";
+}
+
+<h2>Cost Sheet</h2>
+
+<p>
+    @Html.ActionLink("Back to Project Details", "ProjectDetailsPartial", "EventProject", new { id = Model.EventProjectId, @class = "btn btn-sm btn-primary btn-flat round" })
+</p>
+
+<div>
+    <hr />
+
+    @Html.HiddenFor(m => m.CostSheetId)
+
+    <dl class="dl-horizontal" >
+        <dt>
+            @Html.DisplayNameFor(model => model.CostSheetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostSheetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionEmployee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionEmployee)
+        </dd>
+
+    </dl>
+</div>
+
+<div id="AddItem">
+    @Html.Partial("AddCostSheetItemPartial", new WorkflowManagementSystem.ViewModels.CostSheetItemViewModel())
+</div>
+<div id="ItemList"></div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        function getItems() {
+            $.ajax({
+                url: "/CostSheet/GetCostSheetItemsPartial",
+                type: "get",
+                data: { id: $("#CostSheetId").val() },
+                dataType: "html",
+                success: function (result, status, jqxhr) {
+                    $("#ItemList").html(result);
+                },
+                error: function (jqxhr, status, exception) {
+                    console.log(status);
+                }
+            });
+        }
+
+        function clearItemForm() {
+            $("#Item").val("");
+            $("#Quantity").val("");
+        }
+
+        $(document).ready(function () {
+            clearItemForm()
+            getItems();
+
+            $("#AddItemButton").click(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/CostSheet/AddCostSheetItemPartial",
+                    type: "post",
+                    data: {
+                        CostSheetId: $("#CostSheetId").val(),
+                        ItemId: $("#ItemId").val(),
+                        Quantity: $("#Quantity").val(),
+                    },
+                    success: function (result, status, jqxhr) {
+
+                        clearItemForm();
+
+                        getItems();
+                    },
+                    error: function (jqxhr, status, exception) {
+                        console.log(status);
+                    }
+                });
+            });
+        });
+    </script>
+}

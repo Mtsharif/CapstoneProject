@@ -1,28 +1,34 @@
 ﻿@model WorkflowManagementSystem.ViewModels.EventProjectViewModel
 
-@if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+@{   
+    ViewBag.Title = "Edit Status";
+}
+
+<h2>Edit Status</h2>
+
+@using (Html.BeginForm())
 {
-    {
-        ViewBag.Title = "Edit Project";
-    }
+    @Html.AntiForgeryToken()
 
-    <h2>Edit Project</h2>
-
-    using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
+    <div class="form-horizontal">
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.EventProjectId)
+            @Html.HiddenFor(model => model.Name)
+            @Html.HiddenFor(model => model.EventType)
+            @*@Html.HiddenFor(model => model.Client)*@
+            @Html.HiddenFor(model => model.Brief)
+            @Html.HiddenFor(model => model.Street)
+            @Html.HiddenFor(model => model.District)
+            @Html.HiddenFor(model => model.City)
+            @*@Html.Hidden("ClientId")*@
 
-            <fieldset class="fieldset-border">
+            @*<fieldset class="fieldset-border">
                 <legend class="legend-border">Project Details</legend>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -30,15 +36,15 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.EventType, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EnumDropDownListFor(model => model.EventType, htmlAttributes: new { @class = "form-control" })
+                        @Html.EnumDropDownListFor(model => model.EventType, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
                         @Html.ValidationMessageFor(model => model.EventType, "", new { @class = "text-danger" })
                     </div>
-                </div>
+                </div>*@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Client, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
                         @Html.ValidationMessageFor(model => model.Client, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -51,10 +57,10 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                @*<div class="form-group">
                     @Html.LabelFor(model => model.Brief, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Brief, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Brief, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Brief, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -63,17 +69,17 @@
             <fieldset class="fieldset-border">
                 <legend class="legend-border">Project Location </legend>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2", @readonly = "readonly" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label col-md-2", @readonly = "readonly" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -81,27 +87,21 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.District, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </fieldset>
+            </fieldset>*@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
-        </div>
-    }
+        </div>  
 
-    <div>
-        @Html.ActionLink("Back", "DetailsMaster", new { id = Model.EventProjectId })
-    </div>
 }
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+
+<div>
+    @Html.ActionLink("Back", "DetailsMaster", new { id = Model.EventProjectId })
+</div>

@@ -26,7 +26,9 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         public int CostSheetId { get; set; }
 
-        public string Name { get; set; }
+        //[Required]
+        [Display(Name = "Name")]
+        public string CostSheetName { get; set; }
 
         [Display(Name = "Status")]
         public CostSheetStatus Status { get; set; }
@@ -52,16 +54,16 @@ namespace WorkflowManagementSystem.ViewModels
         // Cost sheet for an event project
         public int EventProjectId { get; set; }
 
-        [Display(Name = "Event Project")]
+        [Display(Name = "Project")]
         public string EventProject { get; set; }
 
         //// CEO approving the cost sheet
-        public int CEOEmployeeId { get; set; }
-        public string Employee { get; set; }
+        //public int CEOEmployeeId { get; set; }
+        //public string Employee { get; set; }
 
         //// Finance employee approving the cost sheet
-        public int FinanceEmployeeId { get; set; }
-        public string FinanceEmployee { get; set; }
+        //public int FinanceEmployeeId { get; set; }
+        //public string FinanceEmployee { get; set; }
 
         // TO DO: add cost variance 
         // The cost variance of a cost sheet
