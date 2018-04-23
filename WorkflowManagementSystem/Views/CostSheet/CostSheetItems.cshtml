@@ -10,6 +10,13 @@
     @Html.ActionLink("Back to Project Details", "ProjectDetailsPartial", "EventProject", new { id = Model.EventProjectId, @class = "btn btn-sm btn-primary btn-flat round" })
 </p>
 
+<p>
+    @Html.ActionLink("Add Approval", "AddFinanceApproval", "CostSheet", new { id = Model.CostSheetId }, null) |
+    @Html.ActionLink("Add Approval", "AddCEOApproval", "CostSheet", new { id = Model.CostSheetId }, null) |
+    @Html.ActionLink("Approval Details", "ApprovalDetailsMaster", "CostSheet", new { id = Model.CostSheetId }, null)
+</p>
+
+
 <div>
     <hr />
 
@@ -47,7 +54,6 @@
     @Html.Partial("AddCostSheetItemPartial", new WorkflowManagementSystem.ViewModels.CostSheetItemViewModel())
 </div>
 <div id="ItemList"></div>
-
 
 @section Scripts {
     <script type="text/javascript">

@@ -33,18 +33,6 @@ namespace WorkflowManagementSystem.ViewModels
         [Display(Name = "Status")]
         public CostSheetStatus Status { get; set; }
 
-        //[Display(Name = "CEO Decision")]
-        //public CostSheetCEODecision CEODecision { get; set; }
-
-        //[Display(Name = "CEO Feedback")]
-        //public string CEOFeedback { get; set; }
-
-        //[Display(Name = "Finance Decision")]
-        //public CostSheetFinanceDecision FinanceEmployeeDecision { get; set; }
-
-        //[Display(Name = "Finance Feedback")]
-        //public string FinanceEmployeeFeedback { get; set; }
-
         // Employee creating the cost sheet
         public int ProductionEmployeeId { get; set; }
 
@@ -57,15 +45,38 @@ namespace WorkflowManagementSystem.ViewModels
         [Display(Name = "Project")]
         public string EventProject { get; set; }
 
-        //// CEO approving the cost sheet
-        //public int CEOEmployeeId { get; set; }
-        //public string Employee { get; set; }
+        // Approvals
 
-        //// Finance employee approving the cost sheet
-        //public int FinanceEmployeeId { get; set; }
-        //public string FinanceEmployee { get; set; }
+        // CEO Approval
+        [Display(Name = "Decision")]
+        public CostSheetCEODecision CEODecision { get; set; }
 
-        // TO DO: add cost variance 
+        [Display(Name = "Feedback")]
+        [DataType(DataType.MultilineText)]
+        [DisplayFormat(NullDisplayText = "Feedback is not available.")]
+        public string CEOFeedback { get; set; }
+
+        // CEO approving the cost sheet
+        public int CEOEmployeeId { get; set; }
+
+        [Display(Name = "Approved By")]
+        public string Employee { get; set; }
+
+        // Finance Approval
+        [Display(Name = "Decision")]
+        public CostSheetFinanceDecision FinanceEmployeeDecision { get; set; }
+
+        [Display(Name = "Feedback")]
+        [DataType(DataType.MultilineText)]
+        [DisplayFormat(NullDisplayText = "Feedback is not available.")]
+        public string FinanceEmployeeFeedback { get; set; }
+
+        // Finance employee approving the cost sheet
+        public int FinanceEmployeeId { get; set; }
+
+        [Display(Name = "Approved By")]
+        public string FinanceEmployee { get; set; }
+
         // The cost variance of a cost sheet
         //public string CostVariance { get; set; }
 

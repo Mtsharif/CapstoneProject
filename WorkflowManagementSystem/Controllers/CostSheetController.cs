@@ -22,21 +22,16 @@ namespace WorkflowManagementSystem.Controllers
     /// This controller is created based on the cost sheet view model and domain model classes 
     /// It allows the creation of a cost sheet as well as its editing, listing, and deletion. 
     /// </summary>
-    [Authorize(Roles = "Client Service Employee")]
+    [Authorize]
     public class CostSheetController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //public static decimal CalculateCost(CostSheetItemViewModel costSheet, ItemViewModel item)
-        //{
-        //    decimal QuantityCosts = costSheet.Quantity * item.UnitCost;
-
-        //    decimal TotalCost = Sum(QuantityCost);
-
-        //    return TotalCost;
-        //}
-
-
+        /// <summary>
+        /// This action gets a page that includes a cost sheet's details
+        /// </summary>
+        /// <param name="id">cost sheet id</param>
+        /// <returns>cost sheet items view</returns>
         public ActionResult CostSheetItems(int? id)
         {
             if (id == null)
@@ -64,7 +59,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
-
+        /// <summary>
+        /// This action gets the items added in a cost sheet
+        /// </summary>
+        /// <param name="id">cost sheet id</param>
+        /// <returns>get cost sheet items partial view</returns>
         public ActionResult GetCostSheetItemsPartial(int? id)
         {
             if (id == null)
@@ -96,45 +95,13 @@ namespace WorkflowManagementSystem.Controllers
             return PartialView(model);
         }
 
-        //if (id == null)
-        //{
-        //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //}
-
-        //var costSheet = db.CostSheets.Find(id);
-
-        //if (costSheet == null)
-        //{
-        //    return HttpNotFound();
-        //}
-
-        //var costSheetItems = costSheet.CostSheetItems.ToList();
-
-        //var model = new List<CostSheetItemViewModel>();
-
-        //foreach (var item in costSheetItems)
-        //{
-        //    model.Add(new CostSheetItemViewModel
-        //    {
-        //        CostSheetId = item.CostSheetId,
-        //        ItemId = item.ItemId,
-        //        Quantity = item.Quantity,
-        //        Item = item.Item.ItemPrice   
-        //    });
-
-
-        //ViewBag.ItemId = new SelectList(db.Items, "ItemId", "ItemPrice");
-
-        //return View(model);
-    //}
-
-    /// <summary>
-    /// This action enables the addition of tasks in the project details page
-    /// </summary>
-    /// <param name="model">Employee Task view model</param>
-    /// <returns>Employee Task partial view</returns>
-    //[Authorize(Roles = "Client Service Employee")]
-    [HttpPost]
+        /// <summary>
+        /// This action enables the addition of items in a cost sheet
+        /// </summary>
+        /// <param name="model">cost sheet item view model</param>
+        /// <returns>Add cost sheet item partial view</returns>
+        [Authorize(Roles = "Production Employee")]
+        [HttpPost]
         public ActionResult AddCostSheetItemPartial(CostSheetItemViewModel model)
         {
 
@@ -156,33 +123,258 @@ namespace WorkflowManagementSystem.Controllers
         }
 
         return PartialView(model);
-
-        //if (ModelState.IsValid)
-        //{
-        //    var costSheet = db.CostSheets.Find(model.CostSheetId);
-
-        //    if (costSheet == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    var costSheetItem = new CostSheetItem
-        //    {
-        //        Quantity = model.Quantity,
-        //        CostSheetId = model.CostSheetId,
-        //        ItemId = model.ItemId
-        //    };
-
-        //    ViewBag.ItemId = new SelectList(db.Items, "ItemId", "ItemPrice");
-
-        //    db.CostSheets.Add(costSheet);
-        //    db.SaveChanges();
-        //}
-
-        //ViewBag.ItemId = new SelectList(db.Items, "ItemId", "ItemPrice");
-
-        //return PartialView(model);
+       
     }
+
+        /// <summary>
+        /// This action retrieves the finance approval page
+        /// </summary>
+        /// <param name="id">cost sheet id</param>
+        /// <returns>Add finance approval view</returns>
+        // GET: CostSheet/AddFinanceApproval
+        //[Authorize(Roles = "Finance Employee")]
+        public ActionResult AddFinanceApproval(int? id)
+        {
+            if (id == null)
+            {
+                return View("Error");
+            }
+            CostSheet costSheet = db.CostSheets.Find(id);
+
+            if (costSheet == null)
+            {
+                return View("Error");
+            }
+
+            var model = new CostSheetViewModel
+            {
+                CostSheetId = costSheet.CostSheetId,
+                CostSheetName = costSheet.CostSheetName,
+                Status = costSheet.Status,
+                FinanceEmployee = costSheet.FinanceEmployee.FullName,
+                FinanceEmployeeDecision = costSheet.FinanceEmployeeDecision,
+                FinanceEmployeeFeedback = costSheet.FinanceEmployeeFeedback,                
+            };
+
+            ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action allows finance employees to approve a cost sheet
+        /// </summary>
+        /// <param name="id">cost sheet id</param>
+        /// <param name="model"></param>
+        /// <returns>cost sheet items view</returns>
+        // POST: CostSheet/AddFinanceApproval
+        //[Authorize(Roles = "Finance Employee")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddFinanceApproval(int id, CostSheetViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var costSheet = db.CostSheets.Find(id);
+
+                if (costSheet == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (model.FinanceEmployeeDecision == CostSheetFinanceDecision.Approved)
+                {
+                    model.Status = CostSheetStatus.FinanceApproved;
+                }
+                else if (model.FinanceEmployeeDecision == CostSheetFinanceDecision.Rejected)
+                {
+                    model.Status = CostSheetStatus.FinanceRejected;
+                }
+
+                costSheet.FinanceEmployeeId = User.Identity.GetUserId<int>();
+                costSheet.Status = model.Status;
+                costSheet.FinanceEmployeeDecision = model.FinanceEmployeeDecision;
+                costSheet.FinanceEmployeeFeedback = model.FinanceEmployeeFeedback;
+
+                db.Entry(costSheet).State = EntityState.Modified;
+                db.SaveChanges();
+               
+                return RedirectToAction("CostSheetItems", "CostSheet", new { id = costSheet.CostSheetId });
+            }
+
+            ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View();
+        }
+
+        /// <summary>
+        /// Thi action gets the CEO approval page
+        /// </summary>
+        /// <param name="id">cost sheet id</param>
+        /// <returns>Add CEO Approval view</returns>
+        // GET: CostSheet/AddCEOApproval
+        //[Authorize(Roles = "CEO")]
+        public ActionResult AddCEOApproval(int? id)
+        {
+            if (id == null)
+            {
+                return View("Error");
+            }
+            CostSheet costSheet = db.CostSheets.Find(id);
+
+            if (costSheet == null)
+            {
+                return View("Error");
+            }
+
+            var model = new CostSheetViewModel
+            {
+                CostSheetId = costSheet.CostSheetId,
+                CostSheetName = costSheet.CostSheetName,
+                Status = costSheet.Status,
+                Employee = costSheet.Employee.FullName,
+                CEODecision = costSheet.CEODecision,
+                CEOFeedback = costSheet.CEOFeedback,
+            };
+
+            ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action enables the CEO to approve a cost sheet
+        /// </summary>
+        /// <param name="id">cost sheet id</param>
+        /// <param name="model"></param>
+        /// <returns>cost sheet items view</returns>
+        // POST: CostSheet/AddCEOApproval
+        //[Authorize(Roles = "CEO")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCEOApproval(int id, CostSheetViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var costSheet = db.CostSheets.Find(id);
+
+                if (costSheet == null)
+                {
+                    return HttpNotFound();
+                }
+
+                if (model.CEODecision == CostSheetCEODecision.Approved)
+                {
+                    model.Status = CostSheetStatus.CEOApproved;
+                }
+                else if (model.CEODecision == CostSheetCEODecision.Rejected)
+                {
+                    model.Status = CostSheetStatus.CEORejected;
+                }
+
+                costSheet.CEOEmployeeId = User.Identity.GetUserId<int>();
+                costSheet.Status = model.Status;
+                costSheet.CEODecision = model.CEODecision;
+                costSheet.CEOFeedback = model.CEOFeedback;
+
+                db.Entry(costSheet).State = EntityState.Modified;
+                db.SaveChanges();               
+
+                return RedirectToAction("CostSheetItems", "CostSheet", new { id = costSheet.CostSheetId });
+            }
+
+            ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View();
+        }
+
+        public ActionResult ApprovalDetailsMaster(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return View();
+        }
+
+        /// <summary>
+        /// This action is for retrieving finance employee's approval's details
+        /// </summary>
+        /// <param name="id">document id</param>
+        /// <returns>finance approval details view</returns>
+        // GET: CostSheet/FinanceApprovalDetails
+        //[Authorize(Roles = "Finance Employee, CEO, ProductionEmployee")]
+        public ActionResult FinanceApprovalDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            CostSheet costSheet = db.CostSheets.Find(id);
+
+            if (costSheet == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new CostSheetViewModel
+            {
+                CostSheetId = costSheet.CostSheetId,
+                CostSheetName = costSheet.CostSheetName,
+                Status = costSheet.Status,
+                EventProject = costSheet.EventProject.Name,
+                FinanceEmployee = costSheet.FinanceEmployee.FullName,
+                FinanceEmployeeDecision = costSheet.FinanceEmployeeDecision,
+                FinanceEmployeeFeedback = costSheet.FinanceEmployeeFeedback,
+            };
+
+            ViewBag.FinanceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "FullName");
+
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// This action is for retrieving CEO approval's details
+        /// </summary>
+        /// <param name="id">document id</param>
+        /// <returns>finance approval details view</returns>
+        // GET: CostSheet/CEOeApprovalDetails
+        //[Authorize(Roles = "Finance Employee, CEO, ProductionEmployee")]
+        public ActionResult CEOApprovalDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            CostSheet costSheet = db.CostSheets.Find(id);
+
+            if (costSheet == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new CostSheetViewModel
+            {
+                CostSheetId = costSheet.CostSheetId,
+                CostSheetName = costSheet.CostSheetName,
+                Status = costSheet.Status,
+                EventProject = costSheet.EventProject.Name,
+                Employee = costSheet.Employee.FullName,
+                CEODecision = costSheet.CEODecision,
+                CEOFeedback = costSheet.CEOFeedback,
+            };
+
+            ViewBag.CEOEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "FullName");
+
+            return View(model);
+        }
+
 
         ///// <summary>
         ///// This action shows a list of all cost sheets created
@@ -398,30 +590,30 @@ namespace WorkflowManagementSystem.Controllers
         //    return View(model);
         //}
 
-        /// <summary>
-        /// This action enables the deletion of a cost sheet
-        /// </summary>
-        /// <param name="id">Cost sheet id</param>
-        /// <returns>Index view</returns>
-        // POST: CostSheet/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            CostSheet costSheet = db.CostSheets.Find(id);
-            db.CostSheets.Remove(costSheet);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        ///// <summary>
+        ///// This action enables the deletion of a cost sheet
+        ///// </summary>
+        ///// <param name="id">Cost sheet id</param>
+        ///// <returns>Index view</returns>
+        //// POST: CostSheet/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    CostSheet costSheet = db.CostSheets.Find(id);
+        //    db.CostSheets.Remove(costSheet);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
     }
 }

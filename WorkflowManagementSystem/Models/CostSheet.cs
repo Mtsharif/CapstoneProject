@@ -70,8 +70,18 @@ namespace WorkflowManagementSystem.Models
     public enum CostSheetStatus
     {
         Pending,
-        Approved,
-        Rejected
+
+        [Display(Name = "Finance Approved")]
+        FinanceApproved,
+
+        [Display(Name = "CEO Approved")]
+        CEOApproved,
+
+        [Display(Name = "Finance Rejected")]
+        FinanceRejected,
+
+        [Display(Name = "CEO Rejected")]
+        CEORejected
     }
 
     /// <summary>
@@ -79,7 +89,6 @@ namespace WorkflowManagementSystem.Models
     /// </summary>
     public enum CostSheetCEODecision
     {
-        Pending,
         Approved,
         Rejected
     }
@@ -89,7 +98,6 @@ namespace WorkflowManagementSystem.Models
     /// </summary>
     public enum CostSheetFinanceDecision
     {
-        Pending,
         Approved,
         Rejected
     }

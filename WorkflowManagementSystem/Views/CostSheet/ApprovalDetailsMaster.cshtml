@@ -1,0 +1,20 @@
+﻿@model WorkflowManagementSystem.ViewModels.CostSheetViewModel
+
+@{
+    ViewBag.Title = "Approval Details";
+}
+
+<h2>Approval Details</h2>
+
+<div>
+    @Html.Action("FinanceApprovalDetails", "CostSheet")
+</div>
+
+<div>
+    @Html.Action("CEOApprovalDetails", "CostSheet")
+</div>
+
+
+@*<div>
+    @Html.ActionLink("Back", "CostSheetItems", new { id = Model.CostSheetId })
+</div>*@

@@ -647,6 +647,11 @@
     <Content Include="Views\CostSheet\CostSheetItems.cshtml" />
     <Content Include="Views\CostSheet\GetCostSheetItemsPartial.cshtml" />
     <Content Include="Views\CostSheet\AddCostSheetItemPartial.cshtml" />
+    <Content Include="Views\CostSheet\AddFinanceApproval.cshtml" />
+    <Content Include="Views\CostSheet\ApprovalDetailsMaster.cshtml" />
+    <Content Include="Views\CostSheet\FinanceApprovalDetails.cshtml" />
+    <Content Include="Views\CostSheet\AddCEOApproval.cshtml" />
+    <Content Include="Views\CostSheet\CEOApprovalDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

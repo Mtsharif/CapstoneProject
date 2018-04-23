@@ -39,6 +39,7 @@ namespace WorkflowManagementSystem.ViewModels
         public DocumentStatus Status { get; set; }
 
         [Display(Name = "Feedback")]
+        [DataType(DataType.MultilineText)]
         [DisplayFormat(NullDisplayText = "Feedback is not available.")]
         public string CEOFeedback { get; set; }
 

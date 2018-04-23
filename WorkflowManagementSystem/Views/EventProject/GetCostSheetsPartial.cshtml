@@ -35,8 +35,18 @@
                 </td>
 
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@                   
-                    @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)                  
+                    @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
+                    {
+                         @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
+                    }
+
+                    @if (Request.IsAuthenticated)
+                    {
+                         @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
+                    }
+
                 </td>
             </tr>
         }

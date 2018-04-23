@@ -31,12 +31,10 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="id">document id</param>
         /// <returns>Add approval view</returns>
-        // GET: EventProject/AddApproval
+        // GET: Document/AddApproval
         [Authorize(Roles = "CEO")]
         public ActionResult AddApproval(int? id)
         {
-            //return View();
-
             if (id == null)
             {
                 return View("Error");
@@ -67,7 +65,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">document id</param>
         /// <param name="model"></param>
         /// <returns>Details master view</returns>
-        // POST: EventProject/AddApproval
+        // POST: Document/AddApproval
         [Authorize(Roles = "CEO")]
         [HttpPost]
         [ValidateAntiForgeryToken]
