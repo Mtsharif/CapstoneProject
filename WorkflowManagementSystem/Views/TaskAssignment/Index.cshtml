@@ -8,10 +8,10 @@
 
     <h2>Task Assignments</h2>
 
-    <p>
-        @Html.ActionLink("Assign Task", "Create")
-    </p>
-    <table class="table" id="taskAssignmentsTable ">
+    @*<p>
+        @Html.ActionLink("Assign Task", "Assign")
+    </p>*@
+    <table class="table" id="taskAssignmentsTable">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.AssignmentDate)
@@ -50,9 +50,9 @@
                     @Html.DisplayFor(modelItem => item.Employee)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |*@
+                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }) 
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })*@
                 </td>
             </tr>
         }

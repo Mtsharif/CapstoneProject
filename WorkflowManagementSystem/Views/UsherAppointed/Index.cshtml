@@ -8,9 +8,9 @@
 
     <h2>Ushers Assigned</h2>
 
-    <p>
+    @*<p>
         @Html.ActionLink("Assign Usher", "Create")
-    </p>
+    </p>*@
     <table class="table" id=" usherAppointedTable">
         <tr>
             <th>
@@ -45,7 +45,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.UsherAppointedId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.UsherAppointedId }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.UsherAppointedId }) |*@
                     @Html.ActionLink("Delete", "Delete", new { id = item.UsherAppointedId })
                 </td>
             </tr>

@@ -8,42 +8,187 @@
 
     if (Model.Count() <= 0)
     {
-        <p>Schedule Not Set</p>
+        <br />
+        <hr />
+        <p class="countMessage">Schedule Not Set</p>
     }
     else
     {
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ScheduleDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.StartTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EndTime)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        @*@Html.Hidden("EventProjectId")*@
+        <body>
+            <table class="table" id="scheduleTable">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ScheduleDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EndTime)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ScheduleId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ScheduleId })
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ScheduleDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndTime)
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </table>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ScheduleDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        <td>
+
+                            @*<a href="#" class="btn btn-danger" onclick="confirmDelete(@item.ScheduleId)"><i class="glyphicon glyphicon-trash"></i></a>*@
+                            @*<a href="#" class="btn btn-danger" onclick='DeleteSchedule(@item.ScheduleId)'></a>*@
+                        </td>
+                        <td>
+
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.ScheduleId }) |*@
+
+                            @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+                            {
+                        @Html.ActionLink("Delete", "Delete", "ProjectSchedule", new { id = item.ScheduleId, onclick = "confirmDelete(@item.ScheduleId)" }, null)
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+
+
+
+
+            @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+                <script type="text/javascript">
+
+                    $("body").on("click", "#scheduleTable .Delete", function () {
+                        if (confirm("Do you want to delete this row?")) {
+                            var row = $(this).closest("tr");
+                            var scheduleId = row.find("span").html();
+                            $.ajax({
+                                type: "POST",
+                                url: "/ProjectSchedule/DeleteCustomer",
+                                data: '{scheduleId: ' + scheduleId + '}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (response) {
+                                    row.remove();
+                                }
+                            });
+                        }
+                    });
+                </script>*@
+
+
+            @*<input type="hidden" id="hiddenScheduleId" />
+
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                <h3 class="modal-title">Delete</h3>
+
+                            </div>
+                            <div class="modal-body">
+
+                                <h4> Are you sure</h4>
+                            </div>
+
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-default" data-dismiss="modal">cancel</a>
+                                <a href="#" class="btn btn-success" onclick="DeleteSchedule()">Confirm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+
+                        var confirmDelete = function (ScheduleId) {
+
+                            $("hiddenScheduleId").val(ScheduleId);
+                            $("#myModal").modal("show");
+                        }
+
+                        var DeleteSchedule = function () {
+
+                            var schId = $("#hiddenScheduleId").val();
+
+                            $.ajax({
+
+                                type: "POST",
+                                url: "/ProjectSchedule/DeleteSchedules",
+                                data: { ScheduleId: schId },
+                                success: function () {
+                                    $("#myModal").modal("hide");
+                                }
+                            })
+                        }
+                    }
+
+
+
+                </script>*@
+        </body>
     }
 }
+
+
+
+
+@*<div class="modela fade" id="DeleteConfirmation">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4>Delete Schedule</h4>
+                </div>
+
+                <div class="modal-body">
+                    <h4>Are you sure you want to delete this?</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-danger" onclick="confirmDelete">Confirm</a>
+                </div>
+            </div>
+        </div>
+        }
+
+    @section Scripts {
+
+        <script >
+            function DeleteSchedule(ScheduleId){
+                $("#ScheduleId").val(ScheduleId);
+                $("#DeleteConfirmation").modal('show');
+            }
+
+            function confirmDelete() {
+                var scheduleId = $("#ScheduleId").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ProjectSchedule/DeleteSchedule" + scheduleId,
+                    success: function (result) {
+                        $("#DeleteConfirmation").modal("hide");
+                        $(".row_" + scheduleId).remove();
+                    }
+                })
+            }
+
+
+        </script>
+    }
+    }*@

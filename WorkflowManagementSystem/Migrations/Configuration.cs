@@ -81,11 +81,11 @@ namespace WorkflowManagementSystem.Migrations
             // Add client service employee examples
             var clientServiceEmployees = new List<Employee>
             {
-                new Employee { UserName = "CS1" , Email = "cs1@gmail.com", FirstName = "Badr",
+                new Employee { UserName = "cs1" , Email = "cs1@gmail.com", FirstName = "Badr",
                     LastName = "Alsharif", PhoneNumber = "0552323909", JobTitle = EmployeeJobTitle.Director,
                     Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},                
                 
-                new Employee { UserName = "CS2" , Email = "cs2@gmail.com", FirstName = "Moneer",
+                new Employee { UserName = "cs2" , Email = "cs2@gmail.com", FirstName = "Moneer",
                     LastName = "Ghalib", PhoneNumber = "0504444442", JobTitle = EmployeeJobTitle.Assistant,
                     Department = Department.ClientService, EmployeeType = EmployeeType.ClientService},
             };
@@ -158,11 +158,11 @@ namespace WorkflowManagementSystem.Migrations
             // Add creative employee examples
             var creativeEmployees = new List<Employee>
             {
-                 new Employee { UserName = "CR1" , Email = "cr1@gmail.com", FirstName = "Khalid",
+                 new Employee { UserName = "cr1" , Email = "cr1@gmail.com", FirstName = "Khalid",
                     LastName = "Madani", PhoneNumber = "0505282232", JobTitle = EmployeeJobTitle.Director,
                     Department = Department.Creative, EmployeeType = EmployeeType.Creative},
 
-                 new Employee { UserName = "CR2" , Email = "cr2@gmail.com", FirstName = "Ali",
+                 new Employee { UserName = "cr2" , Email = "cr2@gmail.com", FirstName = "Ali",
                     LastName = "Amoudi", PhoneNumber = "0555444342", JobTitle = EmployeeJobTitle.Designer,
                     Department = Department.Creative, EmployeeType = EmployeeType.Creative},
             };
@@ -184,7 +184,7 @@ namespace WorkflowManagementSystem.Migrations
             // Add CEO example
             var CEOEmployees = new List<Employee>
             {
-                 new Employee { UserName = "CEO" , Email = "ceo@gmail.com", FirstName = "Omar",
+                 new Employee { UserName = "ceo" , Email = "ceo@gmail.com", FirstName = "Omar",
                     LastName = "Mohamed", PhoneNumber = "0505282232", JobTitle = EmployeeJobTitle.Director,
                     Department = null, EmployeeType = EmployeeType.CEO},
             };

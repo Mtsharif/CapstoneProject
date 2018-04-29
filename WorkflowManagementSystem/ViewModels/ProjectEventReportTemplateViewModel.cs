@@ -21,12 +21,12 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         public int EventProjectId { get; set; }
 
-        //// The event report template file as object (used to upload a file)
-        //[Display(Name = "Event Report Template File")]
-        //public HttpPostedFileBase EventReportTemplateFile { get; set; }
+        // The event report template file as object (used to upload a file)
+        [Display(Name = "Event Report Template File")]
+        public HttpPostedFileBase EventReportTemplateFile { get; set; }
 
         [Display(Name = "Event Report Template")]
-        [DisplayFormat(NullDisplayText = "Event Report Template Not Available")]
+        //[DisplayFormat(NullDisplayText = "Event Report Template Not Available")]
         public string EventReportTemplate { get; set; }
     }
 }

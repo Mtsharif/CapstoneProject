@@ -7,97 +7,123 @@
     }
 <div>
     <hr />
+    @*<a href="@Url.Action("Edit", "EventProject")" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            Edit Project
+        </a>*@
+    @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+    {
+        @Html.ActionLink("Edit Project", "Edit", new { id = Model.EventProjectId }, new { @class = "btn btn-default pull-left " }) <br />
+        @*@Html.ActionLink("Change Status", "EditStatus", new { id = Model.EventProjectId })*@
+    }
+        <br />
 
-    @Html.ActionLink("Edit Project", "Edit", new { id = Model.EventProjectId }) <br />
-    @Html.ActionLink("Change Status", "EditStatus", new { id = Model.EventProjectId })
+        @*<fieldset class="fieldset-border">*@
+        <dl class="container-fluid table-bordered details-Background">
 
-    <dl class="dl-horizontal container-fluid color-grey">
+            <dt class="col-md-3" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd class="col-md-3">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt class="col-md-3" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Employee)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
 
-        <dd>
-            @Html.DisplayFor(model => model.Employee)
-        </dd>
+                @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+                {
+                @Html.ActionLink("Change Status", "EditStatus", new { id = Model.EventProjectId }, new { @class = "btn btn-default btn-sm pull-right " })
+                }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
+                @*<a href="@Url.Action("EditStatus", "EventProject")" class="btn btn-default btn-sm pull-right">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        Change Status
+                    </a>*@
+            </dd>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
+            <dt class="col-md-3" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.Employee)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dd class="col-md-3">
+                @Html.DisplayFor(model => model.Employee)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dt class="col-md-3">
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EventType)
-        </dt>
+            <dd class="col-md-3">
+                @Html.DisplayFor(model => model.DateCreated)
+            </dd>
+            <br />
+            <br />
+            <br />
+        </dl>
+        @*</fieldset>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.EventType)
-        </dd>
+        <dl class=" container-fluid table-bordered details-Background">
+            <dt class="col-md-3" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.EventType)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Client)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EventType)
+            </dd>
+            <hr />
+            <dt class="col-md-3" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.Client)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Client)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Client)
+            </dd>
+            <hr />
+            <dt class="col-md-3" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.Brief)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Brief)
-        </dt>
+            <dd class="col-md-12">
+                @Html.DisplayFor(model => model.Brief)
+            </dd>
+            <hr /> @*<h4 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight:bold;">Address</h4>*@
+            <dt class="col-md-1" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Brief)
-        </dd>
+            <dd class="col-md-2">
+                @Html.DisplayFor(model => model.City)
+            </dd>
+            @*<hr />*@
+            <dt class="col-md-1" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.Street)
+            </dt>
+            <dd class="col-md-2">
+                @Html.DisplayFor(model => model.Street)
+            </dd>
+            @*<hr />*@
+            <dt class="col-md-1" style="font-size:19px;">
+                @Html.DisplayNameFor(model => model.District)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.District)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.District)
-        </dd>
-    </dl>
-</div>
+            <dd class="col-md-3">
+                @Html.DisplayFor(model => model.District)
+            </dd>
+            <br />
+            <br />
+            <br />
+        </dl>
+    </div>
 
     <p>       
-        @Html.ActionLink("Back to List", "Index")
-
+        @*@Html.ActionLink("Back to List", "Index")*@
         @*@Html.ActionLink("Add Schedule", "ProjectSchedules", new { id = Model.EventProjectId }) |
             @Ajax.ActionLink("Client Details", "ClientDetailsPartial", new { id = Model.EventProjectId }, new AjaxOptions { UpdateTargetId = "ClientDetails", HttpMethod = "GET", InsertionMode = InsertionMode.Replace }) |*@
     </p>

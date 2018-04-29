@@ -14,8 +14,7 @@
 
         <div class="form-horizontal">
             <hr />
-            @Html.Hidden("EventProjectId")
-
+             @Html.HiddenFor(model => model.EventProjectId)
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">

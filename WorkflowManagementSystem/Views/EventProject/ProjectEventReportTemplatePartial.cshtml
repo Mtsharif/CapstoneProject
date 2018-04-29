@@ -9,29 +9,21 @@
     using (Html.BeginForm("ProjectEventReportTemplatePartial", "EventProject", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.EventProjectId)
 
         <div class="form-horizontal">
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            @*<div class="form-group">
+            <div class="form-group">
                     @Html.LabelFor(model => model.EventReportTemplateFile, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.TextBox("EventReportTemplateFile", "", new { type = "file" })
                     </div>
-                </div>*@
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.EventReportTemplate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.EventReportTemplate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.EventReportTemplate, "", new { @class = "text-danger" })
                 </div>
-            </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-default" id="CreateEventReportTemplateButton" />
+                    <input type="submit" value="Upload" class="btn btn-default" id="CreateEventReportTemplateButton" />
                 </div>
             </div>
         </div>

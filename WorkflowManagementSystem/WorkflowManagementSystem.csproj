@@ -604,9 +604,8 @@
     <Content Include="Views\EmployeeTask\Details.cshtml" />
     <Content Include="Views\EmployeeTask\Edit.cshtml" />
     <Content Include="Views\EmployeeTask\Index.cshtml" />
-    <Content Include="Views\ProjectSchedule\Delete.cshtml" />
     <Content Include="Views\ProjectSchedule\Edit.cshtml" />
-    <Content Include="Views\TaskAssignment\Create.cshtml" />
+    <Content Include="Views\TaskAssignment\Assign.cshtml" />
     <Content Include="Views\UsherAppointed\Create.cshtml" />
     <Content Include="Views\UsherAppointed\Delete.cshtml" />
     <Content Include="Views\UsherAppointed\Details.cshtml" />
@@ -643,7 +642,6 @@
     <Content Include="Views\TaskAssignment\Edit.cshtml" />
     <Content Include="Views\TaskAssignment\Delete.cshtml" />
     <Content Include="Views\EventProject\EditStatus.cshtml" />
-    <Content Include="Views\EventProject\UsherAppointedPartial.cshtml" />
     <Content Include="Views\CostSheet\CostSheetItems.cshtml" />
     <Content Include="Views\CostSheet\GetCostSheetItemsPartial.cshtml" />
     <Content Include="Views\CostSheet\AddCostSheetItemPartial.cshtml" />
@@ -652,6 +650,10 @@
     <Content Include="Views\CostSheet\FinanceApprovalDetails.cshtml" />
     <Content Include="Views\CostSheet\AddCEOApproval.cshtml" />
     <Content Include="Views\CostSheet\CEOApprovalDetails.cshtml" />
+    <Content Include="Views\ProjectSchedule\Delete.cshtml" />
+    <Content Include="Views\TaskAssignment\AllTasksIndex.cshtml" />
+    <Content Include="Views\TaskAssignment\EditCompletion.cshtml" />
+    <Content Include="Views\EventProject\UshersPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

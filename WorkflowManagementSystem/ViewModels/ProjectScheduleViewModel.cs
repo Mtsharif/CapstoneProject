@@ -38,6 +38,8 @@ namespace WorkflowManagementSystem.ViewModels
         // Event project schedule
         public int EventProjectId { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         //public string EventProject  { get; set; }
     }
 }

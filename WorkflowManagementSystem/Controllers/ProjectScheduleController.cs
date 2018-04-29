@@ -117,12 +117,15 @@ namespace WorkflowManagementSystem.Controllers
         // POST: ProjectSchedule/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, ProjectScheduleViewModel model)
         {
+            //var projectSchedule = db.ProjectSchedules.Find(model.ScheduleId);
+
             ProjectSchedule projectSchedule = db.ProjectSchedules.Find(id);
             db.ProjectSchedules.Remove(projectSchedule);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","EventProject");
+            //return RedirectToAction("DetailsMaster", "EventProject", new { projectId = model.EventProjectId });
         }
 
         protected override void Dispose(bool disposing)
@@ -132,6 +135,6 @@ namespace WorkflowManagementSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }     
     }
 }

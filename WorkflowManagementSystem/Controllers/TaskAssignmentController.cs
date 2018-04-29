@@ -4,6 +4,7 @@
  * Date: 18/4/2018
  */
 
+//using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,46 @@ namespace WorkflowManagementSystem.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         /// <summary>
-        /// This action retrieves a list of all tasks assigned
+        /// This action retrieves a list of all tasks assigned to the logged in user 
         /// </summary>
         /// <returns>Index view</returns>
         // GET: TaskAssignment
         public ActionResult Index()
         {
-            var taskAssignments = db.TaskAssignments.ToList();
+            //var taskAssignments = db.TaskAssignments.ToList();
+            var loginId = User.Identity.GetUserId<int>();
+            var taskAssignments = db.TaskAssignments.Where(p => p.EmployeeId == loginId).ToList();
+            var model = new List<TaskAssignmentViewModel>();
+
+            foreach (var item in taskAssignments)
+            {
+                model.Add(new TaskAssignmentViewModel
+                {
+                    TaskAssignmentId = item.TaskAssignmentId,
+                    TaskName = item.TaskName,
+                    Description = item.Description,
+                    Deadline = item.Deadline,
+                    Status = item.Status,
+                    Priority = item.Priority,
+                    AssignmentDate = item.AssignmentDate,
+                    IsCompleted = item.IsCompleted,
+                    EventProject = item.EventProject.Name,
+                    AnyEmployee = item.AnyEmployee.FullName,
+                    Employee = item.Employee.FullName,
+                });
+            }
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// Retrieves a list of the tasks that are assigned by the logged in user to edit and delete the tasks
+        /// </summary>
+        /// <returns>All tasks index view</returns>
+        public ActionResult AllTasksIndex()
+        {
+            var loginId = User.Identity.GetUserId<int>();
+            var taskAssignments = db.TaskAssignments.Where(p => p.ClientServiceEmployeeId == loginId).ToList();
             var model = new List<TaskAssignmentViewModel>();
 
             foreach (var item in taskAssignments)
@@ -100,13 +134,16 @@ namespace WorkflowManagementSystem.Controllers
         /// This action gets the task assignment create page
         /// </summary>
         /// <returns>Create view</returns>
-        // GET: TaskAssignment/Create
-        public ActionResult Create()
-        {
+        // GET: TaskAssignment/Assign
+        public ActionResult Assign(int? id)
+        {            
+            var model = new TaskAssignmentViewModel();
+            model.EventProjectId = id ?? default(int);
+
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
             ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
-            return View();
+            return View(model);
         }
 
         /// <summary>
@@ -114,20 +151,13 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">Task assignment model</param>
         /// <returns>Index view</returns>
-        // POST: TaskAssignment/Create
+        // POST: TaskAssignment/Assign
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TaskAssignmentViewModel model)
+        public ActionResult Assign(TaskAssignmentViewModel model)
         {
             if (ModelState.IsValid)
             {
-                //var project = db.EventProjects.Find(model.EventProjectId);
-
-                //if (project == null)
-                //{
-                //    return HttpNotFound();
-                //}
-
                 if (model.Deadline < DateTime.Now.AddHours(2) && model.Deadline < DateTime.Today)
                 {
                     ModelState.AddModelError("Deadline", "The deadline should not be older day and less than 2 hours from now.");
@@ -158,7 +188,7 @@ namespace WorkflowManagementSystem.Controllers
                 ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
 
-                return RedirectToAction("Index");
+                return RedirectToAction("AllTasksIndex");
                 //return RedirectToAction("Details", new { id = taskAssignment.TaskAssignmentId });
             }
             else
@@ -241,10 +271,11 @@ namespace WorkflowManagementSystem.Controllers
                 taskAssignment.EmployeeId = model.EmployeeId;
                 taskAssignment.ClientServiceEmployeeId = User.Identity.GetUserId<int>();
                 taskAssignment.EventProjectId = model.EventProjectId;
-                
+
                 db.Entry(taskAssignment).State = EntityState.Modified;
                 db.SaveChanges();
 
+               
                 if (taskAssignment.IsCompleted == true && taskAssignment.Deadline < DateTime.Today)
                 {
                     taskAssignment.Status = TaskAssignment.TaskStatus.Completed;
@@ -257,7 +288,94 @@ namespace WorkflowManagementSystem.Controllers
                 {
                     taskAssignment.Status = TaskAssignment.TaskStatus.Pending;
                 }
-                
+
+                return RedirectToAction("AllTasksIndex");
+            }
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View();
+        }
+
+        /// <summary>
+        /// Retrieves the edit completion page
+        /// </summary>
+        /// <param name="id">task assignment id</param>
+        /// <returns>edit completion view</returns>
+        public ActionResult EditCompletion(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            TaskAssignment taskAssignment = db.TaskAssignments.Find(id);
+
+            if (taskAssignment == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new TaskAssignmentViewModel
+            {
+                TaskAssignmentId = taskAssignment.TaskAssignmentId,
+                TaskName = taskAssignment.TaskName,
+                Description = taskAssignment.Description,
+                Deadline = taskAssignment.Deadline,
+                Status = taskAssignment.Status,
+                Priority = taskAssignment.Priority,
+                AssignmentDate = taskAssignment.AssignmentDate,
+                IsCompleted = taskAssignment.IsCompleted,
+                EventProject = taskAssignment.EventProject.Name,
+                AnyEmployee = taskAssignment.AnyEmployee.FullName,
+                Employee = taskAssignment.Employee.FullName,
+            };
+
+            ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
+            ViewBag.EmployeeId = new SelectList(db.Employees, "Id", "FullName");
+            ViewBag.ClientServiceEmployeeId = new SelectList(db.Employees, "Id", "FullName");
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// This action allows the user to edit the completion of a task
+        /// </summary>
+        /// <param name="id">task assingment id</param>
+        /// <param name="model">task assignment view model</param>
+        /// <returns>index view</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCompletion(int id, TaskAssignmentViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var taskAssignment = db.TaskAssignments.Find(id);
+                if (taskAssignment == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //if (taskAssignment.IsCompleted == true)
+                //{
+                //    taskAssignment.Status = TaskAssignment.TaskStatus.Completed;
+                //}
+
+                taskAssignment.TaskName = model.TaskName;
+                taskAssignment.Description = model.Description;
+                taskAssignment.Deadline = model.Deadline;
+                taskAssignment.Status = model.Status;
+                taskAssignment.Priority = model.Priority;
+                taskAssignment.AssignmentDate = DateTime.Now;
+                taskAssignment.IsCompleted = model.IsCompleted;
+                taskAssignment.EmployeeId = model.EmployeeId;
+                taskAssignment.ClientServiceEmployeeId = User.Identity.GetUserId<int>();
+                taskAssignment.EventProjectId = model.EventProjectId;
+
+                db.Entry(taskAssignment).State = EntityState.Modified;
+                db.SaveChanges();             
+
                 return RedirectToAction("Index");
             }
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
@@ -322,7 +440,7 @@ namespace WorkflowManagementSystem.Controllers
             TaskAssignment taskAssignment = db.TaskAssignments.Find(id);
             db.TaskAssignments.Remove(taskAssignment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("AllTasksIndex");
         }
 
         protected override void Dispose(bool disposing)

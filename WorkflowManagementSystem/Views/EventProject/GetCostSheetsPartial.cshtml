@@ -6,49 +6,59 @@
         Layout = null;
     }
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CostSheetName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductionEmployee)
-            </th>
-
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    if (Model.Count() <= 0)
+    {
+        <br />
+        <hr />
+        <p class="countMessage">Cost Sheet not created yet.</p>
+    }
+    else
+    {
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CostSheetName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductionEmployee)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.CostSheetName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductionEmployee)
+                </th>
 
-                <td>
-                    @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@
-
-                    @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
-                    {
-                         @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
-                    }
-
-                    @if (Request.IsAuthenticated)
-                    {
-                         @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
-                    }
-
-                </td>
+                <th></th>
             </tr>
-        }
-    </table>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CostSheetName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductionEmployee)
+                    </td>
+
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@
+
+                        @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
+                        {
+                            @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
+                        }
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
+                        }
+
+                    </td>
+                </tr>
+            }
+            
+        </table>
+    }
 }

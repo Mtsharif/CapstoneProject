@@ -7,7 +7,8 @@
 <h2>Cost Sheet</h2>
 
 <p>
-    @Html.ActionLink("Back to Project Details", "ProjectDetailsPartial", "EventProject", new { id = Model.EventProjectId, @class = "btn btn-sm btn-primary btn-flat round" })
+    @*@Html.ActionLink("Back to Project Details", "ProjectDetailsPartial", "EventProject", new { id = Model.EventProjectId, @class = "btn btn-sm btn-primary btn-flat round" })*@
+    @Html.ActionLink("Back to Project Details", "ProjectDetailsPartial", "EventProject", new { id = Model.EventProjectId }, new { @class = "btn btn-sm btn-primary btn-flat round "})
 </p>
 
 <p>
@@ -22,7 +23,7 @@
 
     @Html.HiddenFor(m => m.CostSheetId)
 
-    <dl class="dl-horizontal" >
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CostSheetName)
         </dt>

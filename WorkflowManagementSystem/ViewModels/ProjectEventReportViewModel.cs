@@ -21,9 +21,9 @@ namespace WorkflowManagementSystem.ViewModels
         [Key]
         public int EventProjectId { get; set; }
 
-        ////The event report file as object (used to upload a file)
-        //[Display(Name = "Event Report File")]
-        //public HttpPostedFileBase EventReportFile { get; set; }
+        //The event report file as object (used to upload a file)
+        [Display(Name = "Event Report File")]
+        public HttpPostedFileBase EventReportFile { get; set; }
 
         [Display(Name = "Event Report")]
         [DisplayFormat(NullDisplayText = "Event Report Not Available")]

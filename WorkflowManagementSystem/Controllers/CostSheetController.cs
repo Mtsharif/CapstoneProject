@@ -48,6 +48,7 @@ namespace WorkflowManagementSystem.Controllers
 
             var model = new CostSheetViewModel
             {
+                EventProjectId = costSheet.EventProjectId,
                 CostSheetId = costSheet.CostSheetId,
                 CostSheetName = costSheet.CostSheetName,
                 Status = costSheet.Status,

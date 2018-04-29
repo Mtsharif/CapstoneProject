@@ -89,13 +89,17 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <returns>Usher appointed create view</returns>
         // GET: UsherAppointed/Create
-        public ActionResult Create()
+        [Authorize(Roles = "Production Employee")]
+        public ActionResult Create(int? id)
         {
+            var model = new UsherAppointedViewModel();
+            model.EventProjectId = id ?? default(int);
+
             ViewBag.UsherId = new SelectList(db.Ushers, "UsherId", "FullName");
             ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "Id", "FullName");
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
 
-            return View();
+            return View(model);
         }
 
         /// <summary>
@@ -104,18 +108,19 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="model">Usher appointed model</param>
         /// <returns>Index view or create assignment view</returns>
         // POST: UsherAppointed/Create
+        [Authorize(Roles = "Production Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(UsherAppointedViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var project = db.EventProjects.Find(model.EventProjectId);
+                //var project = db.EventProjects.Find(model.EventProjectId);
 
-                if (project == null)
-                {
-                    return HttpNotFound();
-                }
+                //if (project == null)
+                //{
+                //    return HttpNotFound();
+                //}
 
                 var usherAppointed = new UsherAppointed
                 {                    
@@ -132,7 +137,8 @@ namespace WorkflowManagementSystem.Controllers
                 ViewBag.ProductionEmployeeId = new SelectList(db.Employees, "Id", "FullName");
                 ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
 
-                return RedirectToAction("Details", new { id = usherAppointed.UsherAppointedId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("Details", new { id = usherAppointed.UsherAppointedId });
             }
             else
             {
