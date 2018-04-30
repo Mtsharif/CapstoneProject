@@ -179,7 +179,19 @@ namespace WorkflowManagementSystem.Controllers
                 return HttpNotFound();
             }
 
-            ClientViewModel model = Mapper.Map<ClientViewModel>(client);
+            //ClientViewModel model = Mapper.Map<ClientViewModel>(client);
+
+            ClientViewModel model = new ClientViewModel
+            {
+                ClientId = client.ClientId,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+                Email = client.Email,
+                MobileNumber = client.MobileNumber,
+                Street = client.Street,
+                District = client.District,
+                City = client.City,
+            };
 
             return View(model);
         }

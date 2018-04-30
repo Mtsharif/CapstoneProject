@@ -23,6 +23,11 @@
             @Html.HiddenFor(model => model.City)
             @*@Html.Hidden("ClientId")*@
 
+         <a href="@Url.Action("DetailsMaster", "EventProject", new { id = Model.EventProjectId })" class="btn btn-default btn-sm btn-round">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Back 
+        </a>
+
             @*<fieldset class="fieldset-border">
                 <legend class="legend-border">Project Details</legend>
                 <div class="form-group">
@@ -40,6 +45,7 @@
                         @Html.ValidationMessageFor(model => model.EventType, "", new { @class = "text-danger" })
                     </div>
                 </div>*@
+                  <div class="container-fluid table-bordered details-Background center">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Client, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -56,7 +62,7 @@
                         @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
+</div>
                 @*<div class="form-group">
                     @Html.LabelFor(model => model.Brief, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -92,16 +98,16 @@
                     </div>
                 </div>
             </fieldset>*@
-
+        <br />
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                <div >
+                    <input type="submit" value="Save" class="btn btn-warning btn-block center-button" />
                 </div>
             </div>
         </div>  
 
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back", "DetailsMaster", new { id = Model.EventProjectId })
-</div>
+</div>*@

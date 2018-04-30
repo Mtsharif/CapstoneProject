@@ -5,21 +5,35 @@
     {
         Layout = null;
     }
-    <div>
-       @Html.HiddenFor(m=>m.EventProjectId)
-       @Html.HiddenFor(m=>m.EventReportTemplateFile)
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.EventReportTemplate)
+    <hr />
+    <div class="row col-md-7 col-md-offset-4 text-center">
+        @Html.HiddenFor(m => m.EventProjectId)
+        @Html.HiddenFor(m => m.EventReportTemplateFile)
+
+        <br />
+        <h4 class="col-md-6 labelStyle">Download Event Report Template</h4>
+        <dl>
+            <dt class="control-label col-md-6 labelStyle">
+                @*@Html.DisplayNameFor(model => model.EventReportTemplate)*@
             </dt>
+        </dl>
+        <br />
+        <br />
+        <br />
+        <span class="row col-md-6 col-md-offset-2 glyphicon glyphicon-save"></span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <dl class="row text-center">
             <dd>
-                    @Html.DisplayFor(model => model.EventReportTemplateFile)
-                    @if (!String.IsNullOrEmpty(Model.EventReportTemplate))
-                    {
-                        <a href="@Url.Content(Model.EventReportTemplate)" data-toggle="tooltip" title="Click here to download the Event Report Template File">Event Report Template</a>
-                    }
-                </dd>
+                @Html.DisplayFor(model => model.EventReportTemplateFile)
+                @if (!String.IsNullOrEmpty(Model.EventReportTemplate))
+            {
+                <a href="@Url.Content(Model.EventReportTemplate)" data-toggle="tooltip" title="Click here to download the Event Report Template File" class="col-md-6 linkStyle">Event Report Template</a>
+        }
+            </dd>
         </dl>
     </div>
 }

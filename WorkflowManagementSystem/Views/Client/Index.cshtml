@@ -9,7 +9,7 @@
     <h2>Client List</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New Client", "Create", "Client", new { @class = "btn btn-create" })
     </p>
     <table class="table" id="clientsTable">
         <thead>
@@ -44,9 +44,9 @@
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>                    
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ClientId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ClientId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ClientId })
+                        @Html.ActionLink("Details", "Details", new { id = item.ClientId }, new { @class = "btn btn-primary btn-xs btn-sharp btn-right-space" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ClientId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ClientId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
                     </td>
                 </tr>
             }

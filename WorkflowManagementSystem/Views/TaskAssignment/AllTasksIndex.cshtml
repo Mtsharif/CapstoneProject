@@ -6,27 +6,18 @@
 
 <h2>Tasks Assigned</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Assign Task", "Assign")
-</p>
+</p>*@
 <table class="table" id="tasksTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TaskName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AssignmentDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventProjectId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.EventProject)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Deadline)
         </th>
         <th>
@@ -37,12 +28,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsCompleted)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AnyEmployee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee)
         </th>
         <th></th>
     </tr>
@@ -54,18 +42,9 @@
                 @Html.DisplayFor(modelItem => item.TaskName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssignmentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventProjectId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.EventProject)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Deadline)
             </td>
             <td>
@@ -76,17 +55,14 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsCompleted)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.AnyEmployee)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })
+                @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }, new { @class = "btn btn-primary btn-xs btn-sharp" }) 
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
             </td>
         </tr>
     }

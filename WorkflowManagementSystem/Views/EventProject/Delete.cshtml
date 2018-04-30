@@ -11,102 +11,111 @@
     <h3>Are you sure you want to delete this?</h3>
     <div>
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
+        <a href="@Url.Action("Index", "EventProject")" class="btn btn-default btn-sm btn-round">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Back to Project List
+        </a>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Employee)
-            </dt>
+        <div class="container-fluid table-bordered details-Background center">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Employee)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Employee)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.DateCreated)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Employee)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Status)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateCreated)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Status)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DateCreated)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.EventType)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.EventType)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Client)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EventType)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Client)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.EventType)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Brief)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Client)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Brief)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Client)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.City)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Brief)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.City)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Brief)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Street)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Street)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.District)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Street)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.District)
-            </dd>
-        </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Street)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.District)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.District)
+                </dd>
+            </dl>
+        </div>
+        <br />
 
         @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to Project List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger btn-block center-button" /> 
+            @*@Html.ActionLink("Back to Project List", "Index")*@
         </div>
 }
     </div>
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+        }
+        else
+        {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+        }

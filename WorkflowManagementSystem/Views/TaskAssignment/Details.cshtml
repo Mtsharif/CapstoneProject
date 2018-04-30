@@ -3,111 +3,136 @@
 @if (Request.IsAuthenticated @*&& User.IsInRole("Client Service Employee")*@)
 {
     {
-        ViewBag.Title = "Task Assignment Details";
+        ViewBag.Title = "Task Details";
     }
 
-    <h2>Details</h2>
+    <h2> Task Details</h2>
 
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.AssignmentDate)
-            </dt>
+      <a href="@Url.Action("Index", "TaskAssignment")" class="btn btn-default btn-sm btn-round">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Back to List
+        </a>
 
-            <dd>
-                @Html.DisplayFor(model => model.AssignmentDate)
-            </dd>
+      <div>
+          <div class="container-fluid table-bordered details-Background center">
+              <p>
+                  @Html.ActionLink("Edit Task", "Edit", new { id = Model.TaskAssignmentId }, new { @class = "btn btn-warning pull-right" })
+              </p>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.TaskName)
-            </dt>
+              <dl class="dl-horizontal">
+                  <dt>
+                      @Html.DisplayNameFor(model => model.AssignmentDate)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.TaskName)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.AssignmentDate)
+                  </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.TaskName)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.TaskName)
+                  </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Deadline)
-            </dt>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Description)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Deadline)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.Description)
+                  </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Status)
-            </dt>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Deadline)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Status)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.Deadline)
+                  </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Priority)
-            </dt>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Status)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Priority)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.Status)
+                  </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.AnyEmployee)
-            </dt>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.IsCompleted)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.AnyEmployee)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.IsCompleted)
+                  </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Employee)
-            </dt>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Priority)
+                  </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Employee)
-            </dd>
+                  <dd>
+                      @Html.DisplayFor(model => model.Priority)
+                  </dd>
 
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.TaskAssignmentId }) |
-        @Html.ActionLink("Task Completed?", "EditCompletion", new { id = Model.TaskAssignmentId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.AnyEmployee)
+                  </dt>
 
-    @*<input type="submit" value="Task Completed?" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" />*@
+                  <dd>
+                      @Html.DisplayFor(model => model.AnyEmployee)
+                  </dd>
 
-    <!-- Modal -->
-    @*<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Employee)
+                  </dt>
+
+                  <dd>
+                      @Html.DisplayFor(model => model.Employee)
+                  </dd>
+
+              </dl>
+          </div>
+          </div>
+
+          <p>
+              @Html.ActionLink("Task Completed?", "EditCompletion", new { id = Model.TaskAssignmentId }, new { @class = "btn btn-info pull-right " })
+          </p>
+
+          if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+          {
+          <p>
+              @*@Html.ActionLink("Edit", "Edit", new { id = Model.TaskAssignmentId })*@ |
+              @*@Html.ActionLink("Back to List", "Index")*@
+          </p>
+          }
+
+          @*<input type="submit" value="Task Completed?" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" />*@
+
+          <!-- Modal -->
+          @*<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">*@
-                @*<form action="save.php" method="post">*@
-                    @*<div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        @Html.Action("EditCompletion")
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>*@
-                        @*<input type="submit" value="Save" class="btn btn-default" />*@
-                    @*</div>*@
-                @*</form>*@
-            @*</div>
+          @*<form action="save.php" method="post">*@
+          @*<div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    </div>*@
-}
+        <div class="modal-body">
+
+            @Html.Action("EditCompletion")
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>*@
+          @*<input type="submit" value="Save" class="btn btn-default" />*@
+          @*</div>*@
+          @*</form>*@
+          @*</div>
+            </div>
+        </div>*@
+          }

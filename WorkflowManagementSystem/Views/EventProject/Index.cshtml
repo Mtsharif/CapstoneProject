@@ -9,7 +9,7 @@
     <h2>Project List</h2>
 
     <p>
-        @Html.ActionLink("Create New Project", "Create", "EventProject", new { @class = "btn btn-default " })
+        @Html.ActionLink("Create New Project", "Create", "EventProject", new { @class = "btn btn-create" })
     </p>
 
     <table class="table" id="projectsTable">
@@ -42,16 +42,16 @@
                     </td>
                     <td>
                         @*<div class="btn-group">*@
-                        @Html.ActionLink("Details", "DetailsMaster", new { id = item.EventProjectId }, new { @class = "btn btn-primary btn-sharp btn-sm" }) &nbsp;
+                        @Html.ActionLink("Details", "DetailsMaster", new { id = item.EventProjectId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
 
                         @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
                         {
 
-                    @Html.ActionLink("Assign Tasks", "Assign", "TaskAssignment", new { id = item.EventProjectId }, new { @class = "btn btn-default btn-sharp btn-sm" }) 
+                    @Html.ActionLink("Assign Tasks", "Assign", "TaskAssignment", new { id = item.EventProjectId }, new { @class = "btn btn-assign btn-sharp btn-xs btn-right-space" }) 
 
-                    @Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId }, new { @class = "btn btn btn-warning btn-sm btn-sharp" })
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.EventProjectId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" })*@
 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId }, new { @class = "btn btn-danger btn-sm btn-sharp" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EventProjectId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
 
                         }
 
@@ -59,7 +59,7 @@
                         {
                     @Html.ActionLink("Assign Ushers", "Create", "UsherAppointed", new { id = item.EventProjectId },null)
 
-                        }
+                        } <span class="btn-x"></span>
                     @*</div>*@
                     </td>
                 </tr>

@@ -19,6 +19,11 @@
 
         @*@Html.LabelFor(model => model.EventProjectId)*@
 
+        <a href="@Url.Action("DetailsMaster", "EventProject", new { id = Model.EventProjectId })" class="btn btn-default btn-sm btn-round">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Back to Project List
+        </a>
+
         <fieldset class="fieldset-border">
             <legend class="legend-border">Project Details</legend>
             <div class="form-group">
@@ -91,7 +96,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default btn-block pull-right"  />
+                <input type="submit" value="Save" class="btn btn-warning btn-block pull-right"  />
             </div>
         </div>
     </div>

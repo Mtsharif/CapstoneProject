@@ -3,10 +3,10 @@
 @if (Request.IsAuthenticated @*&& User.IsInRole("Client Service Employee")*@)
 {
     {
-        ViewBag.Title = "Task Assignments";
+        ViewBag.Title = "My Tasks";
     }
 
-    <h2>Task Assignments</h2>
+    <h2>My Tasks</h2>
 
     @*<p>
         @Html.ActionLink("Assign Task", "Assign")
@@ -51,7 +51,7 @@
                 </td>
                 <td>
                     @*@Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |*@
-                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }, new { @class = "btn btn-primary btn-sm btn-sharp" }) 
                     @*@Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })*@
                 </td>
             </tr>

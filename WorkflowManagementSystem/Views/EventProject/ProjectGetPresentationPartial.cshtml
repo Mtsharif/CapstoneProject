@@ -5,21 +5,35 @@
     {
         Layout = null;
     }
-    <div>
-        @Html.HiddenFor(m=>m.EventProjectId)
-        @Html.HiddenFor(m=>m.PresentationFile)
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.PresentationFile)
-            </dt>
+    <hr />
+    <div class="row col-md-7 col-md-offset-4 text-center">
+        @Html.HiddenFor(m => m.EventProjectId)
+        @Html.HiddenFor(m => m.PresentationFile)
 
+        <br />
+        <h4 class="col-md-6 labelStyle">Download Presentation</h4>
+        <dl>
+            <dt class="control-label col-md-6 labelStyle">
+                @*@Html.DisplayNameFor(model => model.PresentationFile)*@
+
+            </dt>
+        </dl>
+        <br />
+        <br />
+        <br />
+        <span class="row col-md-6 col-md-offset-2 glyphicon glyphicon-save"></span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <dl class="row text-center">
             <dd>
                 @Html.DisplayFor(model => model.PresentationFile)
                 @if (!String.IsNullOrEmpty(Model.Presentation))
-                    {
-                <a href="@Url.Content(Model.Presentation)" data-toggle="tooltip" title="Click here to download the Presentation File">Presentation</a>
-                }               
+                {
+                    <a href="@Url.Content(Model.Presentation)" data-toggle="tooltip" title="Click here to download the Presentation File" class="col-md-6 linkStyle">Presentation</a>
+                }
             </dd>
 
         </dl>

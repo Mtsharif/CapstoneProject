@@ -26,6 +26,16 @@
                     @*<li>@Html.ActionLink("About", "About", "Home", new { @style = "color: white;", @class = "font-link" })</li>*@
                     <li style="color: white;" class="font-link">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "font-link"})</li>
 
+                    @if (Request.IsAuthenticated && !User.IsInRole("Admin"))
+                    {
+                    <li>@Html.ActionLink("Projects", "Index", "EventProject", null, new { @class = "font-link" })</li>
+                    }
+
+                    @if (Request.IsAuthenticated && !User.IsInRole("CEO") && !User.IsInRole("Admin"))
+                    {                      
+                        <li>@Html.ActionLink("Tasks", "Index", "TaskAssignment", null, new { @class = "font-link"})</li>
+                    }
+
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
 
@@ -40,19 +50,13 @@
                         <li>@Html.ActionLink("Ushers Assigned", "Index", "UsherAppointed", null, new { @class = "font-link"})</li>
                     }
 
-
                     @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
                     {
-                        <li>@Html.ActionLink("Clients", "Index", "Client", null, new { @class = "font-link"})</li>
                         <li>@Html.ActionLink("Manage Tasks", "AllTasksIndex", "TaskAssignment", null, new { @class = "font-link" })</li>
-
+                        <li>@Html.ActionLink("Clients", "Index", "Client", null, new { @class = "font-link"})</li>
                     }
 
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Projects", "Index", "EventProject", null, new { @class = "font-link"})</li>
-                        <li>@Html.ActionLink("Tasks", "Index", "TaskAssignment", null, new { @class = "font-link"})</li>
-                    }
+                    
 
                     <li>@*@Html.ActionLink("Quotation/Invoice", "Index", "Document")*@</li>
                     @*<li>@Html.ActionLink("Cost Sheet", "Index", "CostSheet")</li>*@

@@ -13,7 +13,7 @@
         </a>*@
     @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
     {
-        @Html.ActionLink("Edit Project", "Edit", new { id = Model.EventProjectId }, new { @class = "btn btn-default pull-left " }) <br />
+        @Html.ActionLink("Edit Project", "Edit", new { id = Model.EventProjectId }, new { @class = "btn btn-warning pull-left " }) <br />
         @*@Html.ActionLink("Change Status", "EditStatus", new { id = Model.EventProjectId })*@
     }
         <br />

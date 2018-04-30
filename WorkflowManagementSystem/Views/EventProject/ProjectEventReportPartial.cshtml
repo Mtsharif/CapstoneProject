@@ -13,16 +13,28 @@
         <div class="form-horizontal">
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                    @Html.LabelFor(model => model.EventReportFile , htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+            <div class="row col-md-7 col-md-offset-4 text-center" style="font:30px;">
+                <h4 class="col-md-6 labelStyle">Upload Event Report</h4>
+                @*@Html.LabelFor(model => model.EventReportFile , htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <br />
+                <br />
+                <br />
+                <span class="row col-md-6 col-md-offset-2 glyphicon glyphicon-open"></span>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />               
+                    <div class="col-lg-12">
                         @Html.TextBox("EventReportFile", "", new { type = "file" })
                     </div>
                 </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Upload" class="btn btn-default" id="CreateEventReportButton" />
+                    <br />
+                    <br />
+                    <input type="submit" value="Upload" class="btn btn-success upload-btn" id="CreateEventReportButton" />
                 </div>
             </div>
         </div>

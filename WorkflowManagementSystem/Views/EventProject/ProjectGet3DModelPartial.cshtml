@@ -5,21 +5,32 @@
     {
         Layout = null;
     }
-   
-        <div>
+<hr />
+        <div class="row col-md-7 col-md-offset-4 text-center">
             @Html.HiddenFor(m => m.EventProjectId)
             @Html.HiddenFor(m => m.ThreeDModelFile)
-            <hr />
-
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.ThreeDModelFile)
+            
+            <h4 class="col-md-6 labelStyle">Download 3D Model</h4>
+            <dl>
+                <dt class="control-label col-md-6 labelStyle">
+                    @*@Html.DisplayNameFor(model => model.ThreeDModelFile)*@
                 </dt>
+                 </dl>
+        <br />
+        <br />
+        <br />
+        <span class="row col-md-6 col-md-offset-2 glyphicon glyphicon-save"></span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+            <dl class="row text-center">
                 <dd>
                     @Html.DisplayFor(model => model.ThreeDModelFile)
                     @if (!String.IsNullOrEmpty(Model.ThreeDModel))
                     {
-                        <a href="@Url.Content(Model.ThreeDModel)" data-toggle="tooltip" title="Click here to download the 3D Model File">3D Model</a>
+                        <a href="@Url.Content(Model.ThreeDModel)" data-toggle="tooltip" title="Click here to download the 3D Model File" class="col-md-6 linkStyle">3D Model</a>
                     }
                 </dd>
             </dl>
