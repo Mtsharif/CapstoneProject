@@ -47,12 +47,12 @@
 
                         @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
                         {
-                            @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
+                            @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, new { @class = "btn btn-assign btn-sharp btn-xs btn-right-space" })
                         }
 
                         @if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, null)
+                            @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
                         }
 
                     </td>

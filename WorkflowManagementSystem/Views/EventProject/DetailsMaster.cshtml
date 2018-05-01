@@ -52,7 +52,7 @@
                 <li><a href="#ClientTab" data-toggle="tab">Client Details</a></li>
                 <li><a href="#PresentationTab" data-toggle="tab">Presentation</a></li>
                 <li><a href="#CostSheetTab" data-toggle="tab">Cost Sheet</a></li>
-                <li><a href="#ThreeDimensionModelTab" data-toggle="tab">Three Dimension Model</a></li>
+                <li><a href="#ThreeDimensionModelTab" data-toggle="tab">3D Model</a></li>
                 <li><a href="#QuotationAndInvoiceTab" data-toggle="tab">Quotation and Invoice</a></li>
                 <li><a href="#EventReportTemplateTab" data-toggle="tab">Event Report Template</a></li>
                 <li><a href="#EventReportTab" data-toggle="tab">Event Report</a></li>
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="tab-pane" id="ThreeDimensionModelTab">
-                    <h3>Three Dimension Model</h3>
+                    <h3>3D Model</h3>
                     @Html.Partial("Project3DModelPartial",
     new Project3DModelViewModel { EventProjectId = (int)ViewBag.ProjectId })
                     <div id="3DModelDetails"></div>

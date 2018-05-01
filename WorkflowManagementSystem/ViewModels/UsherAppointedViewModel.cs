@@ -34,7 +34,7 @@ namespace WorkflowManagementSystem.ViewModels
         // Event project appointed to
         public int EventProjectId { get; set; }
 
-        [Display(Name = "Event Project")]
+        [Display(Name = "Project")]
         public string EventProject { get; set; }
 
         // Employee who appointed the usher

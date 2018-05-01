@@ -44,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.DateAppointed)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.UsherAppointedId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UsherAppointedId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" }) 
                     @*@Html.ActionLink("Details", "Details", new { id = item.UsherAppointedId }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UsherAppointedId })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UsherAppointedId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
                 </td>
             </tr>
         }

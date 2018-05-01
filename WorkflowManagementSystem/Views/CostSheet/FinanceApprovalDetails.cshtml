@@ -5,32 +5,38 @@
     }
 
 <div>
+
+    <a href="@Url.Action("CostSheetItems", "CostSheet", new { id = Model.CostSheetId })" class="btn btn-default btn-sm btn-round">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        Back
+    </a>
+
     <h4>Finance Approval</h4>
     <hr />
     <dl class="dl-horizontal">
         @*<dt>
-            @Html.DisplayNameFor(model => model.EventProject)
-        </dt>
+                @Html.DisplayNameFor(model => model.EventProject)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EventProject)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EventProject)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CostSheetName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CostSheetName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CostSheetName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CostSheetName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.FinanceEmployee)

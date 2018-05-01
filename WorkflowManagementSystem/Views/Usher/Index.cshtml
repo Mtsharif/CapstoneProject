@@ -11,7 +11,7 @@
     if (Request.IsAuthenticated && User.IsInRole("Admin"))
     {
     <p>
-        @Html.ActionLink("Create New Usher", "Create")
+        @Html.ActionLink("Create New Usher", "Create","Usher", new { @class = "btn btn-create" })
     </p>
     }
 
@@ -64,16 +64,16 @@
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.UsherId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.UsherId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.UsherId })
+                    @Html.ActionLink("Details", "Details", new { id = item.UsherId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UsherId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UsherId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
                 </td>
 
                 }
                  @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
                  {
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.UsherId })
+                    @Html.ActionLink("Details", "Details", new { id = item.UsherId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
                 </td>
                  }
 

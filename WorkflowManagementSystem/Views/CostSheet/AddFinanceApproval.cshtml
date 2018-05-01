@@ -6,6 +6,11 @@
 
 <h2>Add Approval</h2>
 
+ <a href="@Url.Action("CostSheetItems", "CostSheet", new { id = Model.CostSheetId })" class="btn btn-default btn-sm btn-round">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Back 
+        </a>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -55,6 +60,6 @@
     </div>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back", "CostSheetItems", new { id = Model.CostSheetId })
-</div>
+</div>*@

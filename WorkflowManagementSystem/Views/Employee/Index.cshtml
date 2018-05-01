@@ -9,8 +9,9 @@
     <h2>Employee List</h2>
 
     <p>
-        @Html.ActionLink("Create New Employee", "Create")
+        @Html.ActionLink("Create New Employee", "Create","Employee", new { @class = "btn btn-create" })
     </p>
+    <br />
     <table class="table" id="employeesTable">
         <thead>
             <tr>
@@ -53,9 +54,9 @@
                         @Html.DisplayFor(modelItem => item.Department)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs btn-sharp" }) 
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs btn-sharp" })
                     </td>
                 </tr>
             }
@@ -72,9 +73,9 @@
             $(document).ready(function () {
                 $('#employeesTable').DataTable({
 
-                    "scrollY": "80px",
-                    "scrollCollapse": true,
-                    "paging": false,
+                    //"scrollY": "80px",
+                    //"scrollCollapse": true,
+                    //"paging": false,
 
                     "columnDefs": [
                         { "orderable": false, "targets": -1 }

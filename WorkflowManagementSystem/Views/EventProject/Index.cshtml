@@ -8,9 +8,12 @@
 
     <h2>Project List</h2>
 
+    if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+    {
     <p>
-        @Html.ActionLink("Create New Project", "Create", "EventProject", new { @class = "btn btn-create" })
+        @Html.ActionLink("Create New Project", "Create", "EventProject", new { @class = "btn btn-create"})
     </p>
+    }
 
     <table class="table" id="projectsTable">
         <thead>
@@ -57,7 +60,7 @@
 
                         @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
                         {
-                    @Html.ActionLink("Assign Ushers", "Create", "UsherAppointed", new { id = item.EventProjectId },null)
+                    @Html.ActionLink("Assign Ushers", "Create", "UsherAppointed", new { id = item.EventProjectId }, new { @class = "btn btn-assign btn-sharp btn-xs btn-right-space" })
 
                         } <span class="btn-x"></span>
                     @*</div>*@

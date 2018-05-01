@@ -9,8 +9,9 @@
     <h2>Item List</h2>
 
     <p>
-        @Html.ActionLink("Create New item", "Create")
+        @Html.ActionLink("Create New item", "Create","Item", new { @class = "btn btn-create" })
     </p>
+    <br />
     <table class="table" id="itemsTable">
         <thead>
             <tr>
@@ -40,8 +41,8 @@
                         @Html.DisplayFor(modelItem => item.UnitCost)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }, new { @class = "btn btn-warning btn-xs btn-sharp" }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ItemId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
                     </td>
                 </tr>
             }
@@ -58,9 +59,9 @@
             $(document).ready(function () {
                 $('#itemsTable').DataTable({
 
-                    "scrollY": "80px",
-                    "scrollCollapse": true,
-                    "paging": false,
+                    //"scrollY": "80px",
+                    //"scrollCollapse": true,
+                    //"paging": false,
 
                     "columnDefs": [
                         { "orderable": false, "targets": -1 }
