@@ -39,33 +39,33 @@ This application is developed for the MIS capstone project; it is a web-based wo
 * The login instructions for each sprint is mentioned below. 
 
 ### Login Instructions
-***Sprint 2 Branch: Login as an administrator using this login information***
+* ***Sprint 2 Branch: Login as an administrator using this login information***
 
-Username: admin
+    Username: admin
  
-Password: admin123
+    Password: admin123
 
-***Sprint 3 Branch: Login as a client service employee using this login information***
+* ***Sprint 3 Branch: Login as a client service employee using this login information***
 
-Username: user1
+    Username: user1
 
-Password: user123
+    Password: user123
 
-***Sprint 4 Branch: Login as amultiple users using these login information***
+* ***Sprint 4 Branch: Login as amultiple users using these login information***
 
-#### Client service employee
-Username: cs1
+    #### Client service employee
+    Username: cs1
 
-#### Production employee 
-Username: prod1
+    #### Production employee 
+    Username: prod1
 
-#### CEO
-Username: ceo 
+    #### CEO
+    Username: ceo 
 
-#### Finance employee
-Username: fin1
+    #### Finance employee
+    Username: fin1
 
-#### All passwords: user123
+    #### All passwords: user123
 
 ***
 ### License 
