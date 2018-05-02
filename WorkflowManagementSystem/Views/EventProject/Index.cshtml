@@ -11,7 +11,7 @@
     if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
     {
     <p>
-        @Html.ActionLink("Create New Project", "Create", "EventProject", new { @class = "btn btn-create"})
+        @Html.ActionLink("Create New Project", "Create", "EventProject", new { @class = "btn btn-create" })
     </p>
     }
 
@@ -102,7 +102,7 @@ else
 
 @section styles
 {
-    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />*@
     <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
     <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
 }

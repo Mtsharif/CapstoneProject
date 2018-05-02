@@ -1,0 +1,1520 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class EventProjectController
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class EventProjectController
+   ">
+    <meta name="generator" content="docfx 2.33.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WorkflowManagementSystem.Controllers.EventProjectController">
+  
+  
+  <h1 id="WorkflowManagementSystem_Controllers_EventProjectController" data-uid="WorkflowManagementSystem.Controllers.EventProjectController" class="text-break">Class EventProjectController
+  </h1>
+  <div class="markdown level0 summary"><p>This controller is created based on the EventProject and EventProjectViewModel classes
+It allows the creation of projects as well as the listing, editing and deleting of projects 
+It also enables the creation of schedules of each project using partial views
+And the addition of presentations, documents, 3D models, and event reports as tab views</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">EventProjectController</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WorkflowManagementSystem.Controllers.html">WorkflowManagementSystem.Controllers</a></h6>
+  <h6><strong>Assembly</strong>: WorkflowManagementSystem.dll</h6>
+  <h5 id="WorkflowManagementSystem_Controllers_EventProjectController_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EventProjectController : Controller</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ClientDetailsPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ClientDetailsPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ClientDetailsPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ClientDetailsPartial(System.Nullable{System.Int32})">ClientDetailsPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action shows the details of a client for a project</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ClientDetailsPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>client id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Client Details partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_CostSheetPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.CostSheetPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_CostSheetPartial_WorkflowManagementSystem_ViewModels_CostSheetViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.CostSheetPartial(WorkflowManagementSystem.ViewModels.CostSheetViewModel)">CostSheetPartial(CostSheetViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action enables the addition of cost sheets in a project</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult CostSheetPartial(CostSheetViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.CostSheetViewModel.html">CostSheetViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>cost sheet view model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>cost sheet partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Create_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Create*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Create" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Create">Create()</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the create event project page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Create()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Create event project view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Create_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Create*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Create_WorkflowManagementSystem_ViewModels_EventProjectViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Create(WorkflowManagementSystem.ViewModels.EventProjectViewModel)">Create(EventProjectViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action allows the user to create new event projects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Create(EventProjectViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.EventProjectViewModel.html">EventProjectViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>The event project model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event project index view or create model view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Delete_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Delete*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Delete_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Delete(System.Nullable{System.Int32})">Delete(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves a project&apos;s information to be deleted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Delete(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the selected event project</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Error page or event project delete view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_DeleteConfirmed_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.DeleteConfirmed*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_DeleteConfirmed_System_Int32_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.DeleteConfirmed(System.Int32)">DeleteConfirmed(Int32)</h4>
+  <div class="markdown level1 summary"><p>This action enables the deletion of an event project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult DeleteConfirmed(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the project to be deleted</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event project index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_DetailsMaster_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.DetailsMaster*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_DetailsMaster_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.DetailsMaster(System.Nullable{System.Int32})">DetailsMaster(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the master details page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult DetailsMaster(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Master details view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Dispose_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Dispose*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Dispose_System_Boolean_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_DocumentPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.DocumentPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_DocumentPartial_WorkflowManagementSystem_ViewModels_DocumentViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.DocumentPartial(WorkflowManagementSystem.ViewModels.DocumentViewModel)">DocumentPartial(DocumentViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action allows the documents to be added in the project details page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult DocumentPartial(DocumentViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.DocumentViewModel.html">DocumentViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Document view model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Document partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Edit_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Edit*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Edit_System_Int32_WorkflowManagementSystem_ViewModels_EventProjectViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Edit(System.Int32,WorkflowManagementSystem.ViewModels.EventProjectViewModel)">Edit(Int32, EventProjectViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action enables the user to edit and save an event project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Edit(int id, EventProjectViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.EventProjectViewModel.html">EventProjectViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Event project model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event project index view or edit model view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Edit_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Edit*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Edit_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Edit(System.Nullable{System.Int32})">Edit(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action shows an event project&apos;s details for editing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Edit(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of a selected event project</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Error page or edit event project view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_EditStatus_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.EditStatus*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_EditStatus_System_Int32_WorkflowManagementSystem_ViewModels_EventProjectViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.EditStatus(System.Int32,WorkflowManagementSystem.ViewModels.EventProjectViewModel)">EditStatus(Int32, EventProjectViewModel)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult EditStatus(int id, EventProjectViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.EventProjectViewModel.html">EventProjectViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_EditStatus_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.EditStatus*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_EditStatus_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.EditStatus(System.Nullable{System.Int32})">EditStatus(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult EditStatus(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_GetCostSheetsPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.GetCostSheetsPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_GetCostSheetsPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.GetCostSheetsPartial(System.Nullable{System.Int32})">GetCostSheetsPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the cost sheets created for a project</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult GetCostSheetsPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>event project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>get cpst sheet partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_GetDocumentPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.GetDocumentPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_GetDocumentPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.GetDocumentPartial(System.Nullable{System.Int32})">GetDocumentPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the document list of an event project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult GetDocumentPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>GetDocument partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Index_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Index*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Index" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Index">Index()</h4>
+  <div class="markdown level1 summary"><p>This action lists all event projects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Index()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event project index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Project3DModelPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Project3DModelPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Project3DModelPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Project3DModelPartial(System.Nullable{System.Int32})">Project3DModelPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the 3D model page/tab in the project details view</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Project3DModelPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>3D model partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_Project3DModelPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Project3DModelPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_Project3DModelPartial_WorkflowManagementSystem_ViewModels_Project3DModelViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.Project3DModelPartial(WorkflowManagementSystem.ViewModels.Project3DModelViewModel)">Project3DModelPartial(Project3DModelViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action allows the addition of a 3D model</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Project3DModelPartial(Project3DModelViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.Project3DModelViewModel.html">Project3DModelViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Project 3DModel model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>3D model partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectDetailsPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectDetailsPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectDetailsPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectDetailsPartial(System.Nullable{System.Int32})">ProjectDetailsPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action shows the details of a project</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectDetailsPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the selected project</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event project details view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportPartial(System.Nullable{System.Int32})">ProjectEventReportPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the event report page in the project details tab</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectEventReportPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event report partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportPartial_WorkflowManagementSystem_ViewModels_ProjectEventReportViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportPartial(WorkflowManagementSystem.ViewModels.ProjectEventReportViewModel)">ProjectEventReportPartial(ProjectEventReportViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action enables the addition of an event report</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectEventReportPartial(ProjectEventReportViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.ProjectEventReportViewModel.html">ProjectEventReportViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Event report view model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event report partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportTemplatePartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportTemplatePartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportTemplatePartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportTemplatePartial(System.Nullable{System.Int32})">ProjectEventReportTemplatePartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the event report template partial view in the project details tab </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectEventReportTemplatePartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event report template partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportTemplatePartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportTemplatePartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectEventReportTemplatePartial_WorkflowManagementSystem_ViewModels_ProjectEventReportTemplateViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectEventReportTemplatePartial(WorkflowManagementSystem.ViewModels.ProjectEventReportTemplateViewModel)">ProjectEventReportTemplatePartial(ProjectEventReportTemplateViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action allows an event report template to be added.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectEventReportTemplatePartial(ProjectEventReportTemplateViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.ProjectEventReportTemplateViewModel.html">ProjectEventReportTemplateViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Event report template model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Event report template partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGet3DModelPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGet3DModelPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGet3DModelPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGet3DModelPartial(System.Nullable{System.Int32})">ProjectGet3DModelPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the 3D model added</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectGet3DModelPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Get 3D model partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetEventReportPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetEventReportPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetEventReportPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetEventReportPartial(System.Nullable{System.Int32})">ProjectGetEventReportPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action shows the event report added</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectGetEventReportPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Get event report partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetEventReportTemplatePartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetEventReportTemplatePartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetEventReportTemplatePartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetEventReportTemplatePartial(System.Nullable{System.Int32})">ProjectGetEventReportTemplatePartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the event report template added</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectGetEventReportTemplatePartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Getevent report template partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetPresentationPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetPresentationPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetPresentationPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetPresentationPartial(System.Nullable{System.Int32})">ProjectGetPresentationPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the added presentation </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectGetPresentationPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Get presentation partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetSchedulesPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetSchedulesPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectGetSchedulesPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectGetSchedulesPartial(System.Nullable{System.Int32})">ProjectGetSchedulesPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the schedule of a project</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectGetSchedulesPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>GetSchedules partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectPresentationPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectPresentationPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectPresentationPartial_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectPresentationPartial(System.Nullable{System.Int32})">ProjectPresentationPartial(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the presentation partial view in the project details page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectPresentationPartial(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>project presentation partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectPresentationPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectPresentationPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectPresentationPartial_WorkflowManagementSystem_ViewModels_ProjectPresentationViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectPresentationPartial(WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel)">ProjectPresentationPartial(ProjectPresentationViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action gets the presentation partial view of in a project&apos;s details page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectPresentationPartial(ProjectPresentationViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel.html">ProjectPresentationViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Project presentation model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Presentation partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectSchedulesPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectSchedulesPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_ProjectSchedulesPartial_WorkflowManagementSystem_ViewModels_ProjectScheduleViewModel_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.ProjectSchedulesPartial(WorkflowManagementSystem.ViewModels.ProjectScheduleViewModel)">ProjectSchedulesPartial(ProjectScheduleViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action enables the creation of the schedules</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult ProjectSchedulesPartial(ProjectScheduleViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.ProjectScheduleViewModel.html">ProjectScheduleViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Project schedule model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Schedule partial view </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_EventProjectController_UshersPartial_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.UshersPartial*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_EventProjectController_UshersPartial_System_Int32_" data-uid="WorkflowManagementSystem.Controllers.EventProjectController.UshersPartial(System.Int32)">UshersPartial(Int32)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the ushers assigned to a specific project </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult UshersPartial(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>event project id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>ushers partial view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

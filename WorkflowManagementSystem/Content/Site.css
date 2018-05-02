@@ -10,20 +10,22 @@
     /*.navbar li a, .navbar .navbar-brand {
         color: white !important;
     }*/
+    /*.navbar-nav a:hover {
+        background-color: black !important;
+    }*/
 
 /*.navbar-nav li a:hover {
-    color: #d0d0cf !important;
-}
-
-.navbar-nav li.active a {
-    color: #fff !important;
-    background-color: #29292c !important;
+   background-color:black;
 }*/
 
-.navbar-nav li a:hover, .navbar-nav a {
-    color: white !important;
-    /*background-color: #fff !important;*/
-}
+/*.navbar-nav li.active a {
+    
+    background-color: black !important;
+}*/
+
+/*.navbar-nav li a:hover, .navbar-nav a {
+    background-color: black !important;
+}*/
 
 body {
     padding-top: 50px;

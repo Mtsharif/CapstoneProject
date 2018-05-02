@@ -1,0 +1,625 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TaskAssignmentController
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TaskAssignmentController
+   ">
+    <meta name="generator" content="docfx 2.33.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController">
+  
+  
+  <h1 id="WorkflowManagementSystem_Controllers_TaskAssignmentController" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController" class="text-break">Class TaskAssignmentController
+  </h1>
+  <div class="markdown level0 summary"><p>This controller is generated based on the task assignemnt domain and view models.
+It allows tasks to be assigned to employees in a project.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TaskAssignmentController</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="WorkflowManagementSystem.Controllers.html">WorkflowManagementSystem.Controllers</a></h6>
+  <h6><strong>Assembly</strong>: WorkflowManagementSystem.dll</h6>
+  <h5 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TaskAssignmentController : Controller</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_AllTasksIndex_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.AllTasksIndex*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_AllTasksIndex" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.AllTasksIndex">AllTasksIndex()</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of the tasks that are assigned by the logged in user to edit and delete the tasks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult AllTasksIndex()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>All tasks index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Assign_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Assign*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Assign_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Assign(System.Nullable{System.Int32})">Assign(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the task assignment create page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Assign(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Create view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Assign_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Assign*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Assign_WorkflowManagementSystem_ViewModels_TaskAssignmentViewModel_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Assign(WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel)">Assign(TaskAssignmentViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action enables the assignment of tasks to employees</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Assign(TaskAssignmentViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel.html">TaskAssignmentViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>Task assignment model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Delete_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Delete*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Delete_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Delete(System.Nullable{System.Int32})">Delete(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the deletion page of an assignment </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Delete(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Task assignment id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Delte view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_DeleteConfirmed_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.DeleteConfirmed*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_DeleteConfirmed_System_Int32_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.DeleteConfirmed(System.Int32)">DeleteConfirmed(Int32)</h4>
+  <div class="markdown level1 summary"><p>This action allows the deletion of a task assignment </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult DeleteConfirmed(int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>task assignment id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Details_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Details*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Details_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Details(System.Nullable{System.Int32})">Details(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action gets the a task assignment&apos;s details</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Details(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>task assignment id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>details view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Dispose_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Dispose*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Dispose_System_Boolean_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Edit_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Edit*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Edit_System_Int32_WorkflowManagementSystem_ViewModels_TaskAssignmentViewModel_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Edit(System.Int32,WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel)">Edit(Int32, TaskAssignmentViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action allows the user to edit an assigned task</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Edit(int id, TaskAssignmentViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>task assingment id</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel.html">TaskAssignmentViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>task assignment view model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Edit_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Edit*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Edit_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Edit(System.Nullable{System.Int32})">Edit(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>This action retrieves the task assignment edit page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Edit(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>task aassignment id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>edit view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_EditCompletion_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.EditCompletion*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_EditCompletion_System_Int32_WorkflowManagementSystem_ViewModels_TaskAssignmentViewModel_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.EditCompletion(System.Int32,WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel)">EditCompletion(Int32, TaskAssignmentViewModel)</h4>
+  <div class="markdown level1 summary"><p>This action allows the user to edit the completion of a task</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult EditCompletion(int id, TaskAssignmentViewModel model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>task assingment id</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel.html">TaskAssignmentViewModel</a></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>task assignment view model</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_EditCompletion_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.EditCompletion*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_EditCompletion_System_Nullable_System_Int32__" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.EditCompletion(System.Nullable{System.Int32})">EditCompletion(Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the edit completion page</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult EditCompletion(int? id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">id</span></td>
+        <td><p>task assignment id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>edit completion view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Index_" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Index*"></a>
+  <h4 id="WorkflowManagementSystem_Controllers_TaskAssignmentController_Index" data-uid="WorkflowManagementSystem.Controllers.TaskAssignmentController.Index">Index()</h4>
+  <div class="markdown level1 summary"><p>This action retrieves a list of all tasks assigned to the logged in user </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActionResult Index()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ActionResult</span></td>
+        <td><p>Index view</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

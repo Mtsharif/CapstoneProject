@@ -275,19 +275,7 @@ namespace WorkflowManagementSystem.Controllers
                 db.Entry(taskAssignment).State = EntityState.Modified;
                 db.SaveChanges();
 
-               
-                if (taskAssignment.IsCompleted == true && taskAssignment.Deadline < DateTime.Today)
-                {
-                    taskAssignment.Status = TaskAssignment.TaskStatus.Completed;
-                }
-                else if (taskAssignment.Deadline > DateTime.Today)
-                {
-                    taskAssignment.Status = TaskAssignment.TaskStatus.Overdue;
-                }
-                else if (taskAssignment.IsCompleted == false && taskAssignment.Deadline < DateTime.Today)
-                {
-                    taskAssignment.Status = TaskAssignment.TaskStatus.Pending;
-                }
+                            
 
                 return RedirectToAction("AllTasksIndex");
             }
@@ -325,7 +313,7 @@ namespace WorkflowManagementSystem.Controllers
                 Deadline = taskAssignment.Deadline,
                 Status = taskAssignment.Status,
                 Priority = taskAssignment.Priority,
-                AssignmentDate = taskAssignment.AssignmentDate,
+                AssignmentDate = DateTime.Now,
                 IsCompleted = taskAssignment.IsCompleted,
                 EventProject = taskAssignment.EventProject.Name,
                 AnyEmployee = taskAssignment.AnyEmployee.FullName,
@@ -357,6 +345,18 @@ namespace WorkflowManagementSystem.Controllers
                     return HttpNotFound();
                 }
 
+                //if (taskAssignment.IsCompleted == true && taskAssignment.Deadline < DateTime.Today)
+                //{
+                //    taskAssignment.Status = TaskAssignment.TaskStatus.Completed;
+                //}
+                //else if (taskAssignment.Deadline > DateTime.Today)
+                //{
+                //    taskAssignment.Status = TaskAssignment.TaskStatus.Overdue;
+                //}
+                //else if (taskAssignment.IsCompleted == false && taskAssignment.Deadline < DateTime.Today)
+                //{
+                //    taskAssignment.Status = TaskAssignment.TaskStatus.Pending;
+                //}
                 //if (taskAssignment.IsCompleted == true)
                 //{
                 //    taskAssignment.Status = TaskAssignment.TaskStatus.Completed;

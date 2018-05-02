@@ -1,0 +1,1401 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Malak/source/repos/CapstoneProject/WorkflowManagementSystem",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "i7YZqZWkMTyccXNAoImAKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "OncUXW6Tl6Js6KRYQbLVHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "xVlQaX7Tk85omoiWv3O+Ag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "mVStmVKuCvTqKt2qqQ8bjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.App_Start.AutoMapperConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.App_Start.AutoMapperConfig.html",
+          "hash": "mNlKa7I7om4mVX95yeohpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.App_Start.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.App_Start.html",
+          "hash": "nF+kLm+FJ+6f5z8xk8rOVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ApplicationSignInManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ApplicationSignInManager.html",
+          "hash": "nSLBOhOUggf4lj3nXS9Tig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ApplicationUserManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ApplicationUserManager.html",
+          "hash": "chcj3rEsFFkDbwSDnyOy1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.BundleConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.BundleConfig.html",
+          "hash": "iOM528IF9JXnmbdC/ds6eA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.AccountController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.AccountController.html",
+          "hash": "zq9MVzjrjSVr6L26egsHJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.ClientController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.ClientController.html",
+          "hash": "Gz+E/SfXgKspEgpskGEgoA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.CostSheetController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.CostSheetController.html",
+          "hash": "A1PqVtaZzvL4QTyb8J0Tig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.CostSheetItemController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.CostSheetItemController.html",
+          "hash": "d5NdW+rtPoDSoJNj2dBvTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.DocumentController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.DocumentController.html",
+          "hash": "lSWrm3n6XPKyFKfcZ3rNVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.EmployeeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.EmployeeController.html",
+          "hash": "eddyz+dvkZN3mcGYTc/FVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.EventProjectController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.EventProjectController.html",
+          "hash": "EgGQiGDssQvA0LR7q2pABQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.HomeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.HomeController.html",
+          "hash": "UDLDzpZxDVnS6HP0tU/vbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.ItemController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.ItemController.html",
+          "hash": "+tg37vzPD5P1RGzAkIU8GQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.ManageController.ManageMessageId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.ManageController.ManageMessageId.html",
+          "hash": "naRIVoG2LRdKCVUAY9uw2A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.ManageController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.ManageController.html",
+          "hash": "qG6cew8znsWHhGMG6W6j1A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.ProjectScheduleController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.ProjectScheduleController.html",
+          "hash": "ZDepMBTJkUUzvoqEYSrxJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.TaskAssignmentController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.TaskAssignmentController.html",
+          "hash": "0NYXLDNkXMG/Bd9B+9Pbhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.UsherAppointedController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.UsherAppointedController.html",
+          "hash": "UUVI0VjbWw7XMxLfCmztCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.UsherController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.UsherController.html",
+          "hash": "YIrOvcHL1nx5wnUBgpZuBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Controllers.html",
+          "hash": "28/zJZWims9K804FejoW5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.EmailService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.EmailService.html",
+          "hash": "KhQEDhyR8E+7MU20Z06zVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.FilterConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.FilterConfig.html",
+          "hash": "ZdUj9rAO9JOyOvm9EBAn9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.AddPhoneNumberViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.AddPhoneNumberViewModel.html",
+          "hash": "q2hcV3rzafaKMbDxBkbjXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ApplicationDbContext.html",
+          "hash": "LRJLG6WzkJBlIcAFH/B7WA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ApplicationUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ApplicationUser.html",
+          "hash": "U4ScELO81iIY4aKzXDLD1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ChangePasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ChangePasswordViewModel.html",
+          "hash": "euzDZLsfr9aVbqM8XTmnQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Client.html",
+          "hash": "nSIRramnCndOisOfQcL/+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ClientSatisfaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ClientSatisfaction.html",
+          "hash": "m7HxOII1KUXhdBR8BYLeaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ConfigureTwoFactorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ConfigureTwoFactorViewModel.html",
+          "hash": "3f5ui1ysYVgVW0NpxF9D5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostSheet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostSheet.html",
+          "hash": "iNqkO/HVyZCZASCAS1AyKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostSheetCEODecision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostSheetCEODecision.html",
+          "hash": "7+1NCgDqF0dORmDHI9vT4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostSheetFinanceDecision.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostSheetFinanceDecision.html",
+          "hash": "5BEz88Q2cwgm3Q5/xnNGew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostSheetItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostSheetItem.html",
+          "hash": "hCpiXm4vB+0EOzTj7mEeFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostSheetStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostSheetStatus.html",
+          "hash": "LjIa5Wd0/1pLvUln4n4fNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostVariance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostVariance.html",
+          "hash": "COeF00TDiCv28cxlssMyCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostVarianceAnalysis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostVarianceAnalysis.html",
+          "hash": "ZJ/oQWdeYZC6n0IlKSoqwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CostVarianceItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CostVarianceItem.html",
+          "hash": "NO9uRIA8tf+uRGbd792xGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Criterion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Criterion.html",
+          "hash": "2NMC3KmJu/39DfQsk9gnMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CustomRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CustomRole.html",
+          "hash": "KtnfSfTe7D5yQToP+kdd5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CustomRoleStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CustomRoleStore.html",
+          "hash": "mnpZ8h0qDTLImWAcAWrjVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CustomUserClaim.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CustomUserClaim.html",
+          "hash": "VnLECHJc/hOhaQil01IX/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CustomUserLogin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CustomUserLogin.html",
+          "hash": "IM6T9gZcUi/e2f7qizNSKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CustomUserRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CustomUserRole.html",
+          "hash": "onOv2I+aGq8qnv4VcU5e+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.CustomUserStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.CustomUserStore.html",
+          "hash": "sfKk2CW2hmS3VCDOsHz1Lw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Department.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Department.html",
+          "hash": "G0vJIZOpY8unzard3B1Bew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Document.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Document.html",
+          "hash": "TSt1AiCJ91C7wv4aTtRBOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.DocumentStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.DocumentStatus.html",
+          "hash": "M7MbVOKAUjBQXB5QZ07K7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Employee.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Employee.html",
+          "hash": "bx0RhvqkYejgmOSSQOHJhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.EmployeeJobTitle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.EmployeeJobTitle.html",
+          "hash": "qSRgXTp6UJRMtpz1gW8zxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.EmployeeTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.EmployeeTask.html",
+          "hash": "vBdOtAtUjO02yxark+zTew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.EmployeeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.EmployeeType.html",
+          "hash": "T5XNz/lijJ5D043Fdh8pSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.EvaluationGrade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.EvaluationGrade.html",
+          "hash": "YBNHQECf6flTdb0mFktofw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.EventProject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.EventProject.html",
+          "hash": "mRl/SYJCetda/UWDEuzfFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.EventProjectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.EventProjectType.html",
+          "hash": "KjnjdQox2u7KEhW2y1VjvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ExternalLoginConfirmationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ExternalLoginConfirmationViewModel.html",
+          "hash": "HU5PXAQPjwbsVovXh6ns0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ExternalLoginListViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ExternalLoginListViewModel.html",
+          "hash": "AXPJrHTvXouQES+BBwF3iA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.FactorViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.FactorViewModel.html",
+          "hash": "EGUJiw/EBKDN/0wMximp5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ForgotPasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ForgotPasswordViewModel.html",
+          "hash": "8mRdUBxGcKWBlFZuQHJxIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ForgotViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ForgotViewModel.html",
+          "hash": "5YK+mtu4CWjv5igP5yR78A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.IndexViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.IndexViewModel.html",
+          "hash": "r0cyYgI8z7jBQf8jlQbmWg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Item.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Item.html",
+          "hash": "mLWko5mwcb2bjSx5rzl5mA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Language.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Language.html",
+          "hash": "s3PJEZGF7JBEyFWeU6p9ZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.LoginViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.LoginViewModel.html",
+          "hash": "yIiEUi+VEhRr+bTOVLtZpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ManageLoginsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ManageLoginsViewModel.html",
+          "hash": "4UKJM56Abkhefv1eVglQFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ProjectSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ProjectSchedule.html",
+          "hash": "1GDMg8P70o8H/QPseFRFiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ProjectStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ProjectStatus.html",
+          "hash": "VR5gsd6BsRNhUPE9gwvb+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.RegisterViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.RegisterViewModel.html",
+          "hash": "OfN9twcSZksyLUYb7EUhwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.ResetPasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.ResetPasswordViewModel.html",
+          "hash": "Kbnf1IWGyfknINsKi2N5lw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.SatisfactionGrade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.SatisfactionGrade.html",
+          "hash": "KtSBtFyz/X4QmpiSMvoT+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.SendCodeViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.SendCodeViewModel.html",
+          "hash": "8F2HbnUges4hEFGIy6BFZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.SetPasswordViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.SetPasswordViewModel.html",
+          "hash": "hZAvcgM9xt0TypCTw9702Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.TaskAssignment.TaskPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.TaskAssignment.TaskPriority.html",
+          "hash": "lSfYolBUaiZBmji5awdEMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.TaskAssignment.TaskStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.TaskAssignment.TaskStatus.html",
+          "hash": "45hLWGw2q7XH4FMq6m17gA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.TaskAssignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.TaskAssignment.html",
+          "hash": "s9GWLSWGuseDP7aasEx1eg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.Usher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.Usher.html",
+          "hash": "PSUP/NtDEYdX38nswSW9Vw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.UsherAppointed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.UsherAppointed.html",
+          "hash": "Hclgeiif10RdeHnzuCj4bw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.UsherEvaluation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.UsherEvaluation.html",
+          "hash": "YmM7XHFh4kdb00uYqJo0ug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.UsherGender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.UsherGender.html",
+          "hash": "OqrUJN0XR9YxdW49JEEUhA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.VerifyCodeViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.VerifyCodeViewModel.html",
+          "hash": "lKzD6q/IQMirCRet4pNlTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.VerifyPhoneNumberViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.VerifyPhoneNumberViewModel.html",
+          "hash": "GRMDx0v4w3tLmmUh+3Ms5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Models.html",
+          "hash": "BIKVqJZAC6JMLLtwVik93g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.MvcApplication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.MvcApplication.html",
+          "hash": "ebLjalLDlcW8JIeuwyx6QA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.RouteConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.RouteConfig.html",
+          "hash": "2+NDUCBX9uKQoo+0g4vP3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.SmsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.SmsService.html",
+          "hash": "4nzLag5oA9DauFvZrCTChQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.Startup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.Startup.html",
+          "hash": "vQdS5GEAJYChXD+rUTJTAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.ClientViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.ClientViewModel.html",
+          "hash": "Nq6RIz0e14XbD9W0YctpXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.CostSheetItemViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.CostSheetItemViewModel.html",
+          "hash": "fXq62j83cqkTrura8JroMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.CostSheetViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.CostSheetViewModel.html",
+          "hash": "OscZwsttPJ2LMkl8O+fDZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.CriterionViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.CriterionViewModel.html",
+          "hash": "P/Jza19mrAX06sbtXB9vkw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.DocumentViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.DocumentViewModel.html",
+          "hash": "uHCJK3Jh0FoOPKwlL2WAMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.EmployeeTaskViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.EmployeeTaskViewModel.html",
+          "hash": "/VWMcyGGEQ/mHWKgbKqCMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.EmployeeViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.EmployeeViewModel.html",
+          "hash": "4UOOZNj1fNDpo45QL4PSwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.EventProjectViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.EventProjectViewModel.html",
+          "hash": "30FbFC2MoQew7aYk6rc59Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.ItemViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.ItemViewModel.html",
+          "hash": "VvcS7xBmBqeah/NZ0pO4pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.LanguageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.LanguageViewModel.html",
+          "hash": "W+gfLzD5WvAe7T5sUlK2XQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.Project3DModelViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.Project3DModelViewModel.html",
+          "hash": "fbEk2O0zQ88OWAz8R9VKZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.ProjectEventReportTemplateViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.ProjectEventReportTemplateViewModel.html",
+          "hash": "AmgO8AIuAnUNMGnLV1HfFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.ProjectEventReportViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.ProjectEventReportViewModel.html",
+          "hash": "rEdXN4osjR7kAt2FLQqGJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel.html",
+          "hash": "d3Gj31Hc2OKbDzcsqcmLzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.ProjectScheduleViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.ProjectScheduleViewModel.html",
+          "hash": "XluAMc+1JKKhZRfHiHkkcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel.html",
+          "hash": "4bP5jHvP6krTEu8b6HThdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.UsherAppointedViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.UsherAppointedViewModel.html",
+          "hash": "z6UdN1qURi+Ku+TjDLMeXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.UsherEvaluationViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.UsherEvaluationViewModel.html",
+          "hash": "B7asyH+sh86LxA9H7n43OQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.UsherViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.UsherViewModel.html",
+          "hash": "MCXfjpSLhRhTW6TBJ1oa3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.ViewModels.html",
+          "hash": "t3+AozSLLYUEwL5Fx/KXAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/WorkflowManagementSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/WorkflowManagementSystem.html",
+          "hash": "bkB5i3V1ylz07EQ6892GLg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "F8BDVEXryJoD9CORgb/f/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "frPdeW5hGroGiyexwMQIhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
