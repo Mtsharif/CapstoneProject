@@ -67,3 +67,7 @@ Username: fin1
 
 #### All passwords: user123
 
+***
+### License 
+This project is licensed under the GNU General Public License. 
+- Check the [LICENSE](/LICENSE) file for more information 
