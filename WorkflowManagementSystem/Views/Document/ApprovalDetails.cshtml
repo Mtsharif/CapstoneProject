@@ -8,6 +8,11 @@
 
     <h2>Approval Details</h2>
 
+    <a href="@Url.Action("DetailsMaster", "EventProject", new { id = Model.EventProjectId })" class="btn btn-default btn-sm btn-round">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        Back to Project Details
+    </a>
+
     <div>
         <hr />
         <dl class="dl-horizontal">
@@ -56,7 +61,7 @@
         @*@Html.ActionLink("Edit", "Edit", new { id = Model.DocumentId }) |*@
         @*@Html.ActionLink("Back", "DetailsMaster", new { id = Model.EventProjectId }, "EventProject")*@
         @*@Html.ActionLink("Back", "DetailsMaster", "EventProject", new { id = Model.EventProjectId }, null)*@
-        @Html.ActionLink("Back", "DetailsMaster", "EventProject", new { id = Model.EventProjectId }, null)
+        @*@Html.ActionLink("Back", "DetailsMaster", "EventProject", new { id = Model.EventProjectId }, null)*@
     </p>
 
 }

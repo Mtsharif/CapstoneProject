@@ -7,66 +7,70 @@
 <h2>Tasks Assigned</h2>
 
 @*<p>
-    @Html.ActionLink("Assign Task", "Assign")
-</p>*@
-<table class="table" id="tasksTable">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TaskName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventProject)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Deadline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Priority)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsCompleted)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.AnyEmployee)
-        </th>
-        <th></th>
-    </tr>
+        @Html.ActionLink("Assign Task", "Assign")
+    </p>*@
+<br />
 
-    @foreach (var item in Model)
-    {
+<table class="table table-hover table-striped font-style" id="tasksTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventProject)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsCompleted)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.AnyEmployee)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }, new { @class = "btn btn-primary btn-xs btn-sharp" }) 
-                @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventProject)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Deadline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsCompleted)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.AnyEmployee)
+            </th>
+            <th></th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventProject)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Deadline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsCompleted)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnyEmployee)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }, new { @class = "btn btn btn-warning btn-xs btn-sharp btn-right-space" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId }, new { @class = "btn btn-danger btn-xs btn-sharp" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 @section scripts
@@ -79,7 +83,7 @@
         $(document).ready(function () {
             $('#tasksTable').DataTable({
 
-                "scrollY": "80px",
+                "scrollY": "300px",
                 "scrollCollapse": true,
                 "paging": false,
 
@@ -93,7 +97,6 @@
 
 @section styles
 {
-    <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
     <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
     <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
 }

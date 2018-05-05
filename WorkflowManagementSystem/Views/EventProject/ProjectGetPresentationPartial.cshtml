@@ -6,6 +6,7 @@
         Layout = null;
     }
     <hr />
+
     <div class="row col-md-7 col-md-offset-4 text-center">
         @Html.HiddenFor(m => m.EventProjectId)
         @Html.HiddenFor(m => m.PresentationFile)
@@ -38,6 +39,10 @@
 
         </dl>
     </div>
+    if (Model.Presentation == null)
+    {
+        <p class="countMessage">Presentation not yet uploaded.</p>
+    }
 }
 
 

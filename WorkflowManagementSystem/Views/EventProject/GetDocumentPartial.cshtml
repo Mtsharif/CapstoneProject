@@ -8,7 +8,6 @@
 
     if (Model.Count() <= 0)
     {
-        <br />
         <hr />
         <p class="countMessage">Quotation and Invoice not yet added.</p>
     }
@@ -16,7 +15,9 @@
     {
         @Html.Hidden("EventProjectId")
         @Html.Hidden("DocumentFile")
-
+<br />
+<hr />
+        <br />
         <table class="table">
             <tr>
                 <th>
@@ -58,12 +59,21 @@
                         @Html.DisplayFor(modelItem => item.CEOFeedback)
                     </td>
 
+                    @if (Request.IsAuthenticated && User.IsInRole("CEO"))
+                    {
                     <td>
-                        @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@
-                        @*@Html.ActionLink("Delete", "Delete", "Document", new { id = item.DocumentId }, null) |*@
-                        @Html.ActionLink("Add Approval", "AddApproval", "Document", new { id = item.DocumentId }, null) |
-                        @Html.ActionLink("Approval Details", "ApprovalDetails", "Document", new { id = item.DocumentId }, null)
+                       
+                        @Html.ActionLink("Add Approval", "AddApproval", "Document", new { id = item.DocumentId },new { @class = "btn btn-assign btn-sharp btn-sm btn-right-space pull-right" }) 
+                        @*@Html.ActionLink("Approval Details", "ApprovalDetails", "Document", new { id = item.DocumentId }, null)*@
                     </td>
+                    }
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Finance Employee"))
+                    {
+                    <td>
+                       @Html.ActionLink("Approval Details", "ApprovalDetails", "Document", new { id = item.DocumentId },new { @class = "btn btn-primary btn-sm btn-sharp pull-right btn-right-space" })
+                    </td>
+                    }
                 </tr>
             }
         </table>

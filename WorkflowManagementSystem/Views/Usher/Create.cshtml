@@ -8,6 +8,11 @@
 
     <h2>Create New Usher</h2>
 
+    <a href="@Url.Action("Index", "Usher")" class="btn btn-default btn-sm btn-round">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        Back to Usher List
+    </a>
+
     using (Html.BeginForm("Create", "Usher", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
@@ -71,24 +76,24 @@
                 </div>
             </div>
 
-            @*<div class="form-group">
+            <div class="form-group">
                 @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("LanguageId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("LanguageId",null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
-
-              <div class="form-group">
-                <label class="col-md-2 control-label"> Language </label>
-                <div class="col-md-10">
-                    @foreach (var item in (SelectList)ViewBag.LanguageId)
-                {
-                    <input type="checkbox" name="Language" value="@item.Value" class="checkbox-inline" />
-                    @Html.Label(item.Value, new { @class = "control-label" })
-            }
-                </div>
             </div>
+
+            @*<div class="form-group">
+                    <label class="col-md-2 control-label"> Language </label>
+                    <div class="col-md-10">
+                        @foreach (var item in (SelectList)ViewBag.LanguageId)
+                    {
+                        <input type="checkbox" name="Language" value="@item.Value" class="checkbox-inline" />
+                        @Html.Label(item.Value, new { @class = "control-label" })
+                }
+                    </div>
+                </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.CarAvailability, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -113,9 +118,9 @@
         </div>
     }
 
-    <div>
-        @Html.ActionLink("Back to Usher List", "Index")
-    </div>
+    @*<div>
+            @Html.ActionLink("Back to Usher List", "Index")
+        </div>*@
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")

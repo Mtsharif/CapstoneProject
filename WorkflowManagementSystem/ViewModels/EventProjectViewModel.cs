@@ -62,7 +62,7 @@ namespace WorkflowManagementSystem.ViewModels
 
         [Display(Name = "Date Created")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "Creation Date Not Available")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true, NullDisplayText = "Creation Date Not Available")]
         public DateTime? DateCreated { get; set; }
 
        // The employee who created the event project

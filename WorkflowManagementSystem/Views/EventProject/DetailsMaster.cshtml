@@ -3,9 +3,11 @@
 @if (Request.IsAuthenticated)
 {
     @*@model WorkflowManagementSystem.ViewModels.EventProjectViewModel*@
-{
+
+    {
     ViewBag.Title = "Project Management";
-}
+    }
+
     <style>
         .nav-stacked > li > a {
             min-height: 50px;
@@ -30,17 +32,19 @@
 
     </style>
 
-    <h2 class="text-left">Project Management</h2>
-
     <div>
         @*@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default btn-sm btn-round glyphicon glyphicon-chevron-left"})*@
-        
+        <br />
+        <br />
+        <br />
+        <br />
         <a href="@Url.Action("Index", "EventProject")" class="btn btn-default btn-sm btn-round">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             Back to Project List
         </a>
     </div>
-    <hr />
+
+    <h2 class="text-left">Project Management</h2>
 
     <div class="container col-md-12">
 

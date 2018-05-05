@@ -260,7 +260,11 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
-
+        /// <summary>
+        /// This action retrieves the edit status page.
+        /// </summary>
+        /// <param name="id">Event project id</param>
+        /// <returns>Edit status view</returns>
         [Authorize(Roles = "Client Service Employee")]
         public ActionResult EditStatus(int? id)
         {
@@ -297,7 +301,12 @@ namespace WorkflowManagementSystem.Controllers
             return View(model);
         }
 
-
+        /// <summary>
+        /// This action allows a client service employee to edit the status of a project
+        /// </summary>
+        /// <param name="id">Event project id</param>
+        /// <param name="model">Event project model</param>
+        /// <returns>Project details master view</returns>
         [Authorize(Roles = "Client Service Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -324,8 +333,6 @@ namespace WorkflowManagementSystem.Controllers
 
                 db.Entry(eventProject).State = EntityState.Modified;
                 db.SaveChanges();
-
-
 
                 return RedirectToAction("DetailsMaster", new { id = eventProject.EventProjectId });
             }
@@ -443,6 +450,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="id">project id</param>
         /// <returns>project presentation partial view</returns>
+        [Authorize(Roles = "Creative Employee")]
         [HttpGet]
         public ActionResult ProjectPresentationPartial(int? id)
         {
@@ -472,6 +480,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">Project presentation model</param>
         /// <returns>Presentation partial view</returns>
+        [Authorize(Roles = "Creative Employee")]
         [HttpPost]
        public ActionResult ProjectPresentationPartial(ProjectPresentationViewModel model)
         {
@@ -593,8 +602,23 @@ namespace WorkflowManagementSystem.Controllers
         public ActionResult ProjectSchedulesPartial(ProjectScheduleViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                // Validating the date of birth
+            {               
+                var project = db.EventProjects.Find(model.EventProjectId);
+
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }              
+
+                var schedule = new ProjectSchedule
+                {
+                    Date = model.ScheduleDate,
+                    StartTime = model.StartTime,
+                    EndTime = model.EndTime,
+                    EventProjectId = model.EventProjectId
+                };
+
+                //// Validating the date of birth
                 //if (model.EndTime < model.StartTime)
                 //{
                 //    ModelState.AddModelError("EndTime", "The ending time of an event cannot be before the starting time.");
@@ -610,25 +634,10 @@ namespace WorkflowManagementSystem.Controllers
                 //    return View(model);
                 //}
 
-                var project = db.EventProjects.Find(model.EventProjectId);
-
-                if (project == null)
-                {
-                    return HttpNotFound();
-                }
-
-                var schedule = new ProjectSchedule
-                {
-                    Date = model.ScheduleDate,
-                    StartTime = model.StartTime,
-                    EndTime = model.EndTime,
-                    EventProjectId = model.EventProjectId
-                };
                 db.ProjectSchedules.Add(schedule);
                 db.SaveChanges();
             }
 
-            // Failure: retrun the same model
             return PartialView(model);
         }
 
@@ -637,6 +646,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="id">Project id</param>
         /// <returns>3D model partial view</returns>
+        [Authorize(Roles = "Creative Employee")]
         [HttpGet]
         public ActionResult Project3DModelPartial(int? id)
         {
@@ -666,6 +676,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">Project 3DModel model</param>
         /// <returns>3D model partial view</returns>
+        [Authorize(Roles = "Creative Employee")]
         [HttpPost]
         public ActionResult Project3DModelPartial(Project3DModelViewModel model)
         {
@@ -746,6 +757,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="id">project id</param>
         /// <returns>Event report template partial view</returns>
+        [Authorize(Roles = "Creative Employee")]
         [HttpGet]
         public ActionResult ProjectEventReportTemplatePartial(int? id)
         {
@@ -775,6 +787,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">Event report template model</param>
         /// <returns>Event report template partial view</returns>
+        [Authorize(Roles = "Creative Employee")]
         [HttpPost]
         public ActionResult ProjectEventReportTemplatePartial(ProjectEventReportTemplateViewModel model)
         {
@@ -851,6 +864,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="id">project id</param>
         /// <returns>Event report partial view</returns>
+        [Authorize(Roles = "Client Service Employee")]
         [HttpGet]
         public ActionResult ProjectEventReportPartial(int? id)
         {
@@ -880,6 +894,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">Event report view model</param>
         /// <returns>Event report partial view</returns>
+        [Authorize(Roles = "Client Service Employee")]
         [HttpPost]
         public ActionResult ProjectEventReportPartial(ProjectEventReportViewModel model)
         {
@@ -995,6 +1010,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">Document view model</param>
         /// <returns>Document partial view</returns>
+        [Authorize(Roles = "Client Service Employee")]
         [HttpPost]
         public ActionResult DocumentPartial(DocumentViewModel model)
         {
@@ -1122,7 +1138,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <param name="model">cost sheet view model</param>
         /// <returns>cost sheet partial view</returns>
-        //[Authorize(Roles = "Client Service Employee")]
+        [Authorize(Roles = "Production Employee")]
         [HttpPost]
         public ActionResult CostSheetPartial(CostSheetViewModel model)
         {

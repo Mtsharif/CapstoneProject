@@ -119,20 +119,10 @@ namespace WorkflowManagementSystem.Controllers
         public ActionResult Create(UsherViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                // Validating the date of birth
-                if (model.DateOfBirth > DateTime.Today.AddYears(-15))
-                    {
-                        // The message will be displayed in @Html.ValidationMessageFor(m => m.CreationDate)
-                        ModelState.AddModelError("DateOfBirth", "The usher should be 16 years old or above. ");
+            {           
+                ViewBag.languageId = new SelectList(db.Languages, "Id", "Name");
 
-                        // The message will be displayed in @Html.ValidationSummary()
-                        ModelState.AddModelError(String.Empty, "Issue with the date of birth");
-
-                        return View(model);
-                    }
-
-                    var usher = new Usher
+                var usher = new Usher
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -145,6 +135,18 @@ namespace WorkflowManagementSystem.Controllers
                     MedicalCard = model.MedicalCard,
                     LanguageId = model.LanguageId,
                 };
+
+                // Validating the date of birth
+                if (model.DateOfBirth > DateTime.Today.AddYears(-15))
+                {
+                    // The message will be displayed in @Html.ValidationMessageFor(m => m.CreationDate)
+                    ModelState.AddModelError("DateOfBirth", "The usher should be 16 years old or above. ");
+
+                    // The message will be displayed in @Html.ValidationSummary()
+                    ModelState.AddModelError(String.Empty, "Issue with the date of birth");
+
+                    return View(model);
+                }
 
                 //TODO Remove invalid characters from the filename such as white spaces
                 // check if the uploaded file is empty 

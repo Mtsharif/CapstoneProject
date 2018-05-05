@@ -42,7 +42,7 @@ namespace WorkflowManagementSystem.ViewModels
         public string Email { get; set; }
 
         [Required]
-        // [Phone]
+        [Phone]
         [Display(Name = "Mobile Number")]
         public string MobileNumber { get; set; }
 

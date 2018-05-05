@@ -13,7 +13,7 @@ using WorkflowManagementSystem.Models;
 namespace WorkflowManagementSystem.ViewModels
 {
     /// <summary>
-    /// 
+    /// This view model is created for the languages an ushers speaks.
     /// </summary>
     public class LanguageViewModel
     {

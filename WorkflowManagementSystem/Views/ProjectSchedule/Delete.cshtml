@@ -4,13 +4,23 @@
     ViewBag.Title = "Delete Schedule";
 }
 
-
+<br />
+<br />
+<br />
+<br />
+<br />
 <h3>Are you sure you want to delete this?</h3>
+
+<a href="@Url.Action("DetailsMaster", "EventProject", new { id = Model.EventProjectId })" class="btn btn-default btn-sm btn-round">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    Back to Project Details
+</a>
+
 <div>
     @Html.Hidden("EventProjectId")
 
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal details-Background center" >
         <dt>
             @Html.DisplayNameFor(model => model.ScheduleDate)
         </dt>
@@ -38,12 +48,15 @@
     </dl>
 
     @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" id="deleteButton" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <br />
+                <br />
+                <input type="submit" value="Delete" class="btn btn-danger btn-block center-button " id="deleteButton" /> 
+                @*@Html.ActionLink("Back to List", "Index")*@
+                <br />
+            </div>
+        }
 </div>

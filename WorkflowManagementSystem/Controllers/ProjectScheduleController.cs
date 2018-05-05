@@ -124,7 +124,7 @@ namespace WorkflowManagementSystem.Controllers
             ProjectSchedule projectSchedule = db.ProjectSchedules.Find(id);
             db.ProjectSchedules.Remove(projectSchedule);
             db.SaveChanges();
-            return RedirectToAction("Index","EventProject");
+            return RedirectToAction("DetailsMaster","EventProject", new { id = model.EventProjectId });
             //return RedirectToAction("DetailsMaster", "EventProject", new { projectId = model.EventProjectId });
         }
 

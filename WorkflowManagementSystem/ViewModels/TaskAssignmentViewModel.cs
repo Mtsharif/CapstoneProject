@@ -33,7 +33,7 @@ namespace WorkflowManagementSystem.ViewModels
 
         [Display(Name = "Assignment Date")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AssignmentDate { get; set; }
 
         public int EventProjectId { get; set; }

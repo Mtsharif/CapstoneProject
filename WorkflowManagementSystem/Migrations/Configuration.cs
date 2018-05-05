@@ -68,8 +68,8 @@ namespace WorkflowManagementSystem.Migrations
             var items = new List<Item>
             {
                 new Item { Name = "Chair", Description = "Normal sitting chair", UnitCost = 20},
-                new Item { Name = "Table-C", Description = "Circular table", UnitCost = 200 },
-                new Item { Name = "Table-R", Description = "Rectangular table", UnitCost = 250 },
+                new Item { Name = "Table-Circle", Description = "Circular table", UnitCost = 200 },
+                new Item { Name = "Table-Round", Description = "Rectangular table", UnitCost = 250 },
                 new Item { Name = "Stage", Description = "4 by 4 white stage", UnitCost = 1000 },
                 new Item { Name = "Monitor", Description = "6-inch monitor", UnitCost = 1500 },
                 new Item { Name = "Spotlight", Description = null, UnitCost = 250 }
@@ -216,27 +216,27 @@ namespace WorkflowManagementSystem.Migrations
             // Add usher examples 
             var ushers = new List<Usher>
             {
-                new Usher {FirstName = "Basem", LastName = "Helmi", MobileNumber = "0551212900", DateOfBirth = DateTime.Parse("02/12/1996"),
+                new Usher {FirstName = "Basem", LastName = "Helmi", MobileNumber = "0551212900", DateOfBirth = new DateTime(1996, 12, 2) ,
                     Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
                     LanguageId = languages.Single(d=>d.Name=="English").Id,CarAvailability = true, MedicalCard = null },
 
-                new Usher {FirstName = "Layal", LastName = "Attas", MobileNumber = "0501211911", DateOfBirth = DateTime.Parse("07/20/1997"),
+                new Usher {FirstName = "Layal", LastName = "Attas", MobileNumber = "0501211911", DateOfBirth = new DateTime(1997, 7, 7),
                     Gender = UsherGender.Female, Nationality = "Saudi", City = "Riyadh",
                     LanguageId = languages.Single(d=>d.Name=="Arabic").Id, CarAvailability = true, MedicalCard = null },
 
-                new Usher {FirstName = "Omar", LastName = "Gamdi", MobileNumber = "0500088981", DateOfBirth = DateTime.Parse("10/10/1993"),
+                new Usher {FirstName = "Omar", LastName = "Gamdi", MobileNumber = "0500088981", DateOfBirth =  new DateTime(1993, 10, 10),
                     Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
                     LanguageId = languages.Single(d=>d.Name=="English").Id, CarAvailability = true, MedicalCard = null },
 
-                new Usher {FirstName = "Yaser", LastName = "Ghalib", MobileNumber = "0599988999", DateOfBirth = DateTime.Parse("12/23/1996"),
+                new Usher {FirstName = "Yaser", LastName = "Ghalib", MobileNumber = "0599988999", DateOfBirth = new DateTime(1996, 2, 3),
                     Gender = UsherGender.Male, Nationality = "Saudi", City = "Jeddah",
                     LanguageId = languages.Single(d=>d.Name=="English").Id, CarAvailability = true, MedicalCard = null },
 
-                new Usher {FirstName = "Yara", LastName = "Zamil", MobileNumber = "0500088981", DateOfBirth = DateTime.Parse("11/09/1995"),
+                new Usher {FirstName = "Yara", LastName = "Zamil", MobileNumber = "0500088981", DateOfBirth = new DateTime(1995, 1, 9),
                     Gender = UsherGender.Female, Nationality = "Saudi", City = "Jeddah",
                     LanguageId = languages.Single(d=>d.Name=="English").Id, CarAvailability = true, MedicalCard = null },
 
-                new Usher {FirstName = "Husam", LastName = "Madani", MobileNumber = "0551122281", DateOfBirth = DateTime.Parse("12/12/1996"),
+                new Usher {FirstName = "Husam", LastName = "Madani", MobileNumber = "0551122281", DateOfBirth = new DateTime(1996, 3, 4),
                     Gender = UsherGender.Male, Nationality = "Saudi", City = "Riyadh",
                     LanguageId = languages.Single(d=>d.Name=="Arabic").Id, CarAvailability = false, MedicalCard = null }
             };
@@ -272,32 +272,32 @@ namespace WorkflowManagementSystem.Migrations
                 new EventProject {Name = "Food festival",  EventType = EventProjectType.Festival,
                     Brief = "The client wants the event to consist of 12 booths(all providing food), a stage with a screen needs to be in the entrance.There should be high security. It is for families.",
                     Street = "Malik Rd", District = "AlShati Dist", City = "Jeddah", Status = ProjectStatus.Approved,
-                    DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 1},
+                    DateCreated = new DateTime(2018, 12, 4), ClientServiceEmployeeId = 2, ClientId = 1},
 
                 new EventProject {Name = "Kids birthday party",  EventType = EventProjectType.Birthday,
                     Brief = "The client wants a theme of superheroes. Tables with games and seats. Should accommodate 20 children and adults.",
                     Street = "King Abdullah St.", District = "Khaldya Dist.", City = "Dubai", Status = ProjectStatus.Approved,
-                    DateCreated = DateTime.Parse("07/04/2018"), ClientServiceEmployeeId = 2, ClientId = 2},
+                    DateCreated = new DateTime(2018, 12, 4), ClientServiceEmployeeId = 2, ClientId = 2},
 
                  new EventProject {Name = "Jeddah Youth Ceremony",  EventType = EventProjectType.AwardCeremony,
                     Brief = "Client requests stage with screen. A table with all awards should be in the center of the stage. Tables and chairs that accommodates 100 people.",
                     Street = "Prince Naif St.", District = "Murjan Dist.", City = "Jeddah", Status = ProjectStatus.Pending,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 4},
+                    DateCreated = new DateTime(2018, 12, 4), ClientServiceEmployeeId = 2, ClientId = 4},
 
                  new EventProject {Name = "Artsy",  EventType = EventProjectType.Exhibition,
                     Brief = "The client wants the layout of the event to portray a maze and the design should be colorful. Each section will include an artist who will be displaying his/her artworks. 5 booths serving any kinds of food is required. The entrance should include a table for selling tickets.",
                     Street = "Madina Rd.", District = "Musaadya Dist.", City = "Jeddah", Status = ProjectStatus.Pending,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 4},
+                    DateCreated = new DateTime(2018, 12, 4), ClientServiceEmployeeId = 2, ClientId = 4},
 
                  new EventProject {Name = "Makkah Youth Forum",  EventType = EventProjectType.AwardCeremony,
                     Brief = "The client requires a stage in the center with a screen behind the speaker. The hall should accommodate up to 40 people; the front row should have tables in front of the chairs.",
                     Street = "Om AlQura St.", District = "Muala Dist.", City = "Makkah", Status = ProjectStatus.Pending,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 3},
+                    DateCreated = new DateTime(2018, 12, 4), ClientServiceEmployeeId = 2, ClientId = 3},
 
                  new EventProject {Name = "Wedding",  EventType = EventProjectType.Wedding,
                     Brief = "The client requests round tables each with 10 chairs. A stage in the center with flowers.",
                     Street = "Malik Rd.", District = "Shati Dist.", City = "Jeddah", Status = ProjectStatus.Approved,
-                    DateCreated = DateTime.Parse("12/04/2018"), ClientServiceEmployeeId = 2, ClientId = 5}
+                    DateCreated = new DateTime(2018, 12, 4), ClientServiceEmployeeId = 2, ClientId = 5}
             };
 
             eventprojects.ForEach(s => context.EventProjects.AddOrUpdate(p => p.Name, s));
@@ -308,34 +308,32 @@ namespace WorkflowManagementSystem.Migrations
             {
                 new ProjectSchedule {Date = DateTime.Now.AddDays(40), StartTime = TimeSpan.Parse("9:30:00"), EndTime = TimeSpan.Parse("10:30:00"), EventProjectId = 1},
                 new ProjectSchedule {Date = DateTime.Now.AddDays(41), StartTime = TimeSpan.Parse("9:00:00"), EndTime = TimeSpan.Parse("10:30:00"), EventProjectId = 1},
-                new ProjectSchedule {Date = DateTime.Now.AddDays(42), StartTime = TimeSpan.Parse("11:00:00"), EndTime = TimeSpan.Parse("12:30:00"), EventProjectId = 1},
                 new ProjectSchedule {Date = DateTime.Now.AddDays(55), StartTime = TimeSpan.Parse("11:00:00"), EndTime = TimeSpan.Parse("17:30:00"), EventProjectId = 2},
                 new ProjectSchedule {Date = DateTime.Now.AddDays(80), StartTime = TimeSpan.Parse("17:00:00"), EndTime = TimeSpan.Parse("20:30:00"), EventProjectId = 4},
                 new ProjectSchedule {Date = DateTime.Now.AddDays(81), StartTime = TimeSpan.Parse("18:00:00"), EndTime = TimeSpan.Parse("20:30:00"), EventProjectId = 4},
-                new ProjectSchedule {Date = DateTime.Now.AddDays(100), StartTime = TimeSpan.Parse("18:00:00"), EndTime = TimeSpan.Parse("23:30:00"), EventProjectId = 1},
-                new ProjectSchedule {Date = DateTime.Now.AddDays(101), StartTime = TimeSpan.Parse("18:30:00"), EndTime = TimeSpan.Parse("22:30:00"), EventProjectId = 1},
-                new ProjectSchedule {Date = DateTime.Now.AddDays(102), StartTime = TimeSpan.Parse("18:30:00"), EndTime = TimeSpan.Parse("22:30:00"), EventProjectId = 1},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(100), StartTime = TimeSpan.Parse("18:00:00"), EndTime = TimeSpan.Parse("23:30:00"), EventProjectId = 3},
+                new ProjectSchedule {Date = DateTime.Now.AddDays(50), StartTime = TimeSpan.Parse("18:00:00"), EndTime = TimeSpan.Parse("23:30:00"), EventProjectId = 6},
             };
             projectSchedules.ForEach(s => context.ProjectSchedules.AddOrUpdate(p => p.Date, s));
             context.SaveChanges();
 
-            ////Add usher appointed examples
-            //var usherAppointeds = new List<UsherAppointed>
-            //{
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 2, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
-            //    new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 7, EventProjectId = 2, ProductionEmployeeId = 3},
-            //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
-            //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
-            //    //new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
-            //};
-            //usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
-            //context.SaveChanges();
-
+            //Add usher appointed examples
+            var usherAppointeds = new List<UsherAppointed>
+            {
+                new UsherAppointed {DateAppointed = DateTime.Now, UsherId = 1, EventProjectId = 4, ProductionEmployeeId = 3},
+                new UsherAppointed {DateAppointed = new DateTime(2018, 4, 3), UsherId = 5, EventProjectId = 4, ProductionEmployeeId = 3},
+                new UsherAppointed {DateAppointed = new DateTime(2018, 4, 4), UsherId = 2, EventProjectId = 4, ProductionEmployeeId = 3},
+                new UsherAppointed {DateAppointed = new DateTime(2018, 2, 1), UsherId = 3, EventProjectId = 1, ProductionEmployeeId = 3},
+                new UsherAppointed {DateAppointed = new DateTime(2018, 2, 2), UsherId = 4, EventProjectId = 1, ProductionEmployeeId = 3},
+                new UsherAppointed {DateAppointed = new DateTime(2018, 1, 8), UsherId = 5, EventProjectId = 2, ProductionEmployeeId = 3},
+                new UsherAppointed {DateAppointed = new DateTime(2018, 1, 10), UsherId = 6, EventProjectId = 2, ProductionEmployeeId = 3},
+                //new UsherAppointed {DateAppointed = new DateTime(2018, 1, 11), UsherId = 7, EventProjectId = 2, ProductionEmployeeId = 3},
+                //new UsherAppointed {DateAppointed = new DateTime(2018, 3, 4), UsherId = 6, EventProjectId = 3, ProductionEmployeeId = 3},
+                //new UsherAppointed {DateAppointed = new DateTime(2018, 3, 5), UsherId = 1, EventProjectId = 3, ProductionEmployeeId = 3},
+                //new UsherAppointed {DateAppointed = new DateTime(2018, 2, 4), UsherId = 6, EventProjectId = 4, ProductionEmployeeId = 3},
+            };
+            usherAppointeds.ForEach(s => context.UsherAppointeds.AddOrUpdate(p => p.DateAppointed, s));
+            context.SaveChanges();
 
             // Add task assignments examples 
             var taskAssignments = new List<TaskAssignment>
@@ -358,6 +356,18 @@ namespace WorkflowManagementSystem.Migrations
                 new TaskAssignment {EventProjectId = 5, TaskName = "Add Event Report", Description = null, EmployeeId = 3,
                     Deadline = DateTime.Now.AddDays(40), Priority = TaskAssignment.TaskPriority.Low,
                     Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                 new TaskAssignment {EventProjectId = 2, TaskName = "Create Cost Sheet", Description = null, EmployeeId = 4,
+                    Deadline = DateTime.Now.AddDays(40), Priority = TaskAssignment.TaskPriority.High,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                 new TaskAssignment {EventProjectId = 2, TaskName = "Assign ushers", Description = null, EmployeeId = 4,
+                    Deadline = DateTime.Now.AddDays(40), Priority = TaskAssignment.TaskPriority.High,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                 new TaskAssignment {EventProjectId = 6, TaskName = "Add cost sheet", Description = null, EmployeeId = 4,
+                    Deadline = DateTime.Now.AddDays(100), Priority = TaskAssignment.TaskPriority.Low,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
+                 new TaskAssignment {EventProjectId = 2, TaskName = "Meeting", Description = null, EmployeeId = 4,
+                    Deadline = DateTime.Now.AddDays(5), Priority = TaskAssignment.TaskPriority.High,
+                    Status = TaskAssignment.TaskStatus.Pending, AssignmentDate = DateTime.Now, ClientServiceEmployeeId = 2 },
             };
 
             taskAssignments.ForEach(s => context.TaskAssignments.AddOrUpdate(p => p.TaskName, s));
@@ -376,15 +386,17 @@ namespace WorkflowManagementSystem.Migrations
             context.SaveChanges();
 
             // criterion examples
-            //var documents = new List<Document>
-            //{
-            //    new Document {Name = "Quotation", FilePath="File path", EventProjectId = 4, },
-            //    new Document {Name = "Quotation", FilePath="File path", EventProjectId = 1, },
-            //    new Document {Name = "Quotation", FilePath="File path", EventProjectId = 2, },                
-            //};
+            var documents = new List<Document>
+            {
+                new Document {Name = "Quotation", FilePath="File path", EventProjectId = 4, },
+                new Document {Name = "Quotation-1", FilePath="File path", EventProjectId = 1, },
+                new Document {Name = "Invoice", FilePath="File path", EventProjectId = 4, },
+                new Document {Name = "Invoice-1", FilePath="File path", EventProjectId = 1, },
+                new Document {Name = "Quotation-2", FilePath="File path", EventProjectId = 6, },
+            };
 
-            //documents.ForEach(s => context.Documents.AddOrUpdate(p => p.Name, s));
-            //context.SaveChanges();
+            documents.ForEach(s => context.Documents.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();            
         }
     }
 }

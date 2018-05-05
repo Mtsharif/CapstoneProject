@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WorkflowManagementSystem.ViewModels.TaskAssignmentViewModel>
 
-@if (Request.IsAuthenticated @*&& User.IsInRole("Client Service Employee")*@)
+@if (Request.IsAuthenticated )
 {
     {
         ViewBag.Title = "My Tasks";
@@ -11,32 +11,31 @@
     @*<p>
         @Html.ActionLink("Assign Task", "Assign")
     </p>*@
-    <table class="table" id="taskAssignmentsTable">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AssignmentDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TaskName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deadline)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnyEmployee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee)
-            </th>
-            <th></th>
-        </tr>
-
+    <table class="table table-hover table-striped font-style" id="taskAssignmentsTable">
+        <thead>
+            <tr>              
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Deadline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Employee)
+                </th>
+                 <th>
+                    @Html.DisplayNameFor(model => model.AssignmentDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AssignmentDate)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TaskName)
                 </td>
@@ -44,19 +43,22 @@
                     @Html.DisplayFor(modelItem => item.Deadline)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AnyEmployee)
+                    @Html.DisplayFor(modelItem => item.Priority)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Employee)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentDate)
+                </td>
+                <td>
                     @*@Html.ActionLink("Edit", "Edit", new { id = item.TaskAssignmentId }) |*@
-                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }, new { @class = "btn btn-primary btn-sm btn-sharp" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.TaskAssignmentId }, new { @class = "btn btn-primary btn-sm btn-sharp" })
                     @*@Html.ActionLink("Delete", "Delete", new { id = item.TaskAssignmentId })*@
                 </td>
             </tr>
         }
-
+</tbody>
     </table>
 
     @section scripts
@@ -69,7 +71,7 @@
             $(document).ready(function () {
                 $('#taskAssignmentsTable').DataTable({
 
-                    "scrollY": "80px",
+                    "scrollY": "300px",
                     "scrollCollapse": true,
                     "paging": false,
 
@@ -83,7 +85,7 @@
 
     @section styles
 {
-        <link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />
+        @*<link href="@Url.Content("/Content/DataTables/css/jquery.dataTables.min.css")" rel="stylesheet" />*@
         <link href="@Url.Content("/Content/DataTables/css/dataTables.scroller.min.css")" rel="stylesheet" />
         <link href="@Url.Content("/Content/DataTables/css/dataTables.bootstrap.min.css")" rel="stylesheet" />
     }

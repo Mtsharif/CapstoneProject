@@ -1,6 +1,6 @@
 ﻿@model WorkflowManagementSystem.ViewModels.ProjectPresentationViewModel
 
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && User.IsInRole("Creative Employee"))
 {
     {
         Layout = null;

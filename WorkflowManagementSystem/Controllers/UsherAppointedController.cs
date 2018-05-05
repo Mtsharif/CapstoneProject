@@ -193,11 +193,21 @@ namespace WorkflowManagementSystem.Controllers
         // POST: UsherAppointed/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UsherAppointedViewModel model)
+        public ActionResult Edit(int id, UsherAppointedViewModel model)
         {
             if (ModelState.IsValid)
             {
-                UsherAppointed usherAppointed = Mapper.Map<UsherAppointedViewModel, UsherAppointed>(model);
+                var usherAppointed = db.UsherAppointeds.Find(id);
+                if (usherAppointed == null)
+                {
+                    return HttpNotFound();
+                }
+                //UsherAppointed usherAppointed = Mapper.Map<UsherAppointedViewModel, UsherAppointed>(model);
+                usherAppointed.DateAppointed = DateTime.Now;
+                usherAppointed.UsherId = model.UsherId;
+                usherAppointed.EventProjectId = model.EventProjectId;
+                usherAppointed.ProductionEmployeeId = User.Identity.GetUserId<int>();
+
                 db.Entry(usherAppointed).State = EntityState.Modified;
                 db.SaveChanges();
 

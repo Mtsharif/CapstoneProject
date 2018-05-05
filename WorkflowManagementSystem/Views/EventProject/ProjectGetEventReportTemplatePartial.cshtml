@@ -30,12 +30,17 @@
             <dd>
                 @Html.DisplayFor(model => model.EventReportTemplateFile)
                 @if (!String.IsNullOrEmpty(Model.EventReportTemplate))
-            {
-                <a href="@Url.Content(Model.EventReportTemplate)" data-toggle="tooltip" title="Click here to download the Event Report Template File" class="col-md-6 linkStyle">Event Report Template</a>
-        }
+                {
+                    <a href="@Url.Content(Model.EventReportTemplate)" data-toggle="tooltip" title="Click here to download the Event Report Template File" class="col-md-6 linkStyle">Event Report Template</a>
+                }
             </dd>
         </dl>
     </div>
+    if (Model.EventReportTemplate == null)
+    {
+        <p class="countMessage col-md-11">Event Report Template not yet uploaded.</p>
+    }
+
 }
 
 

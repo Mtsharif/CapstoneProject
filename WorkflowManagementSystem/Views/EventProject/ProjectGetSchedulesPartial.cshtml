@@ -17,46 +17,50 @@
         <hr />
         <br />
         @*@Html.Hidden("EventProjectId")*@
+        
         <body>
-            <table class="table" id="scheduleTable">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ScheduleDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.StartTime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EndTime)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
+            <div class="container-fluid">
+                <table class="table table-hover table-striped table-bordered font-style" id="scheduleTable">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ScheduleDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndTime)
-                        </td>
-  
-                        <td>
-
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.ScheduleId }) |*@
-
-                            @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
-                            {
-                        @Html.ActionLink("Delete", "Delete", "ProjectSchedule", new { id = item.ScheduleId, onclick = "confirmDelete(@item.ScheduleId)" }, null)
-                            }
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ScheduleDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EndTime)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            </table>
-        </body>
-    }
+
+                    @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduleDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+
+                <td>
+
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ScheduleId }) |*@
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
+        {
+            @Html.ActionLink("Delete", "Delete", "ProjectSchedule", new { id = item.ScheduleId},new { @class = "btn btn-danger btn-xs btn-sharp"})
 }
+                </td>
+            </tr>
+}
+                </table>
+            </div>
+        </body>
+           
+            }
+            }

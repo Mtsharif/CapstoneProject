@@ -22,7 +22,7 @@ namespace WorkflowManagementSystem.Controllers
     /// This controller is generated based on the task assignemnt domain and view models.
     /// It allows tasks to be assigned to employees in a project.
     /// </summary>
-    [Authorize(Roles = "Client Service Employee")]
+    [Authorize]
     public class TaskAssignmentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -64,6 +64,7 @@ namespace WorkflowManagementSystem.Controllers
         /// Retrieves a list of the tasks that are assigned by the logged in user to edit and delete the tasks
         /// </summary>
         /// <returns>All tasks index view</returns>
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult AllTasksIndex()
         {
             var loginId = User.Identity.GetUserId<int>();
@@ -135,6 +136,7 @@ namespace WorkflowManagementSystem.Controllers
         /// </summary>
         /// <returns>Create view</returns>
         // GET: TaskAssignment/Assign
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult Assign(int? id)
         {            
             var model = new TaskAssignmentViewModel();
@@ -154,6 +156,7 @@ namespace WorkflowManagementSystem.Controllers
         // POST: TaskAssignment/Assign
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult Assign(TaskAssignmentViewModel model)
         {
             if (ModelState.IsValid)
@@ -206,6 +209,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">task aassignment id</param>
         /// <returns>edit view</returns>
         // GET: TaskAssignment/Edit/5
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -251,6 +255,7 @@ namespace WorkflowManagementSystem.Controllers
         // POST: TaskAssignment/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult Edit(int id, TaskAssignmentViewModel model)
         {
             if (ModelState.IsValid)
@@ -274,9 +279,7 @@ namespace WorkflowManagementSystem.Controllers
 
                 db.Entry(taskAssignment).State = EntityState.Modified;
                 db.SaveChanges();
-
-                            
-
+                          
                 return RedirectToAction("AllTasksIndex");
             }
             ViewBag.EventProjectId = new SelectList(db.EventProjects, "EventProjectId", "Name");
@@ -391,6 +394,7 @@ namespace WorkflowManagementSystem.Controllers
         /// <param name="id">Task assignment id</param>
         /// <returns>Delte view</returns>
         // GET: TaskAssignment/Delete/5
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -435,6 +439,7 @@ namespace WorkflowManagementSystem.Controllers
         // POST: TaskAssignment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Client Service Employee")]
         public ActionResult DeleteConfirmed(int id)
         {
             TaskAssignment taskAssignment = db.TaskAssignments.Find(id);

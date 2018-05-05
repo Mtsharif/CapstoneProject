@@ -14,51 +14,54 @@
     }
     else
     {
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CostSheetName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductionEmployee)
-                </th>
-
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <br />
+        <div @*class="container-fluid table-bordered details-Background"*@>
+            <table class="table table-hover table-striped table-bordered font-style">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CostSheetName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductionEmployee)
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CostSheetName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductionEmployee)
+                    </th>
 
-                    <td>
-                        @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@
-
-                        @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
-                        {
-                            @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, new { @class = "btn btn-assign btn-sharp btn-xs btn-right-space" })
-                        }
-
-                        @if (Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
-                        }
-
-                    </td>
+                    <th></th>
                 </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CostSheetName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductionEmployee)
+                        </td>
+
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", "Document", new { id = item.DocumentId }, null) |*@
+
+                            @if (Request.IsAuthenticated && User.IsInRole("Production Employee"))
+                            {
+                                @Html.ActionLink("Add Items", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, new { @class = "btn btn-assign btn-sharp btn-xs btn-right-space" })
+                            }
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Details", "CostSheetItems", "CostSheet", new { id = item.CostSheetId }, new { @class = "btn btn-primary btn-xs btn-sharp" })
+                            }
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            </div>
             }
-            
-        </table>
-    }
-}
+            }

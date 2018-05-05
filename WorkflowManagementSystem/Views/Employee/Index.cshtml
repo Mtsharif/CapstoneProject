@@ -12,7 +12,7 @@
         @Html.ActionLink("Create New Employee", "Create","Employee", new { @class = "btn btn-create" })
     </p>
     <br />
-    <table class="table" id="employeesTable">
+    <table class="table table-hover table-striped font-style" id="employeesTable">
         <thead>
             <tr>
                 <th>
@@ -73,9 +73,9 @@
             $(document).ready(function () {
                 $('#employeesTable').DataTable({
 
-                    //"scrollY": "80px",
-                    //"scrollCollapse": true,
-                    //"paging": false,
+                    "scrollY": "300px",
+                    "scrollCollapse": true,
+                    "paging": false,
 
                     "columnDefs": [
                         { "orderable": false, "targets": -1 }

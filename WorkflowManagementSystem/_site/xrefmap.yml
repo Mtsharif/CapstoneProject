@@ -2081,6 +2081,12 @@ references:
   isSpec: "True"
   fullName: WorkflowManagementSystem.Controllers.UsherAppointedController.Dispose
   nameWithType: UsherAppointedController.Dispose
+- uid: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(System.Int32,WorkflowManagementSystem.ViewModels.UsherAppointedViewModel)
+  name: Edit(Int32, UsherAppointedViewModel)
+  href: api/WorkflowManagementSystem.Controllers.UsherAppointedController.html#WorkflowManagementSystem_Controllers_UsherAppointedController_Edit_System_Int32_WorkflowManagementSystem_ViewModels_UsherAppointedViewModel_
+  commentId: M:WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(System.Int32,WorkflowManagementSystem.ViewModels.UsherAppointedViewModel)
+  fullName: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(System.Int32, WorkflowManagementSystem.ViewModels.UsherAppointedViewModel)
+  nameWithType: UsherAppointedController.Edit(Int32, UsherAppointedViewModel)
 - uid: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(System.Nullable{System.Int32})
   name: Edit(Nullable<Int32>)
   href: api/WorkflowManagementSystem.Controllers.UsherAppointedController.html#WorkflowManagementSystem_Controllers_UsherAppointedController_Edit_System_Nullable_System_Int32__
@@ -2090,12 +2096,6 @@ references:
   fullName.vb: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(System.Nullable(Of System.Int32))
   nameWithType: UsherAppointedController.Edit(Nullable<Int32>)
   nameWithType.vb: UsherAppointedController.Edit(Nullable(Of Int32))
-- uid: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(WorkflowManagementSystem.ViewModels.UsherAppointedViewModel)
-  name: Edit(UsherAppointedViewModel)
-  href: api/WorkflowManagementSystem.Controllers.UsherAppointedController.html#WorkflowManagementSystem_Controllers_UsherAppointedController_Edit_WorkflowManagementSystem_ViewModels_UsherAppointedViewModel_
-  commentId: M:WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(WorkflowManagementSystem.ViewModels.UsherAppointedViewModel)
-  fullName: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit(WorkflowManagementSystem.ViewModels.UsherAppointedViewModel)
-  nameWithType: UsherAppointedController.Edit(UsherAppointedViewModel)
 - uid: WorkflowManagementSystem.Controllers.UsherAppointedController.Edit*
   name: Edit
   href: api/WorkflowManagementSystem.Controllers.UsherAppointedController.html#WorkflowManagementSystem_Controllers_UsherAppointedController_Edit_

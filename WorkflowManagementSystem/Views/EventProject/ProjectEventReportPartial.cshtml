@@ -1,6 +1,6 @@
 ﻿@model WorkflowManagementSystem.ViewModels.ProjectEventReportViewModel
 
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && User.IsInRole("Client Service Employee"))
 {
     {
         Layout = null;
