@@ -37,6 +37,9 @@ This application is developed for the MIS capstone project; it is a web-based wo
 This project is licensed under the GNU General Public License. 
 - Check the [LICENSE](/LICENSE) file for more information 
 ***
+### API Documentation
+To visit this application's API documentation [click here](https://mtsharif.github.io/CapstoneProject/api/index.html)
+***
 ### How to use my application 
 * Clone it with HTTPS or download it in your desktop. 
 * The branches in this application is divided into sprints where in each sprint new features are implemented. The description of the sprints are available in the Wiki. 
