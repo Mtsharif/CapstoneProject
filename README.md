@@ -33,6 +33,10 @@ This application is developed for the MIS capstone project; it is a web-based wo
 * SQl Server LocalDb - Version 13
 * ASP.NET MVC Framework - Version 5.2.3
 ***
+### License 
+This project is licensed under the GNU General Public License. 
+- Check the [LICENSE](/LICENSE) file for more information 
+***
 ### How to use my application 
 * Clone it with HTTPS or download it in your desktop. 
 * The branches in this application is divided into sprints where in each sprint new features are implemented. The description of the sprints are available in the Wiki. 
@@ -51,7 +55,7 @@ This application is developed for the MIS capstone project; it is a web-based wo
 
     Password: user123
 
-* ***Sprint 4 Branch: Login as amultiple users using these login information***
+* ***Sprint 4 Branch: Login as multiple users using these login information***
 
     #### Client service employee
     Username: cs1
@@ -67,7 +71,6 @@ This application is developed for the MIS capstone project; it is a web-based wo
 
     #### All passwords: user123
 
-***
-### License 
-This project is licensed under the GNU General Public License. 
-- Check the [LICENSE](/LICENSE) file for more information 
+* ***Sprint 5 Branch: Login as any user from the above login information***
+
+
